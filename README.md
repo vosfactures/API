@@ -11,7 +11,7 @@ Grâce à API de VosFactures, vous pouvez créer automatiquement des factures, p
 + [Code API](#token)  
 + [Factures - exemples d'appels API](#examples)  
 	+ Télécharger la liste de factures du mois en cours
-	+ Specific client's invoices
+	+ Télécharger les factures d'un client
 	+ Télécharger les factures par numéro d'ID
 	+ Télécharger sous format PDF
 	+ Envoyer les factures par email à un client
@@ -32,12 +32,12 @@ Grâce à API de VosFactures, vous pouvez créer automatiquement des factures, p
 Le code API du compte VosFactures (`API_TOKEN)` est affiché depuis les paramètres du compte ("Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API")
 
 <a name="examples"/>
-##Examples of calling
+##Factures - exemples d'appels API
 
-Downloading a list of invoices from current month
+Télécharger la liste de factures du mois en cours
 
 ```shell
-curl https://yourdomain.invoiceocean.com/invoices.json?period=this_month&api_token=API_TOKEN
+curl https://yourdomain.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
 <b>NOTE</b>: additional parameters can be forwarded to calls, e.g. `page=`, `period=` etc.
@@ -45,28 +45,28 @@ curl https://yourdomain.invoiceocean.com/invoices.json?period=this_month&api_tok
 Specific client's invoices
 
 ```shell
-curl https://yourdomain.invoiceocean.com/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
+curl https://yourdomain.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
 ```
 
 Downloading invoices by ID
 
 
 ```shell
-curl https://yourdomain.invoiceocean.com/invoices/100.json?api_token=API_TOKEN
+curl https://yourdomain.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
 Downloading as PDF
 
 
 ```shell
-curl https://yourdomain.invoiceocean.com/invoices/100.pdf?api_token=API_TOKEN
+curl https://yourdomain.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
 
 Sending invoices by email to a client
 
 
 ```shell
-curl -X POST https://yourdomain.invoiceocean.com/invoices/100/send_by_email.json?api_token=API_TOKEN
+curl -X POST https://yourdomain.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
 
 Other PDF options:
@@ -79,7 +79,7 @@ Other PDF options:
 Adding a new invoice
 
 ```shell
-curl https://YOUR_DOMAIN.invoiceocean.com/invoices.json 
+curl https://YOUR_DOMAIN.vosfactures.fr/invoices.json 
   	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{
@@ -106,7 +106,7 @@ Adding a new invoice - the minimal version (only fields required), when we have 
 VAT Invoice with current date and 5 day due date will be issued.
 
 ```shell
-curl http://YOUR_DOMAIN.invoiceocean.com/invoices.json 
+curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
@@ -123,7 +123,7 @@ curl http://YOUR_DOMAIN.invoiceocean.com/invoices.json
 Invoice update
 
 ```shell
-curl https://YOUR_DOMAIN.invoiceocean.com/invoices/111.json 
+curl https://YOUR_DOMAIN.vosfactures.fr/invoices/111.json 
 	-X PUT 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
@@ -141,7 +141,7 @@ curl https://YOUR_DOMAIN.invoiceocean.com/invoices/111.json
 After downloading invoice data, e.g. by:
 
 ```shell
-curl https://YOUR_DOMAIN.invoiceocean.com/invoices/100.json?api_token=API_TOKEN
+curl https://YOUR_DOMAIN.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
 API gives us `token` field, on which basis we may receive invoice preview links 
@@ -149,10 +149,10 @@ Such links allow you to refer to the selected invoice without having to log in -
 
 Links are in the form: 
 
-preview: `http://yourdomain.invoiceocean.com/invoice/{{token}}` 
-pdf: `http://yourdomain.invoiceocean.com/invoice/{{token}}.pdf`
+preview: `http://yourdomain.vosfactures.fr/invoice/{{token}}` 
+pdf: `http://yourdomain.vosfactures.fr/invoice/{{token}}.pdf`
 
-E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://yourdomain.invoiceocean.com/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://yourdomain.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 <a name="use_case1"/>
 ##Examples of using PHP - purchase of training
@@ -182,7 +182,7 @@ Flow Portal Example which generates a proforma invoice for the client, sends it 
 Example - adding a new invoice - the minimal version (only fields required), when we have product, buyer and seller ID we do not need to provide full details. Field department_id determines the company (or department) which issues the invoice (it can be obtained by clicking on the company in Settings> Data Company)
 
 ```shell
-curl http://YOUR_DOMAIN.invoiceocean.com/invoices.json 
+curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
     -H 'Content-Type: application/json'  
     -d '{"api_token": "API_TOKEN",
@@ -254,7 +254,7 @@ Invoice fields
 "from_invoice_id" : "" - invoice id, on which basis the invoice was generated (useful when generating a VAT invoice from Proforma invoice)
 "positions":
    		"product_id" : "1", 
-   		"name" : "InvoiceOcean Basic", 
+   		"name" : "vosfactures.fr Basic", 
    		"additional_info" : "", - additional information on invoice position 
    		"discount_percent" : "", - percentage discount (note: in order for the discount to be calculated, you need to set field 'show_discount' to 1 and before issuing check if in Account Settings, field: "How to calculate discount" is set to 'percentage from unit gross price')
    		"discount" : "", - amount discount (note: in order for the discount to be calculated, you need to set field 'show_discount' to 1 and before issuing check if in Account Settings, field: "How to calculate discount" is set to "amount")
@@ -337,19 +337,19 @@ Field: `discount_kind` - discount kind
 Clients list
 
 ```shell
-curl "http://YOUR_DOMAIN.invoiceocean.com/clients.json?api_token=API_TOKEN&page=1"
+curl "http://YOUR_DOMAIN.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
 
 Get selected client by ID
 
 ```shell
-curl "http://YOUR_DOMAIN.invoiceocean.com/clients/100.json?api_token=API_TOKEN"
+curl "http://YOUR_DOMAIN.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
 ```
 
 Adding clients
 
 ```shell
-curl http://YOUR_DOMAIN.invoiceocean.com/clients.json 
+curl http://YOUR_DOMAIN.vosfactures.fr/clients.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
@@ -372,7 +372,7 @@ curl http://YOUR_DOMAIN.invoiceocean.com/clients.json
 Client update
 
 ```shell
-curl http://YOUR_DOMAIN.invoiceocean.com/clients/111.json 
+curl http://YOUR_DOMAIN.vosfactures.fr/clients/111.json 
 	-X PUT 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
@@ -403,20 +403,20 @@ Products list
 
 
 ```shell
-curl "http://YOUR_DOMAIN.invoiceocean.com/products.json?api_token=API_TOKEN&page=1"
+curl "http://YOUR_DOMAIN.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
 Get selected product by ID
 
 ```shell
-curl "http://YOUR_DOMAIN.invoiceocean.com/products/100.json?api_token=API_TOKEN"
+curl "http://YOUR_DOMAIN.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
 Adding products
 
 
 ```shell
-curl http://YOUR_DOMAIN.invoiceocean.com/products.json 
+curl http://YOUR_DOMAIN.vosfactures.fr/products.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
@@ -431,7 +431,7 @@ curl http://YOUR_DOMAIN.invoiceocean.com/products.json
 Product update
 
 ```shell
-curl http://YOUR_DOMAIN.invoiceocean.com/products/333.json 
+curl http://YOUR_DOMAIN.vosfactures.fr/products/333.json 
 	-X PUT
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
@@ -450,4 +450,4 @@ curl http://YOUR_DOMAIN.invoiceocean.com/products/333.json
 
 <https://github.com/radgost/fakturownia-api/blob/master/example1.rb/>
 
-Ruby Gem for InvoiceOcean.com integration: <https://github.com/kkempin/fakturownia/>
+Ruby Gem for vosfactures.fr integration: <https://github.com/kkempin/fakturownia/>
