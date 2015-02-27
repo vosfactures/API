@@ -1,11 +1,11 @@
-# InvoiceOcean API
+# VosFactures: API
 
 
-Description on how to integrate own apllication or service with <http://invoiceocean.com/> system
+Intégrer votre site internet ou une application externe avec le logiciel de facturation <http://vosfactures.fr/>
 
 
 
-Thanks to API you can issue invoices/bills/receipts from other systems and manage these documents, as well as clients and products
+Grâce à API de VosFactures, vous pouvez créer automatiquement des factures, produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
 
 ## Table of contents
 + [API Token](#token)  
