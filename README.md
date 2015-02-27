@@ -18,9 +18,9 @@ Grâce à API de VosFactures, vous pouvez créer automatiquement des factures, p
 	+ Ajouter une nouvelle facture
 	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
 	+ Mettre à jour une facture
-+ [Link to invoice preview and PDF download](#view_url)  
-+ [Examples of use - purchase of training](#use_case1)  
-+ [Factures - caractéristique](#invoices)
++ [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
++ [Exemples d'utilisation - purchase of training](#use_case1)  
++ [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
 + [Produits](#products)
 + [Exemples en PHP et Ruby](#codes)  
@@ -37,7 +37,7 @@ Le code API du compte VosFactures (`API_TOKEN)` est affiché depuis les paramèt
 Télécharger la liste de factures du mois en cours
 
 ```shell
-curl https://yourdomain.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
 <b>NOTE</b>: Des paramètres additionnels peuvent aussi transmis aux appels, ex: `page=`, `period=` etc...
@@ -45,28 +45,28 @@ curl https://yourdomain.vosfactures.fr/invoices.json?period=this_month&api_token
 Télécharger les factures d'un client
 
 ```shell
-curl https://yourdomain.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
 ```
 
 Télécharger les factures par numéro d'ID
 
 
 ```shell
-curl https://yourdomain.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
 Télécharger sous format PDF
 
 
 ```shell
-curl https://yourdomain.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
 
 Envoyer les factures par email à un client
 
 
 ```shell
-curl -X POST https://yourdomain.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
+curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
 
 Autres options PDF:
@@ -79,7 +79,7 @@ Autres options PDF:
 Ajouter une nouvelle facture
 
 ```shell
-curl https://YOUR_DOMAIN.vosfactures.fr/invoices.json 
+curl https://votrecompte.vosfactures.fr/invoices.json 
   	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{
@@ -106,7 +106,7 @@ Adding a new invoice - the minimal version (only fields required), when we have 
 VAT Invoice with current date and 5 day due date will be issued.
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json 
+curl http://votrecompte.vosfactures.fr/invoices.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
@@ -123,7 +123,7 @@ curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json
 Mettre à jour une facture
 
 ```shell
-curl https://YOUR_DOMAIN.vosfactures.fr/invoices/111.json 
+curl https://votrecompte.vosfactures.fr/invoices/111.json 
 	-X PUT 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
@@ -141,7 +141,7 @@ curl https://YOUR_DOMAIN.vosfactures.fr/invoices/111.json
 Après le téléchargement des données de la facture, ex par:
 
 ```shell
-curl https://YOUR_DOMAIN.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
 API gives us `token` field, on which basis we may receive invoice preview links 
@@ -149,10 +149,10 @@ Such links allow you to refer to the selected invoice without having to log in -
 
 Les liens sont sous la forme: 
 
-vers l'aperçu: `http://yourdomain.vosfactures.fr/invoice/{{token}}` 
-vers le pdf: `http://yourdomain.vosfactures.fr/invoice/{{token}}.pdf`
+vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}` 
+vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
-E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://yourdomain.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 <a name="use_case1"/>
 ##Exemples d'utilisation PHP - purchase of training
@@ -182,7 +182,7 @@ Flow Portal Example which generates a proforma invoice for the client, sends it 
 Example - adding a new invoice - the minimal version (only fields required), when we have product, buyer and seller ID we do not need to provide full details. Field department_id determines the company (or department) which issues the invoice (it can be obtained by clicking on the company in Settings> Data Company)
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json 
+curl http://votrecompte.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
     -H 'Content-Type: application/json'  
     -d '{"api_token": "API_TOKEN",
@@ -337,19 +337,19 @@ Field: `discount_kind` - discount kind
 Clients list
 
 ```shell
-curl "http://YOUR_DOMAIN.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
+curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
 
 Get selected client by ID
 
 ```shell
-curl "http://YOUR_DOMAIN.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
+curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
 ```
 
 Adding clients
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/clients.json 
+curl http://votrecompte.vosfactures.fr/clients.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
@@ -372,7 +372,7 @@ curl http://YOUR_DOMAIN.vosfactures.fr/clients.json
 Client update
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/clients/111.json 
+curl http://votrecompte.vosfactures.fr/clients/111.json 
 	-X PUT 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
@@ -403,20 +403,20 @@ Products list
 
 
 ```shell
-curl "http://YOUR_DOMAIN.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
+curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
 Get selected product by ID
 
 ```shell
-curl "http://YOUR_DOMAIN.vosfactures.fr/products/100.json?api_token=API_TOKEN"
+curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
 Adding products
 
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/products.json 
+curl http://votrecompte.vosfactures.fr/products.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
@@ -431,7 +431,7 @@ curl http://YOUR_DOMAIN.vosfactures.fr/products.json
 Product update
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/products/333.json 
+curl http://votrecompte.vosfactures.fr/products/333.json 
 	-X PUT
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
