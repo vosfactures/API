@@ -90,7 +90,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 			"sell_date": "2013-01-16", 
 			"issue_date": "2013-01-16", 
 			"payment_to": "2013-01-23",
-			"seller_name": "Société SARL", 
+			"seller_name": "Société Chose", 
 			"seller_tax_no": "FR5252445767", 
 			"buyer_name": "Client Intel",
 			"buyer_tax_no": "FR45362780010",
@@ -143,14 +143,14 @@ Après le téléchargement des données de la facture, par ex:
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
-L'API donne le champ `token`, grâce auquel il est possible de recevoir les liens vers l'aperçu de la facture et de son téléchargement en pdf. Ces liens vous permettent de faire référence à la facture sélectionnée sans avoir à vous connecter - vous pouvez, par exemple, envoyer ces liens à votre client qui aura accès à l'aperçu et au PDF des factures.
+L'API renvoie le champ `token`, grâce auquel il est possible de recevoir les liens vers l'aperçu de la facture et de son téléchargement en pdf. Ces liens vous permettent de faire référence à la facture sélectionnée sans avoir à vous connecter - vous pouvez, par exemple, envoyer ces liens à votre client qui aura accès à l'aperçu et au PDF des factures.
 
 Les liens sont sous la forme: 
 
 vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}` 
 vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
-E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 <a name="use_case1"/>
 ##Exemples d'utilisation PHP - purchase of training
@@ -159,22 +159,22 @@ E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://votr
 
 Flow Portal Example which generates a proforma invoice for the client, sends it to the client and after receiving payment, sends the training ticket to the client
 
-* Client fills in details in the Portal
-* The Portal calls API from invoiceocean.com and generates an invoice
-* The Portal sends a Proforma PDF invoice to the Client along with a payment link
-* Client makes a payment for the Proforma invoice (e.g. using PayPal)
-* InvoiceOcean.com receives information that the payment has been made, generates VAT invoice and sends it to the client and calls Portal API
+* Le client renseigne ses coordonnées sur le portail 
+* Le portail appel l'API depuis vosfactures.fr et génère la facture
+* Le portail envoies une facture PDF au client avec un lien de paiement sends a Proforma PDF invoice to the Client along with a payment link
+* Le lient effectue son paiement (ex: par Paypal)
+* vosfactures.fr reçoie l'information comme quoi le paiement a été effectué, génère la facture correspondante et l'envoie au client, et appelle l'API du Portail. 
 * After receiving information regarding payment (by API) Portal sends the training ticket to the Client
 
 
 <a name="invoices"/>
-##Invoices
+##Factures
 
 
-* `GET /invoices/1.json` downloading invoice
-* `POST /invoices.json` adding a new invoice
-* `PUT /invoices/1.json` updating invoice
-* `DELETE /invoices/1.json` deleting invoice
+* `GET /invoices/1.json` télécharge la facture
+* `POST /invoices.json` ajoute une nouvelle facture
+* `PUT /invoices/1.json` met à jour la facture
+* `DELETE /invoices/1.json` supprime la facture
 
 
 Example - adding a new invoice - the minimal version (only fields required), when we have product, buyer and seller ID we do not need to provide full details. Field department_id determines the company (or department) which issues the invoice (it can be obtained by clicking on the company in Settings> Data Company)
@@ -194,48 +194,48 @@ curl http://votrecompte.vosfactures.fr/invoices.json
         }}'
 ```
  
-Invoice fields
+Champs d'un document
 
 ```shell
-"number" : "13/2012" - invoice number (if not entered, it will be automatically generated)
-"kind" : "vat" - invoice kind (vat, proforma, bill, receipt, advance, correction, vat_mp, invoice_other, vat_margin, kp, kw, final, estimate)
-"income" : "1" - income invoice (1) or cost invoice (0)
-"issue_date" : "2013-01-16" - date of issue 
-"place" : "Warszawa" - place of issue
-"sell_date" : "2013-01-16" - date of sale (it can be date or month in the YYYY-MM format)
-"category_id" : "" - category id
-"department_id" : "1" - department id (in Settings > Company / department, click on company / department and department ID will be shown in the URL)
-"seller_name" : "Radgost Sp. z o.o." - seller
-"seller_tax_no" : "525-244-57-67" - seller tax id
-"seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - seller bank account
-"seller_bank" : "BRE Bank", 
-"seller_post_code" : "02-548", 
-"seller_city" : "Warsaw", 
-"seller_street" : "21 Olesińska St.", 
-"seller_country" : "", 
-"seller_email" : "platnosci@radgost123.com", 
-"seller_www" : "", 
-"seller_fax" : "", 
-"seller_phone" : "", 
-"client_id" : "-1" - buyer id (if -1 then client will be created in the system)
-"buyer_name" : "Client name - buyer
-"buyer_tax_no" : "525-244-57-67", 
+"number" : "13/2012" - numéro du document (if not entered, it will be automatically generated)
+"kind" : "facture" - type du document (devis, facture, proforma, acompte, avoir, bon de commande client, facture de solde, invoice_other,)
+"income" : "1" - revenu (1) ou dépense (0)
+"issue_date" : "2013-01-16" - date de création 
+"place" : "Paris" - lieu de création
+"sell_date" : "2013-01-16" - date vente (date complète ou juste mois et année:YYYY-MM)
+"category_id" : "" - ID de la catégorie
+"department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché)
+"seller_name" : "Société Chose." - nom du vendeur
+"seller_tax_no" : "FR5252445767" - numéro d'identification fiscale du vendeur (ex: n° TVA)
+"seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
+"seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
+"seller_post_code" : "75007", code postal du vendeur
+"seller_city" : "Paris" - ville du vendeur
+"seller_street" : "21 Rue des Mimosas" - numéro et nom de rue du vendeur
+"seller_country" : "" - pays du vendeur
+"seller_email" : "contact@chose.com" - email du vendeur
+"seller_www" : "" - site internet du vendeur
+"seller_fax" : "" - numéro de fax du vendeur
+"seller_phone" : "" - numéro de tel du vendeur
+"client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le client sera ajouté à la liste des contacts)
+"buyer_name" : "Client Intel" - nom de l'acheteur
+"buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA) 
 "disable_tax_no_validation" : "", 
-"buyer_post_code" : "30-314", 
-"buyer_city" : "Warsaw", 
-"buyer_street" : "Nowa 44", 
-"buyer_country" : "", 
+"buyer_post_code" : "06000", code postal de l'acheteur
+"buyer_city" : "Nice" - ville de l'acheteur
+"buyer_street" : "44 Rue des Plans" - numéro et nom de rue de l'acheteur 
+"buyer_country" : "", pays de l'acheteur
 "buyer_note" : "", 
-"buyer_email" : "", 
+"buyer_email" : "", email de l'acheteur
 "additional_info" : "0" - whether to display additional field in invoice position
-"additional_info_desc" : "PKWiU" - name of the additional column in invoice positions
-"show_discount" : "0" - whether show discount or not
-"payment_type" : "transfer", 
-"payment_to_kind" : due date. if it is "other_date", then you may define a specific date in "payment_to" field, if it is, for example, numer 5 then you have a 5 day payment period
+"additional_info_desc" : "Origine" - titre de la colonne éventuelle
+"show_discount" : "0" - afficher ou non une colonne réduction
+"payment_type" : "chèque" - mode de règlement 
+"payment_to_kind" : date limite de règlement. if it is "other_date", then you may define a specific date in "payment_to" field, if it is, for example, numer 5 then you have a 5 day payment period
 "payment_to" : "2013-01-16", 
-"status" : "issued", 
+"status" : "Créé", 
 "paid" : "0,00", 
-"oid" : "zamowienie10021", - order number (e.g. from external ordering system)
+"oid" : "zamowienie10021", - numéro de commande (e.g. from external ordering system)
 "warehouse_id" : "1090", 
 "seller_person" : "Forename Surname", 
 "buyer_first_name" : "Forename", 
