@@ -198,11 +198,11 @@ Champs d'un document
 
 ```shell
 "number" : "13/2012" - numéro du document (if not entered, it will be automatically generated)
-"kind" : "facture" - type du document (devis, facture, proforma, acompte, avoir, bon de commande client, facture de solde, invoice_other,)
+"kind" : "facture" - type du document (devis, facture, proforma, acompte, avoir, bon de commande, facture de solde, invoice_other,)
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
-"sell_date" : "2013-01-16" - date vente (date complète ou juste mois et année:YYYY-MM)
+"sell_date" : "2013-01-16" - date de vente (date complète ou juste mois et année:YYYY-MM)
 "category_id" : "" - ID de la catégorie
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché)
 "seller_name" : "Société Chose." - nom du vendeur
@@ -225,44 +225,44 @@ Champs d'un document
 "buyer_city" : "Nice" - ville de l'acheteur
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue de l'acheteur 
 "buyer_country" : "", pays de l'acheteur
-"buyer_note" : "", 
+"buyer_note" : "", description additionnelle
 "buyer_email" : "", email de l'acheteur
-"additional_info" : "0" - whether to display additional field in invoice position
-"additional_info_desc" : "Origine" - titre de la colonne éventuelle
-"show_discount" : "0" - afficher ou non une colonne réduction
+"additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle
+"additional_info_desc" : "Origine" - titre de la colonne aditionnelle
+"show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "payment_type" : "chèque" - mode de règlement 
-"payment_to_kind" : date limite de règlement. if it is "other_date", then you may define a specific date in "payment_to" field, if it is, for example, numer 5 then you have a 5 day payment period
-"payment_to" : "2013-01-16", 
-"status" : "Créé", 
-"paid" : "0,00", 
-"oid" : "zamowienie10021", - numéro de commande (e.g. from external ordering system)
+"payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". if it is, for example, numer 5 then you have a 5 day payment period
+"payment_to" : "2013-01-16" - date limite de règlement
+"status" : "Créé" - état du document 
+"paid" : "0,00" - montant payé
+"oid" : "10021", - numéro de commande (e.g. from external ordering system)
 "warehouse_id" : "1090", 
-"seller_person" : "Forename Surname", 
-"buyer_first_name" : "Forename", 
-"buyer_last_name" : "Surname", 
-"description" : "", 
-"paid_date" : "", 
-"currency" : "GBP", 
-"lang" : "en", 
-"exchange_currency" : "", - converted currency (conversion of the sum and tax into another currency at current exchange rates)
-"internal_note" : "", 
-"invoice_template_id" : "1", 
-"description_footer" : "", 
-"description_long" : "", 
-"from_invoice_id" : "" - invoice id, on which basis the invoice was generated (useful when generating a VAT invoice from Proforma invoice)
+"seller_person" : "Forename Surname", de l'acheteur 
+"buyer_first_name" : "Prénom" de l'acheteur 
+"buyer_last_name" : "Nom" de l'acheteur 
+"description" : "" - Informations spécifiques 
+"paid_date" : "" - Date du paiement
+"currency" : "EUR" - devise
+"lang" : "fr" - langue du document
+"exchange_currency" : "" - convertir en (la conversion du montant total et du montant de la taxe en une autre devise selon taux de change du jour)
+"internal_note" : "" - Notes privées  
+"invoice_template_id" : "1" - format d'impression
+"description_footer" : "" - Bas de page 
+"description_long" : "" - Texte additionnel (imprimé sur la page suivante) 
+"from_invoice_id" : "" - ID du document de référence depuis lequel le document a été généré (utile par ex quand une facture est générée depuis un devis)
 "positions":
-   		"product_id" : "1", 
-   		"name" : "vosfactures.fr Basic", 
-   		"additional_info" : "", - additional information on invoice position 
-   		"discount_percent" : "", - percentage discount (note: in order for the discount to be calculated, you need to set field 'show_discount' to 1 and before issuing check if in Account Settings, field: "How to calculate discount" is set to 'percentage from unit gross price')
-   		"discount" : "", - amount discount (note: in order for the discount to be calculated, you need to set field 'show_discount' to 1 and before issuing check if in Account Settings, field: "How to calculate discount" is set to "amount")
-   		"quantity" : "1", 
-   		"quantity_unit" : "unit", 
-   		"price_net" : "59,00", - if not entered it will be calculated
-   		"tax" : "23", 
-   		"price_gross" : "72,57", - if not entered it will be calculated
-   		"total_price_net" : "59,00", - if not entered it will be calculated
-   		"total_price_gross" : "72,57"
+   		"product_id" : "1" - ID du produit
+   		"name" : "Produit A" - nom du produit 
+   		"additional_info" : "" - contenu de la colonne additionnelle
+   		"discount_percent" : "" - % de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'pourcentage du prix unitaire net')
+   		"discount" : "", - montant de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'Montant (TTC)')
+   		"quantity" : "1" - quantité 
+   		"quantity_unit" : "kg" - unité 
+   		"price_net" : "59,00", - prix HT (calculé automatiquement si non indiqué)
+   		"tax" : "23" - % de taxe
+   		"price_gross" : "72,57" - prix TTC (calculé automatiquement si non indiqué)
+   		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
+   		"total_price_gross" : "72,57" - total TTC
 ```
 
 Field entries
@@ -286,65 +286,65 @@ Field: `kind`
 
 Field: `lang`
 ```shell
-	"pl" - Polish
-	"en" - English
-	"de" - German
-	"fr" - French
-	"cz" - Czech
-	"ru" - Russian
-	"es" - Spanish
-	"it" - Italian
-	"nl" - Dutch
-	"hr" - Croatian
+	"pl" - Polonais
+	"en" - Anglais
+	"de" - Allemand
+	"fr" - Français
+	"cz" - Tchèque
+	"ru" - Russe
+	"es" - Espagnol
+	"it" - Italien
+	"nl" - Hollandais
+	"hr" - Croate
 ```
 
 
 Field: `income`
 ```shell
-	"1" - income invoice
-	"0" - cost invoice
+	"1" - revenu
+	"0" - dépense
 ```
 
-Field: `payment_type`
+Field: `payment_type`- Mode de règlement
 ```shell
-	"transfer" - transfer
-	"card" - card
-	"cash" -  cash
-	"any_other_text_entry" 
+	"transfer" - virement bancaire
+	"card" - carte bancaire
+	"cash" -  espèce
+	"any_other_text_entry" - autre
 ```
 
-Field: `status`
+Field: `status`- Etat
 ```shell
-	"issued" - issued
-	"sent" - sent
-	"paid" - paid
-	"partial" - partially paid
+	"issued" - créé
+	"sent" - envoyé
+	"paid" - payé
+	"partial" - payé en partie
 ```
 
-Field: `discount_kind` - discount kind
+Field: `discount_kind` - Type de réduction
 ```shell
-	"percent_unit" - calculated from the unit price
-	"percent_total" - calculated from the total price
-	"amount" - amount
+	"percent_unit" - % calculé sur le prix unitaire
+	"percent_total" - % calculé sur le montant total
+	"amount" - montant
 ```
 
 
 <a name="clients"/>
 ##Clients
 
-Clients list
+Liste des clients
 
 ```shell
 curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
 
-Get selected client by ID
+Obtenir un client selon son ID
 
 ```shell
 curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
 ```
 
-Adding clients
+Ajouter un client
 
 ```shell
 curl http://votrecompte.vosfactures.fr/clients.json 
@@ -352,9 +352,9 @@ curl http://votrecompte.vosfactures.fr/clients.json
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
 		"client": {
-			"name": "Klient1",
-			"tax_no": "5252445767",
-			"bank" : "bank1",
+			"name": "Client1",
+			"tax_no": "FR5252445333",
+			"bank" : "banque1",
 			"bank_account" : "bank_account1",
 			"city" : "city1",
 			"country" : "",
@@ -367,7 +367,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 	    }}'
 ```
 
-Client update
+Mettre à jour un client
 
 ```shell
 curl http://votrecompte.vosfactures.fr/clients/111.json 
@@ -376,12 +376,12 @@ curl http://votrecompte.vosfactures.fr/clients/111.json
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
 		"client": {
-			"name": "Klient2",
-			"tax_no": "52524457672",
-			"bank" : "bank2",
+			"name": "Client2",
+			"tax_no": "FR52524457672",
+			"bank" : "banque2",
 			"bank_account" : "bank_account2",
-			"city" : "city2",
-			"country" : "PL",
+			"city" : "Ville2",
+			"country" : "EUR",
 			"email" : "bank2",
 			"person" : "person2",
 			"post_code" : "post-code2",
@@ -393,24 +393,24 @@ curl http://votrecompte.vosfactures.fr/clients/111.json
 
 
 <a name="products"/>
-##Products
+##Produits
 
-Products 
+Produits 
 
-Products list
+Liste des produits
 
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
-Get selected product by ID
+Obtenir un produit selon son ID
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
-Adding products
+Ajouter un produit
 
 
 ```shell
@@ -419,14 +419,14 @@ curl http://votrecompte.vosfactures.fr/products.json
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
 		"product": {
-			"name": "PoroductAA",
-			"code": "A001",
-			"price_net": "100",
-			"tax": "23"
+			"name": "ProduitA" - nom
+			"code": "A001" - référence
+			"price_net": "100" - prix unitaire HT
+			"tax": "23" - % de taxe
 	    }}'
 ```
 
-Product update
+Mettre à jour un produit
 
 ```shell
 curl http://votrecompte.vosfactures.fr/products/333.json 
@@ -435,9 +435,9 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 	-H 'Content-Type: application/json'  
 	-d '{"api_token": "API_TOKEN",
 		"product": {
-			"name": "PoroductAA2",
-			"code": "A0012",
-			"price_net": "102"
+			"name": "ProduitA" - nom
+			"code": "A0012" - référence
+			"price_net": "102" - prix unitaire HT
 	    }}'
 ```
 
