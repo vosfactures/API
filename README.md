@@ -40,43 +40,43 @@ Télécharger la liste de factures du mois en cours
 curl https://yourdomain.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
-<b>NOTE</b>: additional parameters can be forwarded to calls, e.g. `page=`, `period=` etc.
+<b>NOTE</b>: Des paramètres additionnels peuvent aussi transmis aux appels, ex: `page=`, `period=` etc...
 
-Specific client's invoices
+Télécharger les factures d'un client
 
 ```shell
 curl https://yourdomain.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
 ```
 
-Downloading invoices by ID
+Télécharger les factures par numéro d'ID
 
 
 ```shell
 curl https://yourdomain.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
-Downloading as PDF
+Télécharger sous format PDF
 
 
 ```shell
 curl https://yourdomain.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
 
-Sending invoices by email to a client
+Envoyer les factures par email à un client
 
 
 ```shell
 curl -X POST https://yourdomain.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
 
-Other PDF options:
+Autres options PDF:
 * print_option=original - Original
-* print_option=copy - Copy
-* print_option=original_and_copy - Original and copy
-* print_option=duplicate Duplicate
+* print_option=copy - Copie
+* print_option=original_and_copy - Original et copie
+* print_option=duplicate - Duplicata
 
 
-Adding a new invoice
+Ajouter une nouvelle facture
 
 ```shell
 curl https://YOUR_DOMAIN.vosfactures.fr/invoices.json 
@@ -120,7 +120,7 @@ curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json
 	    }}'
 ```	   
 
-Invoice update
+Mettre à jour une facture
 
 ```shell
 curl https://YOUR_DOMAIN.vosfactures.fr/invoices/111.json 
@@ -136,9 +136,9 @@ curl https://YOUR_DOMAIN.vosfactures.fr/invoices/111.json
 ```
 
 <a name="view_url"/>
-##Link to invoice preview and PDF download
+##Lien vers l'aperçu de la facture et le téléchargement en PDF
 
-After downloading invoice data, e.g. by:
+Après le téléchargement des données de la facture, ex par:
 
 ```shell
 curl https://YOUR_DOMAIN.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
@@ -147,15 +147,15 @@ curl https://YOUR_DOMAIN.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 API gives us `token` field, on which basis we may receive invoice preview links 
 Such links allow you to refer to the selected invoice without having to log in - you can, for instance, send these links to the customer, who will have access to invoices and PDF.
 
-Links are in the form: 
+Les liens sont sous la forme: 
 
-preview: `http://yourdomain.vosfactures.fr/invoice/{{token}}` 
-pdf: `http://yourdomain.vosfactures.fr/invoice/{{token}}.pdf`
+vers l'aperçu: `http://yourdomain.vosfactures.fr/invoice/{{token}}` 
+vers le pdf: `http://yourdomain.vosfactures.fr/invoice/{{token}}.pdf`
 
 E.g. for token equal: `HBO3Npx2OzSW79RQL7XV2` public PDF will be at `http://yourdomain.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 <a name="use_case1"/>
-##Examples of using PHP - purchase of training
+##Exemples d'utilisation PHP - purchase of training
 
 `TODO` 
 
