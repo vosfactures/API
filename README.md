@@ -5,7 +5,7 @@ Intégrer votre site internet ou une application externe avec le logiciel de fac
 
 
 
-Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures, produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
+Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autre), produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
 
 ## Menu
 + [Code API](#token)  
@@ -34,7 +34,7 @@ Le code API du compte VosFactures (`API_TOKEN)` est affiché depuis les paramèt
 <a name="examples"/>
 ##Factures - exemples d'appels API
 
-Télécharger la liste de factures du mois en cours
+Télécharger la liste des factures du mois en cours
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
@@ -177,7 +177,7 @@ Flow Portal Example which generates a proforma invoice for the client, sends it 
 * `DELETE /invoices/1.json` supprime la facture
 
 
-Example - adding a new invoice - the minimal version (only fields required), when we have product, buyer and seller ID we do not need to provide full details. Field department_id determines the company (or department) which issues the invoice (it can be obtained by clicking on the company in Settings> Data Company)
+Exemple - Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" determines the company (or department) which issues the invoice (it can be obtained by clicking on the company in Settings> Data Company)
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json 
@@ -265,9 +265,9 @@ Champs d'un document
    		"total_price_gross" : "72,57" - total TTC
 ```
 
-Field entries
+Valeurs des Champs
 
-Field: `kind`
+Champ: `kind`- Type du document
 ```shell
 	"vat" - VAT invoice
 	"proforma" -  Proforma invoice
@@ -284,7 +284,7 @@ Field: `kind`
 	"estimate" - Estimate
 ```
 
-Field: `lang`
+Champ: `lang`
 ```shell
 	"pl" - Polonais
 	"en" - Anglais
@@ -299,13 +299,13 @@ Field: `lang`
 ```
 
 
-Field: `income`
+Champ: `income`- facture de vente ou d'achat
 ```shell
-	"1" - revenu
-	"0" - dépense
+	"1" - revenu (vente)
+	"0" - dépense (achat)
 ```
 
-Field: `payment_type`- Mode de règlement
+Champ: `payment_type`- Mode de règlement
 ```shell
 	"transfer" - virement bancaire
 	"card" - carte bancaire
@@ -313,7 +313,7 @@ Field: `payment_type`- Mode de règlement
 	"any_other_text_entry" - autre
 ```
 
-Field: `status`- Etat
+Champ: `status`- Etat
 ```shell
 	"issued" - créé
 	"sent" - envoyé
@@ -321,7 +321,7 @@ Field: `status`- Etat
 	"partial" - payé en partie
 ```
 
-Field: `discount_kind` - Type de réduction
+Champ: `discount_kind` - Type de réduction
 ```shell
 	"percent_unit" - % calculé sur le prix unitaire
 	"percent_total" - % calculé sur le montant total
