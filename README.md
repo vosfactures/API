@@ -8,28 +8,28 @@ Intégrer votre site internet ou une application externe avec le logiciel de fac
 Grâce à API de VosFactures, vous pouvez créer automatiquement des factures, produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
 
 ## Contenu
-+ [Codes API](#token)  
++ [Code API](#token)  
 + [Factures - exemples d'appels API](#examples)  
-	+ Downloading a list of invoices from current month
+	+ Télécharger la liste de factures du mois en cours
 	+ Specific client's invoices
-	+ Downloading invoices by ID
-	+ Downloading as PDF
-	+ Sending invoices by email to a client
-	+ Adding a new invoice
-	+ Adding a new invoice (by client, product, seller ID)
-	+ Invoice update
+	+ Télécharger les factures par numéro d'ID
+	+ Télécharger sous format PDF
+	+ Envoyer les factures par email à un client
+	+ Ajouter une nouvelle facture
+	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
+	+ Mettre à jour une facture
 + [Link to invoice preview and PDF download](#view_url)  
 + [Examples of use - purchase of training](#use_case1)  
-+ [Invoices - specification](#invoices)
++ [Factures - caractéristique](#invoices)
 + [Clients](#clients)
-+ [Products](#products)
-+ [Examples in PHP and Ruby](#codes)  
++ [Produits](#products)
++ [Exemples en PHP et Ruby](#codes)  
 
 
 <a name="token"/>
-##API token
+##Code API
 
-`API_TOKEN` token has to be downloaded from application settings ("Settings -> Account settings -> Integration -> API Authorization Code")
+Le code API du compte VosFactures (`API_TOKEN)` est affiché depuis les paramètres du compte ("Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API")
 
 <a name="examples"/>
 ##Examples of calling
