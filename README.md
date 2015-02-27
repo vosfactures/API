@@ -1,13 +1,13 @@
 # VosFactures: API
 
 
-Intégrer votre site internet ou une application externe avec le logiciel de facturation <http://vosfactures.fr/>
+Intégrer votre site internet ou une application externe avec le logiciel de facturation en ligne <http://vosfactures.fr/>
 
 
 
-Grâce à API de VosFactures, vous pouvez créer automatiquement des factures, produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
+Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures, produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
 
-## Contenu
+## Menu
 + [Code API](#token)  
 + [Factures - exemples d'appels API](#examples)  
 	+ Télécharger la liste de factures du mois en cours
@@ -90,20 +90,19 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 			"sell_date": "2013-01-16", 
 			"issue_date": "2013-01-16", 
 			"payment_to": "2013-01-23",
-			"seller_name": "Wystawca Sp. z o.o.", 
-			"seller_tax_no": "5252445767", 
-			"buyer_name": "Klient1 Sp. z o.o.",
-			"buyer_tax_no": "5252445767",
+			"seller_name": "Société SARL", 
+			"seller_tax_no": "FR5252445767", 
+			"buyer_name": "Client Intel",
+			"buyer_tax_no": "FR45362780010",
 			"positions":[
-				{"name":"Produkt A1", "tax":23, "total_price_gross":10.23, "quantity":1},
-				{"name":"Produkt A2", "tax":0, "total_price_gross":50, "quantity":3}
+				{"name":"Produit A1", "tax":23, "total_price_gross":10.23, "quantity":1},
+				{"name":"Produit A2", "tax":0, "total_price_gross":50, "quantity":3}
 			]		
 		}
 	}'
 ```
 
-Adding a new invoice - the minimal version (only fields required), when we have product, buyer and seller ID we do not need to provide full details.
-VAT Invoice with current date and 5 day due date will be issued.
+Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json 
@@ -130,7 +129,7 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 	-d '{
 		"api_token": "API_TOKEN",
 		"invoice": {
-			"buyer_name": "New client name Ltd."
+			"buyer_name": "Nouveau nom du client"
 		}
 	}'
 ```
@@ -138,14 +137,13 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 <a name="view_url"/>
 ##Lien vers l'aperçu de la facture et le téléchargement en PDF
 
-Après le téléchargement des données de la facture, ex par:
+Après le téléchargement des données de la facture, par ex:
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
-API gives us `token` field, on which basis we may receive invoice preview links 
-Such links allow you to refer to the selected invoice without having to log in - you can, for instance, send these links to the customer, who will have access to invoices and PDF.
+L'API donne le champ `token`, grâce auquel il est possible de recevoir les liens vers l'aperçu de la facture et de son téléchargement en pdf. Ces liens vous permettent de faire référence à la facture sélectionnée sans avoir à vous connecter - vous pouvez, par exemple, envoyer ces liens à votre client qui aura accès à l'aperçu et au PDF des factures.
 
 Les liens sont sous la forme: 
 
