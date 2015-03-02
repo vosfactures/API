@@ -198,7 +198,7 @@ Champs d'un document
 
 ```shell
 "number" : "13/2012" - numéro du document (if not entered, it will be automatically generated)
-"kind" : "facture" - type du document (devis, facture, proforma, acompte, avoir, bon de commande, facture de solde, invoice_other,)
+"kind" : "vat" - type du document ("vat" pour facture, "estimate" pour devis, "proforma" pour facture proforma, "correction" pour avoir, "client_order" pour bon de commande de client, "advance" pour facture d'acompte", "final" pour facture de solde, "invoice_other" pour autre type de document)
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
