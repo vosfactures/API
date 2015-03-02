@@ -19,7 +19,6 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
 	+ Mettre à jour une facture
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
-+ [Exemples d'utilisation - purchase of training](#use_case1)  
 + [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
 + [Produits](#products)
@@ -165,7 +164,7 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 * `DELETE /invoices/1.json` supprime la facture
 
 
-Exemple - Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" determines the company (or department) which issues the invoice (it can be obtained by clicking on the company in Settings> Data Company)
+Exemple - Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché).
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json 
@@ -219,13 +218,13 @@ Champs d'un document
 "additional_info_desc" : "Origine" - titre de la colonne aditionnelle
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "payment_type" : "chèque" - mode de règlement 
-"payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". if it is, for example, numer 5 then you have a 5 day payment period
+"payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours.
 "payment_to" : "2013-01-16" - date limite de règlement
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
-"oid" : "10021", - numéro de commande (e.g. from external ordering system)
-"warehouse_id" : "1090", 
-"seller_person" : "Forename Surname", de l'acheteur 
+"oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
+"warehouse_id" : "1090" - numéro d'identification de l'entrepôt
+"seller_person" : "Prénom Nom" de l'acheteur 
 "buyer_first_name" : "Prénom" de l'acheteur 
 "buyer_last_name" : "Nom" de l'acheteur 
 "description" : "" - Informations spécifiques 
@@ -246,9 +245,9 @@ Champs d'un document
    		"discount" : "", - montant de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'Montant (TTC)')
    		"quantity" : "1" - quantité 
    		"quantity_unit" : "kg" - unité 
-   		"price_net" : "59,00", - prix HT (calculé automatiquement si non indiqué)
+   		"price_net" : "59,00", - prix unitaire HT (calculé automatiquement si non indiqué)
    		"tax" : "23" - % de taxe
-   		"price_gross" : "72,57" - prix TTC (calculé automatiquement si non indiqué)
+   		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
 ```
