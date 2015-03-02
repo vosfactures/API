@@ -427,10 +427,10 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 ```
 
 <a name="codes"/>
-##Examples in PHP and Ruby
+##Exemples en PHP et Ruby
 
 <https://github.com/radgost/fakturownia-api/blob/master/example1.php/>
 
 <https://github.com/radgost/fakturownia-api/blob/master/example1.rb/>
 
-Ruby Gem for vosfactures.fr integration: <https://github.com/kkempin/fakturownia/>
+Ruby Gem pour une integration avec vosfactures: <https://github.com/kkempin/fakturownia/>
