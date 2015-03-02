@@ -152,19 +152,7 @@ vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
-<a name="use_case1"/>
-##Exemples d'utilisation PHP - purchase of training
 
-`TODO` 
-
-Flow Portal Example which generates a proforma invoice for the client, sends it to the client and after receiving payment, sends the training ticket to the client
-
-* Le client renseigne ses coordonnées sur le portail 
-* Le portail appel l'API depuis vosfactures.fr et génère la facture
-* Le portail envoies une facture PDF au client avec un lien de paiement sends a Proforma PDF invoice to the Client along with a payment link
-* Le lient effectue son paiement (ex: par Paypal)
-* vosfactures.fr reçoie l'information comme quoi le paiement a été effectué, génère la facture correspondante et l'envoie au client, et appelle l'API du Portail. 
-* After receiving information regarding payment (by API) Portal sends the training ticket to the Client
 
 
 <a name="invoices"/>
@@ -269,19 +257,17 @@ Valeurs des Champs
 
 Champ: `kind`- Type du document
 ```shell
-	"vat" - VAT invoice
-	"proforma" -  Proforma invoice
-	"bill" - bill
-	"receipt" - receipt
-	"advance" - advance invoice
-	"final" - final invoice
-	"correction" - Credit Note
-	"vat_mp" - MP invoice 
-	"invoice_other" - other invoice 
-	"vat_margin" - margin invoice
-	"kp" - cash received
-	"kw" - cash disbursed
-	"estimate" - Estimate
+	"vat" - facture 
+	"proforma" -  facture Proforma
+	"advance" - facture d'acompte
+	"final" - facture de solde
+	"correction" - facture d'avoir
+	"estimate" - devis
+	"client_order" - bon de commande
+	"invoice_other" - Autre 
+	
+	
+	
 ```
 
 Champ: `lang`
@@ -315,10 +301,10 @@ Champ: `payment_type`- Mode de règlement
 
 Champ: `status`- Etat
 ```shell
-	"issued" - créé
-	"sent" - envoyé
-	"paid" - payé
-	"partial" - payé en partie
+	"issued" - Créé
+	"sent" - Envoyé
+	"paid" - Payé
+	"partial" - Payé en partie
 ```
 
 Champ: `discount_kind` - Type de réduction
