@@ -146,7 +146,8 @@ L'API renvoie le champ `token`, grâce auquel il est possible de recevoir les li
 
 Les liens sont sous la forme: 
 
-vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}` 
+vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}`
+
 vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
@@ -184,7 +185,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 Champs d'un document
 
 ```shell
-"number" : "13/2012" - numéro du document (if not entered, it will be automatically generated)
+"number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
 "kind" : "vat" - type du document ("vat" pour facture, "estimate" pour devis, "proforma" pour facture proforma, "correction" pour avoir, "client_order" pour bon de commande de client, "advance" pour facture d'acompte", "final" pour facture de solde, "invoice_other" pour autre type de document)
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
