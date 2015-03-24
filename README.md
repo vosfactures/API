@@ -22,7 +22,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
 + [Produits](#products)
-+ [Exemples en PHP et Ruby](#codes)  
+  
 
 
 <a name="token"/>
@@ -427,11 +427,3 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 	    }}'
 ```
 
-<a name="codes"/>
-##Exemples en PHP et Ruby
-
-<https://github.com/radgost/fakturownia-api/blob/master/example1.php/>
-
-<https://github.com/radgost/fakturownia-api/blob/master/example1.rb/>
-
-Ruby Gem pour une integration avec vosfactures: <https://github.com/kkempin/fakturownia/>
