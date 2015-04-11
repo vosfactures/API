@@ -39,7 +39,7 @@ Télécharger la liste des factures du mois en cours
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
-<b>NOTE</b>: Des paramètres additionnels peuvent aussi transmis aux appels, ex: `page=`, `period=` etc...
+<b>NOTE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc...
 
 Télécharger les factures d'un client
 
