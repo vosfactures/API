@@ -28,7 +28,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 <a name="token"/>
 ##Code API
 
-Le code API du compte VosFactures (`API_TOKEN)` est affiché depuis les paramètres du compte ("Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API")
+Le code API (`API_TOKEN)` de votre compte VosFactures est affiché depuis les paramètres du compte ("Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API")
 
 <a name="examples"/>
 ##Factures - exemples d'appels API
