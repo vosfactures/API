@@ -47,21 +47,21 @@ Télécharger les factures d'un client
 curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
 ```
 
-Télécharger les factures par numéro d'ID
+Télécharger une facture par numéro d'ID
 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
-Télécharger sous format PDF
+Télécharger une facture sous format PDF
 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
 
-Envoyer les factures par email à un client
+Envoyer une facture par email à un client
 
 
 ```shell
