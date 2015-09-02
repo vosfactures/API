@@ -233,6 +233,7 @@ Champs d'un document
 "currency" : "EUR" - devise
 "lang" : "fr" - langue du document
 "exchange_currency" : "" - convertir en (la conversion du montant total et du montant de la taxe en une autre devise selon taux de change du jour)
+"title" : "" - Objet
 "internal_note" : "" - Notes privées  
 "invoice_template_id" : "1" - format d'impression
 "description_footer" : "" - Bas de page 
