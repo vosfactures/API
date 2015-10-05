@@ -17,7 +17,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Envoyer les factures par email à un client
 	+ Ajouter une nouvelle facture
 	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
+	+ Adding a new correction invoice
 	+ Mettre à jour une facture
+	+ Changing invoice status
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
@@ -118,6 +120,40 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 	    }}'
 ```	   
 
+Adding a new correction invoice
+
+```shell
+curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{"api_token": "API_TOKEN",
+        "invoice": {
+            "kind": "correction",
+            "from_invoice_id": "2432393,
+            "client_id": 1,
+            "positions":[
+                {"name": "Product A1",
+                "quantity":-1,
+                "total_price_gross":"-10",
+                "tax":"23",
+                "correction_before_attributes": {
+                    "name":"Product A1",
+                    "quantity":"2",
+                    "total_price_gross":"20",
+                    "tax":"23",
+                    "kind":"correction_before"
+                },
+                "correction_after_attributes": {
+                    "name":"Product A1",
+                    "quantity":"1",
+                    "total_price_gross":"10",
+                    "tax":"23",
+                    "kind":"correction_after"
+                }
+            }]
+        }}'
+```
+
 Mettre à jour une facture
 
 ```shell
@@ -132,6 +168,13 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 		}
 	}'
 ```
+
+Changing invoice status
+
+```shell
+curl "https://YOUR_DOMAIN.invoiceocean.com/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
+```
+
 
 <a name="view_url"/>
 ##Lien vers l'aperçu de la facture et le téléchargement en PDF
