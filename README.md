@@ -120,7 +120,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 	    }}'
 ```	   
 
-Adding a new correction invoice
+Ajouter une nouvelle facture d'avoir
 
 ```shell
 curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json \
@@ -132,19 +132,19 @@ curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json \
             "from_invoice_id": "2432393,
             "client_id": 1,
             "positions":[
-                {"name": "Product A1",
+                {"name": "Produit A1",
                 "quantity":-1,
                 "total_price_gross":"-10",
                 "tax":"23",
                 "correction_before_attributes": {
-                    "name":"Product A1",
+                    "name":"Produit A1",
                     "quantity":"2",
                     "total_price_gross":"20",
                     "tax":"23",
                     "kind":"correction_before"
                 },
                 "correction_after_attributes": {
-                    "name":"Product A1",
+                    "name":"Produit A1",
                     "quantity":"1",
                     "total_price_gross":"10",
                     "tax":"23",
@@ -169,10 +169,10 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 	}'
 ```
 
-Changing invoice status
+Changer l'état d'un document
 
 ```shell
-curl "https://YOUR_DOMAIN.invoiceocean.com/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
+curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
 ```
 
 
