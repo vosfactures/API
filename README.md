@@ -17,9 +17,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Envoyer les factures par email à un client
 	+ Ajouter une nouvelle facture
 	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
-	+ Adding a new correction invoice
+	+ Ajouter une nouvelle facture d'avoir
 	+ Mettre à jour une facture
-	+ Changing invoice status
+	+ Changer l'état d'un document
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
