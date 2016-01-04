@@ -18,8 +18,11 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Ajouter une nouvelle facture
 	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
 	+ Ajouter une nouvelle facture d'avoir
-	+ Mettre à jour une facture
+	+ Mettre à jour une facture existante
 	+ Changer l'état d'un document
+	+ Télécharger la liste des récurrences
+	+ Ajouter une nouvelle récurrence
+	+ Mettre à jour une récurrence existante
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
@@ -175,6 +178,45 @@ Changer l'état d'un document
 curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
 ```
 
+Télécharger la liste des récurrences
+```shell
+curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
+```
+
+Ajouter une nouvelle récurrence
+
+Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
+```shell
+curl https://votrecompte.vosfactures.fr/recurrings.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{"api_token": "API_TOKEN",
+        "recurring": {
+            "name": "Nom de la récurrence",
+            "invoice_id": 1,
+            "start_date": "2016-01-01",
+            "every": "1m",
+            "issue_working_day_only": false,
+            "send_email": true,
+            "buyer_email": "client1@email.fr, client2@email.fr",
+            "end_date": "null"
+        }}'
+```
+
+Mettre à jour une récurrence existante (changement de la date de la prochaine facture)
+
+```shell
+curl https://votrecompte.vosfactures.fr/recurrings/111.json \
+    -X PUT \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "recurring": {
+            "next_invoice_date": "2016-02-01"
+        }
+    }'
+```
 
 <a name="view_url"/>
 ##Lien vers l'aperçu de la facture et le téléchargement en PDF
