@@ -27,6 +27,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Factures - caractéristiques](#invoices)
 + [Clients](#clients)
 + [Produits](#products)
++ [Se connecter et télécharger le code API] (#connect)
   
 
 
@@ -126,7 +127,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 Ajouter une nouvelle facture d'avoir
 
 ```shell
-curl http://YOUR_DOMAIN.vosfactures.fr/invoices.json \
+curl http://votrecompte.vosfactures.fr/invoices.json \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{"api_token": "API_TOKEN",
@@ -271,7 +272,7 @@ Champs d'un document
 
 ```shell
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
-"kind" : "vat" - type du document ("vat" pour facture, "estimate" pour devis, "proforma" pour facture proforma, "correction" pour avoir, "client_order" pour bon de commande de client, "advance" pour facture d'acompte", "final" pour facture de solde, "invoice_other" pour autre type de document)
+"kind" : "vat" - type du document ("vat" pour facture, "estimate" pour devis, "proforma" pour facture proforma, "correction" pour avoir, "client_order" pour bon de commande de client, "receipt" pour reçu, "advance" pour facture d'acompte", "final" pour facture de solde, "invoice_other" pour autre type de document)
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
@@ -309,10 +310,12 @@ Champs d'un document
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
 "oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
+"oid_unique": si la valeur est «yes», alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
 "seller_person" : "Prénom Nom" de l'acheteur 
 "buyer_first_name" : "Prénom" de l'acheteur 
 "buyer_last_name" : "Nom" de l'acheteur 
+"buyer_company": "1" - si l'acheteur est un professionnel, "0" si c'est un particulier
 "description" : "" - Informations spécifiques 
 "paid_date" : "" - Date du paiement
 "currency" : "EUR" - devise
@@ -448,7 +451,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 			"bank_account" : "bank_account1",
 			"city" : "city1",
 			"country" : "",
-			"email" : "bank1",
+			"email" : "client@email.fr",
 			"person" : "person1",
 			"post_code" : "post-code1",
 			"phone" : "phone1",
@@ -472,7 +475,7 @@ curl http://votrecompte.vosfactures.fr/clients/111.json
 			"bank_account" : "bank_account2",
 			"city" : "Ville2",
 			"country" : "EUR",
-			"email" : "bank2",
+			"email" : "client2@email.fr",
 			"person" : "person2",
 			"post_code" : "post-code2",
 			"phone" : "phone2",
@@ -512,7 +515,7 @@ curl http://votrecompte.vosfactures.fr/products.json
 			"name": "ProduitA" - nom
 			"code": "A001" - référence
 			"price_net": "100" - prix unitaire HT
-			"tax": "23" - % de taxe
+			"tax": "20" - % de taxe
 	    }}'
 ```
 
@@ -530,4 +533,32 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 			"price_net": "102" - prix unitaire HT
 	    }}'
 ```
+
+<a name="connect"/>
+##Se connecter et télécharger le code API
+
+```shell
+curl https://app.vosfactures.fr/login.json \
+    -H 'Accept: application/json'  \
+    -H 'Content-Type: application/json' \
+    -d '{
+            "login": "identifiant_ou_email",
+            "password": "mot_de_passe"
+    }'
+``` 
+Cette requête renvoie le code API et les informations sur le compte vosfactures (champ du `prefixe`et `url` du compte):
+
+```shell
+{
+    "login":"paul",
+    "email":"paul@email.com",
+    "prefix":"YYYYYYY",
+    "url":"https://YYYYYYY.vosfactures.fr",
+    "first_name":"Paul",
+    "last_name":"Lebrun",
+    "api_token":"XXXXXXXXXXXXXX"
+}
+```
+
+
 
