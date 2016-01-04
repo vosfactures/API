@@ -327,6 +327,7 @@ Champs d'un document
 "positions":
    		"product_id" : "1" - ID du produit
    		"name" : "Produit A" - nom du produit 
+   		"code" : "" - Référence du produit
    		"additional_info" : "" - contenu de la colonne additionnelle
    		"discount_percent" : "" - % de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'pourcentage du prix unitaire net')
    		"discount" : "", - montant de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'Montant (TTC)')
@@ -350,6 +351,7 @@ Champ: `kind`- Type du document
 	"correction" - facture d'avoir
 	"estimate" - devis
 	"client_order" - bon de commande
+	"receipt" - reçu
 	"invoice_other" - Autre 
 	
 	
@@ -358,16 +360,28 @@ Champ: `kind`- Type du document
 
 Champ: `lang`
 ```shell
-	"pl" - Polonais
 	"en" - Anglais
 	"de" - Allemand
 	"fr" - Français
-	"cz" - Tchèque
-	"ru" - Russe
+	"he" - Grec
 	"es" - Espagnol
 	"it" - Italien
 	"nl" - Hollandais
+	"cz" - Tchèque
 	"hr" - Croate
+	"pl" - Polonais
+	"hu" - Hongrois
+    	"sk" - Slovaque
+    	"sl" - Slovène
+	"et" - Estonien
+    	"ru" - Russe
+    	"cn" - Chinois
+    	"ar" - Arabe
+    	"tr" - Turc
+    	"fa" - Persan
+    	
+    	Vous pouvez créer des documents en bilingue en combinant deux langues séparées par un slash, par exemple:
+     "en / fr" - en anglais et en français
 ```
 
 
@@ -382,6 +396,9 @@ Champ: `payment_type`- Mode de règlement
 	"transfer" - virement bancaire
 	"card" - carte bancaire
 	"cash" -  espèce
+	"cheque" - chèque
+	"paypal" - PayPal
+	"off" - aucun (ne pas afficher)
 	"any_other_text_entry" - autre
 ```
 
@@ -391,6 +408,7 @@ Champ: `status`- Etat
 	"sent" - Envoyé
 	"paid" - Payé
 	"partial" - Payé en partie
+	"rejected" - Refusé
 ```
 
 Champ: `discount_kind` - Type de réduction
