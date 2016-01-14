@@ -460,7 +460,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 	    }}'
 ```
 Remarque: 
-"note" : description additionnel
+"note" : description additionnelle
 
 Mettre à jour un client
 
