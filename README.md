@@ -459,6 +459,8 @@ curl http://votrecompte.vosfactures.fr/clients.json
 			"street_no" : "street-no1"
 	    }}'
 ```
+Remarque: 
+"note" : description additionnel
 
 Mettre à jour un client
 
