@@ -25,7 +25,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Mettre à jour une récurrence existante
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Factures - caractéristiques](#invoices)
-+ [Clients](#clients)
++ [Contacts](#contacts)
 + [Produits](#products)
 + [Se connecter et télécharger le code API] (#connect)
   
@@ -423,21 +423,21 @@ Champ: `discount_kind` - Type de réduction
 
 
 <a name="clients"/>
-##Clients
+##Contacts
 
-Liste des clients
+Liste des contacts
 
 ```shell
 curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
 
-Obtenir un client selon son ID
+Obtenir un contact selon son ID
 
 ```shell
 curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
 ```
 
-Ajouter un client
+Ajouter un contact
 
 ```shell
 curl http://votrecompte.vosfactures.fr/clients.json 
@@ -465,7 +465,7 @@ Remarque:
 "client_payment_to_kind" : Date limite de règlement par défaut
 ```
 
-Mettre à jour un client
+Mettre à jour un contact
 
 ```shell
 curl http://votrecompte.vosfactures.fr/clients/111.json 
