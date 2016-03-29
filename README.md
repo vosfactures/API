@@ -462,7 +462,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 Remarque: 
 ```shell
 "note" : description additionnelle
-"client_payment_to_kind" : Date limite de règlement par défaut
+"payment_to_kind" : Date limite de règlement par défaut
 ```
 
 Mettre à jour un contact
