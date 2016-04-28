@@ -73,7 +73,7 @@ Envoyer une facture par email à un client
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
-Remarque: Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3jours, à moins que vous n'utilisiez le paramètre suivant: 
+Remarque: Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3 jours, à moins d'utiliser le paramètre suivant: 
 ```shell
 "force": true
 ```
