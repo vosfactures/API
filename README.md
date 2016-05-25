@@ -162,6 +162,12 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
         }}'
 ```
 
+Remarque: Message d'erreur
+Si vous obtenez le message suivant: 
+{"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
+cela signifie que vous avez choisi un niveau de sécurité standard ou élevée contre le changement de compte bancaire (Paramètres > Paramètres du compte > Optionns par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). IL faut donc soit changer le niveau de sécurité, soit vérifiez les coordonnées bancaires envoyées. 
+
+
 Mettre à jour une facture
 
 ```shell
