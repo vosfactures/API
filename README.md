@@ -86,7 +86,7 @@ Autres options PDF:
 * print_option=duplicate - Duplicata
 
 
-Ajouter une nouvelle facture
+Créer une nouvelle facture
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json 
@@ -129,7 +129,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 	    }}'
 ```	   
 
-Ajouter une nouvelle facture d'avoir
+Créer une nouvelle facture d'avoir
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json \
@@ -194,7 +194,7 @@ Télécharger la liste des récurrences
 curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 ```
 
-Ajouter une nouvelle récurrence
+Créer une nouvelle récurrence
 
 Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
 ```shell
