@@ -15,13 +15,13 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Télécharger les factures par numéro d'ID
 	+ Télécharger sous format PDF
 	+ Envoyer les factures par email à un client
-	+ Ajouter une nouvelle facture
-	+ Ajouter une nouvelle facture (par client, produit, ID du vendeur)
-	+ Ajouter une nouvelle facture d'avoir
+	+ Créer une nouvelle facture
+	+ Créer une nouvelle facture (par client, produit, ID du vendeur)
+	+ Créer une nouvelle facture d'avoir
 	+ Mettre à jour une facture existante
 	+ Changer l'état d'un document
 	+ Télécharger la liste des récurrences
-	+ Ajouter une nouvelle récurrence
+	+ Créer une nouvelle récurrence
 	+ Mettre à jour une récurrence existante
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Factures - caractéristiques](#invoices)
@@ -351,6 +351,7 @@ Champs d'un document
    		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
+"hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe)
 ```
 
 Valeurs des Champs
