@@ -9,7 +9,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 ## Menu
 + [Code API](#token)  
-+ [Factures - exemples d'appels API](#examples)  
++ [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ Télécharger la liste de factures du mois en cours
 	+ Télécharger les factures d'un client
 	+ Télécharger les factures par numéro d'ID
@@ -24,7 +24,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Créer une nouvelle récurrence
 	+ Mettre à jour une récurrence existante
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
-+ [Factures - caractéristiques](#invoices)
++ [Documents de facturation - caractéristiques](#invoices)
 + [Contacts](#contacts)
 + [Produits](#products)
 + [Se connecter et télécharger le code API] (#connect)
@@ -252,7 +252,7 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 
 <a name="invoices"/>
-##Factures
+##Documents de facturation
 
 
 * `GET /invoices/1.json` télécharge la facture
