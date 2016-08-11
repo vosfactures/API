@@ -311,6 +311,7 @@ Champs d'un document
 "buyer_country" : "", pays de l'acheteur
 "buyer_note" : "", description additionnelle
 "buyer_email" : "", email de l'acheteur
+"buyer_phone" : "", numéro de tel de l'acheteur
 "additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle
 "additional_info_desc" : "Origine" - titre de la colonne aditionnelle
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
@@ -466,6 +467,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 			"person" : "person1",
 			"post_code" : "post-code1",
 			"phone" : "phone1",
+			"mobile_phone" : "phone2"
 			"street" : "street1",
 			"street_no" : "street-no1"
 	    }}'
