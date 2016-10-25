@@ -169,7 +169,7 @@ Champs d'un document
 "calculating_strategy" => 
 {
   "position": "default" ou "keep_gross" - Comment se calcule le total de chaque ligne 
-  "sum": "keep_gross" ou "keep_net" - Comment se calcule le total des colonnes 
+  "sum": "sum" ou "keep_gross" ou "keep_net" - Comment se calcule le total des colonnes 
   "invoice_form_price_kind": "net" ou "gross" - prix unitaire (HT ou TTC)
 }
 
