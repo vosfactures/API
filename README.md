@@ -166,6 +166,13 @@ Champs d'un document
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
 "hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe)
+"calculating_strategy" => 
+{
+  "position": "default" ou "keep_gross" - Comment se calcule le total de chaque ligne 
+  "sum": "keep_gross" ou "keep_net" - Comment se calcule le total des colonnes 
+  "invoice_form_price_kind": "net" ou "gross" - prix unitaire (HT ou TTC)
+}
+
 ```
 
 Valeurs des Champs
