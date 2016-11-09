@@ -384,7 +384,7 @@ Télécharger la liste des factures du mois en cours
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
-<b>NOTE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... (Vous pouvez utiliser les mêmes filtres que ceux du moteur de recherche utilisé pour afficher la liste des documents dans le logiciel).
+<b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... (Vous pouvez utiliser les mêmes filtres que ceux du moteur de recherche utilisé pour afficher la liste des documents dans le logiciel).
 
 Télécharger les factures d'un client
 
@@ -467,6 +467,11 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 	    }}'
 ```	   
 
+<b>REMARQUE</b>
+Si vous obtenez le message suivant: 
+{"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
+cela signifie que vous avez choisi un niveau de sécurité standard ou élevée contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
+
 Créer une nouvelle facture d'avoir
 
 ```shell
@@ -501,13 +506,6 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
         }}'
 ```
 
-Remarque:
-
-```shell
-Si vous obtenez le message suivant: 
-{"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
-cela signifie que vous avez choisi un niveau de sécurité standard ou élevée contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
-```
 
 Mettre à jour une facture
 
