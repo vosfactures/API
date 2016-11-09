@@ -99,7 +99,7 @@ Champs d'un document
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
-"sell_date" : "2013-01-16" - date de vente (date complète ou juste mois et année:YYYY-MM)
+"sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. 
 "category_id" : "" - ID de la catégorie
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché)
 "seller_name" : "Société Chose." - nom du vendeur
@@ -295,7 +295,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 			"street_no" : "street-no1"
 	    }}'
 ```
-Remarque: 
+Champs fiche contact: 
 ```shell
 "note" : description additionnelle
 "payment_to_kind" : Date limite de règlement par défaut
@@ -501,10 +501,13 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
         }}'
 ```
 
-Remarque: Si vous obtenez le message suivant: 
+Remarque:
+
+```shell
+Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevée contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
-
+```
 
 Mettre à jour une facture
 
