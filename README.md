@@ -99,7 +99,7 @@ Champs d'un document
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
-"sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. 
+"sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte). 
 "category_id" : "" - ID de la catégorie
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché)
 "seller_name" : "Société Chose." - nom du vendeur
@@ -129,7 +129,7 @@ Champs d'un document
 "additional_info_desc" : "Origine" - titre de la colonne aditionnelle
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "payment_type" : "chèque" - mode de règlement 
-"payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours.
+"payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
