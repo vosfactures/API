@@ -325,7 +325,6 @@ curl http://votrecompte.vosfactures.fr/clients/111.json
 	    }}'
 ```
 
-
 <a name="products"/>
 ##Produits
 
@@ -405,6 +404,8 @@ Télécharger une facture sous format PDF
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
+
+Remarque: la variable "payment_url" vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
 
 Envoyer une facture par email à un client
 
