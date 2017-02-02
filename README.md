@@ -74,8 +74,7 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
 * `DELETE /invoices/1.json` supprime le document
 
 
-Exemple - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché).
-
+Exemple - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
@@ -101,8 +100,8 @@ Champs d'un document
 "place" : "Paris" - lieu de création
 "sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte). 
 "category_id" : "" - ID de la catégorie
-"department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché)
-"seller_name" : "Société Chose." - nom du vendeur
+"department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Le système affichera alors automatiquement les coordonnées du département vendeur (nom, adresse...) sur le document (les autres champs "seller_" ne sont plus nécessaires). 
+"seller_name" : "Ma Société" - Nom du département vendeur. Si ce champ n'est pas renseigné, le département principal est sélectionné par défaut. Préférez plutôt "department_id". Si vous utilisez toutefois "seller_name", le système tentera d'identifier le département portant ce nom, sinon il créera un nouveau département. 
 "seller_tax_no" : "FR5252445767" - numéro d'identification fiscale du vendeur (ex: n° TVA)
 "seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
 "seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
@@ -114,6 +113,7 @@ Champs d'un document
 "seller_www" : "" - site internet du vendeur
 "seller_fax" : "" - numéro de fax du vendeur
 "seller_phone" : "" - numéro de tel du vendeur
+"seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
 "client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le client sera ajouté à la liste des contacts)
 "buyer_name" : "Client Intel" - nom de l'acheteur
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA) 
@@ -136,7 +136,6 @@ Champs d'un document
 "oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
 "oid_unique": si la valeur est «yes», alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
-"seller_person" : "Prénom Nom" de l'acheteur 
 "buyer_first_name" : "Prénom" de l'acheteur 
 "buyer_last_name" : "Nom" de l'acheteur 
 "buyer_company": "1" - si l'acheteur est un professionnel, "0" si c'est un particulier
