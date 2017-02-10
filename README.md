@@ -416,6 +416,10 @@ Remarque: Afin d'éviter le risque de spams, le système n'autorise pas l'envoi 
 ```shell
 "force": true
 ```
+Par exemple, écrivez: 
+```shell
+curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN&force=true
+```
 
 Autres options PDF:
 * print_option=original - Original
