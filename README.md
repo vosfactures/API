@@ -126,7 +126,8 @@ Champs d'un document
 "buyer_email" : "", email de l'acheteur
 "buyer_phone" : "", numéro de tel de l'acheteur
 "additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle
-"additional_info_desc" : "Origine" - titre de la colonne aditionnelle
+"additional_info_desc" : "" - contenu de la colonne aditionnelle (intitulé à définir dans Paramètres du compte > Options par défaut)
+"additional_invoice_field" : "" - contenu du champ additionnel (intitulé à définir dans Paramètres du compte > Options par défaut)
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "payment_type" : "chèque" - mode de règlement 
 "payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
