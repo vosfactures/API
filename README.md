@@ -9,7 +9,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 ## Menu
 + [Code API](#token)
-+ [Se connecter et télécharger le code API] (#connect)
++ [Se connecter et télécharger le code API](#connect)
 + [Documents de facturation - actions et champs](#invoices)
 + [Contacts](#contacts)
 + [Produits](#products)
@@ -591,7 +591,6 @@ vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}`
 vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
-
 
 
 
