@@ -370,7 +370,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 		"product": {
 			"name": "ProduitA" - nom
 			"code": "A0012" - référence
-			"price_net": "102" - prix unitaire HT
+			"price_gross": "102" - prix unitaire TTC
 	    }}'
 ```
 
