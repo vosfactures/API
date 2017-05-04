@@ -620,42 +620,42 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 ## Paiements
 
-### Fields description
-* **city** - City from the sender's address
-* **client_id** - ID of the client who makes the payment
-* **comment** - Comment for the client
-* **country** - Country from the sender's address
-* **currency** - Currency of the payment
-* **department_id** - ID of the department that the client belongs to
-* **description** - Payment description
-* **email** - Email of the sender
-* **first_name** - First name of the sender
-* **generate_invoice** - If generate an invoice that would match the payment
-* **invoice_city** - City of the generated invoice's address
-* **invoice_comment** - Comment for the generated invoice
-* **invoice_country** - Country of the generated invoice's address
-* **invoice_id** - ID of the invoice being paid for
-* **invoice_name** - Name of the client on the generated invoice
-* **invoice_post_code** - Post code of the generated invoice's address
-* **nvoice_street** - Street of the generated invoice's address
-* **invoice_tax_no** - Tax no. on the generated invoice
-* **last_name** - Last name of the sender
-* **name** - Name of the sender
-* **oid** - ID of the order that is paid for
-* **paid** - If the payment is already paid <Boolean>
-* **paid_date** - Date when the payment was made
-* **phone** - Phone of the sender
-* **post_code** - Post code from the sender's address
+### Champs disponibles
+* **city** - Ville 
+* **client_id** - ID du client effectuant le paiement
+* **comment** - Commentaire 
+* **country** - Pays
+* **currency** - Devise du paiement
+* **department_id** - ID du département vendeur concerné 
+* **description** - Description du paiement
+* **email** - Email 
+* **first_name** - Prénom 
+* **generate_invoice** - Générer une facture correspondant au paiement 
+* **invoice_city** - Ville
+* **invoice_comment** - Commentaire  sur la facture
+* **invoice_country** - Pays
+* **invoice_id** - ID de la facture qui reçoit le paiement 
+* **invoice_name** - Nom du client 
+* **invoice_post_code** - Code Postal
+* **nvoice_street** - Ville
+* **invoice_tax_no** - N° d'identification fiscal 
+* **last_name** - Nom de famille
+* **name** - Nom 
+* **oid** - N° de commande qu reçoit le paiement
+* **paid** - "1" ou "0" pour indiquer si le Paiement est "payé" ou non <Boolean>
+* **paid_date** - Date du paiement
+* **phone** - Téléphone
+* **post_code** - Code Postal
 * **price** - Price of the product that was paid for
 * **product_id** - ID of the product that was paid for
-* **promocode** - Promocode that was used with the payment
-* **provider** - Name of the payment provider (for online payments)
-* **provider_response** - Response of the payment provider
-* **provider_status** - Status of the payment according to the provider
-* **provider_title** - Title of the payment provider
-* **quantity** - Quantity of the item that was paid for
-* **street** - Street from the sender's address
-* **kind** - payment kind (where it comes from). In case of API it should be set to "api".
+* **promocode** - Code promotionnel 
+* **provider** - Nom de la plateforme de paiement (en cas de Paiement en Ligne)
+* **provider_response** - Réponse de la plateforme de paiement (en cas de Paiement en Ligne)
+* **provider_status** - Etat du paiement selon la plateforme de paiement (en cas de Paiement en Ligne)
+* **provider_title** - Titre de la plateforme de paiement (en cas de Paiement en Ligne)
+* **quantity** - Quantité du produit 
+* **street** - N° et nom de rue
+* **kind** - Type de paiement (origine). Si ajouté par API, la valeur devrait être "api".
 
 ### Liste des Paiements
 
