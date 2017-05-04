@@ -657,25 +657,25 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 * **street** - Street from the sender's address
 * **kind** - payment kind (where it comes from). In case of API it should be set to "api".
 
-### Listing all payments
+### Liste des Paiements
 
 #### XML
-    curl "http://YOUR_DOMAIN.invoiceocean.com/payments.xml?api_token=API_TOKEN"
+    curl "http://votrecompte.vosfactures.fr/payments.xml?api_token=API_TOKEN"
     
 #### JSON
-    curl "http://YOUR_DOMAIN.invoiceocean.com/payments.json?api_token=API_TOKEN"
+    curl "http://votrecompte.vosfactures.fr/payments.json?api_token=API_TOKEN"
 
-### Select payment using ID
+### Selectionner un paiement selon son ID
 
 #### XML
-    curl "http://YOUR_DOMAIN.invoiceocean.com/payments/100.xml?api_token=API_TOKEN"
+    curl "http://votrecompte.vosfactures.fr/payments/100.xml?api_token=API_TOKEN"
     
 #### JSON
-    curl "http://YOUR_DOMAIN.invoiceocean.com/payment/100.json?api_token=API_TOKEN"
+    curl "http://votrecompte.vosfactures.fr/payment/100.json?api_token=API_TOKEN"
     
-### Adding new payment
+### Ajouter un nouveau paiement
 
-#### Minimal JSON (recommended)
+#### Minimal JSON (recommandé)
 ```shell
 curl #{domain}/payments.json 
 	-H 'Accept: application/json'  
@@ -692,7 +692,7 @@ curl #{domain}/payments.json
 	     }'
 ```
 
-#### Full JSON (recommended)
+#### Full JSON (recommandé)
 ```shell
 curl #{domain}/payments.json 
 	-H 'Accept: application/json'  
@@ -704,13 +704,13 @@ curl #{domain}/payments.json
 			"client_id":null,
 			"comment":null,
 			"country":null,
-			"currency":"PLN",
+			"currency":"EUR",
 			"department_id":null,
-			"description":"abonament roczny",
-			"email":"email@email.pl",
-			"first_name":"Jan",
+			"description":"abonnement mensuel",
+			"email":"email@email.com",
+			"first_name":"Paul",
 			"generate_invoice":true,			
-			"invoice_city":"Warszawa",
+			"invoice_city":"Paris",
 			"invoice_comment":"",
 			"invoice_country":null,
 			"invoice_id":null,
@@ -718,8 +718,8 @@ curl #{domain}/payments.json
 			"invoice_post_code":"00-112",
 			"invoice_street":"street 52",
 			"invoice_tax_no":"5252445767",
-			"last_name":"Kowalski",
-			"name":"Plantnosc za produkt1",
+			"last_name":"Durand",
+			"name":"Paiement abonnement",
 			"oid":"",
 			"paid":true,
 			"paid_date":null,
