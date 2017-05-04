@@ -28,18 +28,23 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ Créer une nouvelle récurrence
 	+ Mettre à jour une récurrence existante
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
++ [Paiements](#paiements)
 
   
 
 
 <a name="token"/>
-##Code API
 
-Le code API (`API_TOKEN`) de votre compte VosFactures est affiché dans les paramètres de votre compte: "Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API". 
-Le code API est du type "qCedKxkTgQhGJpiI2SU". Dans les exemples suivants, l'url votrecompte.vosfactures.fr est à remplacer avec l'url de votre propre compte. 
+## Code API
+
+Le code API (`API_TOKEN`) de votre compte VosFactures est affiché dans les paramètres de votre compte: 
+"Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API". 
+Le code API est du type "qCedKxkTgQhGJpiI2SU". 
+Dans les exemples suivants, l'url votrecompte.vosfactures.fr est à remplacer avec l'url de votre propre compte. 
 
 <a name="connect"/>
-##Se connecter et télécharger le code API
+
+## Se connecter et télécharger le code API
 
 ```shell
 curl https://app.vosfactures.fr/login.json \
@@ -65,7 +70,8 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
 ```
 
 <a name="invoices"/>
-##Documents de facturation
+
+## Documents de facturation : Actions et Champs
 
 
 * `GET /invoices/1.json` télécharge le document
@@ -74,7 +80,7 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
 * `DELETE /invoices/1.json` supprime le document
 
 
-Exemple - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
+<b>Exemple</b> - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
@@ -90,7 +96,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
         }}'
 ```
  
-Champs d'un document
+<b>Champs d'un document</b>
 
 ```shell
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
@@ -175,7 +181,7 @@ Champs d'un document
 
 ```
 
-Valeurs des Champs
+<b>Valeurs des Champs</b>
 
 Champ: `kind`- Type du document
 ```shell
@@ -258,7 +264,8 @@ Champ: `discount_kind` - Type de réduction
 
 
 <a name="clients"/>
-##Contacts
+
+## Contacts
 
 Liste des contacts
 
@@ -326,21 +333,33 @@ curl http://votrecompte.vosfactures.fr/clients/111.json
 ```
 
 <a name="products"/>
-##Produits
 
-Produits 
+## Produits
 
-Liste des produits
+
+Liste des produits (par page)
 
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
+Liste des produits et quantités pour un entrepôt en particulier (par page)
+
+```shell
+curl "http://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
+```
+
 Obtenir un produit selon son ID
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
+```
+
+Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier
+
+```shell
+curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
 ```
 
 Ajouter un produit
@@ -378,7 +397,8 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 <b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
 
 <a name="examples"/>
-##Factures - exemples d'appels API
+
+## Factures - exemples d'appels API
 
 Télécharger la liste des factures du mois en cours
 
@@ -577,7 +597,8 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
 ```
 
 <a name="view_url"/>
-##Lien vers l'aperçu de la facture et le téléchargement en PDF
+
+## Lien vers l'aperçu de la facture et le téléchargement en PDF
 
 Après le téléchargement des données de la facture, par ex:
 
@@ -595,9 +616,128 @@ vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
+<a name="paiements"/>
 
+## Paiements
 
+### Fields description
+* **city** - City from the sender's address
+* **client_id** - ID of the client who makes the payment
+* **comment** - Comment for the client
+* **country** - Country from the sender's address
+* **currency** - Currency of the payment
+* **department_id** - ID of the department that the client belongs to
+* **description** - Payment description
+* **email** - Email of the sender
+* **first_name** - First name of the sender
+* **generate_invoice** - If generate an invoice that would match the payment
+* **invoice_city** - City of the generated invoice's address
+* **invoice_comment** - Comment for the generated invoice
+* **invoice_country** - Country of the generated invoice's address
+* **invoice_id** - ID of the invoice being paid for
+* **invoice_name** - Name of the client on the generated invoice
+* **invoice_post_code** - Post code of the generated invoice's address
+* **nvoice_street** - Street of the generated invoice's address
+* **invoice_tax_no** - Tax no. on the generated invoice
+* **last_name** - Last name of the sender
+* **name** - Name of the sender
+* **oid** - ID of the order that is paid for
+* **paid** - If the payment is already paid <Boolean>
+* **paid_date** - Date when the payment was made
+* **phone** - Phone of the sender
+* **post_code** - Post code from the sender's address
+* **price** - Price of the product that was paid for
+* **product_id** - ID of the product that was paid for
+* **promocode** - Promocode that was used with the payment
+* **provider** - Name of the payment provider (for online payments)
+* **provider_response** - Response of the payment provider
+* **provider_status** - Status of the payment according to the provider
+* **provider_title** - Title of the payment provider
+* **quantity** - Quantity of the item that was paid for
+* **street** - Street from the sender's address
+* **kind** - payment kind (where it comes from). In case of API it should be set to "api".
 
+### Listing all payments
+
+#### XML
+    curl "http://YOUR_DOMAIN.invoiceocean.com/payments.xml?api_token=API_TOKEN"
+    
+#### JSON
+    curl "http://YOUR_DOMAIN.invoiceocean.com/payments.json?api_token=API_TOKEN"
+
+### Select payment using ID
+
+#### XML
+    curl "http://YOUR_DOMAIN.invoiceocean.com/payments/100.xml?api_token=API_TOKEN"
+    
+#### JSON
+    curl "http://YOUR_DOMAIN.invoiceocean.com/payment/100.json?api_token=API_TOKEN"
+    
+### Adding new payment
+
+#### Minimal JSON (recommended)
+```shell
+curl #{domain}/payments.json 
+	-H 'Accept: application/json'  
+	-H 'Content-Type: application/json'  
+	-d '{
+		"api_token": "#{api_token}",
+		"payment": {	
+			"name":"Payment 001",
+			"price": 100.05,
+			"invoice_id": null,
+			"paid":true,
+			"kind": "api"
+	     	}
+	     }'
+```
+
+#### Full JSON (recommended)
+```shell
+curl #{domain}/payments.json 
+	-H 'Accept: application/json'  
+	-H 'Content-Type: application/json'  
+	-d '{
+		"api_token": "#{api_token}",
+		"payment": {	
+			"city": null,
+			"client_id":null,
+			"comment":null,
+			"country":null,
+			"currency":"PLN",
+			"department_id":null,
+			"description":"abonament roczny",
+			"email":"email@email.pl",
+			"first_name":"Jan",
+			"generate_invoice":true,			
+			"invoice_city":"Warszawa",
+			"invoice_comment":"",
+			"invoice_country":null,
+			"invoice_id":null,
+			"invoice_name":"Company name",
+			"invoice_post_code":"00-112",
+			"invoice_street":"street 52",
+			"invoice_tax_no":"5252445767",
+			"last_name":"Kowalski",
+			"name":"Plantnosc za produkt1",
+			"oid":"",
+			"paid":true,
+			"paid_date":null,
+			"phone":null,
+			"post_code":null,
+			"price":"100.00",
+			"product_id":1,
+			"promocode":"",
+			"provider":"transfer",
+			"provider_response":null,
+			"provider_status":null,
+			"provider_title":null,
+			"quantity":1,
+			"street":null,
+			"kind": "api"
+		}
+	     }'
+```
 
 
 
