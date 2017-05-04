@@ -375,7 +375,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 	    }}'
 ```
 
-<b>Remarque</b>: Le prix HT d'un produit est calculé par le syst§me sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
+<b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
 
 <a name="examples"/>
 ##Factures - exemples d'appels API
