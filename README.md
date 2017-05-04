@@ -354,7 +354,7 @@ curl http://votrecompte.vosfactures.fr/products.json
 		"product": {
 			"name": "ProduitA" - nom
 			"code": "A001" - référence
-			"price_net": "100" - prix unitaire HT
+			"price_gross": "100" - prix unitaire TTC
 			"tax": "20" - % de taxe
 	    }}'
 ```
@@ -371,8 +371,11 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 			"name": "ProduitA" - nom
 			"code": "A0012" - référence
 			"price_gross": "102" - prix unitaire TTC
+			"tax": "20" - % de taxe
 	    }}'
 ```
+
+<b>Remarque</b>: Le prix HT d'un produit est calculé par le syst§me sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
 
 <a name="examples"/>
 ##Factures - exemples d'appels API
