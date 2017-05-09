@@ -17,14 +17,14 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger la liste de factures du mois en cours](#download)    
 	+ [Télécharger les factures d'un client](#downloadclient)
 	+ [Télécharger les factures par numéro d'ID](#downloadid)
-	+ [Télécharger sous format PDF](#dowloadpdf)
+	+ [Télécharger sous format PDF](#downloadpdf)
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer une nouvelle facture](#create)
-	+ [Créer une nouvelle facture (par client, produit, ID du vendeur)](#create2)
+	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une nouvelle facture d'avoir](#credit)
 	+ [Mettre à jour une facture existante](#update)
 	+ [Changer l'état d'un document](#status)
-	+ [Télécharger la liste des récurrences](#dowloadrecurring)
+	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
@@ -487,6 +487,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 ```
 
 <a name="create2"/>
+Créer une nouvelle facture (version rapide)
+
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
