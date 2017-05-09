@@ -399,7 +399,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 
 <a name="examples"/>
 
-## Factures - exemples d'appels API
+## Factures (et autres documents) - exemples d'appels API
 
 <a name="download"/>
 Télécharger la liste des factures du mois en cours
@@ -443,6 +443,7 @@ Envoyer une facture par email à un client
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
 Remarque: Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3 jours, à moins d'utiliser le paramètre suivant: 
+
 ```shell
 "force": true
 ```
@@ -487,7 +488,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 ```
 
 <a name="create2"/>
-Créer une nouvelle facture (version rapide)
+Créer une nouvelle facture (version rapide)</br>
 
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
@@ -640,41 +641,46 @@ Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet
 
 ### Champs disponibles
 
-* **city** - Ville 
-* **client_id** - ID du client effectuant le paiement
-* **comment** - Commentaire 
-* **country** - Pays
-* **currency** - Devise du paiement
-* **department_id** - ID du département vendeur concerné 
-* **description** - Description du paiement
-* **email** - Email 
-* **first_name** - Prénom 
-* **generate_invoice** - Générer une facture correspondant au paiement 
-* **invoice_city** - Ville
-* **invoice_comment** - Commentaire  sur la facture
-* **invoice_country** - Pays
-* **invoice_id** - ID de la facture qui reçoit le paiement 
-* **invoice_name** - Nom du client 
-* **invoice_post_code** - Code Postal
-* **nvoice_street** - Ville
-* **invoice_tax_no** - N° d'identification fiscal 
+Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (et non sur la facture):
 * **last_name** - Nom de famille
-* **name** - Nom 
+* **first_name** - Prénom 
+* **street** - N° et nom de rue
+* **city** - Ville 
+* **post_code** - Code Postal
+* **country** - Pays
+* **client_id** - ID de l'acheteur 
+* **phone** - Téléphone
+* **email** - Email 
+* **department_id** - ID du département vendeur concerné 
+Coordonnées de l'acheteur apparaissant sur la facture correspondant au paiement
+* **generate_invoice** - "1" ou "0" : Générer une facture correspondant au paiement une fois celui-ci payé (quand "paid" est égal à 1)
+* **invoice_id** - ID de la facture qui reçoit le paiement 
+* **invoice_name** - Nom 
+* **invoice_street** - N° et nom de rue
+* **invoice_city** - Ville
+* **invoice_post_code** - Code Postal
+* **invoice_country** - Pays
+* **invoice_tax_no** - N° d'identification fiscal 
+Concernant le paiement: 
+* **price** - Montant du paiement
+* **name** - Titre du paiement
+* **description** - Description du paiement
+* **comment** - Commentaire du paiement
+* **currency** - Devise du paiement
+* **paid_date** - Date du paiement
 * **oid** - N° de commande qu reçoit le paiement
 * **paid** - "1" ou "0" pour indiquer si le Paiement est "payé" ou non <Boolean>
-* **paid_date** - Date du paiement
-* **phone** - Téléphone
-* **post_code** - Code Postal
-* **price** - Price of the product that was paid for
-* **product_id** - ID of the product that was paid for
-* **promocode** - Code promotionnel 
+* **kind** - Type de paiement (origine). Si ajouté par API, la valeur devrait être "api".
 * **provider** - Nom de la plateforme de paiement (en cas de Paiement en Ligne)
 * **provider_response** - Réponse de la plateforme de paiement (en cas de Paiement en Ligne)
 * **provider_status** - Etat du paiement selon la plateforme de paiement (en cas de Paiement en Ligne)
 * **provider_title** - Titre de la plateforme de paiement (en cas de Paiement en Ligne)
+En cas de widget de paiement: 
+* **invoice_comment** - Commentaire  éventuellement laissé par l'acheteur (n'apparaît pas sur les factures)
+* **product_id** - ID du produit à l'origine du paiement 
 * **quantity** - Quantité du produit 
-* **street** - N° et nom de rue
-* **kind** - Type de paiement (origine). Si ajouté par API, la valeur devrait être "api".
+* **promocode** - Code promotionnel 
+
 
 ### Liste des Paiements
 
@@ -702,8 +708,8 @@ curl #{domain}/payments.json
 	-d '{
 		"api_token": "#{api_token}",
 		"payment": {	
-			"name":"Payment 001",
-			"price": 100.05,
+			"name":"Paiement 001",
+			"price": 100.00,
 			"invoice_id": null,
 			"paid":true,
 			"kind": "api"
@@ -733,7 +739,7 @@ curl #{domain}/payments.json
 			"invoice_comment":"",
 			"invoice_country":null,
 			"invoice_id":null,
-			"invoice_name":"Company name",
+			"invoice_name":"Durand Paul",
 			"invoice_post_code":"00-112",
 			"invoice_street":"street 52",
 			"invoice_tax_no":"5252445767",
@@ -747,7 +753,7 @@ curl #{domain}/payments.json
 			"price":"100.00",
 			"product_id":1,
 			"promocode":"",
-			"provider":"transfer",
+			"provider":"virement",
 			"provider_response":null,
 			"provider_status":null,
 			"provider_title":null,
