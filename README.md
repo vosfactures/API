@@ -14,19 +14,19 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Contacts](#contacts)
 + [Produits](#products)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
-	+ Télécharger la liste de factures du mois en cours
-	+ Télécharger les factures d'un client
-	+ Télécharger les factures par numéro d'ID
-	+ Télécharger sous format PDF
-	+ Envoyer les factures par email à un client
-	+ Créer une nouvelle facture
-	+ Créer une nouvelle facture (par client, produit, ID du vendeur)
-	+ Créer une nouvelle facture d'avoir
-	+ Mettre à jour une facture existante
-	+ Changer l'état d'un document
-	+ Télécharger la liste des récurrences
-	+ Créer une nouvelle récurrence
-	+ Mettre à jour une récurrence existante
+	+ [Télécharger la liste de factures du mois en cours](#download)    
+	+ [Télécharger les factures d'un client](#downloadclient)
+	+ [Télécharger les factures par numéro d'ID](#downloadid)
+	+ [Télécharger sous format PDF](#dowloadpdf)
+	+ [Envoyer les factures par email à un client](#send)
+	+ [Créer une nouvelle facture](#create)
+	+ [Créer une nouvelle facture (par client, produit, ID du vendeur)](#create2)
+	+ [Créer une nouvelle facture d'avoir](#credit)
+	+ [Mettre à jour une facture existante](#update)
+	+ [Changer l'état d'un document](#status)
+	+ [Télécharger la liste des récurrences](#dowloadrecurring)
+	+ [Créer une nouvelle récurrence](#createrecurring)
+	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Paiements](#paiements)
 
@@ -145,7 +145,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
 "buyer_first_name" : "Prénom" de l'acheteur 
 "buyer_last_name" : "Nom" de l'acheteur 
-"buyer_company": "1" - si l'acheteur est un professionnel, "0" si c'est un particulier
+"buyer_company": "1" - si le contact (acheteur) est un professionnel, "0" si c'est un particulier
+"delivery_adress" : "" - contenu du champ "Adresse supplémentaire" du contact acheteur
 "description" : "" - Informations spécifiques 
 "paid_date" : "" - Date du paiement
 "currency" : "EUR" - devise
@@ -400,6 +401,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 
 ## Factures - exemples d'appels API
 
+<a name="download"/>
 Télécharger la liste des factures du mois en cours
 
 ```shell
@@ -408,12 +410,14 @@ curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_toke
 
 <b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... (Vous pouvez utiliser les mêmes filtres que ceux du moteur de recherche utilisé pour afficher la liste des documents dans le logiciel).
 
+<a name="downloadclient"/>
 Télécharger les factures d'un client
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
 ```
 
+<a name="downloadid"/>
 Télécharger une facture par numéro d'ID
 
 
@@ -421,6 +425,7 @@ Télécharger une facture par numéro d'ID
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
+<a name="downloadpdf"/>
 Télécharger une facture sous format PDF
 
 
@@ -430,6 +435,7 @@ curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 
 Remarque: la variable "payment_url" vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
 
+<a name="send"/>
 Envoyer une facture par email à un client
 
 
@@ -451,6 +457,8 @@ Autres options PDF:
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
+
+<a name="create"/>
 
 Créer une nouvelle facture
 
@@ -478,6 +486,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 	}'
 ```
 
+<a name="create2"/>
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
@@ -499,6 +508,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevée contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
+
+<a name="credit"/>
 
 Créer une nouvelle facture d'avoir
 
@@ -534,7 +545,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
         }}'
 ```
 
-
+<a name="update"/>
 Mettre à jour une facture
 
 ```shell
@@ -550,17 +561,20 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 	}'
 ```
 
+<a name="status"/>
 Changer l'état d'un document
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
 ```
 
+<a name="downloadrecurring"/>
+
 Télécharger la liste des récurrences
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 ```
-
+<a name="createrecurring"/>
 Créer une nouvelle récurrence
 
 Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
@@ -580,7 +594,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
             "end_date": "null"
         }}'
 ```
-
+<a name="updaterecurring"/>
 Mettre à jour une récurrence existante (changement de la date de la prochaine facture)
 
 ```shell
@@ -620,7 +634,10 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 ## Paiements
 
+Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet "Paiements", qu'il s'agisse d'un paiement manuel, ou d'un paiement en ligne (réalisé depuis une facture via l'option Paiement en ligne, ou depuis le wigdet de paiement d'un produit via l'option "Ecommerce")
+
 ### Champs disponibles
+
 * **city** - Ville 
 * **client_id** - ID du client effectuant le paiement
 * **comment** - Commentaire 
