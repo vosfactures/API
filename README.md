@@ -652,7 +652,6 @@ Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (e
 "client_id" - ID de l'acheteur 
 "phone" - Téléphone
 "email" - Email 
-"department_id" - ID du département vendeur concerné 
 ```
 
 Coordonnées de l'acheteur apparaissant sur la facture correspondant au paiement :
@@ -674,6 +673,7 @@ Concernant le paiement :
 "comment" - Commentaire du paiement
 "currency" - Devise du paiement
 "paid_date" - Date du paiement
+"department_id" - ID du département vendeur concerné 
 "oid" - N° de commande qu reçoit le paiement
 "paid" - "1" ou "0" pour indiquer si le Paiement est "payé" ou non <Boolean>
 "kind" - Type de paiement (origine). Si ajouté par API, la valeur devrait être "api".
@@ -772,6 +772,6 @@ curl #{domain}/payments.json
 		}
 	     }'
 ```
-
+ 
 
 
