@@ -641,46 +641,55 @@ Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet
 
 ### Champs disponibles
 
-Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (et non sur la facture):
-* **last_name** - Nom de famille
-* **first_name** - Prénom 
-* **street** - N° et nom de rue
-* **city** - Ville 
-* **post_code** - Code Postal
-* **country** - Pays
-* **client_id** - ID de l'acheteur 
-* **phone** - Téléphone
-* **email** - Email 
-* **department_id** - ID du département vendeur concerné 
-</br>Coordonnées de l'acheteur apparaissant sur la facture correspondant au paiement</br>
-* **generate_invoice** - "1" ou "0" : Générer une facture correspondant au paiement une fois celui-ci payé (quand "paid" est égal à 1)
-* **invoice_id** - ID de la facture qui reçoit le paiement 
-* **invoice_name** - Nom 
-* **invoice_street** - N° et nom de rue
-* **invoice_city** - Ville
-* **invoice_post_code** - Code Postal
-* **invoice_country** - Pays
-* **invoice_tax_no** - N° d'identification fiscal 
-</br>Concernant le paiement: </br>
-* **price** - Montant du paiement
-* **name** - Titre du paiement
-* **description** - Description du paiement
-* **comment** - Commentaire du paiement
-* **currency** - Devise du paiement
-* **paid_date** - Date du paiement
-* **oid** - N° de commande qu reçoit le paiement
-* **paid** - "1" ou "0" pour indiquer si le Paiement est "payé" ou non <Boolean>
-* **kind** - Type de paiement (origine). Si ajouté par API, la valeur devrait être "api".
-* **provider** - Nom de la plateforme de paiement (en cas de Paiement en Ligne)
-* **provider_response** - Réponse de la plateforme de paiement (en cas de Paiement en Ligne)
-* **provider_status** - Etat du paiement selon la plateforme de paiement (en cas de Paiement en Ligne)
-* **provider_title** - Titre de la plateforme de paiement (en cas de Paiement en Ligne)
-En cas de widget de paiement (Fonction "Paiements E-commerce")</br>
-* **invoice_comment** - Commentaire  éventuellement laissé par l'acheteur (n'apparaît pas sur les factures)
-* **product_id** - ID du produit à l'origine du paiement 
-* **quantity** - Quantité du produit 
-* **promocode** - Code promotionnel
+Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (et non sur la facture) :
+```shell
+"last_name" - Nom de famille
+"first_name" - Prénom 
+"street" - N° et nom de rue
+"city" - Ville 
+"post_code" - Code Postal
+"country" - Pays
+"client_id" - ID de l'acheteur 
+"phone" - Téléphone
+"email" - Email 
+"department_id" - ID du département vendeur concerné 
+```
 
+Coordonnées de l'acheteur apparaissant sur la facture correspondant au paiement :
+```shell
+"generate_invoice" - "1" ou "0" : Générer une facture correspondant au paiement une fois celui-ci payé (quand "paid" est égal à 1)
+"invoice_id" - ID de la facture qui reçoit le paiement 
+"invoice_name" - Nom 
+"invoice_street" - N° et nom de rue
+"invoice_city" - Ville
+"invoice_post_code" - Code Postal
+"invoice_country" - Pays
+"invoice_tax_no" - N° d'identification fiscal 
+```
+Concernant le paiement : 
+```shell
+"price" - Montant du paiement
+"name" - Titre du paiement
+"description" - Description du paiement
+"comment" - Commentaire du paiement
+"currency" - Devise du paiement
+"paid_date" - Date du paiement
+"oid" - N° de commande qu reçoit le paiement
+"paid" - "1" ou "0" pour indiquer si le Paiement est "payé" ou non <Boolean>
+"kind" - Type de paiement (origine). Si ajouté par API, la valeur devrait être "api".
+"provider"- Nom de la plateforme de paiement (en cas de Paiement en Ligne)
+"provider_response" - Réponse de la plateforme de paiement (en cas de Paiement en Ligne)
+"provider_status" - Etat du paiement selon la plateforme de paiement (en cas de Paiement en Ligne)
+"provider_title" - Titre de la plateforme de paiement (en cas de Paiement en Ligne)
+```
+
+En cas de widget de paiement (Fonction "Paiements E-commerce"):
+```shell
+"invoice_comment" - Commentaire  éventuellement laissé par l'acheteur (n'apparaît pas sur les factures)
+"product_id" - ID du produit à l'origine du paiement 
+"quantity" - Quantité du produit 
+"promocode" - Code promotionnel
+```
 
 ### Liste des Paiements
 
