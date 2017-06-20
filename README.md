@@ -300,7 +300,7 @@ curl http://votrecompte.vosfactures.fr/clients.json
 			"phone" : "phone1",
 			"mobile_phone" : "phone2"
 			"street" : "street1",
-			"street_no" : "street-no1"
+			
 	    }}'
 ```
 Champs fiche contact: 
