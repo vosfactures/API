@@ -523,7 +523,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
     -d '{"api_token": "API_TOKEN",
         "invoice": {
             "kind": "correction",
-            "from_invoice_id": "2432393,
+            "invoice_id": "2432393,
             "client_id": 1,
             "positions":[
                 {"name": "Produit A1",
@@ -547,6 +547,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
             }]
         }}'
 ```
+<b>Remarque</b>: Si vous souhaitez afficher sur la facture d'avoir le numéro de la facture de référence, qui apparaît sous la forme de la mention "Avoir sur Facture N°xxxx", il est conseillé d'utiliser le paramètre "invoice_id" qui créera le lien fonctionnel entre la facture et la facture d'avoir. Sinon, vous pouvez alternativement utiliser le paramètre "from_invoice_id" (en indiquant également le n° ID de la facture), ou encore "correction" (en indiquant le contenu que vous souhaitez afficher) - mais dans ces deux cas aucun lien fonctionnel n'est créé. 
+
 
 <a name="update"/>
 Mettre à jour une facture
