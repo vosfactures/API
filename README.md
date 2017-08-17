@@ -138,6 +138,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "payment_type" : "chèque" - mode de règlement 
 "payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
+"sum_recovery" : "0" - afficher (1) ou non (0) la mention "Indemnité forfaitaire de recouvrement". 
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
 "oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
