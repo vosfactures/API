@@ -173,6 +173,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
    		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
+                "kind":"text_separator" - pour insérer une ligne de texte, par ex: {"name":"texte", "kind":"text_separator"}
 "hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe)
 "calculating_strategy" => 
 {
