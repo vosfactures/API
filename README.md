@@ -13,6 +13,12 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Documents de facturation - actions et champs](#invoices)
 + [Contacts](#contacts)
 + [Produits](#products)
+	+ [Télécharger les produits] (#productlist)
+	+ [Télécharger les produits et quantités par entrepôt] (#warehouse)
+	+ [Obtenir un produit par son ID] (#productID)
+	+ [Obtenir un produit et quantité par son ID par entrepôt] (#warehouseID)
+	+ [Ajouter un produit] (#productadd)
+	+ [Mettre à jour un produit] (#productupdate)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ [Télécharger la liste de factures du mois en cours](#download)    
 	+ [Télécharger les factures d'un client](#downloadclient)
@@ -340,6 +346,7 @@ curl http://votrecompte.vosfactures.fr/clients/111.json
 ## Produits
 
 
+<a name="productslist"/>
 Liste des produits (par page)
 
 
@@ -347,24 +354,28 @@ Liste des produits (par page)
 curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
+<a name="warehouse"/>
 Liste des produits et quantités pour un entrepôt en particulier (par page)
 
 ```shell
 curl "http://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
 ```
 
+<a name="productID"/>
 Obtenir un produit selon son ID
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
+<a name="warehouseID"/>
 Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
 ```
 
+<a name="productadd"/>
 Ajouter un produit
 
 
@@ -381,6 +392,7 @@ curl http://votrecompte.vosfactures.fr/products.json
 	    }}'
 ```
 
+<a name="productupdate"/>
 Mettre à jour un produit
 
 ```shell
@@ -398,6 +410,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json
 ```
 
 <b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
+
 
 <a name="examples"/>
 
@@ -567,6 +580,20 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 		}
 	}'
 ```
+Pour supprimer un produit listé sur un document
+
+```shell
+curl http://PREFIX.vosfactures.fr/invoices/15581164.json 
+        -X PATCH
+	-H 'Accept:application/json'
+	-H 'Content-Type:application/json'
+	-d '{
+	         "api_token": "API_TOKEN",
+                 "invoice": {
+                        "positions":[{"id":ID,"_destroy":1}]
+              }
+	 }'
+```   
 
 <a name="status"/>
 Changer l'état d'un document
