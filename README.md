@@ -480,6 +480,7 @@ curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_tok
 
 <a name="deleteinvoice"/>
 Supprimer une facture
+
 ```shell
 curl -X DELETE "http://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_token=API_TOKEN"
 ```
