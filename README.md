@@ -36,6 +36,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Ajouter un produit](#productadd)
 	+ [Mettre à jour un produit](#productupdate)
 + [Paiements](#paiements)
++ [Exemples : CURL, PHP, Ruby](#exemples)
 
   
 
@@ -830,4 +831,12 @@ curl #{domain}/payments.json
 ```
  
 
+<a name="exemples"/>
+## Exemples
+
+CURL: https://github.com/vosfactures/API/blob/master/example.curl
+
+PHP: https://github.com/vosfactures/API/blob/master/example1.php
+
+Ruby: https://github.com/vosfactures/API/blob/master/example1.rb
 
