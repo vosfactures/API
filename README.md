@@ -832,7 +832,9 @@ curl #{domain}/payments.json
  
 
 <a name="exemples"/>
+
 ## Exemples
+
 
 CURL: https://github.com/vosfactures/API/blob/master/example.curl
 
