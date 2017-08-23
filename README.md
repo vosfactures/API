@@ -11,14 +11,6 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Code API](#token)
 + [Se connecter et télécharger le code API](#connect)
 + [Documents de facturation - actions et champs](#invoices)
-+ [Contacts](#contacts)
-+ [Produits](#products)
-	+ [Télécharger les produits](#productlist)
-	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
-	+ [Obtenir un produit par son ID](#productID)
-	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
-	+ [Ajouter un produit](#productadd)
-	+ [Mettre à jour un produit](#productupdate)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ [Télécharger la liste de factures du mois en cours](#download)    
 	+ [Télécharger les factures d'un client](#downloadclient)
@@ -28,12 +20,21 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une nouvelle facture](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une nouvelle facture d'avoir](#credit)
-	+ [Mettre à jour une facture existante](#update)
-	+ [Changer l'état d'un document](#status)
+	+ [Mettre à jour une facture](#update)
+	+ [Changer l'état d'une facture](#status)
+	+ [Supprimer une facture](#deleteinvoice)
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
++ [Contacts](#contacts)
++ [Produits](#products)
+	+ [Télécharger les produits](#productlist)
+	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
+	+ [Obtenir un produit par son ID](#productID)
+	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
+	+ [Ajouter un produit](#productadd)
+	+ [Mettre à jour un produit](#productupdate)
 + [Paiements](#paiements)
 
   
@@ -126,7 +127,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "seller_fax" : "" - numéro de fax du vendeur
 "seller_phone" : "" - numéro de tel du vendeur
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
-"client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le client sera ajouté à la liste des contacts)
+"client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
 "buyer_name" : "Client Intel" - nom de l'acheteur
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA) 
 "disable_tax_no_validation" : "", 
@@ -155,7 +156,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "buyer_company": "1" - si le contact (acheteur) est un professionnel, "0" si c'est un particulier
 "delivery_adress" : "" - contenu du champ "Adresse supplémentaire" du contact acheteur
 "description" : "" - Informations spécifiques 
-"paid_date" : "" - Date du paiement
+"paid_date" : "" - Date du paiement ("Paiement reçu le")
 "currency" : "EUR" - devise
 "lang" : "fr" - langue du document
 "exchange_currency" : "" - convertir en (la conversion du montant total et du montant de la taxe en une autre devise selon taux de change du jour)
@@ -271,147 +272,6 @@ Champ: `discount_kind` - Type de réduction
 	"amount" - montant
 ```
 
-
-<a name="clients"/>
-
-## Contacts
-
-Liste des contacts
-
-```shell
-curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
-```
-
-Obtenir un contact selon son ID
-
-```shell
-curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
-```
-
-Ajouter un contact
-
-```shell
-curl http://votrecompte.vosfactures.fr/clients.json 
-	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
-	-d '{"api_token": "API_TOKEN",
-		"client": {
-			"name": "Client1",
-			"tax_no": "FR5252445333",
-			"bank" : "banque1",
-			"bank_account" : "bank_account1",
-			"city" : "city1",
-			"country" : "",
-			"email" : "client@email.fr",
-			"person" : "person1",
-			"post_code" : "post-code1",
-			"phone" : "phone1",
-			"mobile_phone" : "phone2"
-			"street" : "street1",
-			
-	    }}'
-```
-Champs fiche contact: 
-```shell
-"note" : description additionnelle
-"payment_to_kind" : Date limite de règlement par défaut
-```
-
-Mettre à jour un contact
-
-```shell
-curl http://votrecompte.vosfactures.fr/clients/111.json 
-	-X PUT 
-	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
-	-d '{"api_token": "API_TOKEN",
-		"client": {
-			"name": "Client2",
-			"tax_no": "FR52524457672",
-			"bank" : "banque2",
-			"bank_account" : "bank_account2",
-			"city" : "Ville2",
-			"country" : "EUR",
-			"email" : "client2@email.fr",
-			"person" : "person2",
-			"post_code" : "post-code2",
-			"phone" : "phone2",
-			"street" : "street2",
-			"street_no" : "street-no2"
-	    }}'
-```
-
-<a name="products"/>
-
-## Produits
-
-
-<a name="productslist"/>
-Liste des produits (par page)
-
-
-```shell
-curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
-```
-
-<a name="warehouse"/>
-Liste des produits et quantités pour un entrepôt en particulier (par page)
-
-```shell
-curl "http://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
-```
-
-<a name="productID"/>
-Obtenir un produit selon son ID
-
-```shell
-curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
-```
-
-<a name="warehouseID"/>
-Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier
-
-```shell
-curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
-```
-
-<a name="productadd"/>
-Ajouter un produit
-
-
-```shell
-curl http://votrecompte.vosfactures.fr/products.json 
-	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
-	-d '{"api_token": "API_TOKEN",
-		"product": {
-			"name": "ProduitA" - nom
-			"code": "A001" - référence
-			"price_gross": "100" - prix unitaire TTC
-			"tax": "20" - % de taxe
-	    }}'
-```
-
-<a name="productupdate"/>
-Mettre à jour un produit
-
-```shell
-curl http://votrecompte.vosfactures.fr/products/333.json 
-	-X PUT
-	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
-	-d '{"api_token": "API_TOKEN",
-		"product": {
-			"name": "ProduitA" - nom
-			"code": "A0012" - référence
-			"price_gross": "102" - prix unitaire TTC
-			"tax": "20" - % de taxe
-	    }}'
-```
-
-<b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
-
-
 <a name="examples"/>
 
 ## Factures (et autres documents) - exemples d'appels API
@@ -448,6 +308,12 @@ Télécharger une facture sous format PDF
 curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
 
+Autres options PDF:
+* print_option=original - Original
+* print_option=copy - Copie
+* print_option=original_and_copy - Original et copie
+* print_option=duplicate - Duplicata
+
 Remarque: la variable "payment_url" vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
 
 <a name="send"/>
@@ -467,21 +333,15 @@ Par exemple, écrivez:
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN&force=true
 ```
 
-Autres options PDF:
-* print_option=original - Original
-* print_option=copy - Copie
-* print_option=original_and_copy - Original et copie
-* print_option=duplicate - Duplicata
-
 
 <a name="create"/>
 
 Créer une nouvelle facture
 
 ```shell
-curl https://votrecompte.vosfactures.fr/invoices.json 
-  	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
+curl https://votrecompte.vosfactures.fr/invoices.json \
+  	-H 'Accept: application/json' \
+	-H 'Content-Type: application/json' \
 	-d '{
 	  	"api_token": "API_TOKEN",
 	  	"invoice": {
@@ -508,9 +368,9 @@ Créer une nouvelle facture (version rapide)</br>
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json 
-	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
+curl http://votrecompte.vosfactures.fr/invoices.json \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \
 	-d '{"api_token": "API_TOKEN",
 		"invoice": {
 			"payment_to_kind": 5,
@@ -569,10 +429,10 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 Mettre à jour une facture
 
 ```shell
-curl https://votrecompte.vosfactures.fr/invoices/111.json 
-	-X PUT 
-	-H 'Accept: application/json'  
-	-H 'Content-Type: application/json'  
+curl https://votrecompte.vosfactures.fr/invoices/111.json \
+	-X PUT \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \  
 	-d '{
 		"api_token": "API_TOKEN",
 		"invoice": {
@@ -580,13 +440,29 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json
 		}
 	}'
 ```
-Pour supprimer un produit listé sur un document
+
+Modifier un produit listé sur une facture (il faut spécifier l'ID du produit)
 
 ```shell
-curl http://PREFIX.vosfactures.fr/invoices/15581164.json 
-        -X PATCH
-	-H 'Accept:application/json'
-	-H 'Content-Type:application/json'
+curl https://votrecompte.vosfactures.fr/invoices/111.json \
+    -X PUT \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "positions": [{"id":32649087, "name":"test"}]
+        }
+    }'
+```
+    
+Supprimer un produit listé sur une facture (il faut spécifier l'ID du produit)
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/111.json \
+        -X PATCH \
+	-H 'Accept:application/json' \
+	-H 'Content-Type:application/json' \
 	-d '{
 	         "api_token": "API_TOKEN",
                  "invoice": {
@@ -596,10 +472,16 @@ curl http://PREFIX.vosfactures.fr/invoices/15581164.json
 ```   
 
 <a name="status"/>
-Changer l'état d'un document
+Changer l'état d'une facture
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
+```
+
+<a name="deleteinvoice"/>
+Supprimer une facture
+```shell
+curl -X DELETE "http://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_token=API_TOKEN"
 ```
 
 <a name="downloadrecurring"/>
@@ -629,7 +511,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
         }}'
 ```
 <a name="updaterecurring"/>
-Mettre à jour une récurrence existante (changement de la date de la prochaine facture)
+Mettre à jour une récurrence existante (ex: changement de la date de la prochaine facture)
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings/111.json \
@@ -643,6 +525,7 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
         }
     }'
 ```
+
 
 <a name="view_url"/>
 
@@ -663,6 +546,147 @@ vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}`
 vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+
+
+<a name="clients"/>
+
+## Contacts
+
+Liste des contacts (par page)
+
+```shell
+curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
+```
+
+Obtenir un contact selon son ID
+
+```shell
+curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
+```
+
+Remarque: Champs fiche contact 
+```shell
+"note" : description additionnelle
+"payment_to_kind" : Date limite de règlement par défaut
+```
+Ajouter un contact
+
+```shell
+curl http://votrecompte.vosfactures.fr/clients.json \ 
+	-H 'Accept: application/json' \  
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+		"client": {
+			"name": "Client1",
+			"tax_no": "FR5252445333",
+			"bank" : "banque1",
+			"bank_account" : "bank_account1",
+			"city" : "city1",
+			"country" : "",
+			"email" : "client@email.fr",
+			"person" : "person1",
+			"post_code" : "post-code1",
+			"phone" : "phone1",
+			"mobile_phone" : "phone2"
+			"street" : "street1",
+			
+	    }}'
+```
+
+Mettre à jour un contact
+
+```shell
+curl http://votrecompte.vosfactures.fr/clients/111.json \ 
+	-X PUT  \
+	-H 'Accept: application/json'  \ 
+	-H 'Content-Type: application/json'  \ 
+	-d '{"api_token": "API_TOKEN",
+		"client": {
+			"name": "Client2",
+			"tax_no": "FR52524457672",
+			"bank" : "banque2",
+			"bank_account" : "bank_account2",
+			"city" : "Ville2",
+			"country" : "EUR",
+			"email" : "client2@email.fr",
+			"person" : "person2",
+			"post_code" : "post-code2",
+			"phone" : "phone2",
+			"street" : "street2",
+			"street_no" : "street-no2"
+	    }}'
+```
+
+<a name="products"/>
+
+## Produits
+
+
+<a name="productslist"/>
+Liste des produits (par page)
+
+
+```shell
+curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
+```
+
+<a name="warehouse"/>
+Liste des produits et quantités pour un entrepôt en particulier (par page)
+
+```shell
+curl "http://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
+```
+
+<a name="productID"/>
+Obtenir un produit selon son ID
+
+```shell
+curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
+```
+
+<a name="warehouseID"/>
+Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier
+
+```shell
+curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
+```
+
+<a name="productadd"/>
+Ajouter un produit
+
+
+```shell
+curl http://votrecompte.vosfactures.fr/products.json \ 
+	-H 'Accept: application/json' \  
+	-H 'Content-Type: application/json' \  
+	-d '{"api_token": "API_TOKEN",
+		"product": {
+			"name": "ProduitA" - nom
+			"code": "A001" - référence
+			"price_gross": "100" - prix unitaire TTC
+			"tax": "20" - % de taxe
+	    }}'
+```
+
+<a name="productupdate"/>
+Mettre à jour un produit
+
+```shell
+curl http://votrecompte.vosfactures.fr/products/333.json  \
+	-X PUT \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \  
+	-d '{"api_token": "API_TOKEN",
+		"product": {
+			"name": "ProduitA" - nom
+			"code": "A0012" - référence
+			"price_gross": "102" - prix unitaire TTC
+			"tax": "20" - % de taxe
+	    }}'
+```
+
+<b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
+
 
 <a name="paiements"/>
 
