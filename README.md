@@ -88,7 +88,7 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
 * `DELETE /invoices/1.json` supprime le document
 
 
-<b>Exemple</b> - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
+<b>Exemple</b> - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquez sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
@@ -124,7 +124,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "seller_post_code" : "75007", code postal du vendeur
 "seller_city" : "Paris" - ville du vendeur
 "seller_street" : "21 Rue des Mimosas" - numéro et nom de rue du vendeur
-"seller_country" : "" - pays du vendeur
+"seller_country" : "" - pays du vendeur (ISO 3166)
 "seller_email" : "contact@chose.com" - email du vendeur
 "seller_www" : "" - site internet du vendeur
 "seller_fax" : "" - numéro de fax du vendeur
@@ -138,7 +138,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "buyer_post_code" : "06000", code postal de l'acheteur
 "buyer_city" : "Nice" - ville de l'acheteur
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue de l'acheteur 
-"buyer_country" : "", pays de l'acheteur
+"buyer_country" : "", pays de l'acheteur (ISO 3166)
 "buyer_note" : "", description additionnelle
 "buyer_email" : "", email de l'acheteur
 "buyer_phone" : "", numéro de tel de l'acheteur
@@ -369,7 +369,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 <a name="create2"/>
 Créer une nouvelle facture (version rapide)</br>
 
-Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit, de l'acheteur et du vendeur sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
+Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json \
