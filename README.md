@@ -117,6 +117,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Le système affichera alors automatiquement les coordonnées du département vendeur (nom, adresse...) sur le document (les autres champs "seller_" ne sont plus nécessaires). 
 "seller_name" : "Ma Société" - Nom du département vendeur. Si ce champ n'est pas renseigné, le département principal est sélectionné par défaut. Préférez plutôt "department_id". Si vous utilisez toutefois "seller_name", le système tentera d'identifier le département portant ce nom, sinon il créera un nouveau département. 
 "seller_tax_no" : "FR5252445767" - numéro d'identification fiscale du vendeur (ex: n° TVA)
+"seller_tax_no_kind" : "", - initulé du numéro d'identification du vendeur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
++"seller_bank_account" : "24 1140 1977 0000 5921 7200 1001", - konto bankowe sprzedawcy
 "seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
 "seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
 "seller_post_code" : "75007", code postal du vendeur
@@ -130,7 +132,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
 "client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
 "buyer_name" : "Client Intel" - nom de l'acheteur
-"buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA) 
+"buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
+"buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
 "disable_tax_no_validation" : "", 
 "buyer_post_code" : "06000", code postal de l'acheteur
 "buyer_city" : "Nice" - ville de l'acheteur
