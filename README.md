@@ -35,14 +35,14 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Ajouter un produit](#productadd)
 	+ [Mettre à jour un produit](#productupdate)
-++ [Documents de stock](#warehouse_documents) 
-+	+ [Télécharger les documents de stock](#wd1) 
-+	+ [Obtenir un document de stock par son ID](#wd2) 
-+	+ [Créer un bon d'entrée (BE)](#wd3) 
-+	+ [Créer un bon de livraison (BL)](#wd4) 
-+	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
-+	+ [Mettre à jour un document de stock](#wd6) 
-+	+ [Supprimer un document de stock](#wd7) 	
++ [Documents de stock](#warehouse_documents) 
+	+ [Télécharger les documents de stock](#wd1) 
+	+ [Obtenir un document de stock par son ID](#wd2) 
+	+ [Créer un bon d'entrée (BE)](#wd3) 
+	+ [Créer un bon de livraison (BL)](#wd4) 
+	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
+	+ [Mettre à jour un document de stock](#wd6) 
+	+ [Supprimer un document de stock](#wd7) 	
 + [Paiements](#paiements)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
@@ -702,12 +702,8 @@ curl http://votrecompte.vosfactures.fr/products/333.json  \
 
 
 <a name="warehouse_documents"/>
+
 ## Dokumenty magazynowa 
-
-
-+	+ [Supprimer un document de stock](#wd7) 
-
-
 
 
 <a name="wd1"/>
