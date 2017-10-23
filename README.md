@@ -703,7 +703,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json  \
 
 <a name="warehouse_documents"/>
 
-## Dokumenty magazynowa 
+## Documents de stock 
 
 
 <a name="wd1"/>
