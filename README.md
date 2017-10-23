@@ -35,6 +35,14 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Ajouter un produit](#productadd)
 	+ [Mettre à jour un produit](#productupdate)
+++ [Documents de stock](#warehouse_documents) 
++	+ [Télécharger les documents de stock](#wd1) 
++	+ [Obtenir un document de stock par son ID](#wd2) 
++	+ [Créer un bon d'entrée (BE)](#wd3) 
++	+ [Créer un bon de livraison (BL)](#wd4) 
++	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
++	+ [Mettre à jour un document de stock](#wd6) 
++	+ [Supprimer un document de stock](#wd7) 	
 + [Paiements](#paiements)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
@@ -691,6 +699,122 @@ curl http://votrecompte.vosfactures.fr/products/333.json  \
 ```
 
 <b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
+
+
+<a name="warehouse_documents"/>
+## Dokumenty magazynowa 
+
+
++	+ [Supprimer un document de stock](#wd7) 
+
+
+
+
+<a name="wd1"/>
+Télécharger les documents de stock
+ 
+```shell 
+curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_TOKEN" 
+``` 
+Vous pouvez utiliser les mêmes paramètres que ceux décrits pour les documents de facturation. 
+ 
+<a name="wd2"/> 
+Obtenir un document de stock par son ID 
+ 
+```shell 
+curl "https://votrecompte.vosfactures.fr/warehouse_documents/555.json?api_token=API_TOKEN" 
+``` 
+
+<a name="wd3"/> 
+Créer un bon d'entrée (BE) 
+ 
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
+	-H 'Accept: application/json' 
+	-H 'Content-Type: application/json' 
+	-d '{ 
+	"api_token": "API_TOKEN", 
+	"warehouse_document": { 
+	"kind":"pz", 
+	"number": null, 
+	"warehouse_id": "1", 
+	"issue_date": "2017-10-23", 
+	"department_name": "Department1", 
+	"client_name": "Fournisseur1", 
+	"warehouse_actions":[ 
+	{"product_name":"Produit A1", "purchase_tax":20, "purchase_price_net":10.20, "quantity":1}, 
+	{"product_name":"Produit A2", "purchase_tax":0, "purchase_price_net":50, "quantity":2} 
+	]	
+	}}' 
+``` 
+ 
+<a name="wd4"/> 
+Créer un bon de livraison (BL)
+ 
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
+	-H 'Accept: application/json' 
+	-H 'Content-Type: application/json' 
+	-d '{ 
+	"api_token": "API_TOKEN", 
+	"warehouse_document": { 
+	"kind":"wz", 
+	"number": null, 
+	"warehouse_id": "1", 
+	"issue_date": "2017-10-23", 
+	"department_name": "Department1", 
+	"client_name": "Client1", 
+	"warehouse_actions":[ 
+	{"product_id":"333", "tax":20, "price_net":10.20, "quantity":1}, 
+	{"product_id":"444", "tax":0, "price_net":50, "quantity":2} 
+	]	
+	}}' 
+``` 
+ 
+<a name="wd5"/> 
+Créer un bon d'entrée (BE) pour un contact, département, ou produit existant 
+ 
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
+	-H 'Accept: application/json' 
+	-H 'Content-Type: application/json' 
+	-d '{ 
+	"api_token": "API_TOKEN", 
+	"warehouse_document": { 
+	"kind":"pz", 
+	"number": null, 
+	"warehouse_id": "1", 
+	"issue_date": "2017-10-23", 
+	"department_id": "222", 
+	"client_id": "111", 
+	"warehouse_actions":[ 
+	{"product_id":"333", "purchase_tax":20, "price_net":10.20, "quantity":1}, 
+	{"product_id":"444", "purchase_tax":0, "price_net":50, "quantity":2} 
+	]	
+	}}' 
+``` 
+ 
+<a name="wd6"/>  
+Mettre à jour un document de stock
+ 
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json 
+	-X PUT 
+	-H 'Accept: application/json' 
+	-H 'Content-Type: application/json' 
+	-d '{"api_token": "API_TOKEN", 
+	"warehouse_document": { 
+	"client_name": "Nouveau contact" 
+	}}' 
+``` 
+ 
+<a name="wd7"/>  
+Supprimer un document de stock 
+ 
+```shell 
+curl -X DELETE "https://votrecompte.vosfactures.fr/warehouse_documents/100.json?api_token=API_TOKEN" 
+``` 
+
 
 
 <a name="paiements"/>
