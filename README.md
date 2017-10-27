@@ -95,7 +95,7 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
 ## Documents de facturation : Actions et Champs
 
 
-* `GET /invoices/1.json` télécharge le document
+* `GET /invoices/1.json` télécharge le document 
 * `POST /invoices.json` ajoute un nouveau document
 * `PUT /invoices/1.json` met à jour le document
 * `DELETE /invoices/1.json` supprime le document
