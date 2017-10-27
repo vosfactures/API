@@ -29,7 +29,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
-       	+ [Obtenir un contact selon son ID](#clientID) 
+       	+ [Obtenir un contact selon son ID](#clientID)
 	+ [Ajouter un contact](#addclient)
 	+ [Mettre à jour un contact](#updateclient)
 	+ [Remarque: Champs](#noteclient)	
@@ -334,7 +334,7 @@ Autres options PDF:
 Remarque: la variable "payment_url" vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
 
 <a name="send"/>
-<b>Envoyer une facture par email à un client</<b>b>
+<b>Envoyer une facture par email à un client</b>
 
 
 ```shell
@@ -512,7 +512,7 @@ curl -X DELETE "http://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_t
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 ```
-<a name="createrecurring"/>
+<a name="createrecurring"/> 
 <b>Créer une nouvelle récurrence</b>/br>
 
 Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
