@@ -27,9 +27,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
-+ [Contacts](#clients)
-        + [Télécharger la liste des contacts](#client)
-	+ [Obtenir un contact selon son ID](#clientID) 
++ [Contacts](#clients)  
+	+ [Télécharger la liste des contacts](#client)
+       	+ [Obtenir un contact selon son ID](#clientID) 
 	+ [Ajouter un contact](#addclient)
 	+ [Mettre à jour un contact](#updateclient)
 	+ [Remarque: Champs](#noteclient)	
@@ -971,7 +971,7 @@ curl #{domain}/payments.json
 
 <a name="exemples"/>
 
-## Exemples
+## Exemples 
 
 
 CURL: https://github.com/vosfactures/API/blob/master/example.curl
