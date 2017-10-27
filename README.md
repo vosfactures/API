@@ -638,7 +638,8 @@ curl http://votrecompte.vosfactures.fr/clients/111.json \
 ```
 
 <a name="noteclient"/>
-<b>Remarque: Champs fiche contact</b> 
+<b>Remarque: Champs fiche contact</b>
+
 ```shell
 "note" : description additionnelle
 "payment_to_kind" : Date limite de règlement par défaut
