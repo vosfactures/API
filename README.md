@@ -27,7 +27,12 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
-+ [Contacts](#contacts)
++ [Contacts](#clients)
+        + [Télécharger la liste des contacts](#client)
+	+ [Obtenir un contact selon son ID](#clientID) 
+	+ [Ajouter un contact](#addclient)
+	+ [Mettre à jour un contact](#updateclient)
+	+ [Remarque: Champs](#noteclient)	
 + [Produits](#products)
 	+ [Télécharger les produits](#productlist)
 	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
@@ -289,7 +294,7 @@ Champ: `discount_kind` - Type de réduction
 ## Factures (et autres documents) - exemples d'appels API
 
 <a name="download"/>
-Télécharger la liste des factures du mois en cours
+<b>Télécharger la liste des factures du mois en cours</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
@@ -298,14 +303,14 @@ curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_toke
 <b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... (Vous pouvez utiliser les mêmes filtres que ceux du moteur de recherche utilisé pour afficher la liste des documents dans le logiciel).
 
 <a name="downloadclient"/>
-Télécharger les factures d'un client
+<b>Télécharger les factures d'un client</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
 ```
 
 <a name="downloadid"/>
-Télécharger une facture par numéro d'ID
+<b>Télécharger une facture par numéro d'ID</b>
 
 
 ```shell
@@ -313,7 +318,7 @@ curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 
 <a name="downloadpdf"/>
-Télécharger une facture sous format PDF
+<b>Télécharger une facture sous format PDF</b>
 
 
 ```shell
@@ -329,7 +334,7 @@ Autres options PDF:
 Remarque: la variable "payment_url" vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
 
 <a name="send"/>
-Envoyer une facture par email à un client
+<b>Envoyer une facture par email à un client</<b>b>
 
 
 ```shell
@@ -348,7 +353,7 @@ curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?
 
 <a name="create"/>
 
-Créer une nouvelle facture
+<b>Créer une nouvelle facture</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -375,7 +380,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <a name="create2"/>
-Créer une nouvelle facture (version rapide)</br>
+<b>Créer une nouvelle facture (version rapide)</b></br>
 
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
@@ -401,7 +406,7 @@ cela signifie que vous avez choisi un niveau de sécurité standard ou élevée 
 
 <a name="credit"/>
 
-Créer une nouvelle facture d'avoir
+<b>Créer une nouvelle facture d'avoir</b>
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json \
@@ -438,7 +443,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 
 
 <a name="update"/>
-Mettre à jour une facture
+<b>Mettre à jour une facture</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/111.json \
@@ -453,7 +458,9 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 	}'
 ```
 
-Modifier un produit listé sur une facture (il faut spécifier l'ID du produit)
+<b>Modifier un produit listé sur une facture</b></br>
+
+Il faut spécifier l'ID du produit. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/111.json \
@@ -468,7 +475,9 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
     }'
 ```
     
-Supprimer un produit listé sur une facture (il faut spécifier l'ID du produit)
+<b>Supprimer un produit listé sur une facture</b></br> 
+
+Il faut spécifier l'ID du produit. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/111.json \
@@ -484,14 +493,14 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 ```   
 
 <a name="status"/>
-Changer l'état d'une facture
+<b>Changer l'état d'une facture</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
 ```
 
 <a name="deleteinvoice"/>
-Supprimer une facture
+<b>Supprimer une facture</b>
 
 ```shell
 curl -X DELETE "http://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_token=API_TOKEN"
@@ -499,12 +508,12 @@ curl -X DELETE "http://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_t
 
 <a name="downloadrecurring"/>
 
-Télécharger la liste des récurrences
+<b>Télécharger la liste des récurrences</b>
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 ```
 <a name="createrecurring"/>
-Créer une nouvelle récurrence
+<b>Créer une nouvelle récurrence</b>/br>
 
 Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
 ```shell
@@ -524,7 +533,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
         }}'
 ```
 <a name="updaterecurring"/>
-Mettre à jour une récurrence existante (ex: changement de la date de la prochaine facture)
+<b>Mettre à jour une récurrence existante</b> (ex: changement de la date de la prochaine facture)
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings/111.json \
@@ -565,24 +574,21 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 ## Contacts
 
-Liste des contacts (par page)
+<a name="client"/>
+<b>Télécharger la liste des contacts (par page)</b>
 
 ```shell
 curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
-
-Obtenir un contact selon son ID
+<a name="clientID"/>
+<b>Obtenir un contact selon son ID</b>
 
 ```shell
 curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
 ```
 
-Remarque: Champs fiche contact 
-```shell
-"note" : description additionnelle
-"payment_to_kind" : Date limite de règlement par défaut
-```
-Ajouter un contact
+<a name="addclient"/>
+<b>Ajouter un contact</b>
 
 ```shell
 curl http://votrecompte.vosfactures.fr/clients.json \ 
@@ -606,7 +612,8 @@ curl http://votrecompte.vosfactures.fr/clients.json \
 	    }}'
 ```
 
-Mettre à jour un contact
+<a name="updateclient"/>
+<b>Mettre à jour un contact</b>
 
 ```shell
 curl http://votrecompte.vosfactures.fr/clients/111.json \ 
@@ -630,13 +637,21 @@ curl http://votrecompte.vosfactures.fr/clients/111.json \
 	    }}'
 ```
 
+<a name="noteclient"/>
+<b>Remarque: Champs fiche contact</b> 
+```shell
+"note" : description additionnelle
+"payment_to_kind" : Date limite de règlement par défaut
+```
+
+
 <a name="products"/>
 
 ## Produits
 
 
 <a name="productslist"/>
-Liste des produits (par page)
+<b>Liste des produits (par page)</b>
 
 
 ```shell
@@ -644,28 +659,28 @@ curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1
 ```
 
 <a name="warehouse"/>
-Liste des produits et quantités pour un entrepôt en particulier (par page)
+<b>Liste des produits et quantités pour un entrepôt en particulier (par page)</b>
 
 ```shell
 curl "http://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
 ```
 
 <a name="productID"/>
-Obtenir un produit selon son ID
+<b>Obtenir un produit selon son ID</b>
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
 <a name="warehouseID"/>
-Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier
+<b>Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier</b>
 
 ```shell
 curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
 ```
 
 <a name="productadd"/>
-Ajouter un produit
+<b>Ajouter un produit</b>
 
 
 ```shell
@@ -682,7 +697,7 @@ curl http://votrecompte.vosfactures.fr/products.json \
 ```
 
 <a name="productupdate"/>
-Mettre à jour un produit
+<b>Mettre à jour un produit</b>
 
 ```shell
 curl http://votrecompte.vosfactures.fr/products/333.json  \
@@ -707,7 +722,7 @@ curl http://votrecompte.vosfactures.fr/products/333.json  \
 
 
 <a name="wd1"/>
-Télécharger les documents de stock
+<b>Télécharger les documents de stock</b>
  
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_TOKEN" 
@@ -715,14 +730,14 @@ curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_
 Vous pouvez utiliser les mêmes paramètres que ceux décrits pour les documents de facturation. 
  
 <a name="wd2"/> 
-Obtenir un document de stock par son ID 
+<b>Obtenir un document de stock par son ID </b>
  
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouse_documents/555.json?api_token=API_TOKEN" 
 ``` 
 
 <a name="wd3"/> 
-Créer un bon d'entrée (BE) 
+<b>Créer un bon d'entrée (BE)</b> 
  
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
@@ -745,7 +760,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 ``` 
  
 <a name="wd4"/> 
-Créer un bon de livraison (BL)
+<b>Créer un bon de livraison (BL)</b>
  
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
@@ -768,7 +783,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 ``` 
  
 <a name="wd5"/> 
-Créer un bon d'entrée (BE) pour un contact, département, ou produit existant 
+<b>Créer un bon d'entrée (BE) pour un contact, département, ou produit existant </b>
  
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
@@ -791,7 +806,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 ``` 
  
 <a name="wd6"/>  
-Mettre à jour un document de stock
+<b>Mettre à jour un document de stock</b>
  
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json 
@@ -805,7 +820,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json
 ``` 
  
 <a name="wd7"/>  
-Supprimer un document de stock 
+<b>Supprimer un document de stock</b> 
  
 ```shell 
 curl -X DELETE "https://votrecompte.vosfactures.fr/warehouse_documents/100.json?api_token=API_TOKEN" 
