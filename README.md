@@ -300,13 +300,13 @@ Champ: `discount_kind` - Type de réduction
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
-<b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... (Vous pouvez utiliser les mêmes filtres que ceux du moteur de recherche utilisé pour afficher la liste des documents dans le logiciel).
+<b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche de la liste des documents dans le logiciel. Si aucun filtre n'est indiqué (https://votrecompte.vosfactures.fr/invoices.json?api_token=API_TOKEN), seules les factures de la première page de la liste seront téléchargées. Notez que le nombre de factures par page correspond au nombre choisi dans vos paramètres d'affichage des colonnes (25, 50 ou 100 factures par page).
 
 <a name="downloadclient"/>
 <b>Télécharger les factures d'un client</b>
 
 ```shell
-curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_KLIENTA&api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_CLIENTA&api_token=API_TOKEN
 ```
 
 <a name="downloadid"/>
