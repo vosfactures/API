@@ -301,12 +301,15 @@ curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_toke
 ```
 
 <b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche de la liste des documents dans le logiciel. Si aucun filtre n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). Pour télécharger plus de 25 factures, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
-Exemples:
-Pour obtenir les 50 premiers documents: 
+
+Exemple: Pour obtenir les 50 premiers documents: 
+
 ```shell
 curl "https://votrecompte.vosfactures/invoices.json?api_token=API_TOKEN&per_page=50"
 ```
-Pour obtenir les documents 51 à 100 :  
+
+Exemple: Pour obtenir les documents 51 à 100 :  
+
 ```shell
 curl "https://votrecompte.vosfactures/invoices.json?api_token=API_TOKEN&per_page=50&page=2"
 ```
