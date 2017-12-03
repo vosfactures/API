@@ -30,6 +30,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
        	+ [Obtenir un contact selon son ID](#clientID)
+	+ [Obtenir un contact selon son ID externe](#externalclientID)
 	+ [Ajouter un contact](#addclient)
 	+ [Mettre à jour un contact](#updateclient)
 	+ [Remarque: Champs](#noteclient)	
@@ -103,7 +104,7 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
 
 <b>Exemple</b> - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquez sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json 
+curl https://votrecompte.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
     -H 'Content-Type: application/json'  
     -d '{"api_token": "API_TOKEN",
@@ -397,7 +398,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
 	-H 'Accept: application/json' \ 
 	-H 'Content-Type: application/json' \
 	-d '{"api_token": "API_TOKEN",
@@ -421,7 +422,7 @@ cela signifie que vous avez choisi un niveau de sécurité standard ou élevée 
 <b>Créer une nouvelle facture d'avoir</b>
 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{"api_token": "API_TOKEN",
@@ -515,7 +516,7 @@ curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_tok
 <b>Supprimer une facture</b>
 
 ```shell
-curl -X DELETE "http://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_token=API_TOKEN"
+curl -X DELETE "https://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_token=API_TOKEN"
 ```
 
 <a name="downloadrecurring"/>
@@ -575,11 +576,11 @@ L'API renvoie le champ `token`, grâce auquel il est possible de recevoir les li
 
 Les liens sont sous la forme: 
 
-vers l'aperçu: `http://votrecompte.vosfactures.fr/invoice/{{token}}`
+vers l'aperçu: `https://votrecompte.vosfactures.fr/invoice/{{token}}`
 
-vers le pdf: `http://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
+vers le pdf: `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
-Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `http://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 
 <a name="clients"/>
@@ -590,20 +591,26 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 <b>Télécharger la liste des contacts (par page)</b>
 
 ```shell
-curl "http://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
+curl "https://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
 <a name="clientID"/>
 <b>Obtenir un contact selon son ID</b>
 
 ```shell
-curl "http://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
+curl "https://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
+```
+
+<a name="externalclientID"/>
+<b>Obtenir un contact selon son ID externe</b>
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients.json?external_id=100&api_token=API_TOKEN"
 ```
 
 <a name="addclient"/>
 <b>Ajouter un contact</b>
 
 ```shell
-curl http://votrecompte.vosfactures.fr/clients.json \ 
+curl https://votrecompte.vosfactures.fr/clients.json \ 
 	-H 'Accept: application/json' \  
 	-H 'Content-Type: application/json' \
 	-d '{"api_token": "API_TOKEN",
@@ -628,7 +635,7 @@ curl http://votrecompte.vosfactures.fr/clients.json \
 <b>Mettre à jour un contact</b>
 
 ```shell
-curl http://votrecompte.vosfactures.fr/clients/111.json \ 
+curl https://votrecompte.vosfactures.fr/clients/111.json \ 
 	-X PUT  \
 	-H 'Accept: application/json'  \ 
 	-H 'Content-Type: application/json'  \ 
@@ -668,28 +675,28 @@ curl http://votrecompte.vosfactures.fr/clients/111.json \
 
 
 ```shell
-curl "http://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
+curl "https://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
 <a name="warehouse"/>
 <b>Liste des produits et quantités pour un entrepôt en particulier (par page)</b>
 
 ```shell
-curl "http://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
+curl "https://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
 ```
 
 <a name="productID"/>
 <b>Obtenir un produit selon son ID</b>
 
 ```shell
-curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
+curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
 <a name="warehouseID"/>
 <b>Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier</b>
 
 ```shell
-curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
+curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
 ```
 
 <a name="productadd"/>
@@ -697,7 +704,7 @@ curl "http://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&wa
 
 
 ```shell
-curl http://votrecompte.vosfactures.fr/products.json \ 
+curl https://votrecompte.vosfactures.fr/products.json \ 
 	-H 'Accept: application/json' \  
 	-H 'Content-Type: application/json' \  
 	-d '{"api_token": "API_TOKEN",
@@ -713,7 +720,7 @@ curl http://votrecompte.vosfactures.fr/products.json \
 <b>Mettre à jour un produit</b>
 
 ```shell
-curl http://votrecompte.vosfactures.fr/products/333.json  \
+curl https://votrecompte.vosfactures.fr/products/333.json  \
 	-X PUT \
 	-H 'Accept: application/json' \ 
 	-H 'Content-Type: application/json' \  
@@ -902,18 +909,18 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 ### Liste des Paiements
 
 #### XML
-    curl "http://votrecompte.vosfactures.fr/payments.xml?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/payments.xml?api_token=API_TOKEN"
     
 #### JSON
-    curl "http://votrecompte.vosfactures.fr/payments.json?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/payments.json?api_token=API_TOKEN"
 
 ### Selectionner un paiement selon son ID
 
 #### XML
-    curl "http://votrecompte.vosfactures.fr/payments/100.xml?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/payments/100.xml?api_token=API_TOKEN"
     
 #### JSON
-    curl "http://votrecompte.vosfactures.fr/payment/100.json?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/payment/100.json?api_token=API_TOKEN"
     
 ### Ajouter un nouveau paiement
 
