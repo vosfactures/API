@@ -21,6 +21,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une nouvelle facture d'avoir](#credit)
 	+ [Mettre à jour une facture](#update)
+	+ [Modifier un produit listé sur une facture](#update2)
+	+ [Supprimer un produit listé sur une facture](#update3)
+	+ [Ajouter un produit sur une facture](#update4)
 	+ [Changer l'état d'une facture](#status)
 	+ [Supprimer une facture](#deleteinvoice)
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
@@ -471,6 +474,7 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 	}'
 ```
 
+<a name="update2"/>
 <b>Modifier un produit listé sur une facture</b></br>
 
 Il faut spécifier l'ID du produit. 
@@ -488,9 +492,10 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
     }'
 ```
     
+<a name="update3"/>
 <b>Supprimer un produit listé sur une facture</b></br> 
 
-Il faut spécifier l'ID du produit. 
+Pour supprimer un article sur la facture, entrez l'ID du produit avec le paramètre "_destroy" égal à 1. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/111.json \
@@ -500,10 +505,28 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 	-d '{
 	         "api_token": "API_TOKEN",
                  "invoice": {
-                        "positions":[{"id":ID,"_destroy":1}]
+                        "positions":[{"id":32649087,"_destroy":1}]
               }
 	 }'
 ```   
+
+<a name="update3"/>
+<b>Ajouter un produit sur une facture</b>
+
+Notez que le produit ajouté sera listé en dernier sur le document de facturation. 
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/111.json \
+    -X PUT \
+    -H 'Accept: application/json'  \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "positions": [{"name":"Produit A1", "tax":20, "total_price_gross":10.20, "quantity":1}]
+        }
+    }'
+ ```
 
 <a name="status"/>
 <b>Changer l'état d'une facture</b>
