@@ -693,8 +693,8 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 ## Produits
 
 
-<a name="productslist"/>
-<b>Liste des produits (par page)</b>
+<a name="productlist"/>
+<b>Télécharger la Liste des produits (par page)</b>
 
 
 ```shell
@@ -702,7 +702,7 @@ curl "https://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=
 ```
 
 <a name="warehouse"/>
-<b>Liste des produits et quantités pour un entrepôt en particulier (par page)</b>
+<b>Télécharger la liste des produits et quantités pour un entrepôt en particulier (par page)</b>
 
 ```shell
 curl "https://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
