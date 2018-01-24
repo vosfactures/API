@@ -136,7 +136,6 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_name" : "Ma Société" - Nom du département vendeur. Si ce champ n'est pas renseigné, le département principal est sélectionné par défaut. Préférez plutôt "department_id". Si vous utilisez toutefois "seller_name", le système tentera d'identifier le département portant ce nom, sinon il créera un nouveau département. 
 "seller_tax_no" : "FR5252445767" - numéro d'identification fiscale du vendeur (ex: n° TVA)
 "seller_tax_no_kind" : "", - initulé du numéro d'identification du vendeur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
-+"seller_bank_account" : "24 1140 1977 0000 5921 7200 1001", - konto bankowe sprzedawcy
 "seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
 "seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
 "seller_post_code" : "75007", code postal du vendeur
@@ -404,7 +403,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <b>Remarque importante</b></br>
-Si vous faites des essais, pensez à utiliser le paramètre "test" (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que document "test" (au niveau du numéro et de la présentation). 
+Si vous faites des essais, pensez à utiliser le paramètre "test" (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation). 
 
 <a name="create2"/>
 <b>Créer une nouvelle facture (version rapide)</b></br>
