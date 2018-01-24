@@ -5,7 +5,7 @@ Intégrer votre site internet ou une application externe avec le logiciel de fac
 
 
 
-Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autre), produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
+Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autre documents de facturation: devis, bon de commande ...), produits et contacts sur votre compte depuis des applications externes. Ainsi, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
 
 ## Menu
 + [Code API](#token)
@@ -129,7 +129,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "income" : "1" - revenu (1) ou dépense (0)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
-"sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte). 
+"sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte).
+"test" : "true" ou "false" - document test ou non (en savoir plus ici: http://aide.vosfactures.fr/15399051-Cr-er-un-Document-ou-Paiement-Test) 
 "category_id" : "" - ID de la catégorie
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Le système affichera alors automatiquement les coordonnées du département vendeur (nom, adresse...) sur le document (les autres champs "seller_" ne sont plus nécessaires). 
 "seller_name" : "Ma Société" - Nom du département vendeur. Si ce champ n'est pas renseigné, le département principal est sélectionné par défaut. Préférez plutôt "department_id". Si vous utilisez toutefois "seller_name", le système tentera d'identifier le département portant ce nom, sinon il créera un nouveau département. 
@@ -230,6 +231,13 @@ Champ: `kind`- Type du document
 	
 	
 	
+```
+
+Champ: `test` - Document Test 
+```shell
+	"true" - document test 
+	"false" - document non test
+
 ```
 
 Champ: `lang`
@@ -394,6 +402,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 		}
 	}'
 ```
+
+<b>Remarque importante</b></br>
+Si vous faites des essais, pensez à utiliser le paramètre "test" (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que document "test" (au niveau du numéro et de la présentation). 
 
 <a name="create2"/>
 <b>Créer une nouvelle facture (version rapide)</b></br>
