@@ -175,7 +175,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_first_name" : "Prénom" de l'acheteur 
 "buyer_last_name" : "Nom" de l'acheteur 
 "buyer_company": "1" - si le contact (acheteur) est un professionnel, "0" si c'est un particulier
-"delivery_adress" : "" - contenu du champ "Adresse supplémentaire" du contact acheteur
+"delivery_address" : "" - contenu du champ "Adresse supplémentaire" du contact acheteur
+"use_delivery_address": "true" ou "false" - afficher ou non le champ "Adresse supplémentaire" sur le document
 "description" : "" - Informations spécifiques 
 "paid_date" : "" - Date du paiement ("Paiement reçu le")
 "currency" : "EUR" - devise
