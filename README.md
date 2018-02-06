@@ -151,7 +151,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_name" : "Client Intel" - nom de l'acheteur
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
-"disable_tax_no_validation" : "", 
+"disable_tax_no_validation" : "",
+"use_moss":"true" - document sous régime Moss (true) ou non (false). En savoir plus ici: http://vosfactures.fr/tva-moss
 "buyer_post_code" : "06000", code postal de l'acheteur
 "buyer_city" : "Nice" - ville de l'acheteur
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue de l'acheteur 
