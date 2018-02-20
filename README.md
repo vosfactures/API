@@ -29,7 +29,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
-+ [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url)  
++ [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
++ [Département vendeur - champs](#department)
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
        	+ [Obtenir un contact selon son ID](#clientID)
@@ -430,7 +431,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 <b>REMARQUE</b>
 Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
-cela signifie que vous avez choisi un niveau de sécurité standard ou élevée contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
+cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
 
 <a name="credit"/>
 
@@ -617,6 +618,59 @@ vers le pdf: `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
+
+<a name="department"/>
+
+## Département vendeur - champs
+
+Vous pouvez créer votre département (fiche entreprise) soit lors de la création d'un document (voir plus bas), soit directement : 
+
+```shell
+curl http://votrecompte.vosfactures.fr/departments.json   
+        -H 'Accept: application/json' \
+	-H 'Content-Type: application/json' \
+	-d '{
+    		"api_token": "API_TOKEN",
+		"department": {    
+			"name": "Entreprise ABC",    "shortcut": "ABC"
+		}
+	}'  
+```
+Voici les champs que vous pouvez utiliser: 
+```shell
+
+"name" : "Entreprise ABC" - Nom du département vendeur 
+"shortcut" : "ABC" - Nom d'usage du département (interne)
+"kind":"SARL" - Forme juridique
+"main":true - Département principal (true) ou non (false) (en cas de multidépartements)
+"tax_no_kind":"" - Titre du type de n° d'immatriculation (ex: "TVA", "Siren" ...) - par défaut TVA
+"tax_no" :"" - N° d'immatriculation - par défaut TVA
+"post_code" : "75022" - Code Postal
+"city" : "Paris" - Ville 
+"street" : "32 Rue du commerce" - N° et nom de rue
+"country" : "France" - Pays
+"person" : "Nom vendeur" - Nom du vendeur (en savoir plus ici:http://aide.vosfactures.fr/468616-Nom-du-vendeur)
+"email" : "abc@compagnie.com"
+"phone":"" - Téléphone 
+"mobile_phone":"" - Téléphone Portable
+"www":"" - site internet
+"fax":"" - Fax
+"bank":"" - Domiciliation bancaire
+"bank_account":"" - IBAN (ou n° de compte bancaire)
+"bank_swift":"" - BIC
+"bank_account_currency" : "EUR" - devise du compte bancaire
+"invoice_lang" : "fr" - Langue des documents par défaut (pour bilingue indiquez par ex "fr/de")
+"invoice_description" : "" - Contenu par défaut du champ 'Informations spécifiques' des documents
+"default_tax":"20" - Taux de taxe par défaut (pour un taux de taxe inactif indiquez "disabled")
+"invoice_template_id" : 2400 - ID du format par défaut (en cas de multidépartements)
+"cash_init_state" : ""150.0" - Total initial des espèces détenues
+"own_footer" : false - Bas de page personnalisé (true) ou standard (false). Si standard, indiquez les champs correspondants
+"footer_content" : "" - Contenu du bas de page personnalisé
+"use_pattern" : false - Numérotation indépendante des documents de ce département (en cas de multi-départements). Si true, indiquez les champs correspondants (ex: "invoice_pattern":"Fyyyy.mm.nr" pour les factures, "pattern_estimate":"FA-yymm-nr-m" pour les devis etc ...)
+"own_email_settings" : false - Paramétrage indépendant du système d'envoi des emails (en cas de multi-départements). Si true, indiquez les champs correspondants ("email_from":"","email_cc":"","email_subject":"","email_template":null,"email_template_kind":"default","email_pdf":true,"own_overdue_email_settings":false,"overdue_email_subject":"","overdue_email_template":null,"overdue_email_template_kind":"default","overdue_email_pdf":true)
+"restrict_warehouses" : false - Option "Restriction des entrepôts" activée (true) ou désactivée (false)
+"warehouse_id" : null - ID des entrepôts en cas d'option "Restriction des entrepôts" activée
+```
 
 <a name="clients"/>
 
