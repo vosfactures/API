@@ -19,6 +19,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer une nouvelle facture](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
+	+ [Créer une nouvelle facture avec réduction](#create3)
 	+ [Créer une nouvelle facture d'avoir](#credit)
 	+ [Mettre à jour une facture](#update)
 	+ [Modifier un produit listé sur une facture](#update2)
@@ -165,6 +166,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "additional_info_desc" : "" - contenu de la colonne aditionnelle (intitulé à définir dans Paramètres du compte > Options par défaut)
 "additional_invoice_field" : "" - contenu du champ additionnel (intitulé à définir dans Paramètres du compte > Options par défaut)
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
+"discount_kind": ""- type de réduction: "amount" (pour un montant ttc), "percent_unit" (pour un % sur le prix unitaire), ou  "percent_total" (pour un % calculé sur le prix total)
 "payment_type" : "chèque" - mode de règlement 
 "payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
@@ -195,8 +197,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"name" : "Produit A" - nom du produit 
    		"code" : "" - Référence du produit
    		"additional_info" : "" - contenu de la colonne additionnelle
-   		"discount_percent" : "" - % de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'pourcentage du prix unitaire net')
-   		"discount" : "", - montant de la réduction (remarque: afin de pouvoir appliquer la réduction, il faut au préalable donner à "show_discount" la valeur de 1 et vérfier si dans les Paramètres du compte > Options par défaut, l'option choisie sous le champ 'Comment calculer la réduction' est 'Montant (TTC)')
+   		"discount_percent" : "" - % de la réduction
+   		"discount" : "", - montant ttc de la réduction
    		"quantity" : "1" - quantité 
    		"quantity_unit" : "kg" - unité 
    		"price_net" : "59,00", - prix unitaire HT (calculé automatiquement si non indiqué)
@@ -395,7 +397,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 			"payment_to": "2013-01-23",
 			"seller_name": "Société Chose", 
 			"seller_tax_no": "FR5252445767", 
-			"buyer_name": "Client Intel",
+			"buyer_name": "Client Untel",
 			"buyer_tax_no": "FR45362780010",
 			"positions":[
 				{"name":"Produit A1", "tax":23, "total_price_gross":10.23, "quantity":1},
@@ -432,6 +434,41 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
+
+<a name="create3"/>
+
+<b>Créer une nouvelle facture avec réduction</b>
+
+Il faut indiquer dans la partie document l'affichage ("show_discount") et le type ("discount_kind") de réduction, et dans la partie produit la valeur ("discount") de la réduction. 
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+		"invoice": {
+			 "kind":"vat",
+			 "number": null,
+			 "issue_date": "2018-02-22",
+			 "payment_to": "2018-03-01",   
+			 "buyer_name": "Client Untel",  
+			 "discount_kind":"amount",
+			 "show_discount":true,
+			 "positions":[
+			 	{"name":"Produkt A1",
+				"quantity":1,
+				"tax":23,
+				"total_price_gross":10.23,
+				 "discount":"5.23"
+				 },
+				{"name":"Produkt A2",
+				"quantity":2,
+				"tax":0,
+				"total_price_gross":50,
+				}   
+			     ]   
+		}}'
+```
 
 <a name="credit"/>
 
