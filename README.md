@@ -45,7 +45,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un produit par son ID](#productID)
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Ajouter un produit](#productadd)
-	+ [Mettre à jour un produit](#productupdate)
+	+ [Mettre à jour un produit](#productupdate) 
+	+ [Remarque: Champ](#noteproduct)
 + [Documents de stock](#warehouse_documents) 
 	+ [Télécharger les documents de stock](#wd1) 
 	+ [Obtenir un document de stock par son ID](#wd2) 
@@ -696,6 +697,7 @@ Voici les champs que vous pouvez utiliser:
 "bank_account":"" - IBAN (ou n° de compte bancaire)
 "bank_swift":"" - BIC
 "bank_account_currency" : "EUR" - devise du compte bancaire
+"bank_accountancy_account":"" - compte comptable banque (de la fonction "Plan Comptable": https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables)
 "invoice_lang" : "fr" - Langue des documents par défaut (pour bilingue indiquez par ex "fr/de")
 "invoice_description" : "" - Contenu par défaut du champ 'Informations spécifiques' des documents
 "default_tax":"20" - Taux de taxe par défaut (pour un taux de taxe inactif indiquez "disabled")
@@ -788,6 +790,7 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 ```shell
 "note" : description additionnelle
 "payment_to_kind" : Date limite de règlement par défaut
+"accounting_id" : Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
 ```
 
 
@@ -860,6 +863,15 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 ```
 
 <b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
+
+
+<a name="noteproduct"/>
+<b>Remarque: Champs fiche produit</b>
+
+```shell
+"accounting_id" : Compte comptable (produits) (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables )
+
+```
 
 
 <a name="warehouse_documents"/>
