@@ -689,15 +689,15 @@ Voici les champs que vous pouvez utiliser:
 "country" : "France" - Pays
 "person" : "Nom vendeur" - Nom du vendeur (en savoir plus ici:http://aide.vosfactures.fr/468616-Nom-du-vendeur)
 "email" : "abc@compagnie.com"
-"phone":"" - Téléphone 
-"mobile_phone":"" - Téléphone Portable
-"www":"" - site internet
-"fax":"" - Fax
-"bank":"" - Domiciliation bancaire
-"bank_account":"" - IBAN (ou n° de compte bancaire)
-"bank_swift":"" - BIC
+"phone" : "" - Téléphone 
+"mobile_phone" : "" - Téléphone Portable
+"www" : "" - site internet
+"fax" : "" - Fax
+"bank" : "" - Domiciliation bancaire
+"bank_account" : "" - IBAN (ou n° de compte bancaire)
+"bank_swift" :"" - BIC
 "bank_account_currency" : "EUR" - devise du compte bancaire
-"bank_accountancy_account":"" - compte comptable banque (de la fonction "Plan Comptable": https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables)
+"bank_accountancy_account" : "" - compte comptable banque (de la fonction "Plan Comptable": https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables)
 "invoice_lang" : "fr" - Langue des documents par défaut (pour bilingue indiquez par ex "fr/de")
 "invoice_description" : "" - Contenu par défaut du champ 'Informations spécifiques' des documents
 "default_tax":"20" - Taux de taxe par défaut (pour un taux de taxe inactif indiquez "disabled")
@@ -743,8 +743,8 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 	-H 'Content-Type: application/json' \
 	-d '{"api_token": "API_TOKEN",
 		"client": {
-			"name": "Client1",
-			"tax_no": "FR5252445333",
+			"name" : "Client1",
+			"tax_no" : "FR5252445333",
 			"bank" : "banque1",
 			"bank_account" : "bank_account1",
 			"city" : "city1",
@@ -788,9 +788,10 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 <b>Remarque: Champs fiche contact</b>
 
 ```shell
-"note" : description additionnelle
-"payment_to_kind" : Date limite de règlement par défaut
-"accounting_id" : Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
+"note":"" -  description additionnelle
+"payment_to_kind":"" -  Date limite de règlement par défaut
+"accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
+"accounting_id2":"" -  Compte comptable auxiliaire
 ```
 
 
@@ -869,8 +870,12 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 <b>Remarque: Champs fiche produit</b>
 
 ```shell
-"accounting_id" : Compte comptable (produits) (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables )
-
+"accounting_id" : "" - Compte comptable (produits) (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables )
+"accounting_id2" : "" - Compte comptable (charges) 
+"accounting_tax_code" : "" -  Compte comptable TVA (vente)
+"accounting_tax_code_exp" : "" - Compte comptable TVA (achat)
+"accounting_activity_code" : "" - Code Activité
+"accounting_sheet_code" : "" - Code Journal
 ```
 
 
