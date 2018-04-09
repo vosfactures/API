@@ -409,7 +409,10 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 	}'
 ```
 
-<b>Remarque importante</b></br>
+<b>Remarques importantes</b></br>
+<b>Coordonnées vendeur</b>
+Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre "department_id"(et non "seller_name").</br>
+<b>Documents Tests</b>
 Si vous faites des essais, pensez à utiliser le paramètre "test" (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation). 
 
 <a name="create2"/>
