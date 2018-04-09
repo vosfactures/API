@@ -489,6 +489,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
                 "quantity":-1,
                 "total_price_gross":"-10",
                 "tax":"23",
+		"kind":"correction"
                 "correction_before_attributes": {
                     "name":"Produit A1",
                     "quantity":"2",
