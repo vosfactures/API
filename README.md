@@ -217,6 +217,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 }
 
 ```
+<b>Remarque:</b> Le paramètre "calculating_strategy" correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > PAramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
 
 <b>Valeurs des Champs</b>
 
