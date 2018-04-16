@@ -141,6 +141,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_tax_no_kind" : "", - initulé du numéro d'identification du vendeur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
 "seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
 "seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
+"seller_bank_swift" : "" - code bancaire BIC. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"seller_bank_swift":"BIC"} lors de la création d'un document de facturation. 
 "seller_post_code" : "75007", code postal du vendeur
 "seller_city" : "Paris" - ville du vendeur
 "seller_street" : "21 Rue des Mimosas" - numéro et nom de rue du vendeur
@@ -152,6 +153,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
 "client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
 "buyer_name" : "Client Intel" - nom de l'acheteur
+"buyer_title" : Civilité de l'acheteur. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
 "disable_tax_no_validation" : "",
@@ -164,14 +166,16 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_email" : "", email de l'acheteur
 "buyer_phone" : "", numéro de tel de l'acheteur
 "additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle
-"additional_info_desc" : "" - contenu de la colonne aditionnelle (intitulé à définir dans Paramètres du compte > Options par défaut)
-"additional_invoice_field" : "" - contenu du champ additionnel (intitulé à définir dans Paramètres du compte > Options par défaut)
+"additional_info_desc" : "" - contenu de la colonne aditionnelle (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut)
+"additional_invoice_field" : "" - contenu du champ additionnel (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut). Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"additional_invoice_field":"contenu"} lors de la création d'un document de facturation. 
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "discount_kind": ""- type de réduction: "amount" (pour un montant ttc), "percent_unit" (pour un % sur le prix unitaire), ou  "percent_total" (pour un % calculé sur le prix total)
 "payment_type" : "chèque" - mode de règlement 
 "payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
-"sum_recovery" : "0" - afficher (1) ou non (0) la mention "Indemnité forfaitaire de recouvrement". 
+"sum_recovery" : "0" - afficher (1) ou non (0) la mention "Indemnité forfaitaire de recouvrement". Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"sum_recovery":"1"} lors de la création d'un document de facturation
+"interest_rate" : "" - Taux de pénalité en cas de retard de paiement (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"interest_rate":""} lors de la création d'un document de facturation)
+"advanced_payment_discount": "" - Escompte en % (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"advanced_payment_discount":"10"} lors de la création d'un document de facturation)
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
 "oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
@@ -208,7 +212,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
                 "kind":"text_separator" - pour insérer une ligne de texte, par ex: {"name":"texte", "kind":"text_separator"}
-"hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe)
+"hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe) (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"hide_tax":"1"} lors de la création d'un document de facturation)
 "calculating_strategy" => 
 {
   "position": "default" ou "keep_gross" - Comment se calcule le total de chaque ligne 
