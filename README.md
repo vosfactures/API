@@ -130,6 +130,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
 "kind" : "vat" - type du document ("vat" pour facture, "estimate" pour devis, "proforma" pour facture proforma, "correction" pour avoir, "client_order" pour bon de commande de client, "receipt" pour reçu, "advance" pour facture d'acompte, "final" pour facture de solde, "invoice_other" pour autre type de document, "kp" pour bon d'entrée de caisse,"kw" pour bon de sortie de caisse)
 "income" : "1" - revenu (1) ou dépense (0)
+"user_id" : "" - numéro ID de l'utilisateur ayant créé le document (en cas de compte Multi-utilisateurs : https://aide.vosfactures.fr/2703898-Multi-utilisateurs-cr-ation-fonctions-et-restrictions)
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
 "sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte).
