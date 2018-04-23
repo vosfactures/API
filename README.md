@@ -200,6 +200,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "positions":
    		"product_id" : "1" - ID du produit
    		"name" : "Produit A" - nom du produit 
+		"description" : "" - description du produit
    		"code" : "" - Référence du produit
    		"additional_info" : "" - contenu de la colonne additionnelle
    		"discount_percent" : "" - % de la réduction
