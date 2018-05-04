@@ -156,7 +156,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_name" : "Client Intel" - nom de l'acheteur
 "buyer_title" : Civilité de l'acheteur. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
-"buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
+"buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "disable_tax_no_validation" : "",
 "use_moss":"true" - document sous régime Moss (true) ou non (false). En savoir plus ici: http://vosfactures.fr/tva-moss
 "buyer_post_code" : "06000", code postal de l'acheteur
