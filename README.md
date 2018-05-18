@@ -195,7 +195,6 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "title" : "" - Objet (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"title":"contenu de l'objet"} lors de la création d'un document de facturation). 
 "internal_note" : "" - Notes privées  
 "invoice_template_id" : "1" - format d'impression
-"description_footer" : "" - Bas de page 
 "description_long" : "" - Texte additionnel (imprimé sur la page suivante) 
 "from_invoice_id" : "" - ID du document de référence depuis lequel le document a été généré (utile par ex quand une facture est générée depuis un devis)
 "positions":
@@ -714,8 +713,7 @@ Voici les champs que vous pouvez utiliser:
 "default_tax":"20" - Taux de taxe par défaut (pour un taux de taxe inactif indiquez "disabled")
 "invoice_template_id" : 2400 - ID du format par défaut (en cas de multidépartements)
 "cash_init_state" : ""150.0" - Total initial des espèces détenues
-"own_footer" : false - Bas de page personnalisé (true) ou standard (false). Si standard, indiquez les champs correspondants
-"footer_content" : "" - Contenu du bas de page personnalisé
+"footer_content" : "" - Contenu du bas de page personnalisé. Il convient d'envoyer également le paramètre "footer_kind": "own".
 "use_pattern" : false - Numérotation indépendante des documents de ce département (en cas de multi-départements). Si true, indiquez les champs correspondants (ex: "invoice_pattern":"Fyyyy.mm.nr" pour les factures, "pattern_estimate":"FA-yymm-nr-m" pour les devis etc ...)
 "own_email_settings" : false - Paramétrage indépendant du système d'envoi des emails (en cas de multi-départements). Si true, indiquez les champs correspondants ("email_from":"","email_cc":"","email_subject":"","email_template":null,"email_template_kind":"default","email_pdf":true,"own_overdue_email_settings":false,"overdue_email_subject":"","overdue_email_template":null,"overdue_email_template_kind":"default","overdue_email_pdf":true)
 "restrict_warehouses" : false - Option "Restriction des entrepôts" activée (true) ou désactivée (false)
