@@ -47,6 +47,12 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Ajouter un produit](#productadd)
 	+ [Mettre à jour un produit](#productupdate) 
 	+ [Remarque: Champ](#noteproduct)
++ [Catégories](#categorie)
+	+ [Liste des catégories](#categorielist)
+	+ [Télécharger une catégorie sélectionnée par ID](#categorieID)
+	+ [Ajouter une nouvelle catégorie](#categorienew)
+	+ [Mettre à jour une catégorie](#categorieupdate)
+	+ [Supprimer la catégorie avec l'ID donné](#categoriedelete)
 + [Documents de stock](#warehouse_documents) 
 	+ [Télécharger les documents de stock](#wd1) 
 	+ [Obtenir un document de stock par son ID](#wd2) 
@@ -54,8 +60,15 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un bon de livraison (BL)](#wd4) 
 	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
 	+ [Mettre à jour un document de stock](#wd6) 
-	+ [Supprimer un document de stock](#wd7) 	
+	+ [Supprimer un document de stock](#wd7) 
++ [Entrepôts](#warehouse)
+	+ [Liste des entrepôts](#warehouselist)
+	+[Téléchargement de l'entrepôt sélectionné par ID](#warehouseID)
+	+[Ajouter un nouvel entrepôt](#warehousenew)
+	+[Mettre à jour un entrepôt](#warehouseupdate)
+	+[Suppression d'un entrepôt sélectionne par ID](#warehousedelete)
 + [Paiements](#paiements)
++ [Création de compte à partir d'application tierce](#accountsystem)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
   
@@ -885,6 +898,60 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 "accounting_tax_code_exp" : "" - Compte comptable TVA (achat)
 "accounting_activity_code" : "" - Code Activité
 "accounting_sheet_code" : "" - Code Journal
+```
+<a name="categorie"/>
+	 
+## Catégories
+
+<a name="categorielist"/>
+<b>Liste des catégories</b>
+
+```shell
+curl " https://votrecompte.vosfactures.fr/categories.json?api_token=API_TOKEN "
+```
+
+<a name="categorieID"/>
+<b>Télécharger une catégorie sélectionnée par ID</b>
+
+```shell
+curl " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
+```
+
+<a name="categorienew"/>
+<b>Ajouter une nouvelle catégorie </b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/categories.json 
+				-H 'Accept: application/json'  
+				-H 'Content-Type: application/json'  
+				-d '{
+				"api_token": "API_TOKEN",
+				"category": {
+					"name":"catégorie A", 
+					"description": null
+				}}'
+```
+
+<a name="categorieupdate"/>
+<b> Mettre à jour une catégorie </b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/categories/100.json 
+				-X PUT
+				-H 'Accept: application/json'  
+				-H 'Content-Type: application/json'  
+				-d '{
+				"api_token": "API_TOKEN",
+				"category": {
+					"name":"catégorie A", 
+					"description": "description nouvelle"
+				}}'
+```
+<a name="categoriedelete"/>
+<b>Supprimer la catégorie avec l'ID donné </b>
+
+```shell
+curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
 
