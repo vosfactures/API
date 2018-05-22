@@ -63,10 +63,10 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Supprimer un document de stock](#wd7) 
 + [Entrepôts](#warehouse)
 	+ [Liste des entrepôts](#warehouselist)
-	+[Téléchargement de l'entrepôt sélectionné par ID](#warehouseID)
-	+[Ajouter un nouvel entrepôt](#warehousenew)
-	+[Mettre à jour un entrepôt](#warehouseupdate)
-	+[Suppression d'un entrepôt sélectionne par ID](#warehousedelete)
+	+ [Téléchargement de l'entrepôt sélectionné par ID](#warehouseID)
+	+ [Ajouter un nouvel entrepôt](#warehousenew)
+	+ [Mettre à jour un entrepôt](#warehouseupdate)
+	+ [Supprimer un entrepôt sélectionné par ID](#warehousedelete)
 + [Paiements](#paiements)
 + [Création de compte à partir d'application tierce](#accountsystem)
 + [Exemples : CURL, PHP, Ruby](#exemples)
@@ -1065,6 +1065,62 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json
 curl -X DELETE "https://votrecompte.vosfactures.fr/warehouse_documents/100.json?api_token=API_TOKEN" 
 ``` 
 
+<a name="warehouse"/>  
+<b>Entrepôts</b>
+
+<a name="warehouselist"/>
+<b>Liste des entrepôts</b>
+
+```shell 
+curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
+``` 
+
+<a name="warehouseID"/>
+<b>Téléchargement de l'entrepôt sélectionné par ID</b>
+
+```shell 
+curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
+``` 
+
+<a name="warehousenew"/>
+<b>Ajouter un nouvel entrepôt</b>
+
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouses.json 
+				-H 'Accept: application/json'  
+				-H 'Content-Type: application/json'  
+				-d '{
+				"api_token": "API_TOKEN",
+				"warehouse": {
+					"name":"Entrepôt A", 
+					"kind": null,
+					"description": null
+				}}'
+``` 
+
+<a name="warehouseupdate"/>
+<b>Mettre à jour un entrepôt</b>
+	
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouses/100.json 
+				-X PUT
+				-H 'Accept: application/json'  
+				-H 'Content-Type: application/json'  
+				-d '{
+				"api_token": "API_TOKEN",
+				"warehouse": {
+					"name":Entrepôt A", 
+					"kind": null,
+					"description": "nouvelle description"
+				}}'
+``` 
+	
+<a name="warehousedelete"/>
+<b>Supprimer un entrepôt sélectionné par ID</b>
+
+```shell 
+curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
+``` 
 
 
 <a name="paiements"/>
