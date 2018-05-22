@@ -1263,6 +1263,75 @@ curl #{domain}/payments.json
 	     }'
 ```
  
+<a name="accountsystem"/>
+<b>Création de compte à partir d'application tierce</b>
+
+C'est une option utile pour les utilisateurs ayant une application tierce, et qui souhaitent offrir à leurs clients une solution de facturation, qui peuvent via l'API créer et configurer des comptes de facturation sur VosFactures à partir de leur application (exemple: site e-commerce en ligne, systèmes de réservation, etc...). 
+
+Un client sur le portail de l'application tierce de l'utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer des comptes directement depuis vosfactures.fr)
+
+
+
+<b>Création d'un nouveau compte </b>
+Les champs ne sont pas requis: user.login, user.from_partner, user, company. 
+
+```shell
+curl https://votrecompte.vosfactures.fr/account.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+            "api_token": "API_TOKEN",
+            "account": {
+                "prefix": "ABC"
+            },
+            "user": {
+                "login": "identifiantABC",
+                "email": "email@abc.com",
+                "password": "motdepasseABC",
+                "from_partner": "PARTNER_CODE"
+            },
+            "company": {
+                "name": "Société ABC",
+                "tax_no": "FR5252445700",
+                "post_code": "06000",
+                "city": "Nice",
+                "street": "Rue de la Joie",
+                "person": "Julie Durand",
+                "bank": "Crédit Niçois",
+                "bank_account": "111222333444555666111"
+            }
+        }'
+```
+
+
+<b>Après avoir créé le nouveau compte :</b>
+
+
+```shell
+{
+	"prefix":"ABC", - préfixe du compte créé (notez qu'il peut être différent de celui voulu lorsqu'un compte avec le même préfixe existe déjà)
+	"api_token":"62YPJfIekoo111111", - code API du compte créé
+	"url":"https://ABC.vosfactures.fr", - url du compte créé
+	"login":"identifiantABC", - identifiant de l'utilisateur (notez qu'il peut être différent de celui voulu lorsqu'un utilisateur avec le même identifiant existe déjà)
+	"email":"email@abc.com"
+}
+```
+
+<b>Autres champs disponibles lors de la création d'un nouveau compte (utile pour l'intégration)</b>
+
+```shell
+	"account": {
+		"prefix": "ABC",
+		"integration_fast_login": true - permet la connexion automatique de vos utilisateurs dans VosFactures
+		"integration_logout_url": "https://votresite.com/" - vous permet de renvoyer vos utilisateurs sur votre site après la déconnexion des utilisateurs de VosFactures
+	}
+```
+Obtenir des informations sur le compte:
+
+```shell
+curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN"
+```
+
 
 <a name="exemples"/>
 
