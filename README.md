@@ -610,8 +610,8 @@ curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_tok
 ```
 
 <b>Remarque:Documents "Exportés"</b>
-En terme de suivi comptable, vous avez la possibilité d'afficher la colonne" Exporté" depuis la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export. L'état "exporté" d'un document est modifié automatiquemnt par le système après l'export. Toutefois vous pouvez forcer cet état en envoyant le paramètre: "accounting_status" : "exported"
-</br>P.S: Depuis l'aperçu du document, dans l'encadré "suivi du document" il y a aura la trace de l'activité "Modification" (sans forcément écrit "exporté") avec la date etl'heure.  
+ En terme de suivi comptable, vous avez la possibilité d'afficher la colonne" Exporté" sur la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export - son état "exporté" étant mis à jour automatiquemnt par le système après un export. Toutefois vous pouvez forcer cet état en envoyant le paramètre :</br> "accounting_status" : "exported
+</br>P.S: Depuis l'aperçu du document, dans l'encadré "suivi du document" il y a aura la trace de l'activité "Modification" (sans forcément écrit "exporté") avec la date et l'heure.  
 
 <a name="deleteinvoice"/>
 <b>Supprimer une facture</b>
