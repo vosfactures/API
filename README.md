@@ -166,7 +166,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_phone" : "" - numéro de tel du vendeur
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
 "client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
-"buyer_name" : "Client Intel" - nom de l'acheteur
+"buyer_name" : "Client Untel" - nom de l'acheteur
 "buyer_title" : Civilité de l'acheteur. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
@@ -608,6 +608,10 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
 ```
+
+<b>Remarque:Documents "Exportés"</b>
+En terme de suivi comptable, vous avez la possibilité d'afficher la colonne" Exporté" depuis la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export. L'état "exporté" d'un document est modifié automatiquemnt par le système après l'export. Toutefois vous pouvez forcer cet état en envoyant le paramètre: "accounting_status" : "exported"
+</br>P.S: Depuis l'aperçu du document, dans l'encadré "suivi du document" il y a aura la trace de l'activité "Modification" (sans forcément écrit "exporté") avec la date etl'heure.  
 
 <a name="deleteinvoice"/>
 <b>Supprimer une facture</b>
