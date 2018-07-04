@@ -893,7 +893,8 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 
 
 <a name="noteproduct"/>
-<b>Remarque: Champs fiche produit</b>
+<b>Remarques</b></br>
+<b>Champs fiche produit</b>
 
 ```shell
 "accounting_id" : "" - Compte comptable (produits) (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables )
@@ -903,6 +904,13 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 "accounting_activity_code" : "" - Code Activité
 "accounting_sheet_code" : "" - Code Journal
 ```
+
+<b>Filtres</b>
+```shell
+"disabled" pour rechercher les produits inactifs, ex: 
+curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token=API_TOKEN&page=1"
+```
+
 <a name="categorie"/>
 	 
 ## Catégories
