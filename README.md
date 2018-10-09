@@ -37,6 +37,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger la liste des contacts](#client)
        	+ [Obtenir un contact selon son ID](#clientID)
 	+ [Obtenir un contact selon le "Réf/code client"](#externalclientID)
+	+ [Obtenir un contact selon son N° d'identification fiscale](#clienttax)
 	+ [Ajouter un contact](#addclient)
 	+ [Mettre à jour un contact](#updateclient)
 	+ [Remarque: Champs](#noteclient)	
@@ -766,9 +767,18 @@ curl "https://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKE
 
 <a name="externalclientID"/>
 <b>Obtenir un contact selon son "Réf/code client"</b>
+
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?external_id=100&api_token=API_TOKEN"
 ```
+
+<a name="clienttax"/>
+<b>Obtenir un contact selon son N° d'identification fiscale</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients.json?tax_no=100&api_token=API_TOKEN"
+```
+
 
 <a name="addclient"/>
 <b>Ajouter un contact</b>
