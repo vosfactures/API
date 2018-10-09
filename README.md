@@ -633,14 +633,16 @@ curl -X DELETE "https://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_
 
 <a name="downloadrecurring"/>
 <b>Télécharger la liste des récurrences</b>
+
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 ```
 
-<a name="createrecurring"/> 
+<a name="createrecurring"/>
 <b>Créer une nouvelle récurrence</b>
 
 Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
+
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json \
     -H 'Accept: application/json' \
@@ -657,6 +659,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
             "end_date": "null"
         }}'
 ```
+
 <a name="updaterecurring"/>
 <b>Mettre à jour une récurrence existante</b> (ex: changement de la date de la prochaine facture)
 
