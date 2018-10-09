@@ -14,7 +14,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ [Télécharger la liste de factures du mois en cours](#download)    
 	+ [Télécharger les factures d'un client](#downloadclient)
-	+ [Télécharger les factures par numéro d'ID](#downloadid)
+	+ [Télécharger une facture par son numéro d'ID](#downloadid)
+	+ [Télécharger une facture par son numéro](#downloadnr)
 	+ [Télécharger sous format PDF](#downloadpdf)
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer une nouvelle facture](#create)
@@ -364,6 +365,15 @@ curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_CLIENTA&api_t
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
+
+<a name="downloadnr"/>
+<b>Télécharger une facture par son numéro</b>
+
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json?number=25&api_token=API_TOKEN
+```
+
 
 <a name="downloadpdf"/>
 <b>Télécharger une facture sous format PDF</b>
