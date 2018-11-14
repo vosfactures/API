@@ -17,6 +17,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger une facture par son numéro d'ID](#downloadid)
 	+ [Télécharger une facture par son numéro](#downloadnr)
 	+ [Télécharger sous format PDF](#downloadpdf)
+	+ [Remarques](#notedoc)
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer une nouvelle facture](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
@@ -390,8 +391,9 @@ Autres options PDF:
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
-<b>Remarques</b>: 
-<b>le paramètre "payment_url"</b> vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
+<a name="notedoc"/>
+<b>Remarques</b>:<br> 
+<b>le paramètre "payment_url"</b> vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).<br> 
 <b>La variable "products-margin"</b> vous est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document. 
 
 <a name="send"/>
