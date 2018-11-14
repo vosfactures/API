@@ -237,7 +237,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 }
 
 ```
-<b>Remarque:</b> Le paramètre "calculating_strategy" correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > PAramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
+<b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > PAramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
 
 <b>Valeurs des Champs</b>
 
@@ -338,7 +338,7 @@ Champ: `discount_kind` - Type de réduction
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
 ```
 
-<b>REMARQUE</b>: Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche de la liste des documents dans le logiciel. Si aucun filtre n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). Pour télécharger plus de 25 factures, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
+<b>Remarque: Des paramètres additionnels</b> peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche de la liste des documents dans le logiciel. Si aucun filtre n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). Pour télécharger plus de 25 factures, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
 
 Exemple: Pour obtenir les 50 premiers documents: 
 
@@ -390,7 +390,9 @@ Autres options PDF:
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
-Remarque: la variable "payment_url" vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
+<b>Remarques</b>: 
+<b>le paramètre "payment_url"</b> vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne). 
+<b>La variable "products-margin"</b> vous est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document. 
 
 <a name="send"/>
 <b>Envoyer une facture par email à un client</b>
