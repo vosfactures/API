@@ -394,7 +394,8 @@ Autres options PDF:
 <a name="notedoc"/>
 <b>Remarques</b>:<br> 
 <b>le paramètre "payment_url"</b> vout permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).<br> 
-<b>La variable "products-margin"</b> vous est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document. 
+<b>La variable "products-margin"</b> vous est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document.<br> <br> 
+
 
 <a name="send"/>
 <b>Envoyer une facture par email à un client</b>
