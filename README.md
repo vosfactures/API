@@ -349,7 +349,7 @@ Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements, N
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN&page=1
 ```
 
-<b>Remarque: Si aucun paramètre additionnel n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). <b>Pour télécharger plus de 25 factures</b>, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
+<b>Remarque:</b> Si aucun paramètre additionnel n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). <b>Pour télécharger plus de 25 factures</b>, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
 
 Exemple: Pour obtenir les 50 premiers documents: 
 
