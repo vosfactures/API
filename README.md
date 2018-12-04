@@ -11,6 +11,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Code API](#token)
 + [Se connecter et télécharger le code API](#connect)
 + [Documents de facturation - actions et champs](#invoices)
++ [Paramètres additionnels disponibles pour les téléchargements par API](#list_params)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ [Télécharger la liste de factures du mois en cours](#download)    
 	+ [Télécharger les factures d'un client](#downloadclient)
@@ -329,6 +330,14 @@ Champ: `discount_kind` - Type de réduction
 	"amount" - montant
 ```
 
+<a name="list_params"/>
+
+## Paramètres additionnels des téléchargements
+
+Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche proposé par le logiciel pour affiner les listes des documents/contacts/produits/paiements.</br>
+Le paramètre `page =` vous permet de parcourir des enregistrements paginés.
+Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements, N étant la limite du nombre d’enregistrements retournés. Pour obtenir N autres enregistrements, appelez l’action avec le paramètre `page = 2`, etc.</br>
+
 <a name="examples"/>
 
 ## Factures (et autres documents) - exemples d'appels API
@@ -337,10 +346,10 @@ Champ: `discount_kind` - Type de réduction
 <b>Télécharger la liste des factures du mois en cours</b>
 
 ```shell
-curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN
+curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN&page=1
 ```
 
-<b>Remarque: Des paramètres additionnels</b> peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche de la liste des documents dans le logiciel. Si aucun filtre n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). Pour télécharger plus de 25 factures, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
+<b>Remarque: Si aucun paramètre additionnel n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). <b>Pour télécharger plus de 25 factures</b>, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
 
 Exemple: Pour obtenir les 50 premiers documents: 
 
