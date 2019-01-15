@@ -401,7 +401,8 @@ curl "https://votrecompte.vosfactures.fr/invoices.xml?invoice_id=ID&api_token=AP
 <a name="download_from"/>
 <b>Télécharger les documents créés à partir d'un document donné</b>
 
-Les documents "liés" sont les documents qui ont un lien fonctionnel avec un autre document. Il s'agit des acomptes liés aux factures de solde et aux devis, et des avoirs liés aux factures. 
+Les documents "créés à partir" d'un autre document sont les documents qui ont été créés en utilisant la fonction "Créer un doc. similaire", les factures créés à partir d'une proforma/devis/bon de commande, ainsi que les documents récurrents. 
+
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices.xml?from_invoice_id=ID&api_token=API_TOKEN"
 ```
@@ -409,7 +410,6 @@ curl "https://votrecompte.vosfactures.fr/invoices.xml?from_invoice_id=ID&api_tok
 <a name="downloadpdf"/>
 <b>Télécharger une facture sous format PDF</b>
 
-Les documents "créés à partir" d'un autre document sont les documents qui ont été créés en utilisant la fonction "Créer un doc. similaire", les factures créés à partir d'une proforma/devis/bon de commande, ainsi que les documents récurrents. 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 ```
