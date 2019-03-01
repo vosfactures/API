@@ -1424,14 +1424,10 @@ curl #{domain}/payments.json
 <a name="accountsystem"/>
 <b>Création de compte à partir d'application tierce</b>
 
-C'est une option utile pour les utilisateurs ayant une application tierce, et qui souhaitent offrir à leurs clients une solution de facturation, qui peuvent via l'API créer et configurer des comptes de facturation sur VosFactures à partir de leur application (exemple: site e-commerce en ligne, systèmes de réservation, etc...). 
-
-Un client sur le portail de l'application tierce de l'utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer des comptes directement depuis vosfactures.fr)
-
-
+C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce en ligne, système de réservation, etc...). Ainsi un client depuis le portail de votre application tierce peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer des comptes directement depuis vosfactures.fr).
 
 <b>Création d'un nouveau compte </b>
-Les champs ne sont pas requis: user.login, user.from_partner, user, company. 
+Les champs suivants ne sont pas requis: user.login, user.from_partner, user, company. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/account.json \
@@ -1441,6 +1437,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
             "api_token": "API_TOKEN",
             "account": {
                 "prefix": "ABC"
+		"lang": "fr"
             },
             "user": {
                 "login": "identifiantABC",
@@ -1480,6 +1477,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
 ```shell
 	"account": {
 		"prefix": "ABC",
+		"lang": "fr",
 		"integration_fast_login": true - permet la connexion automatique de vos utilisateurs dans VosFactures
 		"integration_logout_url": "https://votresite.com/" - vous permet de renvoyer vos utilisateurs sur votre site après la déconnexion des utilisateurs de VosFactures
 	}
