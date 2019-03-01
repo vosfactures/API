@@ -675,7 +675,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 <a name="createrecurring"/>
 <b>Créer une nouvelle récurrence</b>
 
-Dans l'exemple ci-dessous, la récurrence est basée sur la facture n°1 ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
+Dans l'exemple ci-dessous, la récurrence est basée sur un document existant identifié par son ID ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), est créée avec un état non payé ("create_as_paid"), à 11H30 ("time_in_timezone") même si c'est un week-end ("issue_working_day_only"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json \
@@ -687,12 +687,52 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
             "invoice_id": 1,
             "start_date": "2016-01-01",
             "every": "1m",
+	    "time_in_timezone": "11:30", 
             "issue_working_day_only": false,
+	    "only_year_month": false
+	    "create_as_paid": false,
             "send_email": true,
             "buyer_email": "client1@email.fr, client2@email.fr",
             "end_date": "null"
         }}'
 ```
+
+Vous pouvez également créer une récurrence non basée sur un document de référence. Pour cela, il suffit de spécifier de détails des produits (ID, quantité, prix), contact (ID), et conditions de paiement, qui devront apparaître sur les documents générés par la récurrence.
+
+```shell
+curl https://votrecompte.vosfactures.fr/recurrings.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{"api_token": "API_TOKEN",
+        "recurring": {
+            "name": "Nom de la récurrence",
+	    "income": "true",
+	    "department_id": 259461,
+            "product_id": 20419921,
+	    "quantity": '1',
+	    "price_gross": "20,00",
+	    "currency": "EUR",
+	    "client_id": 16673825,
+	    "buyer_email": "client1@email.fr, client2@email.fr"
+	    "payment_to": "1m",
+            "next_invoice_date": "2019-03-02", 
+	    "start_date": "2019-03-02",
+            "every": "1m",
+	    "time_in_timezone": "11:30", 
+            "issue_working_day_only": false,
+	    "create_as_paid": false,
+	    "only_year_month": false,
+	    "end_of_month_sell_date": false,
+	    "end_date": "null",
+	    "invoice_pattern_enabled": true,
+	    "invoice_pattern": "F/nr",
+	    "comment": "",
+            "send_email": true,
+            "buyer_email": "client1@email.fr, client2@email.fr",
+            "end_date": "null"
+        }}'
+```
+
 
 <a name="updaterecurring"/>
 <b>Mettre à jour une récurrence existante</b> (ex: changement de la date de la prochaine facture)
