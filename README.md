@@ -675,7 +675,8 @@ curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 <a name="createrecurring"/>
 <b>Créer une nouvelle récurrence</b>
 
-Dans l'exemple ci-dessous, la récurrence est basée sur un document existant identifié par son ID ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), est créée avec un état non payé ("create_as_paid"), à 11H30 ("time_in_timezone") même si c'est un week-end ("issue_working_day_only"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au(x) client(s) ("buyer_email") et une notification vous est envoyée ("send_email")
+Dans l'exemple ci-dessous, la récurrence est basée sur un document existant identifié par son ID ("invoice_id"), débute le 01/01/2016 ("start_date" ou "next_invoice_date"), est mensuelle ("every"), est créée avec un état non payé ("create_as_paid"), à 11H30 ("time_in_timezone") même si c'est un week-end ("issue_working_day_only"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au client ("buyer_email") par email ("send_email") et une notification vous est envoyée ("email_notification_enabled"). Le paramètre  "only_year_month" (correspondant à l'option "Afficher uniquement le mois et l'année dans le champ "Date additionnelle") et "end_of_month_sell_date" (correspondant à l'option "Générer avec une date additionnelle égale au dernier jour du mois") ne peuvent pas avoir la même valeur "true" en même temps. 
+
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json \
@@ -685,19 +686,26 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
         "recurring": {
             "name": "Nom de la récurrence",
             "invoice_id": 1,
-            "start_date": "2016-01-01",
+            "start_date": "2019-03-02",
             "every": "1m",
+	    "next_invoice_date": "2019-03-02"
 	    "time_in_timezone": "11:30", 
             "issue_working_day_only": false,
-	    "only_year_month": false
+	    "only_year_month": false,
+	    "end_of_month_sell_date": false,
+	    "invoice_pattern_enabled": true,
+	    "invoice_pattern": "F/nr",
+	    "convert_to_vat_invoice":true
 	    "create_as_paid": false,
             "send_email": true,
             "buyer_email": "client1@email.fr, client2@email.fr",
-            "end_date": "null"
+	    "email_notification_enabled":true,
+            "end_date": "null",
+	    "comment": ""
         }}'
 ```
 
-Vous pouvez également créer une récurrence non basée sur un document de référence. Pour cela, il suffit de spécifier de détails des produits (ID, quantité, prix), contact (ID), et conditions de paiement, qui devront apparaître sur les documents générés par la récurrence.
+Vous pouvez également créer une récurrence non basée sur un document de référence. Pour cela, il suffit de spécifier de détails des produits (ID, quantité, prix, devise), contact (ID), et conditions de paiement, qui devront apparaître sur les factures générées par la récurrence.
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json \
@@ -715,24 +723,41 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
 	    "client_id": 16673825,
 	    "buyer_email": "client1@email.fr, client2@email.fr"
 	    "payment_to": "1m",
-            "next_invoice_date": "2019-03-02", 
-	    "start_date": "2019-03-02",
+            "start_date": "2019-03-02",
             "every": "1m",
 	    "time_in_timezone": "11:30", 
             "issue_working_day_only": false,
 	    "create_as_paid": false,
 	    "only_year_month": false,
 	    "end_of_month_sell_date": false,
-	    "end_date": "null",
-	    "invoice_pattern_enabled": true,
+	    "invoice_pattern_enabled": "true",
 	    "invoice_pattern": "F/nr",
-	    "comment": "",
-            "send_email": true,
+	    "convert_to_vat_invoice":false,
+	    "send_email": true,
             "buyer_email": "client1@email.fr, client2@email.fr",
-            "end_date": "null"
+	    "email_notification_enabled":true,
+            "end_date": "null",
+	    "comment": "",
         }}'
 ```
 
+<b>Pour résumer : Champs d'une récurrence</b> 
+```shell
+"name": "Nom de la récurrence" 
+"start_date": "2019-03-02 - Date de création du 1er document récurrent
+"every": "1m - Récurrence ("1w" -> hebdomadaire, "1m" -> mensuelle, "2m" -> bimestrielle, "3m" -> trimestrielle, "6m" -> semestrielle, "1y" -> annuelle)
+"time_in_timezone": "11:30" - Heure de création
+"issue_working_day_only": true ou false,
+"convert_to_vat_invoice":true ou false - Générer des factures (au cas où le document de référence est une profroma)
+"create_as_paid": true ou false - Générer les documents récurrents avec l'état Payé.
+"only_year_month": true ou false - Afficher uniquement le mois et l'année dans le champ "Date additionnelle"
+"end_of_month_sell_date": true ou false - Générer avec une date additionnelle égale au dernier jour du mois
+"invoice_pattern_enabled": true ou false - Autre que le format de numérotation par défaut (l'option ne s'applique pas en cas de dépenses). Si vous donnez la valeur "true", vous devez alors spécifier le format de numérotation souhaité via le paramètre "invoice_pattern" (ex: "invoice_pattern": "F/nr")
+"send_email": true ou false - Envoi automatique de chaque nouveau document au client par email
+"email_notification_enabled":true ou false - Notification envoyée sur l'email du propriétaire du compte à chaque document généré.
+"end_date": "null" - Date de fin (date du dernier document généré)
+"comment": "" - Commentaires (privés) de la récurrence
+```
 
 <a name="updaterecurring"/>
 <b>Mettre à jour une récurrence existante</b> (ex: changement de la date de la prochaine facture)
