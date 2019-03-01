@@ -675,7 +675,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 <a name="createrecurring"/>
 <b>Créer une nouvelle récurrence</b>
 
-Dans l'exemple ci-dessous, la récurrence est basée sur un document existant identifié par son ID ("invoice_id"), débute le 01/01/2016 ("start_date" ou "next_invoice_date"), est mensuelle ("every"), est créée avec un état non payé ("create_as_paid"), à 11H30 ("time_in_timezone") même si c'est un week-end ("issue_working_day_only"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au client ("buyer_email") par email ("send_email") et une notification vous est envoyée ("email_notification_enabled"). Le paramètre  "only_year_month" (correspondant à l'option "Afficher uniquement le mois et l'année dans le champ "Date additionnelle") et "end_of_month_sell_date" (correspondant à l'option "Générer avec une date additionnelle égale au dernier jour du mois") ne peuvent pas avoir la même valeur "true" en même temps. 
+Dans l'exemple ci-dessous, la récurrence est basée sur un document existant identifié par son ID ("invoice_id"), débute le 01/01/2016 ("start_date" ou "next_invoice_date"), est mensuelle ("every"), est créée avec un état non payé ("create_as_paid"), à 11H30 ("time_in_timezone") même si c'est un week-end ("issue_working_day_only"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au client ("buyer_email") par email ("send_email") et une notification vous est envoyée ("email_notification_enabled"). Les paramètres  "only_year_month" (correspondant à l'option "Afficher uniquement le mois et l'année dans le champ "Date additionnelle") et "end_of_month_sell_date" (correspondant à l'option "Générer avec une date additionnelle égale au dernier jour du mois") ne peuvent pas avoir la même valeur "true" en même temps. 
 
 
 ```shell
@@ -705,7 +705,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
         }}'
 ```
 
-Vous pouvez également créer une récurrence non basée sur un document de référence. Pour cela, il suffit de spécifier de détails des produits (ID, quantité, prix, devise), contact (ID), et conditions de paiement, qui devront apparaître sur les factures générées par la récurrence.
+Vous pouvez également créer une récurrence non basée sur un document de référence. Pour cela, il suffit de spécifier le département vendeur (ID), le détail des produits (ID, quantité, prix, devise), contact (ID), et conditions de paiement, qui devront apparaître sur les factures générées par la récurrence.
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json \
@@ -747,7 +747,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
 "start_date": "2019-03-02 - Date de création du 1er document récurrent
 "every": "1m - Récurrence ("1w" -> hebdomadaire, "1m" -> mensuelle, "2m" -> bimestrielle, "3m" -> trimestrielle, "6m" -> semestrielle, "1y" -> annuelle)
 "time_in_timezone": "11:30" - Heure de création
-"issue_working_day_only": true ou false,
+"issue_working_day_only": true ou false - Créer uniquement en semaine
 "convert_to_vat_invoice":true ou false - Générer des factures (au cas où le document de référence est une profroma)
 "create_as_paid": true ou false - Générer les documents récurrents avec l'état Payé.
 "only_year_month": true ou false - Afficher uniquement le mois et l'année dans le champ "Date additionnelle"
