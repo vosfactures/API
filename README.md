@@ -211,7 +211,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "paid_date" : "" - Date du paiement ("Paiement reçu le")
 "currency" : "EUR" - devise
 "lang" : "fr" - langue du document
-"exchange_currency" : "" - convertir en (la conversion du montant total et du montant de la taxe en une autre devise selon taux de change du jour)
+"exchange_currency" : "USD" - convertir en (la conversion en une autre devise du montant total et du montant de la taxe selon taux de change du jour)
+"exchange_kind" : "" - Source du taux de change utilisé en cas de conversion ("ecb" pour la Banque Centrale Européenne, "nbp" pour la Banque Nationale de Pologne, "cbr" pour la Banque Centrale de Russie, "nbu" pour la Banque Nationale d'Ukraine, "nbg" pour la Banque Nationale de Géorgie, "nbt" Banque Nationale Tchèque, "own" pour un taux propre)
+"exchange_currency_rate" : "", - taux de change propre (à utiliser uniquement si le paramètre "exchange_kind" est égal à "own")
 "title" : "" - Objet (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"title":"contenu de l'objet"} lors de la création d'un document de facturation). 
 "internal_note" : "" - Notes privées  
 "invoice_template_id" : "1" - format d'impression
@@ -340,6 +342,16 @@ Champ: `discount_kind` - Type de réduction
 Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche proposé par le logiciel pour affiner les listes des documents/contacts/produits/paiements.</br>
 Le paramètre `page =` vous permet de parcourir des enregistrements paginés.
 Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements, N étant la limite du nombre d’enregistrements retournés. Pour obtenir N autres enregistrements, appelez l’action avec le paramètre `page = 2`, etc.</br>
+Le paramètre `period=` vous permet de  limiter les recherches à une période donnée. Voici les valeurs possibles : 
+Possible values:
+- last_12_months (12 derniers mois) qui est l'option par défaut
+- this_month (mois en cours)
+- last_30_days (30 derniers jours)
+- last_month (mois dernier)
+- this_year (année en cours)
+- last_year (année dernière)
+- all (tous)
+- more (autre : dans ce cas, il faut spécifier les paramètres additionels "date_from" (date de début) et "date_to" (date de fin)
 
 <a name="examples"/>
 
