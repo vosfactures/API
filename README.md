@@ -13,7 +13,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Documents de facturation - actions et champs](#invoices)
 + [Paramètres additionnels disponibles pour les téléchargements par API](#list_params)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
-	+ [Télécharger la liste de factures du mois en cours](#download)    
+	+ [Télécharger la liste de factures du mois en cours](#download)
+	+ [Télécharger la liste de factures d'une période donnée](#downloadmore)
 	+ [Télécharger les factures d'un client](#downloadclient)
 	+ [Télécharger une facture par son numéro d'ID](#downloadid)
 	+ [Télécharger une facture par son numéro](#downloadnr)
@@ -362,6 +363,13 @@ Possible values:
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN&page=1
+```
+
+<a name="downloadmore"/>
+<b>Télécharger la liste des factures d'une période donnée</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json?period=more&date_from=2018-01-01&date_to=2018-04-30&search_date_type=issue_date&api_token=API_TOKEN&page=1
 ```
 
 <b>Remarque:</b> Si aucun paramètre additionnel n'est indiqué, seules les factures de la première page de la liste seront téléchargées (et donc les 25 premières factures). <b>Pour télécharger plus de 25 factures</b>, utilisez le paramètre additionnel `per_page=`, qui définit combien de documents chaque page contient (25, 50 ou 100).</br> 
