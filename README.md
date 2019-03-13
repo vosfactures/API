@@ -509,7 +509,6 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 	-H 'Content-Type: application/json' \
 	-d '{"api_token": "API_TOKEN",
 		"invoice": {
-			"payment_to_kind": 5,
 			"department_id": 1, 
 			"client_id": 1,
 			"positions":[
