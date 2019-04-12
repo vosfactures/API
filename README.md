@@ -903,9 +903,11 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?tax_no=100&api_token=A
 
 <a name="clientname"/>
 <b>Obtenir un contact selon son nom d'usage</b>
+
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?shortcut=NOM_USAGE&api_token=API_TOKEN"
 ```
+
 <br>
 <a name="noteclient1"/>
 <b>Remarque:</b><br>
