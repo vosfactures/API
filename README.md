@@ -906,7 +906,7 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?tax_no=100&api_token=A
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?shortcut=NOM_USAGE&api_token=API_TOKEN"
 ```
-
+<br>
 <a name="noteclient1"/>
 <b>Remarque:</b><br>
 <b>La variable "panel_url"</b> est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'espace client (de la fonction Accès Client).
