@@ -37,7 +37,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
-+ [Département vendeur - champs](#department)
++ [Département vendeur](#department)
 	+ [Créer un nouveau département](#departadd)
 	+ [Modifier un département](#departupdate)
 	+ [Télécharger la liste des départements](#departlist)
@@ -825,7 +825,7 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 <a name="department"/>
 
-## Département vendeur - champs
+## Département vendeur
 
 <a name="departadd"/>
 <b>Créer un nouveau département</b>
@@ -884,7 +884,7 @@ curl "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKE
 
 <a name="departnote"/>
 <b>Remarque : Champs</b>
-Voici les champs que vous pouvez utiliser: 
+</br>Voici les champs que vous pouvez utiliser: 
 
 ```shell
 
