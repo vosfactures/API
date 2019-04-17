@@ -49,7 +49,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un contact selon son ID](#clientID)
 	+ [Obtenir un contact selon le "Réf/code client"](#externalclientID)
 	+ [Obtenir un contact selon son N° d'identification fiscale](#clienttax)
-	+ [Obtenir un contact selon son nom d'usage](#clientname)
+	+ [Obtenir un contact selon son nom](#clientname)
+	+ [Obtenir un contact selon son nom d'usage](#clientshortname)
+	+ [Obtenir un contact selon son adresse email](#clientemail)
 	+ [Remarque](#noteclient1)
 	+ [Ajouter un contact](#addclient)
 	+ [Mettre à jour un contact](#updateclient)
@@ -73,6 +75,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un document de stock par son ID](#wd2) 
 	+ [Créer un bon d'entrée (BE)](#wd3) 
 	+ [Créer un bon de livraison (BL)](#wd4) 
+	+ [Créer un bon de transfert (BT)](#wd4t) 
 	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
 	+ [Mettre à jour un document de stock](#wd6) 
 	+ [Supprimer un document de stock](#wd7) 
@@ -953,13 +956,26 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?tax_no=100&api_token=A
 ```
 
 <a name="clientname"/>
+<b>Obtenir un contact selon son nom</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients.json?name=NOM&api_token=API_TOKEN"
+```
+
+<a name="clientshortname"/>
 <b>Obtenir un contact selon son nom d'usage</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?shortcut=NOM_USAGE&api_token=API_TOKEN"
 ```
 
-<br>
+<a name="clientemail"/>
+<b>Obtenir un contact selon son adresse email</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=API_TOKEN"
+```
+
 <a name="noteclient1"/>
 <b>Remarque:</b><br>
 <b>La variable "panel_url"</b> est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'espace client (de la fonction Accès Client).
@@ -1244,6 +1260,26 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 	]	
 	}}' 
 ``` 
+<a name="#wd4t"/>
+<b>Créer un bon de transfert (BT)</b>
+```shell 
+curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
+                -H 'Accept: application/json'  
+                -H 'Content-Type: application/json'  
+                -d '{
+                "api_token": "API_TOKEN",
+                "warehouse_document": {
+                    "kind":"mm", 
+                    "number": null,
+                    "warehouse_id": "1",
+                    "issue_date": "2017-10-23", 
+                    "department_name": "Department1 SA", 
+                    "client_name": "Client ABC",
+                    "warehouse_actions":[
+                        {"product_name":"Produit A1", "purchase_tax":20, "purchase_price_net":10.20, "quantity":1, "warehouse2_id":13}
+                    ]
+                }}'
+```
  
 <a name="wd5"/> 
 <b>Créer un bon d'entrée (BE) pour un contact, département, ou produit existant </b>
