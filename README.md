@@ -27,7 +27,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une nouvelle facture avec réduction](#create3)
 	+ [Créer une nouvelle facture d'avoir](#credit)
-	+ [Mettre à jour une facture](#update)
+	+ [Modifier une facture](#update)
 	+ [Modifier un produit listé sur une facture](#update2)
 	+ [Supprimer un produit listé sur une facture](#update3)
 	+ [Ajouter un produit sur une facture](#update4)
@@ -38,9 +38,15 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Mettre à jour une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
 + [Département vendeur - champs](#department)
+	+ [Créer un nouveau département](#departadd)
+	+ [Modifier un département](#departupdate)
+	+ [Télécharger la liste des départements](#departlist)
+	+ [Supprimer un département selon ID](#departdelete)
+	+ [Obtenir un département selon ID](#departID)
+	+ [Remarque : Champs](#departnote)
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
-       	+ [Obtenir un contact selon son ID](#clientID)
+	+ [Obtenir un contact selon son ID](#clientID)
 	+ [Obtenir un contact selon le "Réf/code client"](#externalclientID)
 	+ [Obtenir un contact selon son N° d'identification fiscale](#clienttax)
 	+ [Obtenir un contact selon son nom d'usage](#clientname)
@@ -598,7 +604,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 
 <a name="update"/>
-<b>Mettre à jour une facture</b>
+<b>Modifier une facture</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/111.json \
@@ -821,10 +827,13 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 ## Département vendeur - champs
 
+<a name="departadd"/>
+<b>Créer un nouveau département</b>
+
 Vous pouvez créer votre département (fiche entreprise) soit lors de la création d'un document (voir plus bas), soit directement : 
 
 ```shell
-curl http://votrecompte.vosfactures.fr/departments.json   
+curl https://votrecompte.vosfactures.fr/departments.json   
         -H 'Accept: application/json' \
 	-H 'Content-Type: application/json' \
 	-d '{
@@ -834,7 +843,49 @@ curl http://votrecompte.vosfactures.fr/departments.json  
 		}
 	}'  
 ```
+
+<a name="departupdate"/>
+<b>Modifier un département</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/departments/100.json  
+        -X PUT 
+        -H 'Accept: application/json'   
+        -H 'Content-Type: application/json'   
+        -d '{ 
+        "api_token": "API_TOKEN", 
+        "department": { 
+          "name":"nouveau_nom",  
+          "shortcut": "nouveau_nom_usage", 
+          "tax_no": "xxx-xxx-xx-xx" 
+        }}' 
+```
+
+<a name="departlist"/>
+<b>Télécharger la liste des départements</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr/departments.json?api_token=API_TOKEN"
+```
+
+<a name="departdelete"/>
+<b>Supprimer un département selon ID</b>
+
+```shell
+curl -X DELETE "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
+```
+
+<a name="departID"/>
+<b>Obtenir un département selon ID</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
+```
+
+<a name="departnote"/>
+<b>Remarque : Champs</b>
 Voici les champs que vous pouvez utiliser: 
+
 ```shell
 
 "name" : "Entreprise ABC" - Nom du département vendeur 
