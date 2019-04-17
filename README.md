@@ -1011,7 +1011,6 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 			"post_code" : "post-code2",
 			"phone" : "phone2",
 			"street" : "street2",
-			"street_no" : "street-no2"
 	    }}'
 ```
 
