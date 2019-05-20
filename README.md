@@ -205,8 +205,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "payment_type" : "chèque" - mode de règlement 
 "payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
-"sum_recovery" : "0" - afficher (1) ou non (0) la mention "Indemnité forfaitaire de recouvrement". Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"sum_recovery":"1"} lors de la création d'un document de facturation
-"interest_rate" : "" - Taux de pénalité en cas de retard de paiement (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"interest_rate":""} lors de la création d'un document de facturation)
+"sum_recovery" : "client_particulier" - afficher (client_professionnel) ou non (client_particulier) la mention "Indemnité forfaitaire de recouvrement". Attention, en json vous devez envoyer ce paramètre comme ceci: "additional_fields": {"sum_recovery":"client_professionnel"} lors de la création d'un document de facturation.
+"interest_rate" : "10%" - Taux de pénalité en cas de retard de paiement (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"interest_rate":"10%"} lors de la création d'un document de facturation. 
 "advanced_payment_discount": "" - Escompte en % (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"advanced_payment_discount":"10"} lors de la création d'un document de facturation)
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
