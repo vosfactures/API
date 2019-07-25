@@ -189,7 +189,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "disable_tax_no_validation" : "",
-"use_moss":"true" - document sous régime Moss (true) ou non (false). En savoir plus ici: http://vosfactures.fr/tva-moss
+"use_moss": "0", - document sous le régime "Moss" (1) ou non (0) : régime de l'Autoliquidation de la TVA. En savoir plus ici: http://vosfactures.fr/tva-moss
 "buyer_post_code" : "06000", code postal de l'acheteur
 "buyer_city" : "Nice" - ville de l'acheteur
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue de l'acheteur 
