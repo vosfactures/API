@@ -197,6 +197,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_note" : "", description additionnelle
 "buyer_email" : "", email de l'acheteur
 "buyer_phone" : "", numéro de tel de l'acheteur
+"buyer_mobile_phone" : "" numéro de portable de l'acheteur
 "additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle
 "additional_info_desc" : "" - contenu de la colonne aditionnelle (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut)
 "additional_invoice_field" : "" - contenu du champ additionnel (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut). Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"additional_invoice_field":"contenu"} lors de la création d'un document de facturation. 
