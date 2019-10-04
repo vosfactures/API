@@ -1039,14 +1039,15 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 "payment_to_kind":"" -  Date limite de règlement par défaut
 "accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
 "accounting_id2":"" -  Compte comptable auxiliaire
-"chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
+"chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus Pro). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
 "1" pour "Tiers avec SIRET"
 "2" pour "Structure Européenne hors France"
 "3" pour "Structure hors UE"
 "4" pour "RIDET"
 "5" pour "Numéro Tahiti"
 "6" pour "Autre"
-"chorus_identifier":"123456789" - Identifiant Débiteur (Chorus). 
+"chorus_identifier":"123456789" - Identifiant Débiteur (Chorus Pro)
+"chorus_service_code":"" - Code Service Débiteur (Chorus Pro)
 ```
 
 
