@@ -86,6 +86,10 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Mettre à jour un entrepôt](#warehouseupdate)
 	+ [Supprimer un entrepôt sélectionné par ID](#warehousedelete)
 + [Paiements](#paiements)
+	+ [Champs disponibles](#paiementschamps)
+	+ [Télécharger la liste des Paiements](#paiementslist)
+	+ [Obtenir un paiement par son numéro d'ID](#paiementsid)
+	+ [AJouter un nouveau paiement](#paiementsadd)
 + [Création de compte à partir d'application tierce](#accountsystem)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
@@ -1391,6 +1395,8 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token
 
 Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet "Paiements" de votre compte VosFactures, qu'il s'agisse d'un paiement manuel, ou d'un paiement en ligne (réalisé depuis une facture via la fonction "Paiement en ligne", ou depuis le wigdet de paiement de la fonction "Paiements E-commerce").
 
+<a name="paiementschamps"/>
+
 ### Champs disponibles
 
 Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (et non sur la facture) :
@@ -1443,7 +1449,8 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 "promocode" - Code promotionnel
 ```
 
-### Liste des Paiements
+<a name="paiementslist"/>
+### Télécharger la liste des Paiements
 
 #### XML
     curl "https://votrecompte.vosfactures.fr/banking/payments.xml?api_token=API_TOKEN"
@@ -1451,7 +1458,8 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 #### JSON
     curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
 
-### Selectionner un paiement selon son ID
+<a name="paiementsid"/>
+### Obtenir un paiement selon son ID
 
 #### XML
     curl "https://votrecompte.vosfactures.fr/banking/payments/100.xml?api_token=API_TOKEN"
@@ -1459,6 +1467,8 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 #### JSON
     curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
     
+
+<a name="paiementsadd"/>
 ### Ajouter un nouveau paiement
 
 #### Minimal JSON (recommandé)
