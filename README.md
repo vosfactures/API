@@ -1389,7 +1389,7 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token
 
 ## Paiements
 
-Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet "Paiements", qu'il s'agisse d'un paiement manuel, ou d'un paiement en ligne (réalisé depuis une facture via la fonction "Paiement en ligne", ou depuis le wigdet de paiement de la fonction "Paiements E-commerce").
+Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet "Paiements" de votre compte VosFactures, qu'il s'agisse d'un paiement manuel, ou d'un paiement en ligne (réalisé depuis une facture via la fonction "Paiement en ligne", ou depuis le wigdet de paiement de la fonction "Paiements E-commerce").
 
 ### Champs disponibles
 
@@ -1446,30 +1446,30 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 ### Liste des Paiements
 
 #### XML
-    curl "https://votrecompte.vosfactures.fr/payments.xml?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/banking/payments.xml?api_token=API_TOKEN"
     
 #### JSON
-    curl "https://votrecompte.vosfactures.fr/payments.json?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
 
 ### Selectionner un paiement selon son ID
 
 #### XML
-    curl "https://votrecompte.vosfactures.fr/payments/100.xml?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/banking/payments/100.xml?api_token=API_TOKEN"
     
 #### JSON
-    curl "https://votrecompte.vosfactures.fr/payment/100.json?api_token=API_TOKEN"
+    curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
     
 ### Ajouter un nouveau paiement
 
 #### Minimal JSON (recommandé)
 ```shell
-curl #{domain}/payments.json 
+curl https://votrecompte.vosfactures.fr/banking/payments.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{
-		"api_token": "#{api_token}",
-		"payment": {	
-			"name":"Paiement 001",
+		"api_token": "API_TOKEN",
+		"banking_payment": {	
+			"name":"Titre du Paiement",
 			"price": 100.00,
 			"invoice_id": null,
 			"paid":true,
@@ -1480,12 +1480,12 @@ curl #{domain}/payments.json
 
 #### Full JSON (recommandé)
 ```shell
-curl #{domain}/payments.json 
+curl https://votrecompte.vosfactures.fr/banking/payments.json 
 	-H 'Accept: application/json'  
 	-H 'Content-Type: application/json'  
 	-d '{
-		"api_token": "#{api_token}",
-		"payment": {	
+		"api_token": "API_TOKEN",
+		"banking_payment": {	
 			"city": null,
 			"client_id":null,
 			"comment":null,
@@ -1501,11 +1501,11 @@ curl #{domain}/payments.json
 			"invoice_country":null,
 			"invoice_id":null,
 			"invoice_name":"Durand Paul",
-			"invoice_post_code":"00-112",
-			"invoice_street":"street 52",
-			"invoice_tax_no":"5252445767",
+			"invoice_post_code":"06800",
+			"invoice_street":"75 Rue du Parc",
+			"invoice_tax_no":"FR5252445767",
 			"last_name":"Durand",
-			"name":"Paiement abonnement",
+			"name":"Titre du Paiement",
 			"oid":"",
 			"paid":true,
 			"paid_date":null,
