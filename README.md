@@ -1543,7 +1543,7 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 ```
  
 <a name="accountsystem"/>
-<b>Création de compte à partir d'application tierce</b>
+## Création de compte à partir d'application tierce
 
 C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce en ligne, système de réservation, etc...). Ainsi un client depuis le portail de votre application tierce peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer des comptes directement depuis vosfactures.fr).
 
