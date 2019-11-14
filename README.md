@@ -81,14 +81,14 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Supprimer un document de stock](#wd7) 
 + [Entrepôts](#warehouse)
 	+ [Liste des entrepôts](#warehouselist)
-	+ [Téléchargement de l'entrepôt sélectionné par ID](#warehouseID)
+	+ [Téléchargement de l'entrepôt sélectionné par son ID](#warehouseID)
 	+ [Ajouter un nouvel entrepôt](#warehousenew)
 	+ [Mettre à jour un entrepôt](#warehouseupdate)
-	+ [Supprimer un entrepôt sélectionné par ID](#warehousedelete)
+	+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
 + [Paiements](#paiements)
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
-	+ [Obtenir un paiement par son numéro d'ID](#paiementsid)
+	+ [Obtenir un paiement par son ID](#paiementsid)
 	+ [AJouter un nouveau paiement](#paiementsadd)
 + [Création de compte à partir d'application tierce](#accountsystem)
 + [Exemples : CURL, PHP, Ruby](#exemples)
@@ -1342,7 +1342,7 @@ curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN
 ``` 
 
 <a name="warehouseID"/>
-<b>Téléchargement de l'entrepôt sélectionné par ID</b>
+<b>Téléchargement de l'entrepôt sélectionné par son ID</b>
 
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
@@ -1450,28 +1450,35 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 ```
 
 <a name="paiementslist"/>
-### Télécharger la liste des Paiements
+<b>Télécharger la liste des Paiements</b>
 
-#### XML
-    curl "https://votrecompte.vosfactures.fr/banking/payments.xml?api_token=API_TOKEN"
-    
-#### JSON
-    curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
+XML
+```shell
+curl "https://votrecompte.vosfactures.fr/banking/payments.xml?api_token=API_TOKEN"
+```
+
+JSON
+```shell
+curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
+```
 
 <a name="paiementsid"/>
-### Obtenir un paiement selon son ID
+<b>Obtenir un paiement selon son ID</b>
 
-#### XML
-    curl "https://votrecompte.vosfactures.fr/banking/payments/100.xml?api_token=API_TOKEN"
-    
-#### JSON
-    curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
-    
+XML
+```shell
+curl "https://votrecompte.vosfactures.fr/banking/payments/100.xml?api_token=API_TOKEN"
+```
+
+JSON
+```shell
+curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
+```    
 
 <a name="paiementsadd"/>
-### Ajouter un nouveau paiement
+<b>Ajouter un nouveau paiement</b>
 
-#### Minimal JSON (recommandé)
+Minimal JSON
 ```shell
 curl https://votrecompte.vosfactures.fr/banking/payments.json 
 	-H 'Accept: application/json'  
@@ -1488,7 +1495,7 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 	     }'
 ```
 
-#### Full JSON (recommandé)
+Full JSON
 ```shell
 curl https://votrecompte.vosfactures.fr/banking/payments.json 
 	-H 'Accept: application/json'  
