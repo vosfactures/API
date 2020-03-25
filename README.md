@@ -584,7 +584,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
     -d '{"api_token": "API_TOKEN",
         "invoice": {
             "kind": "correction",
-            "invoice_id": "2432393",
+	    "correction_reason": "erreur de quantité",
+            "from_invoice_id": "2432393",
+	    "invoice_id": "2432393",
             "client_id": 1,
             "positions":[
                 {"name": "Produit A1",
