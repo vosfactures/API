@@ -259,6 +259,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
   "sum": "sum" ou "keep_gross" ou "keep_net" - Comment se calcule le total des colonnes 
   "invoice_form_price_kind": "net" ou "gross" - prix unitaire (HT ou TTC)
 }
+"split_payment": "1" - 1 ou 0 selon que la facture fait ou non l'objet d'un paiement partiel
 
 ```
 <b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > PAramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
