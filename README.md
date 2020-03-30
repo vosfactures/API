@@ -189,6 +189,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
 "client_id" : "-1" - ID du contact (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
 "buyer_name" : "Client Untel" - nom du contact (acheteur en cas de vente ou fournisseur en cas d'achat)
+"buyer_first_name" : "Prénom" du contact
+"buyer_last_name" : "Nom" du contact
+"buyer_company": "1" - si le contact est un professionnel, "0" si c'est un particulier
 "buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale du contact (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
@@ -199,6 +202,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue du contact
 "buyer_country" : "", pays du contact (ISO 3166)
 "buyer_note" : "", description additionnelle du contact
+"delivery_address" : "" - contenu du champ "Adresse supplémentaire" du contact
+"use_delivery_address": "true" ou "false" - afficher ou non le champ "Adresse supplémentaire" du contact sur le document
 "buyer_email" : "", email du contact
 "buyer_phone" : "", numéro de tel du contact
 "buyer_mobile_phone" : "" numéro de portable du contact
@@ -218,11 +223,6 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
 "oid_unique": si la valeur est «yes», alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
-"buyer_first_name" : "Prénom" de l'acheteur 
-"buyer_last_name" : "Nom" de l'acheteur 
-"buyer_company": "1" - si le contact (acheteur) est un professionnel, "0" si c'est un particulier
-"delivery_address" : "" - contenu du champ "Adresse supplémentaire" du contact acheteur
-"use_delivery_address": "true" ou "false" - afficher ou non le champ "Adresse supplémentaire" sur le document
 "description" : "" - Informations spécifiques 
 "paid_date" : "" - Date du paiement ("Paiement reçu le")
 "currency" : "EUR" - devise
