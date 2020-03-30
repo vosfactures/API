@@ -187,23 +187,23 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_fax" : "" - numéro de fax du vendeur
 "seller_phone" : "" - numéro de tel du vendeur
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
-"client_id" : "-1" - ID de l'acheteur (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
-"buyer_name" : "Client Untel" - nom de l'acheteur
-"buyer_title" : Civilité de l'acheteur. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
-"buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale de l'acheteur (ex: n° TVA)
-"buyer_tax_no_kind" : "", - intitulé du numéro d'identification de l'acheteur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
+"client_id" : "-1" - ID du contact (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
+"buyer_name" : "Client Untel" - nom du contact (acheteur en cas de vente ou fournisseur en cas d'achat)
+"buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
+"buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale du contact (ex: n° TVA)
+"buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "disable_tax_no_validation" : "",
 "use_moss": "0", - document sous le régime "Moss" (1) ou non (0) : régime de l'Autoliquidation de la TVA. En savoir plus ici: http://vosfactures.fr/tva-moss
-"buyer_post_code" : "06000", code postal de l'acheteur
-"buyer_city" : "Nice" - ville de l'acheteur
-"buyer_street" : "44 Rue des Plans" - numéro et nom de rue de l'acheteur 
-"buyer_country" : "", pays de l'acheteur (ISO 3166)
-"buyer_note" : "", description additionnelle
-"buyer_email" : "", email de l'acheteur
-"buyer_phone" : "", numéro de tel de l'acheteur
-"buyer_mobile_phone" : "" numéro de portable de l'acheteur
-"additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle
-"additional_info_desc" : "" - contenu de la colonne aditionnelle (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut)
+"buyer_post_code" : "06000", code postal du contact
+"buyer_city" : "Nice" - ville du contact
+"buyer_street" : "44 Rue des Plans" - numéro et nom de rue du contact
+"buyer_country" : "", pays du contact (ISO 3166)
+"buyer_note" : "", description additionnelle du contact
+"buyer_email" : "", email du contact
+"buyer_phone" : "", numéro de tel du contact
+"buyer_mobile_phone" : "" numéro de portable du contact
+"additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle sur le document de facturation (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut)
+"additional_info_desc" : "" - contenu de la colonne aditionnelle (contenu que vous retrouvez sur la fiche du produit correspondant) 
 "additional_invoice_field" : "" - contenu du champ additionnel (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut). Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"additional_invoice_field":"contenu"} lors de la création d'un document de facturation. 
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "discount_kind": ""- type de réduction: "amount" (pour un montant ttc), "percent_unit" (pour un % sur le prix unitaire), ou  "percent_total" (pour un % calculé sur le prix total)
