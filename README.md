@@ -247,7 +247,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"quantity" : "1" - quantité 
    		"quantity_unit" : "kg" - unité 
    		"price_net" : "59,00", - prix unitaire HT (calculé automatiquement si non indiqué)
-   		"tax" : "23" - % de taxe
+   		"tax" : "23" - % de taxe (les valeurs "disabled" ou "np" rendent la taxe inactive)
    		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
@@ -331,6 +331,7 @@ Champ: `payment_type`- Mode de règlement
 	"cash" -  espèce
 	"cheque" - chèque
 	"paypal" - PayPal
+	"lcr" - LCR Lettre de Change Relevé
 	"off" - aucun (ne pas afficher)
 	"any_other_text_entry" - autre
 ```
