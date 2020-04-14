@@ -1,11 +1,12 @@
 # API du Logiciel de Facturation en ligne VosFactures
 
 
-Intégrer votre site internet ou une application externe avec le logiciel de facturation en ligne <https://vosfactures.fr/>
+Intégrer votre site internet ou une application externe avec le logiciel de facturation en ligne VosFactures
 
 
 
-Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autres documents tels que : devis, bon de commande, bon de livraison ...), produits, contacts, ou paiements depuis des applications externes. Par exemple, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client.  
+Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autres documents tels que : devis, bon de commande, bon de livraison ...), produits, contacts, ou paiements depuis des applications externes. Par exemple, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
+Les demandes sont compatibles avec JSON, XML,Ruby, ou Javascript et avec SSL. Vous pouvez créer un compte gratuitement sur <https://vosfactures.fr/> et tester notre API.  
 
 ## Menu
 + [Code API](#token)
