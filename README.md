@@ -1,12 +1,12 @@
 # API du Logiciel de Facturation en ligne VosFactures
 
 
-Intégrer votre site internet ou une application externe avec le logiciel de facturation en ligne VosFactures
+Intégrer votre site internet ou une application externe avec le logiciel de facturation en ligne [VosFactures](https://vosfactures.fr)
 
 
 
-Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autres documents tels que : devis, bon de commande, bon de livraison ...), produits, contacts, ou paiements depuis des applications externes. Par exemple, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
-Les demandes sont compatibles avec JSON, XML,Ruby, ou Javascript et avec SSL. Vous pouvez créer un compte gratuitement sur <https://vosfactures.fr/> et tester notre API.  
+Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autres documents tels que : devis, bon de commande, bon de livraison ...), produits, contacts, ou paiements depuis des applications externes.</br>Par exemple, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client. 
+</br>Les demandes API sont compatibles avec JSON, XML,Ruby, ou Javascript et avec SSL. Vous pouvez créer un compte gratuitement sur <https://vosfactures.fr/> et tester notre API. </br>Des exemples pratiques d'appels API sont également disponibles dans votre compte VosFactures (<b>Paramètres > API</b>) et sur https://app.vosfactures/api 
 
 ## Menu
 + [Code API](#token)
@@ -117,6 +117,7 @@ curl https://app.vosfactures.fr/login.json \
     -d '{
             "login": "identifiant_ou_email",
             "password": "mot_de_passe"
+	    "integration_token": "contactez-nous-pour-ce-code"
     }'
 ``` 
 Cette requête renvoie le code API et les informations sur le compte vosfactures (champ du `prefixe`et `url` du compte):
@@ -1581,7 +1582,8 @@ curl https://votrecompte.vosfactures.fr/account.json \
                 "person": "Julie Durand",
                 "bank": "Crédit Niçois",
                 "bank_account": "111222333444555666111"
-            }
+            },
+	    "integration_token": ""
         }'
 ```
 
@@ -1612,7 +1614,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
 Obtenir des informations sur le compte:
 
 ```shell
-curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN"
+curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integration_token="
 ```
 
 
