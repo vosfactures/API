@@ -26,6 +26,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer une nouvelle facture](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
+	+ [Créer une facture similaire](#create4)
+	+ [Créer une facture d'acompte](#create5)
+	+ [Créer une facture de solde](#create6)
 	+ [Créer une nouvelle facture avec réduction](#create3)
 	+ [Créer une nouvelle facture d'avoir](#credit)
 	+ [Modifier une facture](#update)
@@ -161,7 +164,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
         }}'
 ```
  
-<b>Champs d'un document</b>
+<b>Champs d'un document de facturation</b>
 
 ```shell
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
@@ -540,6 +543,126 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
+
+<a name="create4"/>
+
+<b>Créer une facture (ou autre) similaire</b></br>
+
+Vous pouvez créer par API un document (ex : facture...) similaire à un autre document de facturation existant (ex: devis), comme l'option "Créer un document similaire" ou l'option "Créer la facture" du logiciel. 
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_du_document_source,
+            "kind": "Type_du_document_à_créer"
+        }
+    }'
+    ```
+
+<b>Exemple : Créer la facture depuis un devis</b></br>
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_du_devis,
+            "kind": "vat"
+        }
+    }'
+    ```
+
+<b>Exemple : Créer la facture depuis une facture proforma</b></br>
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_de_la_proforma,
+            "kind": "vat"
+        }
+    }'
+    ```   
+    
+ <b>Exemple : Dupliquer une facture (créer une facture en tout point similaire à une autre) </b></br>
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_de_la_facture,
+            "kind": "vat"
+        }
+    }'
+    ```   
+
+<a name="create5"/>
+
+<b>Créer une facture d'acompte</b></br>
+<b>Facture d'acompte en tant que pourcentage du montant total d'un devis</b></br>
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_du_devis,
+            "kind": "advance",
+            "advance_creation_mode": "percent",
+            "advance_value": "30",
+            "position_name": "Acompte de 30% sur devis n° 123"
+        }
+    }'
+    ```
+
+<b>Facture d'acompte en tant que montant depuis un devis</b></br>
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_du_devis,
+            "kind": "advance",
+            "advance_creation_mode": "amount",
+            "advance_value": "150",
+            "position_name": "Acompte de 150€ sur devis n° 123"
+        }
+    }'
+    ```
+
+<a name="create6"/>
+
+<b>Créer une facture de solde</b></br>
+Une fois le(s) acomptes créé(s), vous pouvez facturer le solde facilement en créant la facture de solde qui reprendra le détail du devis en y déduisant les acomptes déjà facturés.
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID_du_devis,
+            "kind": "final",
+            "invoice_ids": [ID_du_premier_acompte, ID_du_deuxième_acompte, ...]
+        }
+    }'
+     ```
 
 <a name="create3"/>
 
