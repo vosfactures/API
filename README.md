@@ -22,7 +22,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger les documents liés à un document donné](#download_id)
 	+ [Télécharger les documents créés à partir d'un document donné](#download_from)
 	+ [Télécharger sous format PDF](#downloadpdf)
-	+ [Remarques](#notedoc)
+	+ [Remarques : Paiement en ligne. Marge d'un document](#notedoc)
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer un nouveau document](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
@@ -458,14 +458,14 @@ curl https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN
 
 Autres options PDF:
 * print_option=original - Original
-* print_option=copy - Copie
+* print_option=copy - Copie 
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
 <a name="notedoc"/>
 <b>Remarques</b>:<br> 
-<b>le paramètre "payment_url"</b> vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).<br> 
-<b>La variable "products-margin"</b> est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document.<br> <br> 
+Le paramètre <b>"payment_url"</b> vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
+La variable <b>"products-margin"</b> est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document.<br> <br> 
 
 
 <a name="send"/>
@@ -515,9 +515,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <b>Remarques importantes</b></br>
-<b>Coordonnées vendeur</b>
+<b>Coordonnées vendeur</b></br>
 Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre "department_id"(et non "seller_name").</br>
-<b>Documents Tests</b>
+<b>Documents Tests</b></br>
 Si vous faites des essais, pensez à utiliser le paramètre "test" (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation). 
 
 <a name="create2"/>
@@ -539,7 +539,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 	    }}'
 ```	   
 
-<b>REMARQUE</b>
+<b>Remarque</b></br>
 Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
@@ -645,7 +645,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <a name="create5"/>
 
-<b>Créer une facture d'acompte</b></br>/br>
+<b>Créer une facture d'acompte</b></br></br>
 <b>Facture d'acompte en tant que pourcentage du montant total d'un devis</b></br>
 
 ```shell
