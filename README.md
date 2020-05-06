@@ -25,7 +25,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Remarques](#notedoc)
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer un nouveau document](#create)
-	+ [Créer une nouveau document (version rapide)](#create2)
+	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une facture avec réduction](#create3)
 	+ [Créer un document similaire](#create4)
 	+ [Créer une facture d'acompte](#create5)
@@ -488,7 +488,7 @@ curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?
 
 <a name="create"/>
 
-<b>Créer une nouvelle facture</b>
+<b>Créer un nouveau document (ex : facture)</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -564,13 +564,13 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 			 "discount_kind":"amount",
 			 "show_discount":true,
 			 "positions":[
-			 	{"name":"Produkt A1",
+			 	{"name":"Produit A",
 				"quantity":1,
 				"tax":23,
 				"total_price_gross":10.23,
 				 "discount":"5.23"
 				 },
-				{"name":"Produkt A2",
+				{"name":"Produit B",
 				"quantity":2,
 				"tax":0,
 				"total_price_gross":50,
@@ -581,9 +581,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <a name="create4"/>
 
-<b>Créer une facture (ou autre) similaire</b></br>
+<b>Créer un document similaire</b></br>
 
-Vous pouvez créer par API un document (ex : facture...) similaire à un autre document de facturation existant (ex: devis), comme l'option "Créer un document similaire" ou l'option "Créer la facture" du logiciel. 
+Vous pouvez créer un document (ex : facture) similaire à un autre document de facturation existant (ex: devis) grâce à un appel API correspondant à l'option "Créer un document similaire" ou à l'option "Créer la facture" du logiciel. Vous pouvez ainsi créer un document en tout point similaire à un document existant (le n° du document créé étant bien sûr automatiquement généré conformément à vos paramètres du numérotation).
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -628,7 +628,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
     }'
 ```   
     
- <b>Exemple : Dupliquer une facture (créer une facture en tout point similaire à une autre) </b></br>
+ <b>Exemple : Dupliquer une facture </b></br>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -645,7 +645,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <a name="create5"/>
 
-<b>Créer une facture d'acompte</b></br>
+<b>Créer une facture d'acompte</b></br>/br>
 <b>Facture d'acompte en tant que pourcentage du montant total d'un devis</b></br>
 
 ```shell
