@@ -26,6 +26,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer une nouvelle facture](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
+	+ [Créer une nouvelle facture similaire à la facture avec l'ID fourni](#create2b)
 	+ [Créer une nouvelle facture avec réduction](#create3)
 	+ [Créer une nouvelle facture d'avoir](#credit)
 	+ [Modifier une facture](#update)
@@ -540,6 +541,76 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 Si vous obtenez le message suivant: 
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
+
+<a name="create2b"/>
+<b>Créer une nouvelle facture similaire à la facture avec l'ID fourni</b>
+
+Pour une facture d'acompte de 10% créée depuis une Devis
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID-devis,
+            "kind": "advance",
+            "advance_creation_mode": "percent",
+            "advance_value": "10",
+            "position_name": "Acompte sur Devis xxxxx"
+        }
+    }'
+```
+
+Pour une facture d'acompte de 50 € TTC créée depuis une Devis
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID-devis,
+            "kind": "advance",
+            "advance_creation_mode": "amount",
+            "advance_value": "50",
+            "position_name": "Acompte sur Devis xxxxx"
+        }
+    }'
+```
+
+Exemple de Facture de solde
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID-devis,
+            "kind": "final",
+            "invoice_ids": [ID des factures d'acomptes séparés par une virgule]
+        }
+    }'
+```
+
+Exemple de Facture depuis une Proforma
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "copy_invoice_from": ID-proforma,
+            "kind": "vat"
+        }
+    }'
+```
 
 <a name="create3"/>
 
