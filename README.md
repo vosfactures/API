@@ -27,7 +27,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un nouveau document](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une facture avec réduction](#create3)
-	+ [Créer un document similaire (ex: devis > facture ou facture > facture](#create4)
+	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
 	+ [Créer une facture d'acompte](#create5)
 	+ [Créer une facture de solde](#create6)
 	+ [Créer une facture d'avoir](#credit)
