@@ -1678,10 +1678,10 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 
 ## Création de compte(s) à partir d'application tierce
 
-C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...). Ainsi directement depuis votre portail, le client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis vosfactures.fr).
+C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).
 
 <b>Création d'un nouveau compte </b>
-Les champs suivants ne sont pas obligatoires: user.login, user.from_partner, user, company. 
+</br>Les champs suivants ne sont pas obligatoires: user.login, user.from_partner, user, company. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/account.json \
@@ -1712,7 +1712,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
 	    "integration_token": ""
         }'
 ```
-<b>REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur (pour recevoir le "integration_token" pour votre application intégrée, veuillez nous contacter).</b>
+REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur (pour recevoir le "integration_token" pour votre application intégrée, veuillez nous contacter).
 
 <b>Après avoir créé le nouveau compte :</b>
 
