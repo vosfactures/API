@@ -10,7 +10,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 ## Menu
 + [Code API](#token)
-+ [Se connecter et télécharger le code API](#connect)
++ [Connexion et téléchargement de données via l'API](#connect)
 + [Documents de facturation - actions et champs](#invoices)
 + [Paramètres additionnels disponibles pour les téléchargements par API](#list_params)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
@@ -106,12 +106,12 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 Le code API (`API_TOKEN`) de votre compte VosFactures est affiché dans les paramètres de votre compte: 
 "Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API". 
-Le code API est du type "qCedKxkTgQhGJpiI2SU". 
-Dans les exemples suivants, l'url votrecompte.vosfactures.fr est à remplacer avec l'url de votre propre compte. 
+Le code API est du type "qCedKxkTgQhGJpiI2SU".</br> 
+<b>Dans tous les exemples suivants, l'url votrecompte.vosfactures.fr est à remplacer avec l'url de votre propre compte.</b> 
 
 <a name="connect"/>
 
-## Se connecter et télécharger le code API
+## Connexion et téléchargement de données via l'API
 
 ```shell
 curl https://app.vosfactures.fr/login.json \
@@ -120,10 +120,10 @@ curl https://app.vosfactures.fr/login.json \
     -d '{
             "login": "identifiant_ou_email",
             "password": "mot_de_passe"
-	    "integration_token": "contactez-nous-pour-ce-code"
+	    "integration_token": ""
     }'
 ``` 
-Cette requête renvoie le code API et les informations sur le compte vosfactures (champ du `prefixe`et `url` du compte):
+Cette requête renvoie le code API et les informations sur le compte VosFactures (champ du `prefixe`et `url` du compte):
 
 ```shell
 {
@@ -136,6 +136,7 @@ Cette requête renvoie le code API et les informations sur le compte vosfactures
     "api_token":"XXXXXXXXXXXXXX"
 }
 ```
+Notez que le code API (```api_token```) n'est retourné que si l'utilisateur indiqué a préalablement généré le code API (l'utilisateur peut l'ajouter depuis Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API). 
 
 <a name="invoices"/>
 
@@ -1675,12 +1676,12 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
  
 <a name="accountsystem"/>
 
-## Création de compte à partir d'application tierce
+## Création de compte(s) à partir d'application tierce
 
-C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce en ligne, système de réservation, etc...). Ainsi un client depuis le portail de votre application tierce peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer des comptes directement depuis vosfactures.fr).
+C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...). Ainsi directement depuis votre portail, le client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis vosfactures.fr).
 
 <b>Création d'un nouveau compte </b>
-Les champs suivants ne sont pas requis: user.login, user.from_partner, user, company. 
+Les champs suivants ne sont pas obligatoires: user.login, user.from_partner, user, company. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/account.json \
@@ -1711,7 +1712,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
 	    "integration_token": ""
         }'
 ```
-
+<b>REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur (pour recevoir le "integration_token" pour votre application intégrée, veuillez nous contacter).</b>
 
 <b>Après avoir créé le nouveau compte :</b>
 
