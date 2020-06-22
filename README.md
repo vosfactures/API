@@ -30,7 +30,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
 	+ [Créer une facture d'acompte](#create5)
 	+ [Créer une facture de solde](#create6)
-	+ [Créer une facture d'avoir](#credit)
+	+ [Créer une facture d'avoir (partielle)](#credit)
+	+ [Créer une facture d'avoir (totale)](#credittotal)
 	+ [Modifier une facture](#update)
 	+ [Modifier un produit listé sur une facture](#update2)
 	+ [Supprimer un produit listé sur une facture](#update3)
@@ -375,7 +376,7 @@ Possible values:
 - this_year (année en cours)
 - last_year (année dernière)
 - all (tous)
-- more (autre : dans ce cas, il faut spécifier les paramètres additionels "date_from" (date de début) et "date_to" (date de fin)
+- more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin)
 
 <a name="examples"/>
 
@@ -465,8 +466,8 @@ Autres options PDF:
 
 <a name="notedoc"/>
 <b>Remarques</b>:<br> 
-Le paramètre <b>"payment_url"</b> vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
-La variable <b>"products-margin"</b> est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document.<br> <br> 
+Le paramètre ```payment_url``` vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
+La variable ```products-margin``` est retournée lors de l'appel API d'un document. Cette variable correspond au montant de la marge brute totale du document.<br> <br> 
 
 
 <a name="send"/>
@@ -517,14 +518,14 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <b>Remarques importantes</b></br>
 <b>Coordonnées vendeur</b></br>
-Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre "department_id"(et non "seller_name").</br>
+Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre ```department_id```(et non ```seller_name```).</br>
 <b>Documents Tests</b></br>
-Si vous faites des essais, pensez à utiliser le paramètre "test" (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation). 
+Si vous faites des essais, pensez à utiliser le paramètre ```test``` (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation). 
 
 <a name="create2"/>
 <b>Créer une nouvelle facture (version rapide)</b></br>
 
-Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
+Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (```product_id```), de l'acheteur (```buyer_id```) et du vendeur (```department_id```) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -704,7 +705,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <a name="credit"/>
 
-<b>Créer une nouvelle facture d'avoir</b>
+<b>Créer une facture d'avoir (partielle)</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -740,8 +741,27 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
             }]
         }}'
 ```
-<b>Remarque</b>: Si vous souhaitez afficher sur la facture d'avoir le numéro de la facture de référence, qui apparaît sous la forme de la mention "Avoir sur Facture N°xxxx", il est conseillé d'utiliser le paramètre "invoice_id" (en y indiquant le n° ID de la facture de référence) qui créera le lien fonctionnel entre la facture et la facture d'avoir. Sinon, vous pouvez alternativement utiliser le paramètre "from_invoice_id" (en indiquant également le n° ID de la facture), ou "correction" (en indiquant le contenu que vous souhaitez afficher) - mais dans ces deux cas aucun lien fonctionnel n'est créé. 
+<b>Remarque</b>: Si vous souhaitez afficher sur la facture d'avoir le numéro de la facture de référence (qui apparaît sous la forme de la mention "Avoir sur Facture N°xxxx"), il est conseillé d'utiliser le paramètre ```invoice_id``` (en y indiquant le n° ID de la facture de référence) qui créera le lien fonctionnel entre la facture et la facture d'avoir. Sinon, vous pouvez alternativement utiliser le paramètre ```from_invoice_id``` (en indiquant également le n° ID de la facture), ou ```correction``` (en indiquant le contenu que vous souhaitez afficher) - mais dans ces deux cas aucun lien fonctionnel n'est créé. 
 
+<a name="credittotal"/>
+
+<b>Créer une facture d'avoir (totale)</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+                -H 'Accept: application/json' \
+                -H 'Content-Type: application/json' \
+                -d '{
+                    "api_token":"API_TOKEN",
+                    "invoice": {
+                        "copy_invoice_from": 2432393,
+                        "kind": "correction",
+                        "total_correction": "1",
+                        "correction_reason": "commande annulée"
+                    }
+                }'
+```
+En attribuant la valeur "1" au paramètre ```total_correction```, une facture d'avoir totale est créée. Si au contraire vous indiquez la valeur "0", le montant de la facture d'avoir sera de zéro (car émise avec des lignes de produits identiques avant et après la correction). 
 
 <a name="update"/>
 <b>Modifier une facture</b>
