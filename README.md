@@ -10,7 +10,6 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 ## Menu
 + [Code API](#token)
-+ [Connexion et téléchargement de données via l'API](#connect)
 + [Documents de facturation - actions et champs](#invoices)
 + [Paramètres additionnels disponibles pour les téléchargements par API](#list_params)
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
@@ -96,6 +95,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un paiement par son ID](#paiementsid)
 	+ [AJouter un nouveau paiement](#paiementsadd)
 + [Création de compte à partir d'application tierce](#accountsystem)
++ [Connexion via API](#connect)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
   
@@ -109,35 +109,6 @@ Le code API (`API_TOKEN`) de votre compte VosFactures est affiché dans les para
 "Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API". 
 Le code API est du type "qCedKxkTgQhGJpiI2SU".</br> 
 <b>Dans tous les exemples suivants, l'url votrecompte.vosfactures.fr est à remplacer avec l'url de votre propre compte.</b> 
-
-<a name="connect"/>
-
-## Connexion et téléchargement de données via l'API
-
-```shell
-curl https://app.vosfactures.fr/login.json \
-    -H 'Accept: application/json'  \
-    -H 'Content-Type: application/json' \
-    -d '{
-            "login": "identifiant_ou_email",
-            "password": "mot_de_passe"
-	    "integration_token": ""
-    }'
-``` 
-Cette requête renvoie le code API et les informations sur le compte VosFactures (champ du `prefixe`et `url` du compte):
-
-```shell
-{
-    "login":"paul",
-    "email":"paul@email.com",
-    "prefix":"YYYYYYY",
-    "url":"https://YYYYYYY.vosfactures.fr",
-    "first_name":"Paul",
-    "last_name":"Lebrun",
-    "api_token":"XXXXXXXXXXXXXX"
-}
-```
-Notez que le code API (```api_token```) n'est retourné que si l'utilisateur indiqué a préalablement généré le code API (l'utilisateur peut l'ajouter depuis Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API). 
 
 <a name="invoices"/>
 
@@ -1701,7 +1672,12 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).
 
 <b>Création d'un nouveau compte </b>
-</br>Les champs suivants ne sont pas obligatoires: user.login, user.from_partner, user, company. 
+</br>Pour créer un compte depuis votre application intégrée, vous avez besoin d'envoyer :</br> 
+   - le paramètre ```integration_token``` (code d'intégration) lié à votre compte. Vous devez simplement nous contacter par email à info@vosfactures.fr afin de l'obtenir.</br>
+   - le code API de votre compte<br/>
+   - le préfixe du compte à créer<br/>
+   - l'utilisateur qui sera propriétaire du compte à créer (si ce n'est pas vous-même)<br/>
+<br/>Les champs suivants ne sont pas obligatoires : ```user.login```, ```user.from_partner```, ```user```, ```company``` (département du compte à créer). 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/account.json \
@@ -1717,7 +1693,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
                 "login": "identifiantABC",
                 "email": "email@abc.com",
                 "password": "motdepasseABC",
-                "from_partner": "PARTNER_CODE"
+                "from_partner": "code_parrainage"
             },
             "company": {
                 "name": "Société ABC",
@@ -1732,7 +1708,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
 	    "integration_token": ""
         }'
 ```
-REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur (pour recevoir le "integration_token" pour votre application intégrée, veuillez nous contacter).
+REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur.
 
 <b>Après avoir créé le nouveau compte :</b>
 
@@ -1763,6 +1739,36 @@ Obtenir des informations sur le compte:
 curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integration_token="
 ```
 
+<a name="connect"/>
+
+## Connexion via API
+
+La requête suivante (qui nécessite le mot de passe) renvoie le code API du compte et les informations sur le compte VosFactures :
+```shell
+curl https://app.vosfactures.fr/login.json \
+    -H 'Accept: application/json'  \
+    -H 'Content-Type: application/json' \
+    -d '{
+            "login": "identifiant_ou_email",
+            "password": "mot_de_passe"
+	    "integration_token": ""
+    }'
+``` 
+REMARQUE: Pour recevoir le "integration_token", veuillez nous contacter par email à info@vosfactures.fr.
+
+Voici la réponse retournée, qui inclut notamment le `prefixe`, l' `url` et le code API du compte : 
+```shell
+{
+    "login":"paul",
+    "email":"paul@email.com",
+    "prefix":"YYYYYYY",
+    "url":"https://YYYYYYY.vosfactures.fr",
+    "first_name":"Paul",
+    "last_name":"Lebrun",
+    "api_token":"XXXXXXXXXXXXXX"
+}
+```
+Notez que le code API (```api_token```) n'est retourné que si l'utilisateur indiqué a préalablement généré le code API (l'utilisateur peut l'ajouter depuis Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API). 
 
 <a name="exemples"/>
 
