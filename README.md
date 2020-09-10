@@ -36,6 +36,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Supprimer un produit listé sur une facture](#update3)
 	+ [Ajouter un produit sur une facture](#update4)
 	+ [Changer l'état d'une facture](#status)
+	+ [Ajouter une pièce jointe à une facture](#file)
+	+ [Télécharger les pièces jointes d'une facture dans un fichier ZIP](#filezip)
 	+ [Supprimer une facture](#deleteinvoice)
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
@@ -808,18 +810,50 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 <b>Changer l'état d'une facture</b>
 
 ```shell
-curl "https://votrecompte.vosfactures.fr/invoices/111/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
+curl "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/change_status.json?api_token=API_TOKEN&status=STATUS" -X POST
 ```
 
 <b>Remarque : Documents "Exportés"</b> </br>
 En terme de suivi comptable, vous avez la possibilité d'afficher la colonne "Exporté" sur la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export - cet état "exporté" étant mis à jour automatiquement par le système après un export. Vous pouvez forcer cet état en envoyant le paramètre :</br> "accounting_status" : "exported"
 </br>P.S: Depuis l'aperçu du document, dans l'encadré "suivi du document" il y a aura la trace d'une activité "Modification" avec la date et l'heure.  
 
+<a name="file"/>
+<b>Ajouter une pièce jointe à une facture</b>
+
+1. Téléchargement des données nécessaires à l'envoi de la pièce jointe :
+    ```shell
+    curl https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/get_new_attachment_credentials.json?api_token=API_TOKEN
+    ```
+
+2. Envoi de la pièce jointe :
+    ```shell
+    curl -F 'AWSAccessKeyId=received_AWSAccessKeyId' \
+         -F 'key=received_key' \
+         -F 'policy=received_policy' \
+         -F 'signature=received_signature' \
+         -F 'acl=received_acl' \
+         -F 'success_action_status=received_success_action_status' \
+         -F 'file=@/file_path/name.ext' \
+         received_url
+    ```
+
+3. Ajout de la pièce jointe à la facture:
+    ```shell
+    curl -X POST https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/add_attachment.json?api_token=API_TOKEN&file_name=name.ext
+    ```
+
+<a name="filezip"/>
+<b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
+
+```shell
+curl -o attachments.zip https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/attachments_zip.json?api_token=API_TOKEN
+```
+
 <a name="deleteinvoice"/>
 <b>Supprimer une facture</b>
 
 ```shell
-curl -X DELETE "https://YOUR_DOMAIN.fakturownia.pl/invoices/INVOICE_ID.json?api_token=API_TOKEN"
+curl -X DELETE "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json?api_token=API_TOKEN"
 ```
 
 <a name="downloadrecurring"/>
