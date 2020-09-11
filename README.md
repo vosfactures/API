@@ -15,7 +15,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ [Télécharger la liste de factures du mois en cours](#download)
 	+ [Télécharger la liste de factures d'une période donnée](#downloadmore)
-	+ [Télécharger les factures d'un client](#downloadclient)
+	+ [Télécharger la liste de factures avec les produits listés](#downloadpdt)
+	+ [Télécharger les factures d'un client](#downloadclient)	
 	+ [Télécharger un document (ex: facture) par son numéro d'ID](#downloadid)
 	+ [Télécharger un document par son numéro](#downloadnr)
 	+ [Télécharger les documents liés à un document donné](#download_id)
@@ -338,10 +339,11 @@ Champ: `discount_kind` - Type de réduction
 ## Paramètres additionnels des téléchargements
 
 Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche proposé par le logiciel pour affiner les listes des documents/contacts/produits/paiements.</br>
+
 Le paramètre `page =` vous permet de parcourir des enregistrements paginés.
 Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements, N étant la limite du nombre d’enregistrements retournés. Pour obtenir N autres enregistrements, appelez l’action avec le paramètre `page = 2`, etc.</br>
-Le paramètre `period=` vous permet de  limiter les recherches à une période donnée. Voici les valeurs possibles : 
-Possible values:
+
+Le paramètre `period=` vous permet de limiter les recherches à une période donnée. Voici les valeurs possibles : 
 - last_12_months (12 derniers mois) qui est l'option par défaut
 - this_month (mois en cours)
 - last_30_days (30 derniers jours)
@@ -349,7 +351,9 @@ Possible values:
 - this_year (année en cours)
 - last_year (année dernière)
 - all (tous)
-- more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin)
+- more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin))
+
+Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents. 
 
 <a name="examples"/>
 
@@ -388,6 +392,12 @@ curl "https://votrecompte.vosfactures/invoices.json?api_token=API_TOKEN&per_page
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_CLIENTA&api_token=API_TOKEN
+```
+
+<a name="downloadpdt"/>
+<b>Télécharger la liste des factures avec les produits listés</b>	
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api_token=API_TOKEN&page=1
 ```
 
 <a name="downloadid"/>
