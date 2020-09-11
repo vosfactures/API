@@ -396,6 +396,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_CLIENTA&api_t
 
 <a name="downloadpdt"/>
 <b>Télécharger la liste des factures avec les produits listés</b>	
+
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api_token=API_TOKEN&page=1
 ```
