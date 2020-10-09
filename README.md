@@ -234,7 +234,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"total_price_gross" : "72,57" - total TTC
                 "kind":"text_separator" - pour insérer une ligne de texte, par ex: {"name":"texte", "kind":"text_separator"}
 "hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe) (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"hide_tax":"1"} lors de la création d'un document de facturation)
-"calculating_strategy" => 
+"calculating_strategy" : 
 {
   "position": "default" ou "keep_gross" - Comment se calcule le total de chaque ligne 
   "sum": "sum" ou "keep_gross" ou "keep_net" - Comment se calcule le total des colonnes 
