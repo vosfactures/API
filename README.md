@@ -26,7 +26,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Envoyer les factures par email à un client](#send)
 	+ [Créer un nouveau document](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
-	+ [Créer une facture avec réduction](#create3)
+	+ [Créer une facture avec réduction](#create3a)
+	+ [Créer une facture avec sous-total](#create3b)
+	+ [Créer une facture avec ligne de texte](#create3c)
 	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
 	+ [Créer une facture d'acompte](#create5)
 	+ [Créer une facture de solde](#create6)
@@ -232,7 +234,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
-                "kind":"text_separator" - pour insérer une ligne de texte, par ex: {"name":"texte", "kind":"text_separator"}
+                "kind":"text_separator" - pour insérer une ligne de texte (voir exemple plus bas)
+		"kind":"subtotal" - pour insérer un sous-total (voir exemple plus bas)
 "hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe) (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"hide_tax":"1"} lors de la création d'un document de facturation)
 "calculating_strategy" : 
 {
@@ -530,11 +533,11 @@ Si vous obtenez le message suivant:
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
 
-<a name="create3"/>
+<a name="create3a"/>
 
 <b>Créer une nouvelle facture avec réduction</b>
 
-Il faut indiquer dans la partie document l'affichage ("show_discount") et le type ("discount_kind") de réduction, et dans la partie produit la valeur ("discount") de la réduction. 
+Il faut indiquer dans la partie document ("invoice") l'affichage ("show_discount") et le type ("discount_kind") de réduction, et dans la partie produit la valeur ("discount") de la réduction. 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -563,6 +566,61 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 				}   
 			     ]   
 		}}'
+```
+
+<a name="create3b"/>
+
+<b>Créer une nouvelle facture avec sous-total</b>
+
+Dans l'exemple ci-dessous, la facture est créée avec un sous-total des produits A et B.  
+
+```shell
+curl http://votrecompte.vosfactures.fr/invoices.json \
+                -H 'Accept: application/json' \
+                -H 'Content-Type: application/json' \
+                -d '{
+                "api_token": "API_TOKEN",
+                "invoice": {
+                    "kind":"vat",
+                    "number": null,
+                    "sell_date": "2020-10-26",
+                    "issue_date": "2020-10-26",
+                    "payment_to": "2020-11-02",
+                    "buyer_name": "Client Untel",
+                    "buyer_tax_no": "FR5252445767",
+                    "positions":[
+                        {"name":"Product A", "tax":23, "total_price_gross":30.94, "quantity":3},
+                        {"name":"Product B", "tax":23, "total_price_gross":17.23, "quantity":1},
+                        {"name":"Subtotal", "tax":"disabled", "total_price_gross":0, "quantity":0, "kind":"subtotal"},
+                        {"name":"Product C", "tax":0, "total_price_gross":50, "quantity":2}
+                    ]
+                }}'
+```
+
+<a name="create3c"/>
+<b>Créer une nouvelle facture avec une ligne de texte </b>
+
+
+```shell
+curl http://votrecompte.vosfactures.fr/invoices.json \
+                -H 'Accept: application/json' \
+                -H 'Content-Type: application/json' \
+                -d '{
+                "api_token": "API_TOKEN",
+                "invoice": {
+                    "kind":"vat",
+                    "number": null,
+                    "sell_date": "2020-10-26",
+                    "issue_date": "2020-10-26",
+                    "payment_to": "2020-11-02",
+                    "buyer_name": "Client Untel",
+                    "buyer_tax_no": "FR5252445767",
+                    "positions":[
+                        {"name":"Chambre", "kind":"text_separator"},
+			{"name":"Product A", "tax":23, "total_price_gross":30.94, "quantity":3},
+                        {"name":"Product B", "tax":0, "total_price_gross":50, "quantity":2}
+                    ]
+                }}'
 ```
 
 <a name="create4"/>
