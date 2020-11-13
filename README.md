@@ -146,7 +146,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 
 ```shell
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
-"kind" : "vat" - type du document ("vat" pour facture, "estimate" pour devis, "proforma" pour facture proforma, "correction" pour avoir, "client_order" pour bon de commande de client, "receipt" pour reçu, "advance" pour facture d'acompte, "final" pour facture de solde, "invoice_other" pour autre type de document, "kp" pour bon d'entrée de caisse,"kw" pour bon de sortie de caisse)
+"kind" : "vat" - type du document ("vat" pour facture, "correction" pour avoir, "receipt" pour reçu, "advance" pour facture d'acompte, "final" pour facture de solde, "invoice_other" pour autre type de document, "estimate" pour devis, "proforma" pour facture proforma, "client_order" pour bon de commande de client, "maintenance_request" pour bon d'intervention, "kp" pour bon d'entrée de caisse,"kw" pour bon de sortie de caisse,)
 "income" : "1" - revenu (1) ou dépense (0)
 "user_id" : "" - numéro ID de l'utilisateur ayant créé le document (en cas de compte Multi-utilisateurs : https://aide.vosfactures.fr/2703898-Multi-utilisateurs-cr-ation-fonctions-et-restrictions)
 "issue_date" : "2013-01-16" - date de création 
