@@ -80,7 +80,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Mettre à jour une catégorie](#categorieupdate)
 	+ [Supprimer la catégorie avec l'ID donné](#categoriedelete)
 + [Documents de stock](#warehouse_documents) 
-	+ [Télécharger les documents de stock](#wd1) 
+	+ [Télécharger les documents de stock](#wd1)
+	+ [Télécharger les documents de stock d'une période donnée](#wd1bis)
 	+ [Obtenir un document de stock par son ID](#wd2) 
 	+ [Créer un bon d'entrée (BE)](#wd3) 
 	+ [Créer un bon de livraison (BL)](#wd4) 
@@ -246,7 +247,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "split_payment": "1" - 1 ou 0 selon que la facture fait ou non l'objet d'un paiement partiel
 
 ```
-<b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > PAramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
+<b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > Paramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
 
 <b>Valeurs des Champs</b>
 
@@ -355,6 +356,9 @@ Le paramètre `period=` vous permet de limiter les recherches à une période do
 - last_year (année dernière)
 - all (tous)
 - more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin))
+
+En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`) ou date additionnelle (`sell_date`). 
+Pour les documents de stock, vous pouvez rechercher par date de création (`issue_date`) ou date de vente (`transaction_date`).
 
 Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents. 
 
@@ -1438,7 +1442,15 @@ curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_toke
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_TOKEN" 
 ``` 
-Vous pouvez utiliser les mêmes paramètres que ceux décrits pour les documents de facturation. 
+Vous pouvez utiliser en général les mêmes paramètres que ceux décrits pour les documents de facturation. 
+
+<a name="wd1bis"/>
+<b>Télécharger les documents de stock d'une période donnée</b>
+
+```shell 
+curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_TOKEN&period=more&date_from=2018-01-01&date_to=2018-04-30&search_date_type=issue_date"
+``` 
+Pour la recherche pour une période entre deux dates, vous pouvez rechercher les documents de stock par date de création (`issue_date`) ou date de vente (`transaction_date`) en utilisant le paramètre `search_date_type`. 
  
 <a name="wd2"/> 
 <b>Obtenir un document de stock par son ID </b>
