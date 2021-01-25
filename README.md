@@ -1267,6 +1267,7 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 ```
 <a name="deleteclient"/>
 <b>Supprimer un contact</b>
+
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_token=API_TOKEN"
 ```
