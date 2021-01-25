@@ -64,6 +64,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Remarque](#noteclient1)
 	+ [Ajouter un contact](#addclient)
 	+ [Mettre à jour un contact](#updateclient)
+	+ [Supprimer un contact](#deleteclient)
 	+ [Remarque: Champs](#noteclient)	
 + [Produits](#products)
 	+ [Télécharger les produits](#productlist)
@@ -1263,6 +1264,11 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 			"phone" : "phone2",
 			"street" : "street2",
 	    }}'
+```
+<a name="deleteclient"/>
+<b>Supprimer un contact</b>
+```shell
+curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_token=API_TOKEN"
 ```
 
 <a name="noteclient"/>
