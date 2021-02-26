@@ -44,7 +44,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Supprimer une facture](#deleteinvoice)
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
-	+ [Mettre à jour une récurrence existante](#updaterecurring)
+	+ [Modifier une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
 + [Département vendeur](#department)
 	+ [Créer un nouveau département](#departadd)
@@ -63,7 +63,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un contact selon son adresse email](#clientemail)
 	+ [Remarque](#noteclient1)
 	+ [Ajouter un contact](#addclient)
-	+ [Mettre à jour un contact](#updateclient)
+	+ [Modifier un contact](#updateclient)
 	+ [Supprimer un contact](#deleteclient)
 	+ [Remarque: Champs](#noteclient)	
 + [Produits](#products)
@@ -72,13 +72,13 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un produit par son ID](#productID)
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Ajouter un produit](#productadd)
-	+ [Mettre à jour un produit](#productupdate) 
+	+ [Modifier un produit](#productupdate) 
 	+ [Remarque: Champ](#noteproduct)
 + [Catégories](#categorie)
 	+ [Liste des catégories](#categorielist)
 	+ [Télécharger une catégorie sélectionnée par ID](#categorieID)
 	+ [Ajouter une nouvelle catégorie](#categorienew)
-	+ [Mettre à jour une catégorie](#categorieupdate)
+	+ [Modifier une catégorie](#categorieupdate)
 	+ [Supprimer la catégorie avec l'ID donné](#categoriedelete)
 + [Documents de stock](#warehouse_documents) 
 	+ [Télécharger les documents de stock](#wd1)
@@ -88,19 +88,22 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un bon de livraison (BL)](#wd4) 
 	+ [Créer un bon de transfert (BT)](#wd4t) 
 	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
-	+ [Mettre à jour un document de stock](#wd6) 
+	+ [Modifier un document de stock](#wd6) 
 	+ [Supprimer un document de stock](#wd7) 
 + [Entrepôts](#warehouse)
 	+ [Liste des entrepôts](#warehouselist)
 	+ [Téléchargement de l'entrepôt sélectionné par son ID](#warehouseID)
 	+ [Ajouter un nouvel entrepôt](#warehousenew)
-	+ [Mettre à jour un entrepôt](#warehouseupdate)
+	+ [Modifier un entrepôt](#warehouseupdate)
 	+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
 + [Paiements](#paiements)
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
+	+ [Télécharger la liste des Paiements avec les factures liées](#paiementsinvoice)
 	+ [Obtenir un paiement par son ID](#paiementsid)
-	+ [AJouter un nouveau paiement](#paiementsadd)
+	+ [Ajouter un nouveau paiement](#paiementsadd)
+	+ [Modifier un paiement](#updatepayment)
+	+ [Supprimer un paiement](#deletepayment)
 + [Création de compte à partir d'application tierce](#accountsystem)
 + [Connexion via API](#connect)
 + [Exemples : CURL, PHP, Ruby](#exemples)
@@ -1243,7 +1246,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 ```
 
 <a name="updateclient"/>
-<b>Mettre à jour un contact</b>
+<b>Modifier un contact</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients/111.json \ 
@@ -1344,7 +1347,7 @@ curl https://votrecompte.vosfactures.fr/products.json \
 ```
 
 <a name="productupdate"/>
-<b>Mettre à jour un produit</b>
+<b>Modifier un produit</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/products/333.json  \
@@ -1416,7 +1419,7 @@ curl https://votrecompte.vosfactures.fr/categories.json
 ```
 
 <a name="categorieupdate"/>
-<b> Mettre à jour une catégorie </b>
+<b> Modifier une catégorie </b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/categories/100.json 
@@ -1556,7 +1559,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 ``` 
  
 <a name="wd6"/>  
-<b>Mettre à jour un document de stock</b>
+<b>Modifier un document de stock</b>
  
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json 
@@ -1610,7 +1613,7 @@ curl https://votrecompte.vosfactures.fr/warehouses.json
 ``` 
 
 <a name="warehouseupdate"/>
-<b>Mettre à jour un entrepôt</b>
+<b>Modifier un entrepôt</b>
 	
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouses/100.json 
@@ -1706,6 +1709,18 @@ JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
 ```
+<a name="paiementsinvoice"/>
+<b>Télécharger la liste des Paiements avec les factures liées</b>
+
+XML
+```shell
+curl "https://votrecompte.vosfactures.fr/banking/payments.xml?include=invoices&api_token=API_TOKEN"
+```
+
+JSON
+```shell
+curl "https://votrecompte.vosfactures.fr/banking/payments.json?include=invoices&api_token=API_TOKEN"
+```
 
 <a name="paiementsid"/>
 <b>Obtenir un paiement selon son ID</b>
@@ -1719,6 +1734,15 @@ JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
 ```    
+
+<a name="paiementsinvoice"/>
+<b>Télécharger la liste des Paiements avec les factures liées</b>
+"name":"Titre du Paiement",
+			"price": 100.00,
+			"invoice_id": null,
+			"paid":true,
+			"kind": "api"
+
 
 <a name="paiementsadd"/>
 <b>Ajouter un nouveau paiement</b>
@@ -1786,7 +1810,31 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 		}
 	     }'
 ```
- 
+
+<a name="updatepayment"/>
+<b>Modifier un paiement</b>
+
+```shell 
+curl https://votrecompte.vosfactures.fr/banking/payments/100.json 
+				-X PUT
+				-H 'Accept: application/json'  
+				-H 'Content-Type: application/json'  
+				-d '{
+				"api_token": "API_TOKEN",
+				"banking_payments": {
+					"name":"Titre du Paiement",
+			                "price": 120.00,			
+				}}'
+``` 
+
+<a name="deletepayment"/>
+<b>Supprimer un paiement</b>
+
+```shell 
+curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api_token=API_TOKEN" 
+``` 
+
+
 <a name="accountsystem"/>
 
 ## Création de compte(s) à partir d'application tierce
