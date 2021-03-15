@@ -1702,7 +1702,7 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 <a name="paiementslist"/>
 <b>Télécharger la liste des Paiements</b>
 
-Vous pouvez utiliser les mêmes paramètres de filtre que ceux disponible pour une recherche manuelle depuis l'onglet Paiements.</br>
+Vous pouvez utiliser les mêmes paramètres de filtre que ceux disponibles pour une recherche manuelle depuis l'onglet Paiements.</br>
 
 XML
 ```shell
