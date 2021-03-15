@@ -1349,7 +1349,7 @@ curl https://votrecompte.vosfactures.fr/products.json \
 <a name="productupdate"/>
 <b>Modifier un produit</b>
 
-Vous pouvez modifier un produit par son ID on par sa référence ("code") 
+Vous pouvez modifier un produit par son ID : 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/products/333.json  \
@@ -1364,6 +1364,23 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 			"tax": "20" - % de taxe
 	    }}'
 ```
+
+Vous pouvez aussi modifier un produit par sa référence ("code") :
+```shell
+curl https://votrecompte.vosfactures.fr/products/REFABC.json
+        -X PUT \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \  
+	-d '{"api_token": "API_TOKEN",
+	      "find_by": "code",
+              "product": {
+            		"name": "Product A",
+ 			"tax": "20",
+   			"price_gross": "102",
+   			"description": "Test 123"
+  }}'
+```
+
 
 <b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
 
