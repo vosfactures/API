@@ -1349,6 +1349,8 @@ curl https://votrecompte.vosfactures.fr/products.json \
 <a name="productupdate"/>
 <b>Modifier un produit</b>
 
+Vous pouvez modifier un produit par son ID on par sa référence ("code") 
+
 ```shell
 curl https://votrecompte.vosfactures.fr/products/333.json  \
 	-X PUT \
