@@ -482,6 +482,11 @@ Par exemple, écrivez:
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN&force=true
 ```
 
+Pour une requête XML sans envoyer de code API (méthode d'autentification différente) :  
+```shell
+curl -X POST -u 'username:password' https://votrecompte.vosfactures.fr/invoices/100/send_by_email.xml
+```
+
 
 <a name="create"/>
 
