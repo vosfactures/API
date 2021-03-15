@@ -1702,6 +1702,8 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 <a name="paiementslist"/>
 <b>Télécharger la liste des Paiements</b>
 
+Vous pouvez utiliser les mêmes paramètres de filtre que ceux disponible pour une recherche manuelle depuis l'onglet Paiements.</br>
+
 XML
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payments.xml?api_token=API_TOKEN"
@@ -1736,15 +1738,6 @@ JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
 ```    
-
-<a name="paiementsinvoice"/>
-<b>Télécharger la liste des Paiements avec les factures liées</b>
-"name":"Titre du Paiement",
-			"price": 100.00,
-			"invoice_id": null,
-			"paid":true,
-			"kind": "api"
-
 
 <a name="paiementsadd"/>
 <b>Ajouter un nouveau paiement</b>
