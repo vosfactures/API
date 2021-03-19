@@ -1222,7 +1222,7 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=
 
 <a name="noteclient1"/>
 <b>Remarque:</b><br>
-<b>La variable "panel_url"</b> est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'espace client (de la fonction Accès Client).
+<b>La variable "panel_url"</b> est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'Espace Facturation du contact.
 <br><br>
 
 <a name="addclient"/>
