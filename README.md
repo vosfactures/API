@@ -1845,7 +1845,7 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json \
 						"kind": "api"
 						}}'
 ```
-Attention : l'ordre dans lequel vous spécifiez l'ID des factures dans le paramètre `invoice_ids` est important, car le montant du paiement sera appliqué dans cet ordre. Dans notre exemple, si le montant à payer de la facture ID 555 est de 100 euros, et celui de la facture ID 666 est de 200 euros, le paiement de 200 euros s'applique d'abord à la facture 555 (payée en totalité) et ensuite à la factue 666 (payée en partie).
+Attention : l'ordre dans lequel vous spécifiez l'ID des factures dans le paramètre `invoice_ids` est important, car le montant du paiement sera appliqué dans cet ordre. Dans notre exemple, si le montant à payer de la facture ID 555 est de 100 euros, et celui de la facture ID 666 est de 150 euros, le paiement de 200 euros s'applique d'abord à la facture 555 (payée en totalité) et ensuite à la facture 666 (payée en partie).
 
 <a name="updatepayment"/>
 <b>Modifier un paiement</b>
