@@ -102,6 +102,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger la liste des Paiements avec les factures liées](#paiementsinvoice)
 	+ [Obtenir un paiement par son ID](#paiementsid)
 	+ [Ajouter un nouveau paiement](#paiementsadd)
+	+ [Ajouter un nouveau paiement à plusieurs factures](#paiementsadd2)
 	+ [Modifier un paiement](#updatepayment)
 	+ [Supprimer un paiement](#deletepayment)
 + [Création de compte à partir d'application tierce](#accountsystem)
@@ -1827,19 +1828,37 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 		}
 	     }'
 ```
+<a name="paiementsadd2"/>
+<b>Ajouter un nouveau paiement lié à plusieurs factures</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/banking/payments.json \
+				-H 'Accept: application/json' \
+				-H 'Content-Type: application/json' \
+				-d '{
+					"api_token": "API_TOKEN",
+					"banking_payment": {
+						"name":"Titre du paiement",
+						"price": 200,
+						"invoice_ids": [555, 666],
+						"paid":true,
+						"kind": "api"
+						}}'
+```
+<b>Attention :<b/> l'ordre dans lequel vous spécifiez l'ID des factures dans le paramètre `invoice_ids` est important, car le montant du paiement sera appliqué dans cet ordre. Dans notre exemple, si le montant à payer de la facture ID 555 est de 100 euros, et celui de la facture ID 666 est de 200 euros, le paiement de 200 euros s'applique d'abord à la facture 555 (payée en totalité) et ensuite à la factue 666 (payée en partie).
 
 <a name="updatepayment"/>
 <b>Modifier un paiement</b>
 
 ```shell 
 curl https://votrecompte.vosfactures.fr/banking/payments/100.json 
-				-X PUT
+				-X PATCH
 				-H 'Accept: application/json'  
 				-H 'Content-Type: application/json'  
 				-d '{
 				"api_token": "API_TOKEN",
 				"banking_payments": {
-					"name":"Titre du Paiement",
+					"name":"Nouveau titre du Paiement",
 			                "price": 120.00,			
 				}}'
 ``` 
