@@ -365,6 +365,8 @@ Le paramètre `period=` vous permet de limiter les recherches à une période do
 En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`) ou date additionnelle (`sell_date`). 
 Pour les documents de stock, vous pouvez rechercher par date de création (`issue_date`) ou date de vente (`transaction_date`).
 
+Le paramètre `income =` vous permet d'obtenir la liste des documents de vente (avec la valeur `1`) ou des la liste des dépenses (avec la valeur `0`)
+
 Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents. 
 
 <a name="examples"/>
