@@ -1881,11 +1881,12 @@ C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une 
 
 <b>Création d'un nouveau compte </b>
 </br>Pour créer un compte depuis votre application intégrée, vous avez besoin d'envoyer :</br> 
-   - le paramètre ```integration_token``` (code d'intégration) lié à votre compte. Vous devez simplement nous contacter par email à info@vosfactures.fr afin de l'obtenir.</br>
    - le code API de votre compte<br/>
    - le préfixe du compte à créer<br/>
-   - l'utilisateur qui sera propriétaire du compte à créer (si ce n'est pas vous-même)<br/>
+   - l'utilisateur éventuel qui sera propriétaire du compte à créer (si vous souhaitez que le propriétaire du nouveau compte créé soit le même que celui de votre compte, il suffira de ne pas inclure dans votre requête de section "user")<br/>
+   - le paramètre ```integration_token``` (code d'intégration) lié à votre compte. Contactez-nous par email à info@vosfactures.fr afin de l'obtenir.</br>
 <br/>Les champs suivants ne sont pas obligatoires : ```user.login```, ```user.from_partner```, ```user```, ```company``` (département du compte à créer). 
+
 
 ```shell
 curl https://votrecompte.vosfactures.fr/account.json \
