@@ -47,11 +47,11 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Modifier une récurrence existante](#updaterecurring)
 + [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
 + [Département vendeur](#department)
-	+ [Créer un nouveau département](#departadd)
+	+ [Créer un département](#departadd)
 	+ [Modifier un département](#departupdate)
 	+ [Télécharger la liste des départements](#departlist)
-	+ [Supprimer un département selon ID](#departdelete)
 	+ [Obtenir un département selon ID](#departID)
+	+ [Supprimer un département selon ID](#departdelete)
 	+ [Remarque : Champs](#departnote)
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
@@ -62,7 +62,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un contact selon son nom d'usage](#clientshortname)
 	+ [Obtenir un contact selon son adresse email](#clientemail)
 	+ [Remarque](#noteclient1)
-	+ [Ajouter un contact](#addclient)
+	+ [Créer un contact](#addclient)
 	+ [Modifier un contact](#updateclient)
 	+ [Supprimer un contact](#deleteclient)
 	+ [Remarque: Champs](#noteclient)	
@@ -71,15 +71,20 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
 	+ [Obtenir un produit par son ID](#productID)
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
-	+ [Ajouter un produit](#productadd)
+	+ [Créer un produit](#productadd)
 	+ [Modifier un produit](#productupdate) 
 	+ [Remarque: Champ](#noteproduct)
++ [Multi-Tarifs](#tarifs)
+	+ [Télécharger la liste des Tarifs](#tarifs1)
+	+ [Créer un Tarif](#tarifs2)
+	+ [Modifier un Tarif](#tarifs3)
+	+ [Supprimer un Tarif](#tarifs4)
 + [Catégories](#categorie)
-	+ [Liste des catégories](#categorielist)
-	+ [Télécharger une catégorie sélectionnée par ID](#categorieID)
-	+ [Ajouter une nouvelle catégorie](#categorienew)
+	+ [Télécharger la liste des catégories](#categorielist)
+	+ [Obtenir une catégorie selon son ID](#categorieID)
+	+ [Créer une catégorie](#categorienew)
 	+ [Modifier une catégorie](#categorieupdate)
-	+ [Supprimer la catégorie avec l'ID donné](#categoriedelete)
+	+ [Supprimer une catégorie avec l'ID donné](#categoriedelete)
 + [Documents de stock](#warehouse_documents) 
 	+ [Télécharger les documents de stock](#wd1)
 	+ [Télécharger les documents de stock d'une période donnée](#wd1bis)
@@ -93,7 +98,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Entrepôts](#warehouse)
 	+ [Liste des entrepôts](#warehouselist)
 	+ [Téléchargement de l'entrepôt sélectionné par son ID](#warehouseID)
-	+ [Ajouter un nouvel entrepôt](#warehousenew)
+	+ [Créer un entrepôt](#warehousenew)
 	+ [Modifier un entrepôt](#warehouseupdate)
 	+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
 + [Paiements](#paiements)
@@ -1078,7 +1083,7 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 ## Département vendeur
 
 <a name="departadd"/>
-<b>Créer un nouveau département</b>
+<b>Créer un département</b>
 
 Vous pouvez créer votre département (fiche entreprise) soit lors de la création d'un document (voir plus bas), soit directement : 
 
@@ -1096,6 +1101,8 @@ curl https://votrecompte.vosfactures.fr/departments.json  
 
 <a name="departupdate"/>
 <b>Modifier un département</b>
+
+Vous pouvez modifier un département par son ID :
 
 ```shell
 curl https://votrecompte.vosfactures.fr/departments/100.json  
@@ -1118,18 +1125,18 @@ curl https://votrecompte.vosfactures.fr/departments/100.json
 curl "https://votrecompte.vosfactures.fr/departments.json?api_token=API_TOKEN"
 ```
 
-<a name="departdelete"/>
-<b>Supprimer un département selon ID</b>
-
-```shell
-curl -X DELETE "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
-```
-
 <a name="departID"/>
 <b>Obtenir un département selon ID</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
+```
+
+<a name="departdelete"/>
+<b>Supprimer un département selon ID</b>
+
+```shell
+curl -X DELETE "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
 ```
 
 <a name="departnote"/>
@@ -1229,7 +1236,7 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=
 <br><br>
 
 <a name="addclient"/>
-<b>Ajouter un contact</b>
+<b>Créer un contact</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients.json \ 
@@ -1255,6 +1262,8 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 
 <a name="updateclient"/>
 <b>Modifier un contact</b>
+
+Vous pouvez modifier un contact par son ID :
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients/111.json \ 
@@ -1338,7 +1347,7 @@ curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&w
 ```
 
 <a name="productadd"/>
-<b>Ajouter un produit</b>
+<b>Créer un produit</b>
 
 
 ```shell
@@ -1374,6 +1383,7 @@ curl https://votrecompte.vosfactures.fr/products/333.json  \
 ```
 
 Vous pouvez aussi modifier un produit par sa référence ("code") :
+
 ```shell
 curl https://votrecompte.vosfactures.fr/products/REFABC.json
         -X PUT \
@@ -1412,26 +1422,90 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token=API_TOKEN&page=1"
 ```
 
+## Multi-Tarifs
+
+<a name="tarifs1">
+<b>Télécharger la liste des Tarifs</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr/price_lists.json?api_token=API_TOKEN"
+```	
+
+<a name="tarifs2">
+<b>Créer un Tarif</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/price_lists.json
+                -H 'Accept: application/json'
+                -H 'Content-Type: application/json'
+                -d '{
+                "api_token": "API_TOKEN",
+                "price_list": {
+                    "name": "Nom du Tarif",
+		    "description": "Description du Tarif",
+		    "currency": "EUR",
+                    "price_list_positions_attributes": {
+		    	"0": {
+				"priceable_id": "ID du produit",
+				"priceable_name": "Nom du produit",
+				"priceable_type": "Product",
+				"use_percentage": "0",
+				"percentage": "",
+				"price_net": "100.0",
+				"price_gross": "120.00",
+				"use_tax": "1",
+				"tax": "20"
+			}
+		    }
+                }}'
+```
+
+<a name="tarifs3">
+<b>Modifier un Tarif</b>
+
+Vous pouvez modifier un Tarif par son ID :
+	
+```shell
+curl https://votrecompte.vosfactures.fr/price_lists/100.json
+		-X PUT
+                -H 'Accept: application/json'
+                -H 'Content-Type: application/json'
+                -d '{
+                "api_token": "API_TOKEN",
+                "price_list": {
+                    "name": "Nouveau nom du Tarif",
+		    "description": "Description du Tarif",
+		    "currency": "EUR",
+                }}'
+```	
+
+<a name="tarifs4">
+<b>Supprimer un Tarif</b>
+
+```shell
+curl -X DELETE "https://votrecompte.vosfactures.fr/price_lists/100.json?api_token=API_TOKEN"
+```
+
 <a name="categorie"/>
 	 
 ## Catégories
 
 <a name="categorielist"/>
-<b>Liste des catégories</b>
+<b>Télécharger la liste des catégories</b>
 
 ```shell
 curl " https://votrecompte.vosfactures.fr/categories.json?api_token=API_TOKEN "
 ```
 
 <a name="categorieID"/>
-<b>Télécharger une catégorie sélectionnée par ID</b>
+<b>Obtenir une catégorie selon son ID</b>
 
 ```shell
 curl " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
 <a name="categorienew"/>
-<b>Ajouter une nouvelle catégorie </b>
+<b>Créer une catégorie </b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/categories.json 
@@ -1447,6 +1521,8 @@ curl https://votrecompte.vosfactures.fr/categories.json
 
 <a name="categorieupdate"/>
 <b> Modifier une catégorie </b>
+	
+Vous pouvez modifier une catégorie par son ID :
 
 ```shell
 curl https://votrecompte.vosfactures.fr/categories/100.json 
@@ -1587,7 +1663,9 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
  
 <a name="wd6"/>  
 <b>Modifier un document de stock</b>
- 
+
+Vous pouvez modifier un document de stock par son ID :
+
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json 
 	-X PUT 
@@ -1624,7 +1702,7 @@ curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN
 ``` 
 
 <a name="warehousenew"/>
-<b>Ajouter un nouvel entrepôt</b>
+<b>Créer un entrepôt</b>
 
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouses.json 
@@ -1641,6 +1719,8 @@ curl https://votrecompte.vosfactures.fr/warehouses.json
 
 <a name="warehouseupdate"/>
 <b>Modifier un entrepôt</b>
+
+Vous pouvez modifier un entrepôt par son ID :
 	
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouses/100.json 
@@ -1852,6 +1932,8 @@ Attention : l'ordre dans lequel vous spécifiez l'ID des factures dans le param�
 <a name="updatepayment"/>
 <b>Modifier un paiement</b>
 
+Vous pouvez modifier un paiement par son ID :
+	
 ```shell 
 curl https://votrecompte.vosfactures.fr/banking/payments/100.json 
 				-X PATCH
