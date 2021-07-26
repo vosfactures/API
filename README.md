@@ -1430,7 +1430,7 @@ curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token
 ```shell
 curl "https://votrecompte.vosfactures.fr/price_lists.json?api_token=API_TOKEN"
 ```	
-
+Vous pouvez utiliser les paramètres `price_list_ids =` (ID des tarifs) et `page=` (numéro de la page) pour filtrer la liste des tarifs.
 <a name="tarifs2">
 <b>Créer un Tarif</b>
 
