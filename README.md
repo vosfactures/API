@@ -5,8 +5,8 @@ Intégrer votre site internet ou une application externe avec le logiciel de fac
 
 
 
-Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures (ou autres documents tels que : devis, bon de commande, bon de livraison ...), produits, contacts, ou paiements depuis des applications externes.</br>Par exemple, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client.</br> 
-</br>Les demandes API sont compatibles avec JSON, XML,Ruby, ou Javascript et avec SSL. Vous pouvez créer un compte gratuitement sur <https://vosfactures.fr/> et tester notre API. </br>Des exemples pratiques d'appels API sont également disponibles dans votre compte VosFactures (Paramètres > API) et sur <https://app.vosfactures.fr/api>. 
+Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures et autres documents (devis, bon de commande, bon de livraison ...), produits, contacts, ou paiements depuis des applications externes.</br>Par exemple, si vous avez un E-commerce et que vous vendez en ligne depuis votre site internet, vous pouvez via l'API faire en sorte qu'à chaque vente réalisée sur votre site, la facture correspondante soit automatiquement générée sur votre compte VosFactures, et même envoyée directement par email à votre client.</br> 
+</br>Vous pouvez créer un compte gratuitement sur <https://vosfactures.fr/> et tester notre API. </br>Des exemples pratiques de requêtes API sont également disponibles depuis votre compte VosFactures (onglet Paramètres > API) et sur <https://app.vosfactures.fr/api>.</br>Les exemples sont basés sur l'interface CURL mais vous pouvez utiliser n'importe quel autre outil. Les requêtes peuvent être envoyées sous format JSON ou XML (il suffit de changer l'extension json par xml). Toutes les requêtes fonctionnent avec SSL. Il est donc conseillé de remplacer http par https en production. 
 
 ## Menu
 + [Code API](#token)
