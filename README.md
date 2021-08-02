@@ -1430,7 +1430,43 @@ curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token
 ```shell
 curl "https://votrecompte.vosfactures.fr/price_lists.json?api_token=API_TOKEN"
 ```	
-Vous pouvez utiliser les paramètres `price_list_ids =` (ID des tarifs) et `page=` (numéro de la page) pour filtrer la liste des tarifs.
+Vous pouvez utiliser les paramètres `price_list_ids =` (ID des tarifs) et `page=` (numéro de la page) pour filtrer la liste des tarifs.</br>
+Vous obtiendrez la réponse suivante : 
+```shell
+[
+  {
+    "id": 1,
+    "name": "Nom Tarif 1",
+    "description": "description Tarif 1",
+    "currency": "EUR",
+    "deleted": false,
+    "account_id": 2,
+    "created_at": "2021-07-28T09:28:04.000+02:00",
+    "updated_at": "2021-07-28T09:29:04.000+02:00"
+  },
+  ...
+]
+```
+<b>Remarque:</b></br>
+Pour obtenir le prix d'un ou plusieurs produits dans un Tarif donné : 
+```shell
+curl "https://votrecompte.vosfactures.fr/price_lists/100/prices_for_products.json?product_ids[]=1&product_ids[]=2"
+```
+où 100 est l'ID du Tarif, et 1 et 2 sont les ID de deux produits. Vous obtiendrez la réponse suivante : 
+
+```shell
+{
+  "1": {
+    "price_net": "23.0",
+    "price_gross": "27.6",
+    "tax": "",
+    "currency": "EUR",
+    "category_id": null
+  },
+  ...
+}
+```
+
 <a name="tarifs2">
 <b>Créer un Tarif</b>
 
