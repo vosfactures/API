@@ -1450,7 +1450,7 @@ Vous obtiendrez la réponse suivante :
 <b>Remarque:</b></br>
 Pour obtenir le prix d'un ou plusieurs produits dans un Tarif donné : 
 ```shell
-curl "https://votrecompte.vosfactures.fr/price_lists/100/prices_for_products.json?product_ids[]=1&product_ids[]=2"
+curl "https://votrecompte.vosfactures.fr/price_lists/100/prices_for_products.json?api_token=API_TOKEN&product_ids[]=1&product_ids[]=2"
 ```
 où 100 est l'ID du Tarif, et 1 et 2 sont les ID de deux produits. Vous obtiendrez la réponse suivante : 
 
