@@ -29,6 +29,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une facture avec réduction](#create3a)
 	+ [Créer une facture avec sous-total](#create3b)
 	+ [Créer une facture avec ligne de texte](#create3c)
+	+ [Créer une facture en autoliquidation](#create3d)
 	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
 	+ [Créer une facture d'acompte](#create5)
 	+ [Créer une facture de solde](#create6)
@@ -189,8 +190,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale du contact (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
-"disable_tax_no_validation" : "",
-"use_oss" (or "use_moss"): "0", - document identifié comme une vente "OSS" (1) ou non (0). Une vente OSS est une vente avec la TVA du pays d'un acheteur européen non assujetti (ecommerce B2B). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
+"disable_tax_no_validation" : ""
+"use_oss" (précédemment "use_moss"): "0", - document identifié comme une vente "OSS" (1) ou non (0). Une vente OSS est une vente avec la TVA du pays d'un acheteur européen non assujetti (ecommerce B2B). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
+"reverse_charge" : "true" - document identifié comme soumis à autoliquidation ("true") ou non ("false") : correspond à l'option "Autoliquidation" qui, si cochée sur un document, supprime la colonne taxe (montant HT uniquement) et affiche la mention d'autoliquidation. En savoir plus ici : https://aide.vosfactures.fr/11598606-Facturer-en-Autoliquidation-de-TVA
 "buyer_post_code" : "06000", code postal du contact
 "buyer_city" : "Nice" - ville du contact
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue du contact
@@ -547,7 +549,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 				{"product_id": 1, "quantity":2}
 			]
 	    }}'
-```	   
+```
 
 <b>Remarque</b></br>
 Si vous obtenez le message suivant: 
@@ -642,6 +644,33 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
                         {"name":"Product B", "tax":0, "total_price_gross":50, "quantity":2}
                     ]
                 }}'
+```
+
+<a name="create3d"/>
+
+<b>Créer une facture en autoliquidation</b></br>
+Le document sera créé par défaut avec les informations spécifiques correspondant à l'autoliquidation ("Mécanisme d'autoliquidation : la TVA est due par le preneur assujetti"). Si vous souhaitez afficher des information spécifiques différentes, spécifiez-les via le paramètre ```description``` correspondant.
+
+```shell
+curl http://votrecompte.vosfactures.fr/invoices.json \
+				-H 'Accept: application/json' \
+				-H 'Content-Type: application/json' \
+				-d '{
+				"api_token": "API_TOKEN",
+				"invoice": {
+					"kind":"vat",
+					"number": null,
+					"sell_date": "2021-08-05",
+					"issue_date": "2021-08-05",
+					"payment_to": "2021-08-12",
+					"buyer_name": "ClientABC",
+					"buyer_tax_no": "BE1234567",
+					"reverse_charge": true,
+					"positions":[
+						{"name":"Produit A1", "total_price_gross":10.50, "quantity":1},
+						{"name":"Produit A2", "total_price_gross":50, "quantity":2}
+					]
+				}}'
 ```
 
 <a name="create4"/>
