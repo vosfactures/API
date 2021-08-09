@@ -649,7 +649,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 <a name="create3d"/>
 
 <b>Créer une facture en autoliquidation</b></br>
-Le document sera créé par défaut avec les informations spécifiques correspondant à l'autoliquidation ("Mécanisme d'autoliquidation : la TVA est due par le preneur assujetti"). Si vous souhaitez afficher des information spécifiques différentes, spécifiez-les via le paramètre ```description``` correspondant.
+Le document sera créé par défaut avec les informations spécifiques correspondant à l'autoliquidation ("Mécanisme d'autoliquidation : la TVA est due par le preneur assujetti"). Si vous souhaitez afficher des informations spécifiques différentes, spécifiez-les via le paramètre ```description``` correspondant.
 
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json \
