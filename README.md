@@ -293,7 +293,7 @@ Champ: `lang`
 	"en" - Anglais
 	"de" - Allemand
 	"fr" - Français
-	"he" - Grec
+	"el" - Grec
 	"es" - Espagnol
 	"it" - Italien
 	"nl" - Hollandais
