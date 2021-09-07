@@ -216,6 +216,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "advanced_payment_discount": "" - Escompte en % (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"advanced_payment_discount":"10"} lors de la création d'un document de facturation)
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
+"paid_from" et "paid_to" - "Payé à partir du" et "Payé jusqu'au" : paramètres renvoyés lors du téléchargement d'une facture  
 "oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
 "oid_unique": si la valeur est «yes», alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
@@ -250,6 +251,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
                 "kind":"text_separator" - pour insérer une ligne de texte (voir exemple plus bas)
 		"kind":"subtotal" - pour insérer un sous-total (voir exemple plus bas)
 "hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe) (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"hide_tax":"1"} lors de la création d'un document de facturation)
+"tax_split": "" - résumé des différents taux de taxe : paramètres renvoyés lors du téléchargement d'une facture
 "calculating_strategy" : 
 {
   "position": "default" ou "keep_gross" - Comment se calcule le total de chaque ligne 
