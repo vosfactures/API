@@ -43,6 +43,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Ajouter une pièce jointe à une facture](#file)
 	+ [Télécharger les pièces jointes d'une facture dans un fichier ZIP](#filezip)
 	+ [Supprimer une facture](#deleteinvoice)
+	+ [Annuler une facture](#cancelinvoice)
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Modifier une récurrence existante](#updaterecurring)
@@ -976,6 +977,21 @@ curl -o attachments.zip https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/a
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json?api_token=API_TOKEN"
 ```
+
+<a name="cancelinvoice"/>
+<b>Annuler une facture</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
+        -X POST \
+	-H 'Accept:application/json' \
+	-H 'Content-Type:application/json' \
+	-d '{
+	         "api_token": "API_TOKEN",
+               "cancel_invoice_id": "INVOICE ID",
+		   "cancel_reason": "TEXT" - optional
+	 }'
+ ```
 
 <a name="downloadrecurring"/>
 <b>Télécharger la liste des récurrences</b>
