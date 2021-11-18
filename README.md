@@ -81,7 +81,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un Tarif](#tarifs2)
 	+ [Modifier un Tarif](#tarifs3)
 	+ [Supprimer un Tarif](#tarifs4)
-	+ [Facturer avec un Tarif] (#tarifs5)
+	+ [Facturer avec un Tarif](#tarifs5)
 + [Catégories](#categorie)
 	+ [Télécharger la liste des catégories](#categorielist)
 	+ [Obtenir une catégorie selon son ID](#categorieID)
