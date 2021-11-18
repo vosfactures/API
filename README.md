@@ -1616,8 +1616,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
                     "payment_to": "2020-11-02",
                     "buyer_id": 555
                     "positions":[
-                       	{product_id:111, "quantity":3},
-                        {product_id:222, "quantity":1}
+                       	{"product_id":111, "quantity":3},
+                        {"product_id":222, "quantity":1}
                     ]
                 }}'
 ```
