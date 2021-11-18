@@ -1594,12 +1594,12 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
                     "buyer_name": "Client Untel",
                     "buyer_tax_no": "FR5252445767",
                     "positions":[
-                       	{product_id:"111", "quantity":3},
-                        {product_id:"222", "quantity":1}
+                       	{product_id:111, "quantity":3},
+                        {product_id:222, "quantity":1}
                     ]
                 }}'
 ```
-Remarque : Vous pouvez identifier le tarif à appliquer aux produits facturés grâce au paramètre `price_list_id=`(ID du Tarif) ou au paramètre `client_id` (ID du client). 
+Remarque : Vous pouvez identifier le tarif à appliquer aux produits facturés soit via le paramètre `price_list_id=`(ID du Tarif) soit via le paramètre `client_id` (ID du client) : 
 	
 ```shell
 curl http://votrecompte.vosfactures.fr/invoices.json \
@@ -1609,16 +1609,15 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
                 "api_token": "API_TOKEN",
 	        "invoice": {
                     "use_prices_from_price_lists": true,
-                    "price_list_id": 123             
 	            "kind":"vat",
                     "number": null,
                     "sell_date": "2020-10-26",
                     "issue_date": "2020-10-26",
                     "payment_to": "2020-11-02",
-                    "buyer_id": "555"
+                    "buyer_id": 555
                     "positions":[
-                       	{product_id:"111", "quantity":3},
-                        {product_id:"222", "quantity":1}
+                       	{product_id:111, "quantity":3},
+                        {product_id:222, "quantity":1}
                     ]
                 }}'
 ```
