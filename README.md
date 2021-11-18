@@ -81,6 +81,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un Tarif](#tarifs2)
 	+ [Modifier un Tarif](#tarifs3)
 	+ [Supprimer un Tarif](#tarifs4)
+	+ [Facturer avec un Tarif] (#tarifs5)
 + [Catégories](#categorie)
 	+ [Télécharger la liste des catégories](#categorielist)
 	+ [Obtenir une catégorie selon son ID](#categorieID)
@@ -696,6 +697,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
         }
     }'
 ```
+
+<b>Remarque</b>: vous pouvez spécifier lors de la requête "copy_invoice_from" les paramètres `payment_to_kind =` ou `payment_to =`, si vous souhaitez créer un document simlilaire avec une date limite de règlement différente de celle du document copié. 
 
 <b>Exemple : Créer la facture depuis un devis</b></br>
 
@@ -1571,6 +1574,55 @@ curl https://votrecompte.vosfactures.fr/price_lists/100.json
 curl -X DELETE "https://votrecompte.vosfactures.fr/price_lists/100.json?api_token=API_TOKEN"
 ```
 
+<a name="tarifs5">
+<b>Facturer avec un Tarif</b>
+	
+```shell
+curl http://votrecompte.vosfactures.fr/invoices.json \
+                -H 'Accept: application/json' \
+                -H 'Content-Type: application/json' \
+                -d '{
+                "api_token": "API_TOKEN",
+	        "invoice": {
+                    "use_prices_from_price_lists": true,
+                    "price_list_id": 123             
+	            "kind":"vat",
+                    "number": null,
+                    "sell_date": "2020-10-26",
+                    "issue_date": "2020-10-26",
+                    "payment_to": "2020-11-02",
+                    "buyer_name": "Client Untel",
+                    "buyer_tax_no": "FR5252445767",
+                    "positions":[
+                       	{product_id:"111", "quantity":3},
+                        {product_id:"222", "quantity":1}
+                    ]
+                }}'
+```
+Remarque : Vous pouvez identifier le tarif à appliquer aux produits facturés grâce au paramètre `price_list_id=`(ID du Tarif) ou au paramètre `client_id` (ID du client). 
+	
+```shell
+curl http://votrecompte.vosfactures.fr/invoices.json \
+                -H 'Accept: application/json' \
+                -H 'Content-Type: application/json' \
+                -d '{
+                "api_token": "API_TOKEN",
+	        "invoice": {
+                    "use_prices_from_price_lists": true,
+                    "price_list_id": 123             
+	            "kind":"vat",
+                    "number": null,
+                    "sell_date": "2020-10-26",
+                    "issue_date": "2020-10-26",
+                    "payment_to": "2020-11-02",
+                    "buyer_id": "555"
+                    "positions":[
+                       	{product_id:"111", "quantity":3},
+                        {product_id:"222", "quantity":1}
+                    ]
+                }}'
+```
+	
 <a name="categorie"/>
 	 
 ## Catégories
