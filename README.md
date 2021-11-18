@@ -1594,8 +1594,8 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
                     "buyer_name": "Client Untel",
                     "buyer_tax_no": "FR5252445767",
                     "positions":[
-                       	{product_id:111, "quantity":3},
-                        {product_id:222, "quantity":1}
+                       	{"product_id":111, "quantity":3},
+                        {"product_id":222, "quantity":1}
                     ]
                 }}'
 ```
