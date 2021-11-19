@@ -114,6 +114,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Modifier un paiement](#updatepayment)
 	+ [Supprimer un paiement](#deletepayment)
 + [Création de compte à partir d'application tierce](#accountsystem)
++ [Création d'utilisateur](#usersystem)
 + [Connexion via API](#connect)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
@@ -2164,6 +2165,40 @@ Obtenir des informations sur le compte:
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integration_token="
+```
+
+<a name="usersystem"/>
+
+## Création d'utilisateur
+	
+Une fois que vous avez créé un compte par API et défini son propritéaire (voir ci-dessus), vous pouvez ajouter par API d'autres utilisateurs au compte, et définir leur rôle. 
+</br>Pour ajouter un utilisateur à un compte, vous avez besoin d'envoyer :</br> 
+   - le code API du compte<br/>
+   - votre code d'intégration (```integration_token```). Contactez-nous par email à info@vosfactures.fr afin de l'obtenir.</br>
+   - le paramètre ```invite``` pour spécifier :<br/> 
+	 - si l'utilisateur doit être créé (false) : vous devez alors choisir un mot de passe en plus de l'adresse email
+	 - si l'utilisateur existe déjà (lié à un autre compte VosFactures) : seule l'adresse email est nécessaire. <br/> 
+   - le rôle de l'utilisateur (```role```): 
+   	- pour un des rôles par défaut, choisissez la valeur : "member" pour un utilisateur simple, "admin" pour un administrateur, "accountant" pour un comptable. 
+   	- pour un rôle personnalisé, envoyez la valeur "role_1234" où 1234 représente l'ID du rôle personnalisé du compte.<br/>  
+Pour en savoir plus sur les différents rôles des utilisateurs : https://aide.vosfactures.fr/29416365-R-les-des-Utilisateurs.<br/>  
+    - le ou les départements (``department_ids```) auxquels l'utilisateur non administrateur a accès : spécifiez l'ID des départements.<br/>  
+
+	
+```shell
+POST http://votrecompte.vosfactures.fr/account/add_user.json
+Content-Type: application/json
+{
+  "api_token": "API_TOKEN",
+  "integration_token": "INTEGRATION_TOKEN",
+  "user": {
+    "invite": true,
+    "email": "email@test.fr",
+    "password": "Password123",
+    "role": "member",
+    "department_ids": []
+  }
+}	
 ```
 
 <a name="connect"/>
