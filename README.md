@@ -381,7 +381,7 @@ Le paramètre `income =` vous permet d'obtenir soit la liste des documents de ve
 
 Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents. 
 
-Le paramètre `numéro =` permet de télécharger un document de facturation via son numéro.
+Le paramètre `number =` permet de télécharger un document de facturation via son numéro.
 
 <a name="examples"/>
 
@@ -1756,6 +1756,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 ``` 
 <a name="#wd4t"/>
 <b>Créer un bon de transfert (BT)</b>
+
 ```shell 
 curl https://votrecompte.vosfactures.fr/warehouse_documents.json 
                 -H 'Accept: application/json'  
@@ -1775,7 +1776,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
                 }}'
 ```
  
-<a name="wd5"/> 
+<a name="wd5"/>
 <b>Créer un bon d'entrée (BE) pour un contact, département, ou produit existant </b>
  
 ```shell 
@@ -2172,17 +2173,18 @@ curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integr
 ## Création d'utilisateur
 	
 Une fois que vous avez créé un compte par API et défini son propritéaire (voir ci-dessus), vous pouvez ajouter par API d'autres utilisateurs au compte, et définir leur rôle. Pour ajouter un utilisateur à un compte, vous avez besoin d'envoyer :</br> 
-   - le code API du compte<br/>
+   - le code API du compte (```api_token```)<br/>
    - votre code d'intégration (```integration_token```). Contactez-nous par email à info@vosfactures.fr afin de l'obtenir.</br>
    - le paramètre ```invite``` pour spécifier :<br/> 
-	 - si l'utilisateur doit être créé (false) : vous devez alors choisir un mot de passe en plus de l'adresse email
-	 - si l'utilisateur existe déjà (lié à un autre compte VosFactures) : seule son adresse email est nécessaire<br/> 
+	 - si l'utilisateur doit être créé ("false") : vous devez alors choisir un mot de passe en plus d'envoyer l'adresse email
+	 - si l'utilisateur existe déjà car lié à un autre compte VosFactures ("true") : seule son adresse email est nécessaire<br/> 
    - le rôle de l'utilisateur (```role```):<br/>
 	 - pour un des rôles par défaut, choisissez la valeur : "member" pour un utilisateur simple, "admin" pour un administrateur, ou "accountant" pour un comptable.
 	 - pour un rôle personnalisé, envoyez la valeur "role_1234" où 1234 représente l'ID du rôle personnalisé du compte.<br/>	  
    - le ou les ID des départements (``department_ids```) auxquels l'utilisateur non administrateur a accès.<br/>
 
 Pour en savoir plus sur les différents rôles des utilisateurs : https://aide.vosfactures.fr/29416365-R-les-des-Utilisateurs.<br/>	
+
 ```shell
 POST http://votrecompte.vosfactures.fr/account/add_user.json
 Content-Type: application/json
