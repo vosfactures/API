@@ -2181,7 +2181,7 @@ Une fois que vous avez créé un compte par API et défini son propritéaire (vo
    - le rôle de l'utilisateur (```role```):<br/>
 	 - pour un des rôles par défaut, choisissez la valeur : "member" pour un utilisateur simple, "admin" pour un administrateur, ou "accountant" pour un comptable.
 	 - pour un rôle personnalisé, envoyez la valeur "role_1234" où 1234 représente l'ID du rôle personnalisé du compte.<br/>	  
-   - le ou les ID des départements (``department_ids```) auxquels l'utilisateur non administrateur a accès.<br/>
+   - le ou les ID des départements (```department_ids```) auxquels l'utilisateur non administrateur a accès.<br/>
 
 Pour en savoir plus sur les différents rôles des utilisateurs : https://aide.vosfactures.fr/29416365-R-les-des-Utilisateurs.<br/>	
 
