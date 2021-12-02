@@ -538,6 +538,10 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre ```department_id```(et non ```seller_name```).</br>
 <b>Documents Tests</b></br>
 Si vous faites des essais, pensez à utiliser le paramètre ```test``` (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation). 
+<b>Contact : nouveau ou existant </b></br>
+Lors de la création d'un nouveau document, le système effectue une reconnaissance automatique du nom du contact envoyé :/br> 
+- si un contact du même nom existe déjà dans votre liste de Contacts, le système sélectionne le contact existant
+- si aucun contact du même nom existe, le système crée un nouveau contact. 
 
 <a name="create2"/>
 <b>Créer une nouvelle facture (version rapide)</b></br>
@@ -1312,6 +1316,9 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 			
 	    }}'
 ```
+Remarques : 
+Seul le paramètre ```name``` est obligatoire.</br>La nature du contact créé est par défaut un professionel. Pour créer un contact particulier, vous devez envoyer également le paramètre ```company``` (avec la valeur "false") et le paramètre ```last_name``` (nom de famille du contact). 
+
 
 <a name="updateclient"/>
 <b>Modifier un contact</b>
