@@ -195,8 +195,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale du contact (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "disable_tax_no_validation" : ""
-"use_oss" (précédemment "use_moss"): "0", - document identifié comme une vente "OSS" (1) ou non (0). Une vente OSS est une vente avec la TVA du pays d'un acheteur européen non assujetti (ecommerce B2B). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
-"force_tax_oss" : 
+"use_oss" (précédemment "use_moss"): "", - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
+"identify_oss" : "true" - document automatiquement identifié par le logiciel comme une vente "OSS" si les conditions s'appliquent. 
+"force_tax_oss" : "true" - document identifié par le logiciel comme une vente "OSS" peu importe les taux de taxe envoyés si la condition d'un acheteur européen non assujetti s'applique.
 "reverse_charge" : "true" - document identifié comme soumis à autoliquidation ("true") ou non ("false") : correspond à l'option "Autoliquidation" qui, si cochée sur un document, supprime la colonne taxe (montant HT uniquement) et affiche la mention d'autoliquidation. En savoir plus ici : https://aide.vosfactures.fr/11598606-Facturer-en-Autoliquidation-de-TVA
 "buyer_post_code" : "06000", code postal du contact
 "buyer_city" : "Nice" - ville du contact
