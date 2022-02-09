@@ -30,6 +30,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une facture avec sous-total](#create3b)
 	+ [Créer une facture avec ligne de texte](#create3c)
 	+ [Créer une facture en autoliquidation](#create3d)
+	+ [Créer une facture pour une vente OSS](#create3e)
 	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
 	+ [Créer une facture d'acompte](#create5)
 	+ [Créer une facture de solde](#create6)
@@ -195,6 +196,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "disable_tax_no_validation" : ""
 "use_oss" (précédemment "use_moss"): "0", - document identifié comme une vente "OSS" (1) ou non (0). Une vente OSS est une vente avec la TVA du pays d'un acheteur européen non assujetti (ecommerce B2B). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
+"force_tax_oss" : 
 "reverse_charge" : "true" - document identifié comme soumis à autoliquidation ("true") ou non ("false") : correspond à l'option "Autoliquidation" qui, si cochée sur un document, supprime la colonne taxe (montant HT uniquement) et affiche la mention d'autoliquidation. En savoir plus ici : https://aide.vosfactures.fr/11598606-Facturer-en-Autoliquidation-de-TVA
 "buyer_post_code" : "06000", code postal du contact
 "buyer_city" : "Nice" - ville du contact
@@ -682,6 +684,93 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 						{"name":"Produit A2", "total_price_gross":50, "quantity":2}
 					]
 				}}'
+```
+
+<a name="create3e"/>
+
+<b>Créer une facture OSS</b></br>
+Vous pouvez gérer facilement la facturation de vos ventes intracommunautaires B2C soumises à la TVA de destination ou "TVA OSS" grâce à la fonction OSS du logiciel. En savoir plus ici : https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS</br>
+     <b>Facturation OSS manuelle :</b></br>
+Si vous avez coché "Option OSS" dans vos paramètres du compte, vous pouvez créer une facture identifiée comme vente OSS en envoyant la paramètre `use_oss`, et en respectant les conditions attendues (client européen non assujetti et taux de tva de destination). 
+
+```shell
+curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d "{
+          "api_token": "API_TOKEN",
+          "invoice": {
+            "kind": "vat",
+            "seller_name": "Société A",
+            "seller_country": "FR",
+            "buyer_name": "Client Y",
+            "buyer_country": "PL",
+            "use_oss": true,
+            "positions": [
+              {
+                "name": "Produit AB",
+                "tax": 23,
+                "total_price_gross": 1.23,
+                "quantity": 1
+              }
+            ]
+          }
+        }"
+```
+ <b>Facturation OSS automatique :</b></br>
+Si vous avez coché "Option OSS" et l'option "Automatiser la reconnaissance des ventes éligibles au OSS" dans vos paramètres du compte, vous pouvez créer une facture en envoyant la paramètre `identify_oss` : le logiciel identifiera automatiquement la facture à créer comme une vente OSS si les conditions sont respectées : client européen non assujetti et taux de tva de destination. Cela est utile si votre solution est capable d'envoyer le taux de TVA de destination. 
+
+```shell
+curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d "{
+          "api_token": "API_TOKEN",
+          "identify_oss": true,
+          "invoice": {
+            "kind": "vat",
+            "seller_name": "Société A",
+            "seller_country": "FR",
+            "buyer_name": "Client Y",
+            "buyer_country": "PL",
+            "positions": [
+              {
+                "name": "Produit AB",
+                "tax": 23,
+                "total_price_gross": 1.23,
+                "quantity": 1
+              }
+            ]
+          }
+        }"
+```
+<b>Facturation OSS automatique et forcée :</b></br>
+Si vous avez coché "Option OSS" et l'option "Automatiser la reconnaissance des ventes éligibles au OSS" dans vos paramètres du compte, vous pouvez créer une facture en envoyant les paramètres `identify_oss` et `oss_force_tax`: le logiciel identifiera automatiquement la facture à créer comme une vente OSS uniqument si les conditions suivantes sont respectées : client européen non assujetti, et ne tiendra pas en compte des taux de tva envoyées dans la requête : à la place les taux de tva de destiniation seront appliqués à la facture. Cela est utile si vous ne pouvez pas envoyer le bon taux de TVA (Tva de destination) car votre solution n'est pas capable de distinguer les ventes OSS des autres ventes. 
+
+```shell
+curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d "{
+          "api_token": "API_TOKEN",
+          "identify_oss": true,
+          "oss_force_tax": true,
+          "invoice": {
+            "kind": "vat",
+            "seller_name": "Test",
+            "seller_country": "FR",
+            "buyer_name": "Client",
+            "buyer_country": "PL",
+            "positions": [
+              {
+                "name": "Product",
+                "tax": 20,
+                "total_price_gross": 1.23,
+                "quantity": 1
+              }
+            ]
+          }
+        }"
 ```
 
 <a name="create4"/>
