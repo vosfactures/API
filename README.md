@@ -690,7 +690,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 
 <b>Créer une facture OSS</b></br>
 Vous pouvez gérer facilement la facturation de vos ventes intracommunautaires B2C soumises à la TVA de destination ou "TVA OSS" grâce à la fonction OSS du logiciel. En savoir plus ici : https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS</br>
-     <b>Facturation OSS manuelle :</b></br>
+     <b>   1) Facturation OSS simple :</b></br>
 Si vous avez coché "Option OSS" dans vos paramètres du compte, vous pouvez créer une facture identifiée comme vente OSS en envoyant la paramètre `use_oss`, et en respectant les conditions attendues (client européen non assujetti et taux de tva de destination). 
 
 ```shell
@@ -717,7 +717,7 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
           }
         }"
 ```
- <b>Facturation OSS automatique :</b></br>
+ <b>   2) Facturation OSS automatique</b></br>
 Si vous avez coché "Option OSS" et l'option "Automatiser la reconnaissance des ventes éligibles au OSS" dans vos paramètres du compte, vous pouvez créer une facture en envoyant la paramètre `identify_oss` : le logiciel identifiera automatiquement la facture à créer comme une vente OSS si les conditions sont respectées : client européen non assujetti et taux de tva de destination. Cela est utile si votre solution est capable d'envoyer le taux de TVA de destination. 
 
 ```shell
@@ -744,7 +744,7 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
           }
         }"
 ```
-<b>Facturation OSS automatique et forcée :</b></br>
+<b>   3) Facturation OSS automatique et forcée</b></br>
 Si vous avez coché "Option OSS" et l'option "Automatiser la reconnaissance des ventes éligibles au OSS" dans vos paramètres du compte, vous pouvez créer une facture en envoyant les paramètres `identify_oss` et `oss_force_tax`: le logiciel identifiera automatiquement la facture à créer comme une vente OSS uniqument si les conditions suivantes sont respectées : client européen non assujetti, et ne tiendra pas en compte des taux de tva envoyées dans la requête : à la place les taux de tva de destiniation seront appliqués à la facture. Cela est utile si vous ne pouvez pas envoyer le bon taux de TVA (Tva de destination) car votre solution n'est pas capable de distinguer les ventes OSS des autres ventes. 
 
 ```shell
