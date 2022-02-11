@@ -1089,10 +1089,12 @@ curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
 	-d '{
 	         "api_token": "API_TOKEN",
                "cancel_invoice_id": "INVOICE ID",
-		   "cancel_reason": "TEXT" - optional
+		   "cancel_reason": "Raison de l'annulation (optionnelle)"
 	 }'
  ```
 
+Remarque : Pour visualiser la raison de l'annulation indiquée sur un document annulé, incluez le paramètre `additional_fields[invoice]=cancel_reason`à votre url de requête. Exemple : https://moncompte.vosfactures.fr/invoices/ID.json?api_token=API_TOKEN&additional_fields[invoice]=cancel_reason
+ 
 <a name="downloadrecurring"/>
 <b>Télécharger la liste des récurrences</b>
 
