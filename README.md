@@ -367,7 +367,8 @@ Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `pe
 Le paramètre `page =` vous permet de parcourir des enregistrements paginés.
 Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements, N étant la limite du nombre d’enregistrements retournés. Pour obtenir N autres enregistrements, appelez l’action avec le paramètre `page = 2`, etc.</br>
 
-Le paramètre `period=` vous permet de limiter les recherches à une période donnée. Voici les valeurs possibles : 
+Le paramètre `period=` vous permet de limiter les recherches à une période donnée. Voici les valeurs possibles :
+```shell
 - last_12_months (12 derniers mois) qui est l'option par défaut
 - this_month (mois en cours)
 - last_30_days (30 derniers jours)
@@ -376,6 +377,7 @@ Le paramètre `period=` vous permet de limiter les recherches à une période do
 - last_year (année dernière)
 - all (tous)
 - more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin))
+```
 
 En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`) ou date additionnelle (`sell_date`). 
 Pour les documents de stock, vous pouvez rechercher par date de création (`issue_date`) ou date de vente (`transaction_date`).
@@ -536,7 +538,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 	}'
 ```
 
-/br><b>Remarques importantes</b></br>/br>
+</br><b>Remarques importantes</b></br></br>
 <b>Coordonnées vendeur</b></br>
 Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre ```department_id```(et non ```seller_name```).</br>
 <b>Documents Tests</b></br>
