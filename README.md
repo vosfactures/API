@@ -1664,7 +1664,7 @@ curl https://votrecompte.vosfactures.fr/price_lists.json
 		    "currency": "EUR",
                     "price_list_positions_attributes": {
 		    	"0": {
-				"priceable_id": "ID du produit",
+				"priceable_id": "ID de la position",
 				"priceable_name": "Nom du produit",
 				"priceable_type": "Product",
 				"use_percentage": "0",
@@ -1694,6 +1694,14 @@ curl https://votrecompte.vosfactures.fr/price_lists/100.json
                     "name": "Nouveau nom du Tarif",
 		    "description": "Description du Tarif",
 		    "currency": "EUR",
+	            "price_list_positions_attributes": {
+                        "0": {
+                            "id": "ID pozycji",
+                            "priceable_id": "ID du produit",
+                            "price_net": "10.0",
+                            "price_gross": "10.80"
+                            "use_tax": "1",
+                            "tax": "8"
                 }}'
 ```	
 
