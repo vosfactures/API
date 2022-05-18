@@ -265,7 +265,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
   "invoice_form_price_kind": "net" ou "gross" - prix unitaire (HT ou TTC)
 }
 "split_payment": "1" - 1 ou 0 selon que la facture fait ou non l'objet d'un paiement partiel
-
+"corrected_content_before": "" - contenu à corriger (champ disponible lors de la création de facture d'avoir)
+"corrected_content_after": "" - contenu corrigé (champ disponible lors de la création de facture d'avoir)
 ```
 <b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > Paramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
 
@@ -440,6 +441,11 @@ curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
+```
+<b>Remarque :</b>	 
+En cas de facture d'avoir, vous pouvez télécharger les deux champs supplémentaires "Contenu à corriger" et "Contenu corrigé" :
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=corrected_content_before,corrected_content_after
 ```
 
 <a name="downloadnr"/>
