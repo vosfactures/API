@@ -177,7 +177,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
 "seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
 "seller_bank_swift" : "" - code bancaire BIC. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"seller_bank_swift":"BIC"} lors de la création d'un document de facturation. 
-"seller_post_code" : "75007", code postal du vendeur
+"seller_post_code" : "75007" - code postal du vendeur
 "seller_city" : "Paris" - ville du vendeur
 "seller_street" : "21 Rue des Mimosas" - numéro et nom de rue du vendeur
 "seller_country" : "" - pays du vendeur (ISO 3166)
@@ -195,27 +195,27 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale du contact (ex: n° TVA)
 "buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "disable_tax_no_validation" : ""
-"use_oss" (précédemment "use_moss"): "", - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
+"use_oss" (précédemment "use_moss"): "" - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
 "identify_oss" : "true" - document automatiquement identifié par le logiciel comme une vente "OSS" si les conditions s'appliquent. 
 "force_tax_oss" : "true" - document identifié par le logiciel comme une vente "OSS" peu importe les taux de taxe envoyés si la condition d'un acheteur européen non assujetti s'applique.
 "reverse_charge" : "true" - document identifié comme soumis à autoliquidation ("true") ou non ("false") : correspond à l'option "Autoliquidation" qui, si cochée sur un document, supprime la colonne taxe (montant HT uniquement) et affiche la mention d'autoliquidation. En savoir plus ici : https://aide.vosfactures.fr/11598606-Facturer-en-Autoliquidation-de-TVA
-"buyer_post_code" : "06000", code postal du contact
+"buyer_post_code" : "06000" - code postal du contact
 "buyer_city" : "Nice" - ville du contact
 "buyer_street" : "44 Rue des Plans" - numéro et nom de rue du contact
-"buyer_country" : "", pays du contact (ISO 3166)
+"buyer_country" : "" - pays du contact (ISO 3166)
 "buyer_note" : "", description additionnelle du contact
 "delivery_address" : "" - contenu du champ "Adresse supplémentaire" du contact
 "use_delivery_address": "true" ou "false" - afficher ou non le champ "Adresse supplémentaire" du contact sur le document
-"buyer_email" : "", email du contact
-"buyer_phone" : "", numéro de tel du contact
-"buyer_mobile_phone" : "" numéro de portable du contact
+"buyer_email" : "" - email du contact
+"buyer_phone" : "" - numéro de tel du contact
+"buyer_mobile_phone" : "" - numéro de portable du contact
 "additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle sur le document de facturation (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut)
 "additional_info_desc" : "" - contenu de la colonne aditionnelle (contenu que vous retrouvez sur la fiche du produit correspondant) 
 "additional_invoice_field" : "" - contenu du champ additionnel (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut). Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"additional_invoice_field":"contenu"} lors de la création d'un document de facturation. 
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
-"discount_kind": ""- type de réduction: "amount" (pour un montant ttc), "percent_unit" (pour un % sur le prix unitaire), ou  "percent_total" (pour un % calculé sur le prix total)
+"discount_kind": "" - type de réduction: "amount" (pour un montant ttc), "percent_unit" (pour un % sur le prix unitaire), ou  "percent_total" (pour un % calculé sur le prix total)
 "payment_type" : "chèque" - mode de règlement 
-"payment_to_kind" : date limite de règlement (parmi les options proposées). Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Si vous indiquez "5", la date d'échéance est de 5 jours. Pour ne pas afficher ce champ, indiquez "off". 
+"payment_to_kind" : "5" - date limite de règlement (parmi les options proposées). Si vous indiquez "5", la date d'échéance est de 5 jours. Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
 "sum_recovery" : "client_particulier" - afficher (client_professionnel) ou non (client_particulier) la mention "Indemnité forfaitaire de recouvrement". Attention, en json vous devez envoyer ce paramètre comme ceci: "additional_fields": {"sum_recovery":"client_professionnel"} lors de la création d'un document de facturation.
 "interest_rate" : "10%" - Taux de pénalité en cas de retard de paiement (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"interest_rate":"10%"} lors de la création d'un document de facturation. 
@@ -223,7 +223,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
 "paid_from" et "paid_to" - "Payé à partir du" et "Payé jusqu'au" : paramètres renvoyés lors du téléchargement d'une facture  
-"oid" : "10021", - numéro de commande (ex: numéro généré par une application externe)
+"oid" : "10021" - numéro de commande (ex: numéro généré par une application externe)
 "oid_unique": si la valeur est «yes», alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
 "description" : "" - Informations spécifiques 
@@ -232,7 +232,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "lang" : "fr" - langue du document
 "exchange_currency" : "USD" - convertir en (la conversion en une autre devise du montant total et du montant de la taxe selon taux de change du jour)
 "exchange_kind" : "" - Source du taux de change utilisé en cas de conversion ("ecb" pour la Banque Centrale Européenne, "nbp" pour la Banque Nationale de Pologne, "cbr" pour la Banque Centrale de Russie, "nbu" pour la Banque Nationale d'Ukraine, "nbg" pour la Banque Nationale de Géorgie, "nbt" Banque Nationale Tchèque, "own" pour un taux propre)
-"exchange_currency_rate" : "", - taux de change propre (à utiliser uniquement si le paramètre "exchange_kind" est égal à "own")
+"exchange_currency_rate" : "" - taux de change propre (à utiliser uniquement si le paramètre "exchange_kind" est égal à "own")
 "title" : "" - Objet (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"title":"contenu de l'objet"} lors de la création d'un document de facturation). 
 "internal_note" : "" - Notes privées  
 "invoice_template_id" : "1" - format d'impression
@@ -246,7 +246,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"code" : "" - Référence du produit
    		"additional_info" : "" - contenu de la colonne additionnelle
    		"discount_percent" : "" - % de la réduction
-   		"discount" : "", - montant ttc de la réduction
+   		"discount" : "" - montant ttc de la réduction
    		"quantity" : "1" - quantité 
    		"quantity_unit" : "kg" - unité 
    		"price_net" : "59,00", - prix unitaire HT (calculé automatiquement si non indiqué)
@@ -534,8 +534,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 				{"name":"Produit A1", "tax":23, "total_price_gross":10.23, "quantity":1},
 				{"name":"Produit A2", "tax":0, "total_price_gross":50, "quantity":3}
 			]		
-		}
-	}'
+		}}'
 ```
 
 </br><b>Remarques importantes</b></br></br>
@@ -544,22 +543,29 @@ Si votre département (fiche entreprise) a déjà été créé, envoyez le param
 <b>Documents Tests</b></br>
 Si vous faites des essais, pensez à utiliser le paramètre ```test``` (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation).</br> 
 <b>Contact : nouveau ou existant </b></br>
-Lors de la création d'un nouveau document, le système effectue une reconnaissance automatique du contact envoyé en se basant sur le nom, l'adresse email et/ou le n° fiscal : si aucun contact ne correspond, le système crée un nouveau contact. Si un contact correspond, le système le sélectionne.Ainsi :</br>- il est recommandé d'envoyer l'ID ("client_id") d'un client existant plutôt que son nom seul, sachant que des particuliers peuvent avoir le même nom.</br>- le système affiche sur la facture les coordonnées du contact existant telles qu'indiquées dans la fiche du contact. Si vous envoyez d'autres coordonnées (ex: adresse), ajouter le paramètre `"buyer_override": true` pour afficher et mettre à jour les nouvelles coordonnées du contact existant. Exemple : 
+Lors de la création d'un nouveau document, le système effectue une reconnaissance automatique du contact envoyé en se basant sur le nom (```buyer_name``` et pour le client particulier ```buyer_first_name``` et ```buyer_last_name```), l'adresse email (```buyer_email```) et/ou le n° fiscal (```buyer_tax_no```): si aucun contact ne correspond, le système crée un nouveau contact. Si un contact correspond, le système le sélectionne. Ainsi :</br>- il est recommandé d'envoyer l'ID (``client_id``) d'un client existant plutôt que son nom seul, sachant que des particuliers peuvent avoir le même nom.</br>- le système affiche sur la facture les coordonnées du contact existant telles qu'indiquées dans la fiche du contact. Si vous envoyez d'autres coordonnées (ex: adresse), ajouter le paramètre `"buyer_override": true` pour afficher et mettre à jour les nouvelles coordonnées du contact existant. Exemple : 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
 	-H 'Accept: application/json' \ 
 	-H 'Content-Type: application/json' \
 	-d '{"api_token": "API_TOKEN",
 		"invoice": {
-			"department_id": 1, 
+			"kind":"vat", 
+			"number": null, 
+			"sell_date": "2013-01-16", 
+			"issue_date": "2013-01-16", 
+			"payment_to": "2013-01-23",
+			"seller_name": "Société Chose", 
+			"seller_tax_no": "FR5252445767",
 			"client_id": 1,
 				"buyer_post_code": "06000",
            			"buyer_city": "Nice",
-           			"buyer_street": "Rue de la Joie 11",
+           			"buyer_street": "11 Rue de la Joie",
          			"buyer_country": "FR",
           			"buyer_override": true,
 			"positions":[
-				{"product_id": 1, "quantity":2}
+				{"name":"Produit A1", "tax":23, "total_price_gross":10.23, "quantity":1},
+				{"name":"Produit A2", "tax":0, "total_price_gross":50, "quantity":3}
 			]
 	    }}'
 ```
