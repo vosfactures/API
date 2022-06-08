@@ -23,7 +23,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger les documents créés à partir d'un document donné](#download_from)
 	+ [Télécharger sous format PDF](#downloadpdf)
 	+ [Remarques : Paiement en ligne. Marge d'un document](#notedoc)
-	+ [Envoyer les factures par email à un client](#send)
+	+ [Envoyer une facture par email](#send)
 	+ [Créer un nouveau document](#create)
 	+ [Créer une nouvelle facture (version rapide)](#create2)
 	+ [Créer une facture avec réduction](#create3a)
@@ -488,29 +488,28 @@ Autres options PDF:
 * print_option=duplicate - Duplicata
 
 <a name="notedoc"/>
-<b>Remarques</b>:<br> 
+<b>Remarques :</b><br> 
 Le paramètre `payment_url` vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
 La variable `products-margin` est retournée lors de l'appel API d'une facture. Cette variable correspond au montant de la marge brute totale de la facture de vente.<br> <br> 
 
 
 <a name="send"/>
-<b>Envoyer une facture par email à un client</b>
+<b>Envoyer une facture par email</b>
 
-
+<b>Par défaut :</b> 
+	A l'adresse email qu'indiquée sur la facture ou à défaut sur la fiche contact :
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
-Remarque: Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3 jours, à moins d'utiliser le paramètre suivant: 
+	A une autre adresse email que celle indiquée sur la facture ou fiche contact : <br>
+utilisez les paramètres  email_to email_cc update_buyer_email: false,
 
-```shell
-"force": true
-```
-Par exemple, écrivez: 
+Remarque : Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3 jours, à moins d'utiliser le paramètre ``force : true``. Par exemple, écrivez: 
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN&force=true
 ```
 
-Pour une requête XML sans envoyer de code API (méthode d'autentification différente) :  
+<b>Pour une requête XML sans envoyer de code API</b> (méthode d'autentification différente) :  
 ```shell
 curl -X POST -u 'username:password' https://votrecompte.vosfactures.fr/invoices/100/send_by_email.xml
 ```
