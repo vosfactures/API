@@ -497,12 +497,13 @@ La variable `products-margin` est retournée lors de l'appel API d'une facture. 
 <b>Envoyer une facture par email</b><br>
 
 <b>Par défaut :</b><br> 
-	A l'adresse email qu'indiquée sur la facture ou à défaut sur la fiche contact :
+
+-> A l'adresse email qu'indiquée sur la facture ou à défaut sur la fiche contact :
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
 
-	A une autre adresse email que celle indiquée sur la facture ou fiche contact :<br>
+-> A une autre adresse email que celle indiquée sur la facture ou fiche contact :
 utilisez les paramètres  email_to email_cc update_buyer_email: false. 
 
 Remarque : Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3 jours, à moins d'utiliser le paramètre ``force : true``. Par exemple, écrivez: 
