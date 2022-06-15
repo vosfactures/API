@@ -498,7 +498,7 @@ La variable `products-margin` est retournée lors de l'appel API d'une facture. 
 
 <b>Par défaut :</b><br> 
 
--> A l'adresse email qu'indiquée sur la facture ou à défaut sur la fiche contact :
+-> A l'adresse email indiquée sur la facture ou à défaut sur la fiche contact :
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
@@ -508,7 +508,7 @@ curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?email_to=emailautre@exemple.com&update_buyer_email=yes&api_token=API_TOKEN
 ```
 
--> A une adresse email en copie :utilisez le paramètre ``email_cc``. 
+-> A une adresse email en copie : utilisez le paramètre ``email_cc``. 
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?email_cc=emailencopie@exemple.com&api_token=API_TOKEN
 ```
