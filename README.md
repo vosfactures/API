@@ -1514,15 +1514,23 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 "title":"" - Civilité
 "last_name": "" - nom de famille 
 "first_name": ""  - prénom 
-"delivery_address":"" - adresse de livraison
-"use_delivery_address":true - si adresse de livraison renseignée
+"post_code": "" - code postal
+"city": "" - Ville
+"street": "" - N° et nom de rue
+"country": "FR" - pays (code ISO 3166)
+"use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
+"delivery_address":"" - adresse additionnelle
+"tax_no_kind": "" - type du n° d'identification fiscale
+"tax_no": "" - n° d'identfication fiscale
 "external_id":"" - Réf/code client
 "note":"" -  description additionnelle
 "fax" : "" - N° de fax
 "www": "" - site internet
+"bank": "" - Nom de la banque
+"bank_account": "" - IBAN
 "tag_list": ["tag1", "tag2"] - tags associés au contact
 "category_id":"" - ID de la catégorie du contact
-"price_list_id":"" - ID du Tarif du contact
+"price_list_id":"" - ID du Tarif éventuel applicable au contact
 "kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
 "payment_to_kind":"" -  Date limite de règlement par défaut
 "discount":"10.0" - Pourcentrage de réduction par défaut
@@ -1634,7 +1642,7 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 ```
 
 
-<b>Remarque</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
+<b>Mise à jour du Prix HT</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
 
 
 <a name="noteproduct"/>
@@ -1669,12 +1677,13 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 "package_product_ids":"" - ID des produits composant le lot
 "ean_code":"" - Code-barres (code EAN13) du produit
 "weight":"" - poids
-"weight_unit":"" - unité du poids
+"weight_unit":"" - unité du poids "kg" ou "g"
 "size_height":"" - hauteur
 "size_width":"" - largeur
 "size":null"" - longueur
-size_unit":"" - unité longueur
+size_unit":"" - unité longueur ("m" ou "cm")
 "supplier_code":"" - Référence fournisseur
+"use_moss":"" - si le produit est soumis à la TVA OSS ("1") ou non ("0")
 "additional_info":"" - Code nature du produit (dans le cadre de l'option API Tiers de Prestation de l'URSSAF)
 "accounting_id" : "" - Compte comptable (produits) (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables )
 "accounting_id2" : "" - Compte comptable (charges) 
