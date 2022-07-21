@@ -1424,6 +1424,7 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=
 
 <a name="addclient"/>
 <b>Créer un contact</b>
+Seul le paramètre ```name``` est obligatoire.</br>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients.json \ 
@@ -1434,24 +1435,45 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 			"name" : "Client1",
 			"tax_no" : "FR5252445333",
 			"bank" : "banque1",
-			"bank_account" : "bank_account1",
-			"city" : "city1",
+			"bank_account" : "IBAN1",
+			"city" : "Nice",
+			"street" : "13 Rue des Fleurs",
 			"country" : "",
 			"email" : "client@email.fr",
-			"person" : "person1",
-			"post_code" : "post-code1",
-			"phone" : "phone1",
-			"mobile_phone" : "phone2"
-			"street" : "street1",
+			"post_code" : "06000",
+			"phone" : "0400000000",
+			"mobile_phone" : "0600000000"			
 			
 	    }}'
 ```
-Remarques : 
-Seul le paramètre ```name``` est obligatoire.</br>La nature du contact créé est par défaut un professionel. Pour créer un contact particulier, vous devez envoyer également le paramètre ```company``` (avec la valeur "false") et le paramètre ```last_name``` (nom de famille du contact). 
+<b>Nature : Professionnel ou particulier  :<b></br> 
 
+La nature du contact créé est par défaut un professionel. Pour créer un contact particulier, vous devez envoyer également le paramètre ```company``` avec la valeur "false" et le paramètre ```last_name``` (nom de famille du contact).
+
+```shell
+curl https://votrecompte.vosfactures.fr/clients.json \ 
+	-H 'Accept: application/json' \  
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+		"client": {
+			"name" : "Client1",
+			"last_name": "Nom de famille",
+        		"company": false
+			"bank" : "banque1",
+			"bank_account" : "IBAN1",
+			"city" : "Nice",
+			"street" : "13 Rue des Fleurs",
+			"country" : "",
+			"email" : "client@email.fr",
+			"post_code" : "06000",
+			"phone" : "0400000000",
+			"mobile_phone" : "0600000000"
+			
+	    }}'
+```
 
 <a name="updateclient"/>
-<b>Modifier un contact</b>
+<b>Modifier un contact<b>
 
 Vous pouvez modifier un contact par son ID :
 
@@ -1486,8 +1508,30 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 <b>Remarque: Champs fiche contact</b>
 
 ```shell
+"name": "" - nom (obligatoire)
+"company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
+"shortcut": "" - nom d'usage
+"title":"" - Civilité
+"last_name": "" - nom de famille 
+"first_name": ""  - prénom 
+"delivery_address":"" - adresse de livraison
+"use_delivery_address":true - si adresse de livraison renseignée
+"external_id":"" - Réf/code client
 "note":"" -  description additionnelle
+"fax" : "" - N° de fax
+"www": "" - site internet
+"tag_list": ["tag1", "tag2"] - tags associés au contact
+"category_id":"" - ID de la catégorie du contact
+"price_list_id":"" - ID du Tarif du contact
+"kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
 "payment_to_kind":"" -  Date limite de règlement par défaut
+"discount":"10.0" - Pourcentrage de réduction par défaut
+"default_tax":"0" - Pourcentrage de taxe par défaut
+"default_payment_type": "" -  Mode de règlement par défaut
+"disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
+"default_payment_type": "" -  Mode de règlement par défaut
+"department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
+"panel_url":"" - lien url de l'espace client
 "accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
 "accounting_id2":"" -  Compte comptable auxiliaire
 "chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus Pro). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
