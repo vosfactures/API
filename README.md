@@ -1258,9 +1258,9 @@ L'API renvoie le champ `token`, grâce auquel il est possible de recevoir les li
 
 Les liens sont sous la forme: 
 
-vers l'aperçu: `https://votrecompte.vosfactures.fr/invoice/{{token}}`
+vers l'aperçu : `https://votrecompte.vosfactures.fr/invoice/{{token}}`
 
-vers le pdf: `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf`
+vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour plus directement `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf?inline=yes`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
