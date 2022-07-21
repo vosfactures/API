@@ -48,7 +48,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger la liste des récurrences](#downloadrecurring)
 	+ [Créer une nouvelle récurrence](#createrecurring)
 	+ [Modifier une récurrence existante](#updaterecurring)
-+ [Lien vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
++ [Liens vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
 + [Département vendeur](#department)
 	+ [Créer un département](#departadd)
 	+ [Modifier un département](#departupdate)
@@ -76,7 +76,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Créer un produit](#productadd)
 	+ [Modifier un produit](#productupdate) 
-	+ [Remarque: Champ](#noteproduct)
+	+ [Remarque: Champs](#noteproduct)
 + [Multi-Tarifs](#tarifs)
 	+ [Télécharger la liste des Tarifs](#tarifs1)
 	+ [Créer un Tarif](#tarifs2)
@@ -1473,7 +1473,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 ```
 
 <a name="updateclient"/>
-<b>Modifier un contact<b>
+<b>Modifier un contact</b>
 
 Vous pouvez modifier un contact par son ID :
 
