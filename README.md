@@ -1424,7 +1424,7 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=
 
 <a name="addclient"/>
 <b>Créer un contact</b>
-Seul le paramètre ```name``` est obligatoire.</br>
+</br>Seul le paramètre ```name``` est obligatoire.</br>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients.json \ 
@@ -1446,7 +1446,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 			
 	    }}'
 ```
-<b>Nature : Professionnel ou particulier  :<b></br> 
+<b>Nature : Professionnel ou particulier</b></br> 
 
 La nature du contact créé est par défaut un professionel. Pour créer un contact particulier, vous devez envoyer également le paramètre ```company``` avec la valeur "false" et le paramètre ```last_name``` (nom de famille du contact).
 
@@ -1642,10 +1642,45 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 <b>Champs fiche produit</b>
 
 ```shell
+"name":"" - nom du produit 
+"description":"" - description du produit
+"code":""- référence du produit
+"quantity_unit":"" - unité
+"price_gross": "" - prix unitaire ttc de vente
+"price_net": "" - prix unitaire ht de vente
+"tax":"20": "" - taux de taxe (vente)
+"price_tax":"" - montant de taxe (vente)
+"purchase_price_gross": "" - prix unitaire ttc d'achat
+"purchase_price_net": "" - prix unitaire ht d'achat
+"purchase_tax":"" - taux de taxe (achat)
+"purchase_price_tax":"" - montant de taxe (achat)
+"currency": "EUR" - devise
+"stock_level": "" - quantité disponible
+"disabled": - produit actif (false) ou inactif (true)
+"kind":"" - Type du produit : à la vente ("sell"), à l'achat ("buy"), ou les deux ("both")
+"category_id":"" - ID de la catégorie du produit
+"department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Produits restreinte"
+"tag_list": ["tag1", "tag2"] - tags associés au produit    
+"service": "" - si le produit est un service ("1") ou non ("0")
+"limited": "" - si l'option Restriction de quantité est cochée ("1") ou non ("0")
+"warehouse_quantity":"-1.0" - quantité en stock (avec fonction Gestion de Stock)
+"quantity": "" - Quantité vendue par défaut
+"package":false - si le produit est un lot (true) ou non (false)
+"package_product_ids":"" - ID des produits composant le lot
+"ean_code":"" - Code-barres (code EAN13) du produit
+"weight":"" - poids
+"weight_unit":"" - unité du poids
+"size_height":"" - hauteur
+"size_width":"" - largeur
+"size":null"" - longueur
+size_unit":"" - unité longueur
+"supplier_code":"" - Référence fournisseur
+"additional_info":"" - Code nature du produit (dans le cadre de l'option API Tiers de Prestation de l'URSSAF)
 "accounting_id" : "" - Compte comptable (produits) (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables )
 "accounting_id2" : "" - Compte comptable (charges) 
 "accounting_tax_code" : "" -  Compte comptable TVA (vente)
 "accounting_tax_code_exp" : "" - Compte comptable TVA (achat)
+"is_delivery":true - si le produit représente des frais de livraison
 "accounting_activity_code" : "" - Code Activité
 "accounting_sheet_code" : "" - Code Journal
 ```
