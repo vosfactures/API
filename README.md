@@ -224,7 +224,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "paid" : "0,00" - montant payé
 "paid_from" et "paid_to" - "Payé à partir du" et "Payé jusqu'au" : paramètres renvoyés lors du téléchargement d'une facture  
 "oid" : "10021" - numéro de commande (ex: numéro généré par une application externe)
-"oid_unique": si la valeur est «yes», alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
+"oid_unique": si la valeur est "yes", alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
 "description" : "" - Informations spécifiques 
 "paid_date" : "" - Date du paiement ("Paiement reçu le")
@@ -232,11 +232,13 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "lang" : "fr" - langue du document
 "exchange_currency" : "USD" - convertir en (la conversion en une autre devise du montant total et du montant de la taxe selon taux de change du jour)
 "exchange_kind" : "" - Source du taux de change utilisé en cas de conversion ("ecb" pour la Banque Centrale Européenne, "nbp" pour la Banque Nationale de Pologne, "cbr" pour la Banque Centrale de Russie, "nbu" pour la Banque Nationale d'Ukraine, "nbg" pour la Banque Nationale de Géorgie, "nbt" Banque Nationale Tchèque, "own" pour un taux propre)
-"exchange_currency_rate" : "" - taux de change propre (à utiliser uniquement si le paramètre "exchange_kind" est égal à "own")
+"exchange_currency_rate" : "" - Taux de change personnalisé (à utiliser uniquement si le paramètre "exchange_kind" est égal à "own")
 "title" : "" - Objet (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"title":"contenu de l'objet"} lors de la création d'un document de facturation). 
+"description":"" - Informations spécifiques
+"conditional_notes" : "" - Mentions spécifiques (ajoutées automatiquement selon les critères définis dans les Paramètres du compte (https://aide.vosfactures.fr/109954556-Ventes-en-ligne-Mentions-sp-cifiques) 
+"description_long" : "" - Texte additionnel (imprimé sur la page suivante) 
 "internal_note" : "" - Notes privées  
 "invoice_template_id" : "1" - format d'impression
-"description_long" : "" - Texte additionnel (imprimé sur la page suivante) 
 "from_invoice_id" : "" - ID du document à partir duquel le document a été généré (utile par ex quand une facture est générée depuis un devis)
 "invoice_id" : "" - ID du document de référence ayant un lien fonctionnel avec le document (ex: le devis de référence pour un acompte). 
 "positions":
@@ -275,19 +277,18 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 Champ: `kind`- Type du document
 ```shell
 	"vat" - facture 
-	"proforma" -  facture Proforma
 	"advance" - facture d'acompte
 	"final" - facture de solde
 	"correction" - facture d'avoir
+	"receipt" - reçu
+	"invoice_other" - Autre type de facture
 	"estimate" - devis
 	"client_order" - bon de commande
-	"receipt" - reçu
+	"maintenance_request" - bon d'intervention
+	"proforma" -  facture Proforma
+	"payment_receipt" - reçu de paiement 
 	"kp" - bon d'entrée de caisse
-	"kw" - bon de sortie de caisse
-	"invoice_other" - Autre 
-	
-	
-	
+	"kw" - bon de sortie de caisse	
 ```
 
 Champ: `test` - Document Test 
@@ -366,7 +367,7 @@ Champ: `discount_kind` - Type de réduction
 Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche proposé par le logiciel pour affiner les listes des documents/contacts/produits/paiements.</br>
 
 Le paramètre `page =` vous permet de parcourir des enregistrements paginés.
-Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements, N étant la limite du nombre d’enregistrements retournés. Pour obtenir N autres enregistrements, appelez l’action avec le paramètre `page = 2`, etc.</br>
+Par défaut, il prend la valeur `1` et affiche les N premiers enregistrements - N étant défini par le paramètre `per_page =` (valeur maximale 100) qui correspond à nombre maximal d’enregistrements retournés par page. Pour obtenir N autres enregistrements, appelez l’action avec le paramètre `page = 2`, etc.</br>
 
 Le paramètre `period=` vous permet de limiter les recherches à une période donnée. Voici les valeurs possibles :
 ```shell
@@ -380,14 +381,19 @@ Le paramètre `period=` vous permet de limiter les recherches à une période do
 - more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin))
 ```
 
-En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`) ou date additionnelle (`sell_date`). 
-Pour les documents de stock, vous pouvez rechercher par date de création (`issue_date`) ou date de vente (`transaction_date`).
+En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`), date additionnelle (`sell_date`), ou date de paiement (`paid_date`). 
+Pour les documents de stock, vous pouvez rechercher par date de création (`issue_date`) ou date de vente (`transaction_date`).</br>
 
-Le paramètre `income =` vous permet d'obtenir soit la liste des documents de vente (avec la valeur `1`) soit la liste des dépenses (avec la valeur `0`)
+Le paramètre `income =` vous permet d'obtenir soit la liste des documents de vente (avec la valeur `1`) soit la liste des dépenses (avec la valeur `0`).</br>
 
-Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents. 
+Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents.</br> 
 
-Le paramètre `number =` permet de télécharger un document de facturation via son numéro.
+Le paramètre `number =` permet de télécharger un document de facturation via son numéro.</br>
+
+Le paramètre `kind =` permet de rechercher un seul type de document (exemple : `kind=vat`). </br>
+
+Le paramètre `kinds =` permet de rechercher plusieurs types de documents (exemple : `&kinds[]=vat&kinds[]=estimate`).
+
 
 <a name="examples"/>
 
@@ -583,6 +589,50 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 			]
 	    }}'
 ```
+<b>Informations spécifiques et Texte additionnel automatiques</b></br>
+Lors d'une création manuelle, les 'Informations spécifiques' et/ou le 'Texte additionnel (imprimé sur la page suivante)' éventuellement définis par défaut dans les Paramètres du compte ou du département sont automatiquement ajoutés. En revanche, par API cet ajout automatique a besoin d'être spécifié en envoyant : 
+- soit le paramètre `department_id` du département vendeur : les 'Informations spécifiques' de la fiche du département seront envoyées. 
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+	“fill_default_descriptions”:true,
+		"invoice": {
+			"kind":"vat", 
+			"number": null, 
+			"sell_date": "2013-01-16", 
+			"issue_date": "2013-01-16", 
+			"payment_to": "2013-01-23",
+			"department_id": 1, 
+			"client_id": 1,
+			"positions":[
+				{"name":"Produit A1", "tax":23, "total_price_gross":10.23, "quantity":1},
+			]
+	    }}'
+```
+- soit le paramètre `fill_default_descriptions` : les 'Informations spécifiques' et/ou 'Texte additionnel' du paramètres du compte seront envoyés. 
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+	“fill_default_descriptions”:true,
+		"invoice": {
+			"kind":"vat", 
+			"number": null, 
+			"sell_date": "2013-01-16", 
+			"issue_date": "2013-01-16", 
+			"payment_to": "2013-01-23",
+			"seller_name": "Société Chose", 
+			"seller_tax_no": "FR5252445767",
+			"client_id": 1,
+			"positions":[
+				{"name":"Produit A1", "tax":23, "total_price_gross":10.23, "quantity":1},
+			]
+	    }}'
+```
+
 
 <a name="create2"/>
 <b>Créer une nouvelle facture (version rapide)</b></br>
