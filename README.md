@@ -55,6 +55,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Télécharger la liste des départements](#departlist)
 	+ [Obtenir un département selon ID](#departID)
 	+ [Supprimer un département selon ID](#departdelete)
+	+ [Ajouter un logo à un département](#departlogo)
 	+ [Remarque : Champs](#departnote)
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
@@ -1374,6 +1375,15 @@ curl "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKE
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
+```
+
+<a name="departlogo"/>
+<b>Ajouter un logo à un département</b>
+
+```shell
+curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
+    -F 'api_token=API_TOKEN' \
+    -F 'department[logo]=@/file_path/logo.png'
 ```
 
 <a name="departnote"/>
