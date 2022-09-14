@@ -76,6 +76,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un produit par son ID](#productID)
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Créer un produit](#productadd)
+	+ [Créer un produit lot](#productaddlot)
 	+ [Modifier un produit](#productupdate) 
 	+ [Remarque: Champs](#noteproduct)
 + [Multi-Tarifs](#tarifs)
@@ -1663,6 +1664,37 @@ curl https://votrecompte.vosfactures.fr/products.json \
 			"price_gross": "100" - prix unitaire TTC
 			"tax": "20" - % de taxe
 	    }}'
+```
+
+<a name="productaddlot"/>
+<b>Créer un produit lot</b>
+
+```shell
+curl https://votrecompte.vosfactures.fr/products.json \ 
+    -H 'Accept: application/json'  \
+    -H 'Content-Type: application/json'  \
+    -d '{"api_token": "API_TOKEN",
+        "product": {
+            "name": "Lot ABC",
+            "price_net": "100",
+            "tax": "20",
+            "service": "true",
+            "package": "true",
+            "package_products_details": {
+                "0": {
+                    "quantity": 1,
+                    "id": id_produitA
+                },
+                "1": {
+                    "quantity": 1,
+                    "id": id_produitB
+                },
+                "2": {
+                    "quantity": 1,
+                    "id": id_produitC
+                }
+            },
+        }}'
 ```
 
 <a name="productupdate"/>
