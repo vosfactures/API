@@ -1149,10 +1149,25 @@ En terme de suivi comptable, vous avez la possibilité d'afficher la colonne "Ex
          received_url
     ```
 
-3. Ajout de la pièce jointe à la facture:
+3. Ajout de la pièce jointe à la facture :
     ```shell
     curl -X POST https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/add_attachment.json?api_token=API_TOKEN&file_name=name.ext
     ```
+
+4. Rendre visible la pièce jointe </br>
+Par défaut les pièces jointes aux documents de facturation ne sont pas visibles par les clients (destinataires du document). Pour les rendre visibles, envoyer le paramètre `show_attachments`. 
+ ```shell
+curl https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json \
+    -X PUT \
+    -H 'Accept: application/json'  \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "show_attachments": true
+        }
+    }'
+
 
 <a name="filezip"/>
 <b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
