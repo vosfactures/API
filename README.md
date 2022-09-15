@@ -1683,7 +1683,8 @@ curl https://votrecompte.vosfactures.fr/products.json \
 ```
 
 <a name="productaddlot"/>
-<b>Créer un produit lot</b>
+<b>Créer un produit lot</b></br>
+Pour créer un produit en tant que lot, vous devez spécifier dans le paramètre `package_products_details` l'ID et la quantité respective de chaque produit le composant, en numérotant à partir de 0 (0, 1, 2, 3 ...).  
 
 ```shell
 curl https://votrecompte.vosfactures.fr/products.json \ 
