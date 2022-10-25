@@ -2249,7 +2249,6 @@ Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (e
 
 Coordonnées de l'acheteur apparaissant sur la facture correspondant au paiement :
 ```shell
-"generate_invoice" - "1" ou "0" : Générer une facture correspondant au paiement une fois celui-ci payé (quand "paid" est égal à 1)
 "invoice_id" - ID de la facture qui reçoit le paiement 
 "invoice_name" - Nom 
 "invoice_street" - N° et nom de rue
