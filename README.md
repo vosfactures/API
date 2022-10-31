@@ -665,7 +665,11 @@ cela signifie que vous avez choisi un niveau de sécurité standard ou élevé c
 
 <b>Créer une nouvelle facture avec réduction</b>
 
-Il faut indiquer dans la partie document ("invoice") l'affichage ("show_discount") et le type ("discount_kind") de réduction, et dans la partie produit la valeur ("discount") de la réduction. 
+Il faut indiquer : </br>
+- dans la partie document ("invoice") : l'affichage (`show_discount`) et le type (`discount_kind`) de réduction</br> 
+- et dans la partie produit ("positions") : la valeur (`discount` ou `discount_percent`) de la réduction</br> 
+Notez que les prix des produits sont à envoyer avant réduction (`total_price_gross`).</br> 
+-> Exemple avec une réduction en tant que montant ttc : 
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -683,9 +687,40 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 			 "positions":[
 			 	{"name":"Produit A",
 				"quantity":1,
-				"tax":23,
-				"total_price_gross":10.23,
-				 "discount":"5.23"
+				"tax":20,
+				"total_price_gross":10,20,
+				 "discount":"5.20"
+				 },
+				{"name":"Produit B",
+				"quantity":2,
+				"tax":0,
+				"total_price_gross":50,
+				}   
+			     ]   
+		}}'
+```
+
+-> Exemple avec une réduction en tant que pourcentage sur le prix unitaire TTC : 
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+		"invoice": {
+			 "kind":"vat",
+			 "number": null,
+			 "issue_date": "2018-02-22",
+			 "payment_to": "2018-03-01",   
+			 "buyer_name": "Client Untel",  
+			 "discount_kind":"percent_unit_gross",
+			 "show_discount":true,
+			 "positions":[
+			 	{"name":"Produit A",
+				"quantity":1,
+				"tax":20,
+				"total_price_gross":10,20,
+				 "discount_percent":"20"
 				 },
 				{"name":"Produit B",
 				"quantity":2,
