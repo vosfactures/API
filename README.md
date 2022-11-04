@@ -15,6 +15,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Factures (et autres documents) - exemples d'appels API](#examples)  
 	+ [Télécharger la liste de factures du mois en cours](#download)
 	+ [Télécharger la liste de factures d'une période donnée](#downloadmore)
+	+ [Télécharger les dernières factures modifiées](#downloadmore2)
 	+ [Télécharger la liste de factures avec les produits listés](#downloadpdt)
 	+ [Télécharger les factures d'un client](#downloadclient)	
 	+ [Télécharger un document (ex: facture) par son numéro d'ID](#downloadid)
@@ -59,6 +60,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Remarque : Champs](#departnote)
 + [Contacts](#clients)  
 	+ [Télécharger la liste des contacts](#client)
+	+ [Télécharger les derniers contacts modifiés](#client2)
 	+ [Obtenir un contact selon son ID](#clientID)
 	+ [Obtenir un contact selon le "Réf/code client"](#externalclientID)
 	+ [Obtenir un contact selon son N° d'identification fiscale](#clienttax)
@@ -384,7 +386,7 @@ Le paramètre `period=` vous permet de limiter les recherches à une période do
 - more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin))
 ```
 
-En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`), date additionnelle (`sell_date`), ou date de paiement (`paid_date`). 
+En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`), date additionnelle (`sell_date`), ou date de paiement (`paid_date`). Vous pouvez aussi trier les factures par date de la dernière modification (`order=updated_at`)
 Pour les documents de stock, vous pouvez rechercher par date de création (`issue_date`) ou date de vente (`transaction_date`).</br>
 
 Le paramètre `income =` vous permet d'obtenir soit la liste des documents de vente (avec la valeur `1`) soit la liste des dépenses (avec la valeur `0`).</br>
@@ -429,6 +431,12 @@ Exemple: Pour obtenir les documents 51 à 100 :
 ```shell
 curl "https://votrecompte.vosfactures/invoices.json?api_token=API_TOKEN&per_page=50&page=2"
 ```
+<a name="downloadmore2"/>
+<b>Télécharger les dernières factures modifiées</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr/invoices.json?order=updated_at&api_token=API_TOKEN&per_page=50"
+```
 
 <a name="downloadclient"/>
 <b>Télécharger les factures d'un client</b>
@@ -446,7 +454,6 @@ curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api
 
 <a name="downloadid"/>
 <b>Télécharger une facture par numéro d'ID</b>
-
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
@@ -1487,6 +1494,13 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
+<a name="client2"/>
+<b>Télécharger les derniers contacts modifiés</b>
+
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients.json?order=updated_at&api_token=API_TOKEN&page=1"
+```
+
 <a name="clientID"/>
 <b>Obtenir un contact selon son ID</b>
 
