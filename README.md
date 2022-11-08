@@ -1494,6 +1494,13 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
+
+Remarque : si les contacts ont des tags, ceux-ci seront visibles dans la réponse API par défaut. Si vous ne souhaitez obtenir les tags, envoyez le paramètre `with_tags=false` : 
+
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients.json?with_tags=false&api_token=API_TOKEN&page=1"
+```
+
 <a name="client2"/>
 <b>Télécharger les derniers contacts modifiés</b>
 
