@@ -2497,12 +2497,12 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api
 
 
 <a name="accountsystem"/>
-## Gestion des Comptes(s) à partir d'application tierce
+<b>Gestion des Comptes(s) à partir d'application tierce<b/><br/>
 
 C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).
 
 <a name="accountsystem1"/>
-###<b>Créer un nouveau compte</b>
+<b>Créer un nouveau compte</b><br/>
 </br>Pour créer un compte depuis votre application intégrée, vous avez besoin d'envoyer :</br> 
    - le code API de votre compte<br/>
    - le préfixe du compte à créer<br/>
@@ -2566,13 +2566,14 @@ REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le
 ```
 
 <a name="accountsystem2"/>
-###<b>Télécharger les informations du compte</b>
+<b>Télécharger les informations du compte<b/>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integration_token="
 ```
 <a name="accountsystem3"/>
-###<b>Supprimer un compte</b><br/>
+
+<b>Supprimer un compte<b/><br/>
 Après l'envoi de la requête ci-dessous, la procédure de suppression du compte par API est la même qu'une suppression manuelle : un e-mail de confirmation est envoyé. En savoir plus : https://aide.vosfactures.fr/20342070-Supprimer-son-compte-VosFactures. 
 
 ```shell
@@ -2584,7 +2585,8 @@ curl https://votrecompte.vosfactures.fr/account/delete.json \
         "api_token": "API_TOKEN"
     }'
 ```	
-Exemple de réponse :
+Exemple de réponse :<br/>
+	
 ```shell
 {
     "code": "success",
@@ -2595,7 +2597,7 @@ Exemple de réponse :
 	
 <a name="usersystem"/>
 
-## Création d'utilisateur
+<b>Création d'utilisateur<b/>
 	
 Une fois que vous avez créé un compte par API et défini son propritéaire (voir ci-dessus), vous pouvez ajouter par API d'autres utilisateurs au compte, et définir leur rôle. Pour ajouter un utilisateur à un compte, vous avez besoin d'envoyer :</br> 
    - le code API du compte (```api_token```)<br/>
