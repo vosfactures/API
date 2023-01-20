@@ -398,10 +398,28 @@ Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obteni
 
 Le paramètre `number =` permet de télécharger un document de facturation via son numéro.</br>
 
-Le paramètre `kind =` permet de rechercher un seul type de document (exemple : `kind=vat`). </br>
+Le paramètre `kind =` permet de rechercher un seul type de document (exemple : `kind=vat`).</br>
 
-Le paramètre `kinds =` permet de rechercher plusieurs types de documents (exemple : `&kinds[]=vat&kinds[]=estimate`).
+Le paramètre `kinds =` permet de rechercher plusieurs types de documents (exemple : `&kinds[]=vat&kinds[]=estimate`).</br>
 
+Le paramètre `order=` permet de choisir comment les factures appelées seront triées. Voici les valeurs possibles pour un tri ascendant : 
+
+```shell
+`number` - par numéro de facture
+`updated_at` - par date de dernière modificationi
+`price_net` - par total HT
+`price_gross` - par total TTC
+`price_tax` - par total de Taxe
+`issue_date` - par date d'envoi 
+`payment_to` - par date limite de règlement
+`paid_date` - par date de paiement effectif
+`transaction_date` - par date additionnelle
+`buyer_name` - par nom de l'acheteur
+`buyer_tax_no` - par n° fiscal de l'acheteur
+`seller_name` - par nom du vendeur
+`oid` - par n° de commande
+```
+Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> pour changer l'ordre de tri en décroissant, par exemple `updated_at.desc`.
 
 <a name="examples"/>
 
