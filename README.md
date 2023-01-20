@@ -402,7 +402,7 @@ Le paramètre `kind =` permet de rechercher un seul type de document (exemple :
 
 Le paramètre `kinds =` permet de rechercher plusieurs types de documents (exemple : `&kinds[]=vat&kinds[]=estimate`).</br>
 
-Le paramètre `order=` permet de choisir comment les factures appelées seront triées. Voici les valeurs possibles pour un tri ascendant : 
+Le paramètre `order =` permet de choisir comment les factures appelées seront triées. Voici les valeurs possibles pour un tri ascendant : 
 
 ```shell
 `number` - par numéro de facture
@@ -419,7 +419,7 @@ Le paramètre `order=` permet de choisir comment les factures appelées seront t
 `seller_name` - par nom du vendeur
 `oid` - par n° de commande
 ```
-Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> pour changer l'ordre de tri en décroissant, par exemple `updated_at.desc`.
+Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemple `updated_at.desc`.
 
 <a name="examples"/>
 
@@ -540,14 +540,23 @@ La variable `products-margin` est retournée lors de l'appel API d'une facture. 
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?api_token=API_TOKEN
 ```
 
+-> lorsqu'aucune adresse email n'a été précédemment renseignée sur la facture ou la fiche contact : utilisez le paramètre ``email_to``, qui peut contenir jusqu'à 5 adresses email.
+```shell
+curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?email_to=emailA@exemple.com,emailB@exemple.com&api_token=API_TOKEN
+```
+
 -> A une adresse email différente de celle indiquée sur la facture ou fiche contact : rajoutez le paramètre ``update_buyer_email``. 
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?email_to=emailautre@exemple.com&update_buyer_email=yes&api_token=API_TOKEN
 ```
 
--> A une adresse email en copie : utilisez le paramètre ``email_cc``. 
+-> A une adresse email en copie : utilisez le paramètre ``email_cc`` (5 adresses email max) : 
 ```shell
 curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?email_cc=emailencopie@exemple.com&api_token=API_TOKEN
+```
+-> En joignant le PDF du document envoyé : utilisez le paramètre ``email_pdf``.
+```shell
+curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?email_pdf=true&api_token=API_TOKEN
 ```
 
 Remarque : Afin d'éviter le risque de spams, le système n'autorise pas l'envoi répété d'un même document avant un délai de 3 jours, à moins d'utiliser le paramètre ``force : true``. Par exemple, écrivez: 
