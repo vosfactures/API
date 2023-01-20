@@ -118,7 +118,10 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Ajouter un nouveau paiement à plusieurs factures](#paiementsadd2)
 	+ [Modifier un paiement](#updatepayment)
 	+ [Supprimer un paiement](#deletepayment)
-+ [Création de compte à partir d'application tierce](#accountsystem)
++ [Gestion des Comptes](#accountsystem)
+	+  [Créer de compte](#accountsystem1)
+	+  [Télécharger les informations de compte](#accountsystem2)
+	+  [Supprimer un compte](#accountsystem3)
 + [Création d'utilisateur](#usersystem)
 + [Connexion via API](#connect)
 + [Exemples : CURL, PHP, Ruby](#exemples)
@@ -2494,12 +2497,12 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api
 
 
 <a name="accountsystem"/>
-
-## Création de compte(s) à partir d'application tierce
+## Gestion des Comptes(s) à partir d'application tierce
 
 C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).
 
-<b>Création d'un nouveau compte </b>
+<a name="accountsystem1"/>
+###<b>Créer un nouveau compte</b>
 </br>Pour créer un compte depuis votre application intégrée, vous avez besoin d'envoyer :</br> 
    - le code API de votre compte<br/>
    - le préfixe du compte à créer<br/>
@@ -2540,8 +2543,7 @@ curl https://votrecompte.vosfactures.fr/account.json \
 REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur.
 
 <b>Après avoir créé le nouveau compte :</b>
-
-
+	
 ```shell
 {
 	"prefix":"ABC", - préfixe du compte créé (notez qu'il peut être différent de celui voulu lorsqu'un compte avec le même préfixe existe déjà)
@@ -2562,12 +2564,35 @@ REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le
 		"integration_logout_url": "https://votresite.com/" - vous permet de renvoyer vos utilisateurs sur votre site après la déconnexion des utilisateurs de VosFactures
 	}
 ```
-Obtenir des informations sur le compte:
+
+<a name="accountsystem2"/>
+###<b>Télécharger les informations du compte</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integration_token="
 ```
+<a name="accountsystem3"/>
+###<b>Supprimer un compte</b><br/>
+Après l'envoi de la requête ci-dessous, la procédure de suppression du compte par API est la même qu'une suppression manuelle : un e-mail de confirmation est envoyé. En savoir plus : https://aide.vosfactures.fr/20342070-Supprimer-son-compte-VosFactures. 
 
+```shell
+curl https://votrecompte.vosfactures.fr/account/delete.json \
+    -X POST \
+    -H 'Accept:application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN"
+    }'
+```	
+Exemple de réponse :
+```shell
+{
+    "code": "success",
+    "message": "Email de suppression du compte envoyé !"
+}
+```
+	
+	
 <a name="usersystem"/>
 
 ## Création d'utilisateur
