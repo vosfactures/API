@@ -2498,7 +2498,7 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api
 
 <a name="accountsystem"/>
 <b>Gestion des Comptes(s) à partir d'application tierce</b></br></br>
-C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).
+C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).</br>
 
 <a name="accountsystem1"/>
 <b>Créer un nouveau compte</b></br>
@@ -2539,9 +2539,9 @@ curl https://votrecompte.vosfactures.fr/account.json \
 	    "integration_token": ""
         }'
 ```
-REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur.
+REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le code API actuel de l'utilisateur.</br></br>
 
-<b>Après avoir créé le nouveau compte :</b>
+Après avoir créé le nouveau compte :
 	
 ```shell
 {
@@ -2553,7 +2553,7 @@ REMARQUE: le paramètre ```integration_token``` est requis pour télécharger le
 }
 ```
 
-<b>Autres champs disponibles lors de la création d'un nouveau compte (utile pour l'intégration)</b>
+Autres champs disponibles lors de la création d'un nouveau compte (utile pour l'intégration) :
 
 ```shell
 	"account": {
@@ -2584,7 +2584,7 @@ curl https://votrecompte.vosfactures.fr/account/delete.json \
         "api_token": "API_TOKEN"
     }'
 ```	
-Exemple de réponse :<br/>
+Exemple de réponse :
 	
 ```shell
 {
@@ -2596,7 +2596,7 @@ Exemple de réponse :<br/>
 	
 <a name="usersystem"/>
 
-<b>Création d'utilisateur<b/>
+<b>Création d'utilisateur</b></br></br>
 	
 Une fois que vous avez créé un compte par API et défini son propritéaire (voir ci-dessus), vous pouvez ajouter par API d'autres utilisateurs au compte, et définir leur rôle. Pour ajouter un utilisateur à un compte, vous avez besoin d'envoyer :</br> 
    - le code API du compte (```api_token```)<br/>
