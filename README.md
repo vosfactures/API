@@ -394,6 +394,8 @@ Pour les documents de stock, vous pouvez rechercher par date de création (`issu
 
 Le paramètre `income =` vous permet d'obtenir soit la liste des documents de vente (avec la valeur `1`) soit la liste des dépenses (avec la valeur `0`).</br>
 
+Le paramètre `invoice_ids =` permet d'obtenir des documents de facturation via son numéro ID. Par exemple : `invoice_ids=123,456,789`
+
 Le paramètre `include_positions =` (avec la valeur `true`) vous permet d'obtenir la liste des documents avec les produits listés sur ces documents.</br> 
 
 Le paramètre `number =` permet de télécharger un document de facturation via son numéro.</br>
