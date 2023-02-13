@@ -2511,7 +2511,7 @@ curl https://votrecompte.vosfactures.fr/banking/payments/100.json
 				-H 'Content-Type: application/json'  
 				-d '{
 				"api_token": "API_TOKEN",
-				"banking_payments": {
+				"banking_payment": {
 					"name":"Nouveau titre du Paiement",
 			                "price": 120.00,			
 				}}'
