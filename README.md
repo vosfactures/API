@@ -2318,7 +2318,8 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token
 ``` 
 
 <a name="warehouseaction"/> 
-## Opérations des stocks
+
+## Opération des stocks
 	
 <a name="warehouseactionlist"/>	
 	
