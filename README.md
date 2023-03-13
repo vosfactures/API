@@ -152,7 +152,7 @@ Le code API est du type "qCedKxkTgQhGJpiI2SU".</br>
 * `DELETE /invoices/1.json` supprime le document
 
 
-<b>Exemple</b> - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (product_id), de l'acheteur (buyer_id) et du vendeur (department_id) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ "department_id" représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquez sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
+<b>Exemple</b> - Vous pouvez ajouter une nouvelle facture (ou autre) en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (`product_id`), de l'acheteur (`buyer_id`) et du vendeur (`department_id`) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours. Le champ `department_id` représente l'ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquez sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Si aucun "department_id" n'est renseigné, le département principal sera choisi. 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json 
     -H 'Accept: application/json'  
@@ -389,7 +389,7 @@ Le paramètre `period=` vous permet de limiter les recherches à une période do
 - this_year (année en cours)
 - last_year (année dernière)
 - all (tous)
-- more (autre : dans ce cas, il faut spécifier les paramètres additionels ```date_from``` (date de début) et ```date_to``` (date de fin))
+- more (autre : dans ce cas, il faut spécifier les paramètres additionels `date_from (date de début) et `date_to` (date de fin))
 ```
 
 En utilisant le paramètre `search_date_type` vous pouvez spécifier le type de date à prendre en compte pour une recherche par période. Pour les documents de facturation, vous pouvez rechercher par date de création (`issue_date`), date additionnelle (`sell_date`), ou date de paiement (`paid_date`). Vous pouvez aussi trier les factures par date de la dernière modification (`order=updated_at`)
@@ -1590,12 +1590,12 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=
 
 <a name="noteclient1"/>
 <b>Remarque:</b><br>
-<b>La variable "panel_url"</b> est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'Espace Facturation du contact.
+La variable `panel_url` est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'Espace Facturation du contact.
 <br><br>
 
 <a name="addclient"/>
 <b>Créer un contact</b>
-</br>Seul le paramètre ```name``` est obligatoire.</br>
+</br>Seul le paramètre `name` est obligatoire.</br>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients.json \ 
@@ -1778,7 +1778,7 @@ curl https://votrecompte.vosfactures.fr/products.json \
 
 <a name="productaddlot"/>
 <b>Créer un produit lot</b></br>
-Pour créer un produit en tant que lot, vous devez spécifier dans le paramètre ```package_products_details``` l'ID et la quantité respective de chaque produit le composant, en numérotant à partir de 0 (0, 1, 2, 3 ...).  
+Pour créer un produit en tant que lot, vous devez spécifier dans le paramètre `package_products_details` l'ID et la quantité respective de chaque produit le composant, en numérotant à partir de 0 (0, 1, 2, 3 ...).  
 
 ```shell
 curl https://votrecompte.vosfactures.fr/products.json \ 
@@ -2332,7 +2332,7 @@ curl "https://votrecompte.vosfactures.fr/warehouse_actions.json?api_token=API_TO
 
 ## Paramètres additionnels de téléchargement
 	
-Des paramètres supplémentaires peuvent être passés aux appels API - les mêmes paramètres qui sont utilisés dans l'application, par exemple `page=`, `per_page=` etc.
+Des paramètres supplémentaires peuvent être passés aux appels API. En effet vous pouvez utiliser les mêmes filtres que ceux proposés par le logiciel dans le moteur de recherche, par exemple `page=`, `per_page=` etc.
 	
 Le paramètre `warehouse_id=` (ID de l'entrepôt) listera uniquement les opérations d'un entrepôt donné. 
 
@@ -2345,7 +2345,6 @@ Le paramètre `product_id=` (ID produit) permet de filtrer les opérations conce
 Le paramètre `from_warehouse_document=` ciblent les opérations de sortie depuis un entrepôt donné. 
 
 Le paramètre `to_warehouse_document=` ciblent les opérations d'entrée dans un entrepôt donné. 
-
 
 Le paramètre `warehouse_document_id=` (ID du document de stock) ciblent les opérations liées à un document de stock en particulier. 
 	
