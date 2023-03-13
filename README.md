@@ -111,7 +111,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
 + [Opérations des stocks](#warehouseaction)
 	+ [Télécharger la liste des opérations](#warehouseactionlist)
-	+ Pparamètres additionnels de téléchargement](#warehouseactionpara)
+	+ [Paramètres additionnels de téléchargement](#warehouseactionpara)
 + [Paiements](#paiements)
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
