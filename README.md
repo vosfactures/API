@@ -109,6 +109,9 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un entrepôt](#warehousenew)
 	+ [Modifier un entrepôt](#warehouseupdate)
 	+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
++ [Opérations des stocks](#warehouseaction)
+	+ [Télécharger la liste des opérations](#warehouseactionlist)
+	+ Pparamètres additionnels de téléchargement](#warehouseactionpara)
 + [Paiements](#paiements)
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
@@ -2314,7 +2317,37 @@ curl https://votrecompte.vosfactures.fr/warehouses/100.json
 curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
 ``` 
 
+<a name="warehouseaction"/> 
+## Opérations des stocks
+	
+<a name="warehouseactionlist"/>	
+	
+## Télécharger la liste des opérations
+	
+```shell 
+curl "https://votrecompte.vosfactures.fr/warehouse_actions.json?api_token=API_TOKEN"
+```
+<a name="warehouseactionpara"/>
 
+## Paramètres additionnels de téléchargement
+	
+Des paramètres supplémentaires peuvent être passés aux appels API - les mêmes paramètres qui sont utilisés dans l'application, par exemple `page=`, `per_page=` etc.
+	
+Le paramètre `warehouse_id=` (ID de l'entrepôt) listera uniquement les opérations d'un entrepôt donné. 
+
+Le paramètre `kind=` (type d'opération) listera uniquement les types d'opération donnés.
+
+Le paramètre `product_id=` (ID produit) permet de filtrer les opérations concernant un produit donné. 
+
+`date_from=` et `date_to=` ciblent les opérations créées depuis ou avant une date donnée. 
+
+Le paramètre `from_warehouse_document=` ciblent les opérations de sortie depuis un entrepôt donné. 
+
+Le paramètre `to_warehouse_document=` ciblent les opérations d'entrée dans un entrepôt donné. 
+
+
+Le paramètre `warehouse_document_id=` (ID du document de stock) ciblent les opérations liées à un document de stock en particulier. 
+	
 <a name="paiements"/>
 
 ## Paiements
