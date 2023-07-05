@@ -636,7 +636,32 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <b>Nouveaux produits</b></br>
-Vous pouvez créer un document de facturation en sélectionnant des produits existants (via ```product_id```) ou renseignant un nouveau produit, comme dans les exemples précédents. Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que vous ayez opté pour l'option contraire (voir https://aide.vosfactures.fr/271837-D-sactiver-l-ajout-automatique-des-nouveaux-Produits-Services), avec les attributs indiqués (nom, taux de taxe, prix unitaire, code ean ...).</br>
+Vous pouvez créer un document de facturation en renseignant un nouveau produit (avec au minimum les nom, quantité et prix unitaire TTC), comme dans les exemples précédents. Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que vous ayez opté pour l'option contraire - voir https://aide.vosfactures.fr/271837-D-sactiver-l-ajout-automatique-des-nouveaux-Produits-Services), avec les attributs indiqués (nom, taux de taxe, prix unitaire, code ean ...).</br></br>
+
+<b>Produits existants</b></br>
+Pour facturer un produit existant, vous devez envoyez l'ID du produit (```product_id```) avec la quantité facturée. 
+Si vous souhaitez modifier le nom du produit existant sur le document créé, vous pouvez le faire directement en ajoutant le paramètre ```update_product_name``` : 
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+	-H 'Accept: application/json' \ 
+	-H 'Content-Type: application/json' \
+	-d '{"api_token": "API_TOKEN",
+		"invoice": {
+			"kind":"vat", 
+			"number": null, 
+			"sell_date": "2013-01-16", 
+			"issue_date": "2013-01-16", 
+			"payment_to": "2013-01-23",
+			"department_id": 1, 
+			"client_id": 1,
+		        "update_product_name" : true,
+			"positions":[
+				{"product_id": 1, name: "Autre Nom de Produit", "quantity":2}
+			]
+	    }}'
+```
+
 <b>Informations spécifiques et Texte additionnel automatiques</b></br>
 Lors d'une création manuelle, les 'Informations spécifiques' et/ou le 'Texte additionnel (imprimé sur la page suivante)' éventuellement définis par défaut dans les Paramètres du compte ou du département sont automatiquement ajoutés. En revanche, par API cet ajout automatique a besoin d'être spécifié en envoyant : 
 - soit le paramètre `department_id` du département vendeur : les 'Informations spécifiques' de la fiche du département seront envoyées. 
