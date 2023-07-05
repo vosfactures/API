@@ -636,8 +636,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <b>Nouveaux produits</b></br>
-Vous pouvez créer un document de facturation en renseignant un nouveau produit (avec au minimum les nom, quantité et prix unitaire TTC), comme dans les exemples précédents. Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que vous ayez opté pour l'option contraire - voir https://aide.vosfactures.fr/271837-D-sactiver-l-ajout-automatique-des-nouveaux-Produits-Services), avec les attributs indiqués (nom, taux de taxe, prix unitaire, code ean ...).</br></br>
-
+Vous pouvez créer un document de facturation en renseignant un nouveau produit (avec au minimum les nom, quantité et prix unitaire TTC), comme dans les exemples précédents. Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que vous ayez opté pour l'option contraire - voir https://aide.vosfactures.fr/271837-D-sactiver-l-ajout-automatique-des-nouveaux-Produits-Services), avec les attributs indiqués (nom, taux de taxe, prix unitaire, code ean ...).</br>
 <b>Produits existants</b></br>
 Pour facturer un produit existant, vous devez envoyez l'ID du produit (```product_id```) avec la quantité facturée. 
 Si vous souhaitez modifier le nom du produit existant sur le document créé, vous pouvez le faire directement en ajoutant le paramètre ```update_product_name``` : 
