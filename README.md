@@ -178,12 +178,12 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "issue_date" : "2013-01-16" - date de création 
 "place" : "Paris" - lieu de création
 "sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte).
-"test" : "true" ou "false" - document test ou non (en savoir plus ici: http://aide.vosfactures.fr/15399051-Cr-er-un-Document-ou-Paiement-Test) 
+"test" : "true" ou "false" - document test ou non (en savoir plus ici: https://aide.vosfactures.fr/15399051-Cr-er-un-Document-ou-Paiement-Test) 
 "category_id" : "" - ID ou Nom de la catégorie : le système va d'abord regarder si la valeur renseignée correspond à un n° ID d'une catégorie existante, et ensuite à un Nom d'une catégorie existante. Si aucune valeur ne correspond, le système va créer une  nouvelle catégorie. 
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Le système affichera alors automatiquement les coordonnées du département vendeur (nom, adresse...) sur le document (les autres champs "seller_" ne sont plus nécessaires). 
 "seller_name" : "Ma Société" - Nom du département vendeur. Si ce champ n'est pas renseigné, le département principal est sélectionné par défaut. Préférez plutôt "department_id". Si vous utilisez toutefois "seller_name", le système tentera d'identifier le département portant ce nom, sinon il créera un nouveau département. 
 "seller_tax_no" : "FR5252445767" - numéro d'identification fiscale du vendeur (ex: n° TVA)
-"seller_tax_no_kind" : "", - initulé du numéro d'identification du vendeur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: http://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
+"seller_tax_no_kind" : "", - initulé du numéro d'identification du vendeur : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/1802938-Num-ro-d-identification-fiscale-de-votre-entreprise-TVA-SIREN-IDE-CIF-)
 "seller_bank_account" : "24 1140 1977 0000 5921 7200 1001" - coordonnées bancaires du vendeur
 "seller_bank" : "CREDIT AGRICOLE" - domiciliation bancaire
 "seller_bank_swift" : "" - code bancaire BIC. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"seller_bank_swift":"BIC"} lors de la création d'un document de facturation. 
@@ -783,7 +783,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 Dans l'exemple ci-dessous, la facture est créée avec un sous-total des produits A et B.  
 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
                 -H 'Accept: application/json' \
                 -H 'Content-Type: application/json' \
                 -d '{
@@ -810,7 +810,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 
 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
                 -H 'Accept: application/json' \
                 -H 'Content-Type: application/json' \
                 -d '{
@@ -837,7 +837,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 Le document sera créé par défaut avec les informations spécifiques correspondant à l'autoliquidation ("Mécanisme d'autoliquidation : la TVA est due par le preneur assujetti"). Si vous souhaitez afficher des informations spécifiques différentes, spécifiez-les via le paramètre ```description``` correspondant.
 
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
 				-H 'Accept: application/json' \
 				-H 'Content-Type: application/json' \
 				-d '{
@@ -1499,7 +1499,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "city" : "Paris" - Ville 
 "street" : "32 Rue du commerce" - N° et nom de rue
 "country" : "France" - Pays
-"person" : "Nom vendeur" - Nom du vendeur (en savoir plus ici:http://aide.vosfactures.fr/468616-Nom-du-vendeur)
+"person" : "Nom vendeur" - Nom du vendeur (en savoir plus ici:https://aide.vosfactures.fr/468616-Nom-du-vendeur)
 "email" : "abc@compagnie.com"
 "phone" : "" - Téléphone 
 "mobile_phone" : "" - Téléphone Portable
@@ -2015,7 +2015,7 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/price_lists/100.json?api_toke
 <b>Facturer avec un Tarif</b>
 	
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
                 -H 'Accept: application/json' \
                 -H 'Content-Type: application/json' \
                 -d '{
@@ -2039,7 +2039,7 @@ curl http://votrecompte.vosfactures.fr/invoices.json \
 Remarque : Vous pouvez identifier le tarif à appliquer aux produits facturés soit via le paramètre `price_list_id=`(ID du Tarif) soit via le paramètre `client_id` (ID du client) : 
 	
 ```shell
-curl http://votrecompte.vosfactures.fr/invoices.json \
+curl https://votrecompte.vosfactures.fr/invoices.json \
                 -H 'Accept: application/json' \
                 -H 'Content-Type: application/json' \
                 -d '{
@@ -2674,7 +2674,7 @@ Une fois que vous avez créé un compte par API et défini son propritéaire (vo
 Pour en savoir plus sur les différents rôles des utilisateurs : https://aide.vosfactures.fr/29416365-R-les-des-Utilisateurs.<br/>	
 
 ```shell
-POST http://votrecompte.vosfactures.fr/account/add_user.json
+POST https://votrecompte.vosfactures.fr/account/add_user.json
 Content-Type: application/json
 {
   "api_token": "API_TOKEN",
