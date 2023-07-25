@@ -224,7 +224,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "additional_invoice_field" : "" - contenu du champ additionnel (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut). Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"additional_invoice_field":"contenu"} lors de la création d'un document de facturation. 
 "show_discount" : "0" - afficher (1) ou non (0) la colonne réduction
 "discount_kind": "" - type de réduction: "amount" (pour un montant ttc), "percent_unit" (pour un % sur le prix unitaire ht), "percent_unit_gross" (pour un % sur le prix unitaire ttc)ou  "percent_total" (pour un % calculé sur le prix total)
-"payment_type" : "chèque" - mode de règlement 
+"payment_type" : "card" - mode de règlement. Les valeurs par défaut disponibles sont listées plus bas dans le paragraphe "Valeurs des Champs".
 "payment_to_kind" : "5" - date limite de règlement (parmi les options proposées). Si vous indiquez "5", la date d'échéance est de 5 jours. Si l'option est "Autre" ("other_date"), vous pouvez définir une date spécifique grâce au champ "payment_to". Pour ne pas afficher ce champ, indiquez "off". 
 "payment_to" : "2013-01-16" - date limite de règlement
 "sum_recovery" : "client_particulier" - afficher (client_professionnel) ou non (client_particulier) la mention "Indemnité forfaitaire de recouvrement". Attention, en json vous devez envoyer ce paramètre comme ceci: "additional_fields": {"sum_recovery":"client_professionnel"} lors de la création d'un document de facturation.
