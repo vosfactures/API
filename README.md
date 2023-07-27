@@ -2750,16 +2750,16 @@ Notez que le code API (```api_token```) n'est retourné que si l'utilisateur ind
 ## Webhooks
 
 Vous pouvez gérer vos webhooks soit depuis l'interface du logiciel (Paramètres > Paramètres du compte > Intégrations), soit directement par API.</br>
-Les différents types de webhooks disponibles sont : 
-`client:create` - création d'un contact
-`client:update` - modification d'un contact
-`client:destroy` - suppression d'un contact
-`invoice:create` - création d'un document de facturation
-`invoice:update` - modification d'un document de facturation
-`invoice:destroy` - suppression d'un document de facturation
-`product:create` - création d'un produit
-`product:update` - modification d'un produit
-`product:destroy` - suppression d'un produit
+Les différents types de webhooks disponibles sont : </br>
+`client:create` - création d'un contact</br>
+`client:update` - modification d'un contact</br>
+`client:destroy` - suppression d'un contact</br>
+`invoice:create` - création d'un document de facturation</br>
+`invoice:update` - modification d'un document de facturation</br>
+`invoice:destroy` - suppression d'un document de facturation</br>
+`product:create` - création d'un produit</br>
+`product:update` - modification d'un produit</br>
+`product:destroy` - suppression d'un produit</br>
 
 </br><b>Télécharger la liste des webhooks existants</b></br>
 ```shell
@@ -2769,7 +2769,9 @@ curl "https://votrecompte.vosfactures.fr/webhooks.json?api_token=API_TOKEN"
 ```shell
 curl "https://votrecompte.vosfactures.fr/webhooks/1.json?api_token=API_TOKEN"
 ```
+
 </br><b>Créer un nouveau webhook</b></br>
+```shell 
 curl -X POST --location "https://votrecompte.vosfactures.fr/webhooks.json" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
@@ -2782,8 +2784,10 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/webhooks.json" \
             \"active\": true
           }
         }"
+```
 
 </br><b>Modifier un webhook donné</b></br>
+```shell 
 curl -X PUT --location "https://votrecompte.vosfactures.fr/webhooks/1.json" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
@@ -2796,6 +2800,7 @@ curl -X PUT --location "https://votrecompte.vosfactures.fr/webhooks/1.json" \
             \"active\": true
           }
         }"
+```
 
 </br><b>Supprimer un webhook donné</b></br>
 ```shell 
