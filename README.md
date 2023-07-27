@@ -127,6 +127,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+  [Supprimer un compte](#accountsystem3)
 + [Création d'utilisateur](#usersystem)
 + [Connexion via API](#connect)
++ [Webhooks](#webhooks)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
   
@@ -2743,6 +2744,31 @@ Voici la réponse retournée, qui inclut notamment le `prefixe`, l' `url` et le 
 }
 ```
 Notez que le code API (```api_token```) n'est retourné que si l'utilisateur indiqué a préalablement généré le code API (l'utilisateur peut l'ajouter depuis Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API). 
+
+<a name="webhooks"/>
+
+## Webhooks
+
+Vous pouvez gérer vos webhooks soit depuis l'interface du logiciel (Paramètres > Paramètres du compte > Intégrations), soit directement par API. 
+
+</br><b>Télécharger la liste des webhooks existants</b></br>
+```shell
+curl "https://votrecompte.vosfactures.fr/webhooks.json?api_token=API_TOKEN"
+```
+</br><b>Télécharger un webhook donné</b></br>
+```shell
+curl "https://votrecompte.vosfactures.fr/webhooks/1.json?api_token=API_TOKEN"
+```
+</br><b>Créer un nouveau webhook</b></br>
+`POST /webhooks.json` 
+
+</br><b>Modifier un webhook donné</b></br>
+`PUT /webhooks/1.json`
+
+</br><b>Supprimer un webhook donné</b></br>
+```shell 
+curl -X DELETE "https://votrecompte.vosfactures.fr/webhooks/1.json?api_token=API_TOKEN" 
+``` 
 
 <a name="exemples"/>
 
