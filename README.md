@@ -38,7 +38,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une facture d'avoir (partielle)](#credit)
 	+ [Créer une facture d'avoir (totale)](#credittotal)
 	+ [Créer une facture à compléter](#completed)
-        + [Modifier une facture](#update)
+	+ [Modifier une facture](#update)
 	+ [Modifier un produit listé sur une facture](#update2)
 	+ [Supprimer un produit listé sur une facture](#update3)
 	+ [Ajouter un produit sur une facture](#update4)
