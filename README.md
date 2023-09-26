@@ -1166,7 +1166,6 @@ La création de la facture est classique, avec les champs usuels - sauf que :
   - ```paid_after_completion``` : par défaut la facture est créée avec l’état “A compléter”. Avec ce paramètre (= true), l’état de la facture est changée automatiquement en “payé” une fois la facture validée par le client. 
   - ```send_after_completion``` : par défaut, après avoir cliqué sur le bouton pour valider la facture (intitulé “Sauvegarder”), le client peut télécharger la facture en PDF. En envoyant ce paramètre (= true), le bouton change d’intitulé pour “Valider et recevoir par email” et la facture est envoyée au client par email. </br> 
 
-Exemple :</br> 
 ```shell
 curl -X POST --location "http://votrecompte.vosfactures.fr/invoices.json" \
     -H "Content-Type: application/json" \
