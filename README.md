@@ -1155,7 +1155,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 En attribuant la valeur "1" au paramètre ```total_correction```, une facture d'avoir totale est créée. Si au contraire vous indiquez la valeur "0", le montant de la facture d'avoir sera de zéro (car émise avec des lignes de produits identiques avant et après la correction). 
 
-<a name="completed"/>
+<a name="completed"></a>
 <b>Créer une facture à compléter</b></br>
 Le logiciel vous permet par API de créer et envoyer une facture de vente à votre client afin qu'il complète/vérifie ses coordonnées de facturation, avant de valider celle-ci et pouvoir la télécharger et/ou la recevoir par email. En effet, une fois la facture incomplète créée par API, vous pouvez envoyer le lien de l’aperçu de la facture au client, qui verra un message l’invitant à compléter ses coordonnées, avec un bouton pour valider (situé sous les champs de coordonnées de l’acheteur). Une fois validée, la facture ne peut plus être modifiée par l’acheteur.</br></br> 
 La création de la facture est classique, avec les champs usuels - sauf que : </br>
@@ -1177,15 +1177,15 @@ curl -X POST --location "http://votrecompte.vosfactures.fr/invoices.json" \
             \"buyer_company\": false,
             \"buyer_first_name\": \"Jean\",
             \"buyer_last_name\": \"Dupont\",
-             \"buyer_email\": \"email1@vemail.fr\",
-              \"buyer_mobile_phone\": \"003300000000\",
-             \"buyer_street\": \"50 rue des Fleurs\",
-             \"buyer_post_code\": \"06000\",
-             \"buyer_city\": \"Nice\",
+            \"buyer_email\": \"email1@vemail.fr\",
+            \"buyer_mobile_phone\": \"003300000000\",
+            \"buyer_street\": \"50 rue des Fleurs\",
+            \"buyer_post_code\": \"06000\",
+            \"buyer_city\": \"Nice\",
             \"paid_after_completion\": true,
             \"send_after_completion\": true,
             \"send_completion_to\": \"email2@email.fr\",
-           \"prevent_send_email_to_complete\": true,
+            \"prevent_send_email_to_complete\": true,
             \"positions\": [
               {
                 \"name\": \"Produit 1\",
