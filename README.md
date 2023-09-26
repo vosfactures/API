@@ -1160,11 +1160,11 @@ En attribuant la valeur "1" au paramètre ```total_correction```, une facture d'
 Le logiciel vous permet par API de créer et envoyer une facture de vente à votre client afin qu'il complète/vérifie ses coordonnées de facturation, avant de valider celle-ci et pouvoir la télécharger et/ou la recevoir par email. En effet, une fois la facture incomplète créée par API, vous pouvez envoyer le lien de l’aperçu de la facture au client, qui verra un message l’invitant à compléter ses coordonnées, avec un bouton pour valider (situé sous les champs de coordonnées de l’acheteur). Une fois validée, la facture ne peut plus être modifiée par l’acheteur.</br></br> 
 La création de la facture est classique, avec les champs usuels - sauf que : </br>
 - l’envoi des coordonnées de l'acheteur dans la requête est facultatif,</br> 
-- l’état de la facture à envoyer est `incomplete`, </br>
+- l’état de la facture à envoyer est `incomplete=`, </br>
 - des paramètres spécifiques peuvent être inclus dans la requête : </br>
-   - `prevent_send_email_to_complete` : par défaut lorsque la facture à compléter est créée, l'acheteur reçoit le lien de la facture par email, l’invitant à la compléter. Pour ne pas envoyer cet email à l'acheteur, ajouter le paramètre `prevent_send_email_to_complete = true` </br>
-  - `paid_after_completion` : par défaut la facture est créée avec l’état “A compléter”. Avec ce paramètre (`= true`), l’état de la facture est changée automatiquement en “payé” une fois la facture validée par le client. </br>
-  - `send_after_completion` : par défaut, après avoir cliqué sur le bouton pour valider la facture (intitulé “Sauvegarder”), le client peut télécharger la facture en PDF. En envoyant ce paramètre (`= true`), le bouton change d’intitulé pour “Valider et recevoir par email” et la facture est envoyée au client par email. </br> 
+   - `prevent_send_email_to_complete=` : par défaut lorsque la facture à compléter est créée, l'acheteur reçoit le lien de la facture par email, l’invitant à la compléter. Pour ne pas envoyer cet email à l'acheteur, ajouter le paramètre `prevent_send_email_to_complete = true` </br>
+  - `paid_after_completion=` : par défaut la facture est créée avec l’état “A compléter”. Avec ce paramètre (`true=`), l’état de la facture est changée automatiquement en “payé” une fois la facture validée par le client. </br>
+  - `send_after_completion=` : par défaut, après avoir cliqué sur le bouton pour valider la facture (intitulé “Sauvegarder”), le client peut télécharger la facture en PDF. En envoyant ce paramètre (`true=`), le bouton change d’intitulé pour “Valider et recevoir par email” et la facture est envoyée au client par email. </br> 
 
 ```shell
 curl -X POST --location "http://votrecompte.vosfactures.fr/invoices.json" \
