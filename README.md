@@ -30,6 +30,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une facture avec réduction](#create3a)
 	+ [Créer une facture avec sous-total](#create3b)
 	+ [Créer une facture avec ligne de texte](#create3c)
+ 	+ [Créer une facture avec une prime CEE](#create3cee)
 	+ [Créer une facture en autoliquidation](#create3d)
 	+ [Créer une facture pour une vente OSS](#create3e)
 	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
@@ -832,8 +833,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <a name="create3c"/>
-<b>Créer une nouvelle facture avec une ligne de texte </b>
+<b>Créer une nouvelle facture avec une ligne de texte </b></br>
 
+Utilisez le paramètre `text_separator` lorsque vous souhaitez insérer une ou plusieurs ligne de texte dans votre tableau. Une ligne de texte peut être un sous-titre ou contenir une mention. En savoir plus sur cette option ici : https://aide.vosfactures.fr/856880-Ins-rer-des-sous-titres-lignes-de-texte-
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -857,9 +859,33 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
                 }}'
 ```
 
+
+<a name="create3cee"/>
+<b>Créer une facture avec une prime CEE</b>
+
+Utilisez les paramètres `use_prime_cee` et `prime_cee_value` pour rajouter une prime CEE qui sera déduite du Montant Net à payer sur le document. Pour en savoir plus sur cette option : https://aide.vosfactures.fr/139056185-Facturer-avec-une-Prime-CEE. Attention la valeur de la prime CEE à indiquer est TTC. 
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \
+				-H 'Accept: application/json' \
+				-H 'Content-Type: application/json' \
+				-d '{
+				"api_token": "API_TOKEN",
+            "invoice": {
+            "kind":"estimate",
+            "use_prime_cee": true,
+            "prime_cee_value": 20.00,
+            "lang": "fr",
+            "buyer_name": "Client Untel",
+            "positions": [
+              { "name": "produit A", "tax": 20, "total_price_gross": 24.00, "quantity": 2}
+            ]
+          }}'
+```
+
 <a name="create3d"/>
 
-<b>Créer une facture en autoliquidation</b></br>
+<b>Créer une facture en Autoliquidation</b></br>
 Le document sera créé par défaut avec les informations spécifiques correspondant à l'autoliquidation ("Mécanisme d'autoliquidation : la TVA est due par le preneur assujetti"). Si vous souhaitez afficher des informations spécifiques différentes, spécifiez-les via le paramètre ```description``` correspondant.
 
 ```shell
