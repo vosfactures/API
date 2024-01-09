@@ -117,7 +117,8 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Paiements](#paiements)
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
-	+ [Télécharger la liste des Paiements avec les factures liées](#paiementsinvoice)
+	+ [Télécharger la liste des Paiements avec les factures liées](#paiementsinvoices)
+ + [Télécharger la liste des Paiements d'une facture donnée](#paiementsinvoice)
 	+ [Obtenir un paiement par son ID](#paiementsid)
 	+ [Ajouter un nouveau paiement](#paiementsadd)
 	+ [Ajouter un nouveau paiement à plusieurs factures](#paiementsadd2)
@@ -2522,7 +2523,7 @@ JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
 ```
-<a name="paiementsinvoice"/>
+<a name="paiementsinvoices"/>
 <b>Télécharger la liste des Paiements avec les factures liées</b>
 
 XML
@@ -2533,6 +2534,20 @@ curl "https://votrecompte.vosfactures.fr/banking/payments.xml?include=invoices&a
 JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payments.json?include=invoices&api_token=API_TOKEN"
+```
+<a name="paiementsinvoice"/>
+<b>Télécharger la liste des Paiements d'une facture donnée</b>
+
+Vous pouvez télécharger une facture (via son ID) avec les paiements qui y sont rattachés. 
+
+XML
+```shell
+curl "https://votrecompte.vosfactures.fr/invoices/100.xml?additional_fields[invoice]=connected_payments&api_token=API_TOKEN"
+```
+
+JSON
+```shell
+curl "https://votrecompte.vosfactures.fr/invoices/100.json?additional_fields[invoice]=connected_payments&api_token=API_TOKEN"
 ```
 
 <a name="paiementsid"/>
