@@ -118,7 +118,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
 	+ [Télécharger la liste des Paiements avec les factures liées](#paiementsinvoices)
-        + [Télécharger la liste des Paiements d'une facture donnée](#paiementsinvoice)
+ 	+ [Télécharger la liste des Paiements d'une facture donnée](#paiementsinvoice)
 	+ [Obtenir un paiement par son ID](#paiementsid)
 	+ [Ajouter un nouveau paiement](#paiementsadd)
 	+ [Ajouter un nouveau paiement à plusieurs factures](#paiementsadd2)
