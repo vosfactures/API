@@ -57,7 +57,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 		+ [Créer une nouvelle récurrence](#createrecurring)
 		+ [Modifier une récurrence existante](#updaterecurring)
   	+ [Relances](#reminders)
-  		+ [Télécharger la liste les relances d'une facture donnée](#downloadreminder)	
+  		+ [Télécharger la liste les relances d'une facture donnée](#downloadreminders)	
 + [Département vendeur](#department)
 	+ [Créer un département](#departadd)
 	+ [Modifier un département](#departupdate)
@@ -442,7 +442,7 @@ Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemp
 ## Factures (et autres documents de facturation) - exemples d'appels API
 
 <a name="load"/>
-## Téléchargement et Envoi
+<b>Téléchargement et Envoi</b></br>
 
 <a name="download"/>
 <b>Télécharger la liste des factures du mois en cours</b>
@@ -615,7 +615,7 @@ vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 <a name="issue"/>
-## Création
+<b>Création</b></br>
 
 <a name="create"/>
 
@@ -1270,7 +1270,7 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
 ```
 
 <a name="edit"/>
-## Modification et Suppression
+<b>Modification et Suppression</b></br>
 
 <a name="update"/>
 <b>Modifier une facture</b>
@@ -1418,7 +1418,7 @@ curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
 Remarque : Pour visualiser la raison de l'annulation indiquée sur un document annulé, incluez le paramètre `additional_fields[invoice]=cancel_reason`à votre url de requête. Exemple : https://moncompte.vosfactures.fr/invoices/ID.json?api_token=API_TOKEN&additional_fields[invoice]=cancel_reason
  
 <a name="recurrences"/>
-## Récurrences
+<b>Récurrences</b></br>
 
 <a name="downloadrecurring"/>
 <b>Télécharger la liste des récurrences</b>
@@ -1530,6 +1530,43 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
     }'
 ```
 
+<a name="reminders"/>
+<b>Relances</b></br>
+
+<a name="downloadreminders"/>
+<b>Télécharger la liste les relances d'une facture donnée</b></br>
+Vous pouvez obtenir pour une facture donnée (via son ID) le détails des relances ayant été effactuées, en passant la requête suivante :
+
+```shell
+curl "https://votrecompte.vosfactures.fr/invoices/100.json?additional_fields[invoice]=reminders_info&api_token=API_TOKEN
+```
+
+Vous obtenez alors :</br> 
+- le nombre total de relances, </br>
+- la date et le type de la dernière relance</br>
+- le nombre et les dates d'envoi pour chaque type de relance (`overdue` = relances par email, `formal_letter` = relances recommandée, `recovery_procedure` = mise en recouvrement). </br>
+
+```shell
+...
+"reminders_info": {
+  "count": 3,
+  "last_reminder_date": "2023-10-27 14:46:21",
+  "last_reminder_type": "overdue",
+  "reminders": [
+    {
+      "date": "2023-10-27 14:46:21",
+      "type": "overdue"
+    },
+    {
+      "date": "2023-10-27 14:40:11",
+      "type": "formal_letter"
+    },
+    {
+      "date": "2023-10-27 14:35:11",
+      "type": "recovery_procedure"
+    }
+  ]
+```
 
 <a name="department"/>
 
@@ -2235,7 +2272,7 @@ curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_toke
 ```
 
 <a name="stock"/>
-## Gestion de Stock
+<b>Gestion de Stock</b></br>
 
 <a name="warehouse_documents"/>
 
