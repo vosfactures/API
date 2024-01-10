@@ -441,6 +441,9 @@ Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemp
 
 ## Factures (et autres documents de facturation) - exemples d'appels API
 
+<a name="load"/>
+## Téléchargement et Envoi
+
 <a name="download"/>
 <b>Télécharger la liste des factures du mois en cours</b>
 
@@ -540,11 +543,6 @@ Autres options PDF:
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
-<a name="notedoc"/>
-<b>Remarques :</b><br> 
-Le paramètre `payment_url` vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
-La variable `products-margin` est retournée lors de l'appel API d'une facture. Cette variable correspond au montant de la marge brute totale de la facture de vente.<br> <br> 
-
 <a name="filezip"/>
 <b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
 
@@ -552,6 +550,10 @@ La variable `products-margin` est retournée lors de l'appel API d'une facture. 
 curl -o attachments.zip https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/attachments_zip.json?api_token=API_TOKEN
 ```
 
+<a name="notedoc"/>
+<b>Remarques :</b><br> 
+Le paramètre `payment_url` vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
+La variable `products-margin` est retournée lors de l'appel API d'une facture. Cette variable correspond au montant de la marge brute totale de la facture de vente.<br> <br> 
 
 <a name="send"/>
 <b>Envoyer une facture par email</b><br>
@@ -594,9 +596,9 @@ curl -X POST -u 'username:password' https://votrecompte.vosfactures.fr/invoices/
 
 <a name="view_url"/>
 
-## Lien vers l'aperçu de la facture et le téléchargement en PDF
+<b>Lien vers l'aperçu de la facture et le téléchargement en PDF</b>
 
-Après le téléchargement des données de la facture, par ex:
+Après le téléchargement des données de la facture, par exemple :
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
@@ -611,6 +613,9 @@ vers l'aperçu : `https://votrecompte.vosfactures.fr/invoice/{{token}}`
 vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour plus directement `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf?inline=yes`
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+
+<a name="issue"/>
+## Création
 
 <a name="create"/>
 
@@ -1264,6 +1269,9 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
         }"
 ```
 
+<a name="edit"/>
+## Modification et Suppression
+
 <a name="update"/>
 <b>Modifier une facture</b>
 
@@ -1409,6 +1417,9 @@ curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
 
 Remarque : Pour visualiser la raison de l'annulation indiquée sur un document annulé, incluez le paramètre `additional_fields[invoice]=cancel_reason`à votre url de requête. Exemple : https://moncompte.vosfactures.fr/invoices/ID.json?api_token=API_TOKEN&additional_fields[invoice]=cancel_reason
  
+<a name="recurrences"/>
+## Récurrences
+
 <a name="downloadrecurring"/>
 <b>Télécharger la liste des récurrences</b>
 
@@ -2223,11 +2234,12 @@ curl https://votrecompte.vosfactures.fr/categories/100.json
 curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
+<a name="stock"/>
+## Gestion de Stock
 
 <a name="warehouse_documents"/>
 
 ## Documents de stock 
-
 
 <a name="wd1"/>
 <b>Télécharger les documents de stock</b>
@@ -2677,7 +2689,6 @@ curl https://votrecompte.vosfactures.fr/banking/payments/100.json
 ```shell 
 curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api_token=API_TOKEN" 
 ``` 
-
 
 <a name="accountsystem"/>
 <b>Gestion des Comptes(s) à partir d'application tierce</b></br></br>
