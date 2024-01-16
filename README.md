@@ -1834,7 +1834,9 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 <b>Remarque: Champs fiche contact</b>
 
 ```shell
-"name": "" - nom (obligatoire)
+"name": "" - nom (obligatoire); S'il s'agit d'un particulier, c'est le prénom suivi du nom du contact.
+"first_name":"" - prénom
+"last_name":"" - Nom de famille
 "company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
 "shortcut": "" - nom d'usage
 "title":"" - Civilité
@@ -1847,13 +1849,18 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 "use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
 "delivery_address":"" - adresse additionnelle
 "tax_no_kind": "" - type du n° d'identification fiscale
-"tax_no": "" - n° d'identfication fiscale
+"tax_no": "" - n° d'identification fiscale
 "external_id":"" - Réf/code client
 "note":"" -  description additionnelle
-"fax" : "" - N° de fax
+"phone":"" - Téléphone
+"mobile_phone":"" - Tel. portable
+"fax": "" - Fax
+"email": "" - Email(s)
 "www": "" - site internet
 "bank": "" - Nom de la banque
 "bank_account": "" - IBAN
+"sepa_b2b": true - SEPA B2B
+"sepa_mandate_no":"" - RUM (N° de mandat SEPA)
 "tag_list": ["tag1", "tag2"] - tags associés au contact
 "category_id":"" - ID de la catégorie du contact
 "price_list_id":"" - ID du Tarif éventuel applicable au contact
@@ -1865,6 +1872,9 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 "disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
 "default_payment_type": "" -  Mode de règlement par défaut
 "department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
+"person":"" - Personne à contacter
+"use_mass_payment":true - Paiements de masse
+"mass_payment_code":"" - Code de paiement de masse
 "panel_url":"" - lien url de l'espace client
 "accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
 "accounting_id2":"" -  Compte comptable auxiliaire
