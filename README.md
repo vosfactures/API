@@ -67,6 +67,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Ajouter un logo à un département](#departlogo)
 	+ [Remarque : Champs](#departnote)
 + [Contacts](#clients)  
+	+ [Champs](#noteclient)	
 	+ [Télécharger la liste des contacts](#client)
 	+ [Télécharger les derniers contacts modifiés](#client2)
 	+ [Obtenir un contact selon son ID](#clientID)
@@ -79,7 +80,6 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un contact](#addclient)
 	+ [Modifier un contact](#updateclient)
 	+ [Supprimer un contact](#deleteclient)
-	+ [Remarque: Champs](#noteclient)	
 + [Produits](#products)
 	+ [Télécharger les produits](#productlist)
 	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
@@ -1681,6 +1681,82 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 
 ## Contacts
 
+<a name="noteclient"/>
+<b>Champs fiche contact</b>
+
+```shell
+"name": "" - nom (obligatoire); S'il s'agit d'un particulier, c'est le prénom suivi du nom du contact.
+"first_name":"" - prénom
+"last_name":"" - Nom de famille
+"company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
+"shortcut": "" - nom d'usage
+"title":"" - Civilité
+"last_name": "" - nom de famille 
+"first_name": ""  - prénom 
+"post_code": "" - code postal
+"city": "" - Ville
+"street": "" - N° et nom de rue
+"country": "FR" - pays (code ISO 3166)
+"use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
+"delivery_address":"" - adresse additionnelle
+"tax_no_kind": "" - type du n° d'identification fiscale
+"tax_no": "" - n° d'identification fiscale
+"external_id":"" - Réf/code client
+"note":"" -  description additionnelle
+"phone":"" - Téléphone
+"mobile_phone":"" - Tel. portable
+"fax": "" - Fax
+"email": "" - Email(s)
+"email_for_reminders": "" - Email(s) de relance
+"www": "" - site internet
+"bank": "" - Nom de la banque
+"bank_account": "" - IBAN
+"tag_list": ["tag1", "tag2"] - tags associés au contact
+"category_id":"" - ID de la catégorie du contact
+"price_list_id":"" - ID du Tarif éventuel applicable au contact
+"kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
+"payment_to_kind":"" -  Date limite de règlement par défaut
+"discount":"10.0" - Pourcentrage de réduction par défaut
+"default_tax":"0" - Pourcentrage de taxe par défaut
+"default_payment_type": "" -  Mode de règlement par défaut
+"disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
+"default_payment_type": "" -  Mode de règlement par défaut
+"department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
+"person":"" - Personne à contacter
+"use_mass_payment":true - Paiements de masse
+"mass_payment_code":"" - Code de paiement de masse
+"panel_url":"" - lien url de l'espace client
+"accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
+"accounting_id2":"" -  Compte comptable auxiliaire
+-> Option SEPA : 
+"sepa_b2b": true - SEPA B2B
+"sepa_mandate_no":"" - RUM (N° de mandat SEPA)
+-> Option "Chorus Pro" : 
+"chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus Pro). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
+	"1" pour "Tiers avec SIRET"
+	"2" pour "Structure Européenne hors France"
+	"3" pour "Structure hors UE"
+	"4" pour "RIDET"
+	"5" pour "Numéro Tahiti"
+	"6" pour "Autre"
+"chorus_identifier":"123456789" - Identifiant Débiteur (Chorus Pro)
+"chorus_service_code":"" - Code Service Débiteur (Chorus Pro)
+"ingenico_id":"" - ID client Ingenico (paiement en ligne)
+-> Option "URSSAF - API Tiers de Prestation" : 
+"birth_date":"" - Date de naissance 
+"birth_insee_country":"" - Code Insee Pays de naissance
+"birth_insee_department":"" - Code Insee Département de naissance 
+"birth_insee_community":"" - Code Insee Ville de naissance
+"birth_city":"" - Ville de naissance
+"insee_country":"" - Code Insee Pays de l’adresse
+"insee_community":"" - Code Insee Ville de l’adresse
+"street_kind":"" - Code Insee Type de voie
+"chorus_identifier_type":"1" -
+"chorus_identifier":"" -
+"chorus_service_code":"" - Code Service Débiteur
+"urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
+```
+
 <a name="client"/>
 <b>Télécharger la liste des contacts (par page)</b>
 
@@ -1828,65 +1904,6 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_token=API_TOKEN"
-```
-
-<a name="noteclient"/>
-<b>Remarque: Champs fiche contact</b>
-
-```shell
-"name": "" - nom (obligatoire); S'il s'agit d'un particulier, c'est le prénom suivi du nom du contact.
-"first_name":"" - prénom
-"last_name":"" - Nom de famille
-"company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
-"shortcut": "" - nom d'usage
-"title":"" - Civilité
-"last_name": "" - nom de famille 
-"first_name": ""  - prénom 
-"post_code": "" - code postal
-"city": "" - Ville
-"street": "" - N° et nom de rue
-"country": "FR" - pays (code ISO 3166)
-"use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
-"delivery_address":"" - adresse additionnelle
-"tax_no_kind": "" - type du n° d'identification fiscale
-"tax_no": "" - n° d'identification fiscale
-"external_id":"" - Réf/code client
-"note":"" -  description additionnelle
-"phone":"" - Téléphone
-"mobile_phone":"" - Tel. portable
-"fax": "" - Fax
-"email": "" - Email(s)
-"www": "" - site internet
-"bank": "" - Nom de la banque
-"bank_account": "" - IBAN
-"sepa_b2b": true - SEPA B2B
-"sepa_mandate_no":"" - RUM (N° de mandat SEPA)
-"tag_list": ["tag1", "tag2"] - tags associés au contact
-"category_id":"" - ID de la catégorie du contact
-"price_list_id":"" - ID du Tarif éventuel applicable au contact
-"kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
-"payment_to_kind":"" -  Date limite de règlement par défaut
-"discount":"10.0" - Pourcentrage de réduction par défaut
-"default_tax":"0" - Pourcentrage de taxe par défaut
-"default_payment_type": "" -  Mode de règlement par défaut
-"disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
-"default_payment_type": "" -  Mode de règlement par défaut
-"department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
-"person":"" - Personne à contacter
-"use_mass_payment":true - Paiements de masse
-"mass_payment_code":"" - Code de paiement de masse
-"panel_url":"" - lien url de l'espace client
-"accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
-"accounting_id2":"" -  Compte comptable auxiliaire
-"chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus Pro). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
-"1" pour "Tiers avec SIRET"
-"2" pour "Structure Européenne hors France"
-"3" pour "Structure hors UE"
-"4" pour "RIDET"
-"5" pour "Numéro Tahiti"
-"6" pour "Autre"
-"chorus_identifier":"123456789" - Identifiant Débiteur (Chorus Pro)
-"chorus_service_code":"" - Code Service Débiteur (Chorus Pro)
 ```
 
 
