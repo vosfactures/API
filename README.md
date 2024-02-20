@@ -57,7 +57,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 		+ [Créer une nouvelle récurrence](#createrecurring)
 		+ [Modifier une récurrence existante](#updaterecurring)
   	+ [Relances](#reminders)
-  		+ [Télécharger la liste les relances d'une facture donnée](#downloadreminders)	
+  		+ [Télécharger la liste des relances d'une facture donnée](#downloadreminders)	
 + [Département vendeur](#department)
 	+ [Créer un département](#departadd)
 	+ [Modifier un département](#departupdate)
