@@ -1535,7 +1535,7 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
 
 <a name="downloadreminders"/>
 <b>Télécharger la liste les relances d'une facture donnée</b></br>
-Vous pouvez obtenir pour une facture donnée (via son ID) le détails des relances ayant été effactuées, en passant la requête suivante :
+Vous pouvez obtenir pour une facture donnée (via son ID) le détail des relances ayant été effectuées, en passant la requête suivante :
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices/100.json?additional_fields[invoice]=reminders_info&api_token=API_TOKEN
