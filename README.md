@@ -10,48 +10,54 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 ## Menu
 + [Code API](#token)
-+ [Documents de facturation - actions et champs](#invoices)
-+ [Paramètres additionnels disponibles pour les téléchargements par API](#list_params)
-+ [Factures (et autres documents) - exemples d'appels API](#examples)  
-	+ [Télécharger la liste de factures du mois en cours](#download)
-	+ [Télécharger la liste de factures d'une période donnée](#downloadmore)
-	+ [Télécharger les dernières factures modifiées](#downloadmore2)
-	+ [Télécharger la liste de factures avec les produits listés](#downloadpdt)
-	+ [Télécharger les factures d'un client](#downloadclient)	
-	+ [Télécharger un document (ex: facture) par son numéro d'ID](#downloadid)
-	+ [Télécharger un document par son numéro](#downloadnr)
-	+ [Télécharger les documents liés à un document donné](#download_id)
-	+ [Télécharger les documents créés à partir d'un document donné](#download_from)
-	+ [Télécharger sous format PDF](#downloadpdf)
-	+ [Remarques : Paiement en ligne. Marge d'un document](#notedoc)
-	+ [Envoyer une facture par email](#send)
-	+ [Créer un nouveau document](#create)
-	+ [Créer une nouvelle facture (version rapide)](#create2)
-	+ [Créer une facture avec réduction](#create3a)
-	+ [Créer une facture avec sous-total](#create3b)
-	+ [Créer une facture avec ligne de texte](#create3c)
- 	+ [Créer une facture avec une prime CEE](#create3cee)
-	+ [Créer une facture en autoliquidation](#create3d)
-	+ [Créer une facture pour une vente OSS](#create3e)
-	+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
-	+ [Créer une facture d'acompte](#create5)
-	+ [Créer une facture de solde](#create6)
-	+ [Créer une facture d'avoir (partielle)](#credit)
-	+ [Créer une facture d'avoir (totale)](#credittotal)
-	+ [Créer une facture à compléter](#completed)
-	+ [Modifier une facture](#update)
-	+ [Modifier un produit listé sur une facture](#update2)
-	+ [Supprimer un produit listé sur une facture](#update3)
-	+ [Ajouter un produit sur une facture](#update4)
-	+ [Changer l'état d'une facture](#status)
-	+ [Ajouter une pièce jointe à une facture](#file)
-	+ [Télécharger les pièces jointes d'une facture dans un fichier ZIP](#filezip)
-	+ [Supprimer une facture](#deleteinvoice)
-	+ [Annuler une facture](#cancelinvoice)
-	+ [Télécharger la liste des récurrences](#downloadrecurring)
-	+ [Créer une nouvelle récurrence](#createrecurring)
-	+ [Modifier une récurrence existante](#updaterecurring)
-+ [Liens vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
++ [Documents de facturation - Actions et Champs](#invoices)
++ [Paramètres additionnels disponibles pour les téléchargements](#list_params)
++ [Factures (et autres documents) - exemples d'appels API](#examples)
+	+ [Téléchargement et Envoi](#load)
+		+ [Télécharger la liste de factures du mois en cours](#download)
+		+ [Télécharger la liste de factures d'une période donnée](#downloadmore)
+		+ [Télécharger les dernières factures modifiées](#downloadmore2)
+		+ [Télécharger la liste de factures avec les produits listés](#downloadpdt)
+		+ [Télécharger les factures d'un client](#downloadclient)	
+		+ [Télécharger un document (ex: facture) par son numéro d'ID](#downloadid)
+		+ [Télécharger un document par son numéro](#downloadnr)
+		+ [Télécharger les documents liés à un document donné](#download_id)
+		+ [Télécharger les documents créés à partir d'un document donné](#download_from)
+		+ [Télécharger sous format PDF](#downloadpdf)
+  		+ [Télécharger les pièces jointes d'une facture dans un fichier ZIP](#filezip)
+		+ [Remarques : Paiement en ligne. Marge d'un document](#notedoc)
+		+ [Envoyer une facture par email](#send)
+  		+ [Liens vers l'aperçu de la facture et le téléchargement en PDF](#view_url) 
+  	+ [Création](#issue)
+		+ [Créer un nouveau document](#create)
+		+ [Créer une nouvelle facture (version rapide)](#create2)
+		+ [Créer une facture avec réduction](#create3a)
+		+ [Créer une facture avec sous-total](#create3b)
+		+ [Créer une facture avec ligne de texte](#create3c)
+	 	+ [Créer une facture avec une prime CEE](#create3cee)
+		+ [Créer une facture en autoliquidation](#create3d)
+		+ [Créer une facture pour une vente OSS](#create3e)
+		+ [Créer un document similaire (ex: devis -> facture , facture -> facture)](#create4)
+		+ [Créer une facture d'acompte](#create5)
+		+ [Créer une facture de solde](#create6)
+		+ [Créer une facture d'avoir (partielle)](#credit)
+		+ [Créer une facture d'avoir (totale)](#credittotal)
+		+ [Créer une facture à compléter](#completed)
+  	+ [Modification et Suppression](#edit)
+		+ [Modifier une facture](#update)
+		+ [Modifier un produit listé sur une facture](#update2)
+		+ [Supprimer un produit listé sur une facture](#update3)
+		+ [Ajouter un produit sur une facture](#update4)
+		+ [Changer l'état d'une facture](#status)
+		+ [Ajouter une pièce jointe à une facture](#file)
+		+ [Supprimer une facture](#deleteinvoice)
+		+ [Annuler une facture](#cancelinvoice)
+  	+ [Récurrences](#recurrences)
+		+ [Télécharger la liste des récurrences](#downloadrecurring)
+		+ [Créer une nouvelle récurrence](#createrecurring)
+		+ [Modifier une récurrence existante](#updaterecurring)
+  	+ [Relances](#reminders)
+  		+ [Télécharger la liste des relances d'une facture donnée](#downloadreminders)	
 + [Département vendeur](#department)
 	+ [Créer un département](#departadd)
 	+ [Modifier un département](#departupdate)
@@ -61,6 +67,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Ajouter un logo à un département](#departlogo)
 	+ [Remarque : Champs](#departnote)
 + [Contacts](#clients)  
+	+ [Champs](#noteclient)	
 	+ [Télécharger la liste des contacts](#client)
 	+ [Télécharger les derniers contacts modifiés](#client2)
 	+ [Obtenir un contact selon son ID](#clientID)
@@ -73,7 +80,6 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer un contact](#addclient)
 	+ [Modifier un contact](#updateclient)
 	+ [Supprimer un contact](#deleteclient)
-	+ [Remarque: Champs](#noteclient)	
 + [Produits](#products)
 	+ [Télécharger les produits](#productlist)
 	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
@@ -95,25 +101,26 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Créer une catégorie](#categorienew)
 	+ [Modifier une catégorie](#categorieupdate)
 	+ [Supprimer une catégorie avec l'ID donné](#categoriedelete)
-+ [Documents de stock](#warehouse_documents) 
-	+ [Télécharger les documents de stock](#wd1)
-	+ [Télécharger les documents de stock d'une période donnée](#wd1bis)
-	+ [Obtenir un document de stock par son ID](#wd2) 
-	+ [Créer un bon d'entrée (BE)](#wd3) 
-	+ [Créer un bon de livraison (BL)](#wd4) 
-	+ [Créer un bon de transfert (BT)](#wd4t) 
-	+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
-	+ [Modifier un document de stock](#wd6) 
-	+ [Supprimer un document de stock](#wd7) 
-+ [Entrepôts](#warehouse)
-	+ [Liste des entrepôts](#warehouselist)
-	+ [Téléchargement de l'entrepôt sélectionné par son ID](#warehouseID)
-	+ [Créer un entrepôt](#warehousenew)
-	+ [Modifier un entrepôt](#warehouseupdate)
-	+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
-+ [Opérations des stocks](#warehouseaction)
-	+ [Télécharger la liste des opérations](#warehouseactionlist)
-	+ [Paramètres additionnels de téléchargement](#warehouseactionpara)
++ [Gestion de Stock](#stock)
+	+ [Documents de stock](#warehouse_documents) 
+		+ [Télécharger les documents de stock](#wd1)
+		+ [Télécharger les documents de stock d'une période donnée](#wd1bis)
+		+ [Obtenir un document de stock par son ID](#wd2) 
+		+ [Créer un bon d'entrée (BE)](#wd3) 
+		+ [Créer un bon de livraison (BL)](#wd4) 
+		+ [Créer un bon de transfert (BT)](#wd4t) 
+		+ [Créer un bon d'entrée (BE) pour un contact, département, ou produit existant](#wd5) 
+		+ [Modifier un document de stock](#wd6) 
+		+ [Supprimer un document de stock](#wd7) 
+	+ [Entrepôts](#warehouse)
+		+ [Liste des entrepôts](#warehouselist)
+		+ [Téléchargement de l'entrepôt sélectionné par son ID](#warehouseID)
+		+ [Créer un entrepôt](#warehousenew)
+		+ [Modifier un entrepôt](#warehouseupdate)
+		+ [Supprimer un entrepôt sélectionné par son ID](#warehousedelete)
+	+ [Opérations des stocks](#warehouseaction)
+		+ [Télécharger la liste des opérations](#warehouseactionlist)
+		+ [Paramètres additionnels de téléchargement](#warehouseactionpara)
 + [Paiements](#paiements)
 	+ [Champs disponibles](#paiementschamps)
 	+ [Télécharger la liste des Paiements](#paiementslist)
@@ -125,11 +132,11 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Modifier un paiement](#updatepayment)
 	+ [Supprimer un paiement](#deletepayment)
 + [Gestion des Comptes](#accountsystem)
-	+  [Créer de compte](#accountsystem1)
-	+  [Télécharger les informations de compte](#accountsystem2)
+	+  [Créer un compte](#accountsystem1)
+	+  [Télécharger les informations d'un compte](#accountsystem2)
 	+  [Supprimer un compte](#accountsystem3)
-+ [Création d'utilisateur](#usersystem)
-+ [Connexion via API](#connect)
+	+  [Créer un utilisateur](#usersystem)
+	+ [Connexion via API](#connect)
 + [Webhooks](#webhooks)
 + [Exemples : CURL, PHP, Ruby](#exemples)
 
@@ -434,6 +441,9 @@ Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemp
 
 ## Factures (et autres documents de facturation) - exemples d'appels API
 
+<a name="load"></a>
+<b>Téléchargement et Envoi</b></br>
+
 <a name="download"></a>
 <b>Télécharger la liste des factures du mois en cours</b>
 
@@ -533,11 +543,17 @@ Autres options PDF:
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
+<a name="filezip"></a>
+<b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
+
+```shell
+curl -o attachments.zip https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/attachments_zip.json?api_token=API_TOKEN
+```
+
 <a name="notedoc"></a>
 <b>Remarques :</b><br> 
 Le paramètre `payment_url` vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
 La variable `products-margin` est retournée lors de l'appel API d'une facture. Cette variable correspond au montant de la marge brute totale de la facture de vente.<br> <br> 
-
 
 <a name="send"></a>
 <b>Envoyer une facture par email</b><br>
@@ -578,6 +594,28 @@ curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?
 curl -X POST -u 'username:password' https://votrecompte.vosfactures.fr/invoices/100/send_by_email.xml
 ```
 
+<a name="view_url"/>
+
+<b>Lien vers l'aperçu de la facture et le téléchargement en PDF</b>
+
+Après le téléchargement des données de la facture, par exemple :
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
+```
+
+L'API renvoie le champ `token`, grâce auquel il est possible de recevoir les liens vers l'aperçu de la facture et de son téléchargement en pdf. Ces liens vous permettent de faire référence à la facture sélectionnée sans avoir à vous connecter - vous pouvez, par exemple, envoyer ces liens à votre client qui aura accès à l'aperçu et au PDF des factures.
+
+Les liens sont sous la forme: 
+
+vers l'aperçu : `https://votrecompte.vosfactures.fr/invoice/{{token}}`
+
+vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour plus directement `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf?inline=yes`
+
+Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
+
+<a name="issue"/>
+<b>Création</b></br>
 
 <a name="create"></a>
 
@@ -1231,6 +1269,9 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
         }"
 ```
 
+<a name="edit"></a>
+<b>Modification et Suppression</b></br>
+
 <a name="update"></a>
 <b>Modifier une facture</b>
 
@@ -1352,13 +1393,6 @@ curl https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json \
     }'
 
 
-<a name="filezip"></a>
-<b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
-
-```shell
-curl -o attachments.zip https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/attachments_zip.json?api_token=API_TOKEN
-```
-
 <a name="deleteinvoice"></a>
 <b>Supprimer une facture</b>
 
@@ -1383,6 +1417,9 @@ curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
 
 Remarque : Pour visualiser la raison de l'annulation indiquée sur un document annulé, incluez le paramètre `additional_fields[invoice]=cancel_reason`à votre url de requête. Exemple : https://moncompte.vosfactures.fr/invoices/ID.json?api_token=API_TOKEN&additional_fields[invoice]=cancel_reason
  
+<a name="recurrences"></a>
+<b>Récurrences</b></br>
+
 <a name="downloadrecurring"></a>
 <b>Télécharger la liste des récurrences</b>
 
@@ -1493,27 +1530,43 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
     }'
 ```
 
+<a name="reminders"></a>
+<b>Relances</b></br>
 
-<a name="view_url"></a>
-
-## Lien vers l'aperçu de la facture et le téléchargement en PDF
-
-Après le téléchargement des données de la facture, par ex:
+<a name="downloadreminders"/>
+<b>Télécharger la liste les relances d'une facture donnée</b></br>
+Vous pouvez obtenir pour une facture donnée (via son ID) le détail des relances ayant été effectuées, en passant la requête suivante :
 
 ```shell
-curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
+curl "https://votrecompte.vosfactures.fr/invoices/100.json?additional_fields[invoice]=reminders_info&api_token=API_TOKEN
 ```
 
-L'API renvoie le champ `token`, grâce auquel il est possible de recevoir les liens vers l'aperçu de la facture et de son téléchargement en pdf. Ces liens vous permettent de faire référence à la facture sélectionnée sans avoir à vous connecter - vous pouvez, par exemple, envoyer ces liens à votre client qui aura accès à l'aperçu et au PDF des factures.
+Vous obtenez alors :</br> 
+- le nombre total de relances, </br>
+- la date et le type de la dernière relance</br>
+- le nombre et les dates d'envoi pour chaque type de relance (`overdue` = relances par email, `formal_letter` = relances recommandée, `recovery_procedure` = mise en recouvrement). </br>
 
-Les liens sont sous la forme: 
-
-vers l'aperçu : `https://votrecompte.vosfactures.fr/invoice/{{token}}`
-
-vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour plus directement `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf?inline=yes`
-
-Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
-
+```shell
+...
+"reminders_info": {
+  "count": 3,
+  "last_reminder_date": "2023-10-27 14:46:21",
+  "last_reminder_type": "overdue",
+  "reminders": [
+    {
+      "date": "2023-10-27 14:46:21",
+      "type": "overdue"
+    },
+    {
+      "date": "2023-10-27 14:40:11",
+      "type": "formal_letter"
+    },
+    {
+      "date": "2023-10-27 14:35:11",
+      "type": "recovery_procedure"
+    }
+  ]
+```
 
 <a name="department"></a>
 
@@ -1627,6 +1680,82 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 <a name="clients"></a>
 
 ## Contacts
+
+<a name="noteclient"></a>
+<b>Champs fiche contact</b>
+
+```shell
+"name": "" - nom (obligatoire); S'il s'agit d'un particulier, c'est le prénom suivi du nom du contact.
+"first_name":"" - prénom
+"last_name":"" - Nom de famille
+"company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
+"shortcut": "" - nom d'usage
+"title":"" - Civilité
+"last_name": "" - nom de famille 
+"first_name": ""  - prénom 
+"post_code": "" - code postal
+"city": "" - Ville
+"street": "" - N° et nom de rue
+"country": "FR" - pays (code ISO 3166)
+"use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
+"delivery_address":"" - adresse additionnelle
+"tax_no_kind": "" - type du n° d'identification fiscale
+"tax_no": "" - n° d'identification fiscale
+"external_id":"" - Réf/code client
+"note":"" -  description additionnelle
+"phone":"" - Téléphone
+"mobile_phone":"" - Tel. portable
+"fax": "" - Fax
+"email": "" - Email(s)
+"email_for_reminders": "" - Email(s) de relance
+"www": "" - site internet
+"bank": "" - Nom de la banque
+"bank_account": "" - IBAN
+"tag_list": ["tag1", "tag2"] - tags associés au contact
+"category_id":"" - ID de la catégorie du contact
+"price_list_id":"" - ID du Tarif éventuel applicable au contact
+"kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
+"payment_to_kind":"" -  Date limite de règlement par défaut
+"discount":"10.0" - Pourcentrage de réduction par défaut
+"default_tax":"0" - Pourcentrage de taxe par défaut
+"default_payment_type": "" -  Mode de règlement par défaut
+"disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
+"default_payment_type": "" -  Mode de règlement par défaut
+"department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
+"person":"" - Personne à contacter
+"use_mass_payment":true - Paiements de masse
+"mass_payment_code":"" - Code de paiement de masse
+"panel_url":"" - lien url de l'espace client
+"accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
+"accounting_id2":"" -  Compte comptable auxiliaire
+-> Option SEPA : 
+"sepa_b2b": true - SEPA B2B
+"sepa_mandate_no":"" - RUM (N° de mandat SEPA)
+-> Option "Chorus Pro" : 
+"chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus Pro). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
+	"1" pour "Tiers avec SIRET"
+	"2" pour "Structure Européenne hors France"
+	"3" pour "Structure hors UE"
+	"4" pour "RIDET"
+	"5" pour "Numéro Tahiti"
+	"6" pour "Autre"
+"chorus_identifier":"123456789" - Identifiant Débiteur (Chorus Pro)
+"chorus_service_code":"" - Code Service Débiteur (Chorus Pro)
+"ingenico_id":"" - ID client Ingenico (paiement en ligne)
+-> Option "URSSAF - API Tiers de Prestation" : 
+"birth_date":"" - Date de naissance 
+"birth_insee_country":"" - Code Insee Pays de naissance
+"birth_insee_department":"" - Code Insee Département de naissance 
+"birth_insee_community":"" - Code Insee Ville de naissance
+"birth_city":"" - Ville de naissance
+"insee_country":"" - Code Insee Pays de l’adresse
+"insee_community":"" - Code Insee Ville de l’adresse
+"street_kind":"" - Code Insee Type de voie
+"chorus_identifier_type":"1" -
+"chorus_identifier":"" -
+"chorus_service_code":"" - Code Service Débiteur
+"urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
+```
 
 <a name="client"></a>
 <b>Télécharger la liste des contacts (par page)</b>
@@ -1775,55 +1904,6 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_token=API_TOKEN"
-```
-
-<a name="noteclient"></a>
-<b>Remarque: Champs fiche contact</b>
-
-```shell
-"name": "" - nom (obligatoire)
-"company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
-"shortcut": "" - nom d'usage
-"title":"" - Civilité
-"last_name": "" - nom de famille 
-"first_name": ""  - prénom 
-"post_code": "" - code postal
-"city": "" - Ville
-"street": "" - N° et nom de rue
-"country": "FR" - pays (code ISO 3166)
-"use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
-"delivery_address":"" - adresse additionnelle
-"tax_no_kind": "" - type du n° d'identification fiscale
-"tax_no": "" - n° d'identfication fiscale
-"external_id":"" - Réf/code client
-"note":"" -  description additionnelle
-"fax" : "" - N° de fax
-"www": "" - site internet
-"bank": "" - Nom de la banque
-"bank_account": "" - IBAN
-"tag_list": ["tag1", "tag2"] - tags associés au contact
-"category_id":"" - ID de la catégorie du contact
-"price_list_id":"" - ID du Tarif éventuel applicable au contact
-"kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
-"payment_to_kind":"" -  Date limite de règlement par défaut
-"discount":"10.0" - Pourcentrage de réduction par défaut
-"default_tax":"0" - Pourcentrage de taxe par défaut
-"default_payment_type": "" -  Mode de règlement par défaut
-"disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
-"default_payment_type": "" -  Mode de règlement par défaut
-"department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
-"panel_url":"" - lien url de l'espace client
-"accounting_id":"" -  Compte comptable général (de la fonction Plan Comptable: https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables ) 
-"accounting_id2":"" -  Compte comptable auxiliaire
-"chorus_identifier_type":"" - Typage Identifiant Débiteur (Chorus Pro). Voici les valeurs numériques (de 1 à 6) que vous pouvez attribuer à ce paramètre:
-"1" pour "Tiers avec SIRET"
-"2" pour "Structure Européenne hors France"
-"3" pour "Structure hors UE"
-"4" pour "RIDET"
-"5" pour "Numéro Tahiti"
-"6" pour "Autre"
-"chorus_identifier":"123456789" - Identifiant Débiteur (Chorus Pro)
-"chorus_service_code":"" - Code Service Débiteur (Chorus Pro)
 ```
 
 
@@ -2218,11 +2298,12 @@ curl https://votrecompte.vosfactures.fr/categories/100.json
 curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
+<a name="stock"/>
+<b>Gestion de Stock</b></br>
 
 <a name="warehouse_documents"></a>
 
 ## Documents de stock 
-
 
 <a name="wd1"></a>
 <b>Télécharger les documents de stock</b>
@@ -2672,7 +2753,6 @@ curl https://votrecompte.vosfactures.fr/banking/payments/100.json
 ```shell 
 curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api_token=API_TOKEN" 
 ``` 
-
 
 <a name="accountsystem"></a>
 <b>Gestion des Comptes(s) à partir d'application tierce</b></br></br>
