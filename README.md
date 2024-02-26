@@ -144,7 +144,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
   
 
 
-<a name="token"/>
+<a name="token"></a>
 
 ## Code API
 
@@ -153,7 +153,7 @@ Le code API (`API_TOKEN`) de votre compte VosFactures est affiché dans les para
 Le code API est du type "qCedKxkTgQhGJpiI2SU".</br> 
 <b>Dans tous les exemples suivants, l'url votrecompte.vosfactures.fr est à remplacer avec l'url de votre propre compte.</b> 
 
-<a name="invoices"/>
+<a name="invoices"></a>
 
 ## Documents de facturation : Actions et Champs
 
@@ -383,7 +383,7 @@ Champ: `discount_kind` - Type de réduction
 	"amount" - montant
 ```
 
-<a name="list_params"/>
+<a name="list_params"></a>
 
 ## Paramètres additionnels des téléchargements (filtres)
 
@@ -438,21 +438,21 @@ Le paramètre `order =` permet de choisir comment les factures appelées seront 
 ```
 Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemple `updated_at.desc`.
 
-<a name="examples"/>
+<a name="examples"></a>
 
 ## Factures (et autres documents de facturation) - exemples d'appels API
 
-<a name="load"/>
+<a name="load"></a>
 <b>Téléchargement et Envoi</b></br>
 
-<a name="download"/>
+<a name="download"></a>
 <b>Télécharger la liste des factures du mois en cours</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?period=this_month&api_token=API_TOKEN&page=1
 ```
 
-<a name="downloadmore"/>
+<a name="downloadmore"></a>
 <b>Télécharger la liste des factures d'une période donnée</b>
 
 ```shell
@@ -472,28 +472,28 @@ Exemple: Pour obtenir les documents 51 à 100 :
 ```shell
 curl "https://votrecompte.vosfactures/invoices.json?api_token=API_TOKEN&per_page=50&page=2"
 ```
-<a name="downloadmore2"/>
+<a name="downloadmore2"></a>
 <b>Télécharger les dernières factures modifiées</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/invoices.json?order=updated_at&api_token=API_TOKEN&per_page=50"
 ```
 
-<a name="downloadclient"/>
+<a name="downloadclient"></a>
 <b>Télécharger les factures d'un client</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?client_id=ID_CLIENTA&api_token=API_TOKEN
 ```
 
-<a name="downloadpdt"/>
+<a name="downloadpdt"></a>
 <b>Télécharger la liste des factures avec les produits listés</b>	
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api_token=API_TOKEN&page=1
 ```
 
-<a name="downloadid"/>
+<a name="downloadid"></a>
 <b>Télécharger une facture par numéro d'ID</b>
 
 ```shell
@@ -505,7 +505,7 @@ En cas de facture d'avoir, vous pouvez télécharger les deux champs supplément
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=corrected_content_before,corrected_content_after
 ```
 
-<a name="downloadnr"/>
+<a name="downloadnr"></a>
 <b>Télécharger une facture par son numéro</b>
 
 
@@ -513,7 +513,7 @@ curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&ad
 curl https://votrecompte.vosfactures.fr/invoices.json?number=25&api_token=API_TOKEN
 ```
 
-<a name="download_id"/>
+<a name="download_id"></a>
 <b>Télécharger les documents liés à un document donné</b>
 
 Les documents "liés" sont les documents qui ont un lien fonctionnel avec un autre document. Il s'agit des acomptes liés aux factures de solde et aux devis, et des avoirs liés aux factures. 
@@ -522,7 +522,7 @@ Les documents "liés" sont les documents qui ont un lien fonctionnel avec un aut
 curl "https://votrecompte.vosfactures.fr/invoices.xml?invoice_id=ID&api_token=API_TOKEN"
 ```
 
-<a name="download_from"/>
+<a name="download_from"></a>
 <b>Télécharger les documents créés à partir d'un document donné</b>
 
 Les documents "créés à partir" d'un autre document sont les documents qui ont été créés en utilisant la fonction "Créer un doc. similaire", les factures créés à partir d'une proforma/devis/bon de commande, ainsi que les documents récurrents. 
@@ -531,7 +531,7 @@ Les documents "créés à partir" d'un autre document sont les documents qui ont
 curl "https://votrecompte.vosfactures.fr/invoices.xml?from_invoice_id=ID&api_token=API_TOKEN"
 ```
 
-<a name="downloadpdf"/>
+<a name="downloadpdf"></a>
 <b>Télécharger une facture sous format PDF</b>
 
 ```shell
@@ -544,7 +544,7 @@ Autres options PDF:
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
 
-<a name="downloadpdfean"/>
+<a name="downloadpdfean"></a>
 <b>Télécharger sous format PDF avec codes-barres</b><br> 
 Si vous utilisez les codes EAN pour vos produits, vous pouvez générer vos documents de facturation en y faisant apparaître les codes-barres correspondants. Par API, envoyez le paramètre additionnel `print_ean_codes` avec l'ID du document concerné. 
 
@@ -552,19 +552,19 @@ Si vous utilisez les codes EAN pour vos produits, vous pouvez générer vos docu
 curl -X GET --location "https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN&print_ean_codes=true"
 ```
 
-<a name="filezip"/>
+<a name="filezip"></a>
 <b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
 
 ```shell
 curl -o attachments.zip https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/attachments_zip.json?api_token=API_TOKEN
 ```
 
-<a name="notedoc"/>
+<a name="notedoc"></a>
 <b>Remarques :</b><br> 
 Le paramètre `payment_url` vous permet d'obtenir l'url du paiement en ligne d'une facture (dans le cadre de la fonction Paiement en ligne).</br> 
 La variable `products-margin` est retournée lors de l'appel API d'une facture. Cette variable correspond au montant de la marge brute totale de la facture de vente.<br> <br> 
 
-<a name="send"/>
+<a name="send"></a>
 <b>Envoyer une facture par email</b><br>
 
 <b>Par défaut :</b><br> 
@@ -603,7 +603,7 @@ curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?
 curl -X POST -u 'username:password' https://votrecompte.vosfactures.fr/invoices/100/send_by_email.xml
 ```
 
-<a name="view_url"/>
+<a name="view_url"></a>
 
 <b>Lien vers l'aperçu de la facture et le téléchargement en PDF</b>
 
@@ -623,10 +623,10 @@ vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
-<a name="issue"/>
+<a name="issue"></a>
 <b>Création</b></br>
 
-<a name="create"/>
+<a name="create"></a>
 
 <b>Créer un nouveau document (ex : facture)</b>
 
@@ -757,7 +757,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 
-<a name="create2"/>
+<a name="create2"></a>
 <b>Créer une nouvelle facture (version rapide)</b></br>
 
 Vous pouvez ajouter une nouvelle facture en complétant seulement les champs obligatoires (version minimale): si seuls les ID du produit (```product_id```), de l'acheteur (```buyer_id```) et du vendeur (```department_id```) sont indiqués, la facture créée sera datée du jour et aura une date limite de règlement de 5 jours.
@@ -781,7 +781,7 @@ Si vous obtenez le message suivant:
 {"code":"error","message":{"seller_bank_account":["Protection contre la modification du numéro de compte bancaire"]}}
 cela signifie que vous avez choisi un niveau de sécurité standard ou élevé contre le changement de compte bancaire (Paramètres > Paramètres du compte > Options par défaut > Sécurité) et que vous essayez tout de même de créer un document avec des coordonnées bancaires différentes de celles indiquées dans la fiche du département vendeur (Paramètres > Compagnies/départements). Il faut donc soit changer le niveau de sécurité, soit vérifier les coordonnées bancaires envoyées. 
 
-<a name="create3a"/>
+<a name="create3a"></a>
 
 <b>Créer une nouvelle facture avec réduction</b>
 
@@ -851,7 +851,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 		}}'
 ```
 
-<a name="create3b"/>
+<a name="create3b"></a>
 
 <b>Créer une nouvelle facture avec sous-total</b>
 
@@ -880,7 +880,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
                 }}'
 ```
 
-<a name="create3c"/>
+<a name="create3c"></a>
 <b>Créer une nouvelle facture avec une ligne de texte </b></br>
 
 Utilisez le paramètre `text_separator` lorsque vous souhaitez insérer une ou plusieurs ligne de texte dans votre tableau. Une ligne de texte peut être un sous-titre ou contenir une mention. En savoir plus sur cette option ici : https://aide.vosfactures.fr/856880-Ins-rer-des-sous-titres-lignes-de-texte-
@@ -908,7 +908,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 
-<a name="create3cee"/>
+<a name="create3cee"></a>
 <b>Créer une facture avec une prime CEE</b>
 
 Utilisez les paramètres `use_prime_cee` et `prime_cee_value` pour rajouter une prime CEE qui sera déduite du Montant Net à payer sur le document. Pour en savoir plus sur cette option : https://aide.vosfactures.fr/139056185-Facturer-avec-une-Prime-CEE. Attention la valeur de la prime CEE à indiquer est TTC. 
@@ -931,7 +931,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
           }}'
 ```
 
-<a name="create3d"/>
+<a name="create3d"></a>
 
 <b>Créer une facture en Autoliquidation</b></br>
 Le document sera créé par défaut avec les informations spécifiques correspondant à l'autoliquidation ("Mécanisme d'autoliquidation : la TVA est due par le preneur assujetti"). Si vous souhaitez afficher des informations spécifiques différentes, spécifiez-les via le paramètre ```description``` correspondant.
@@ -958,7 +958,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 				}}'
 ```
 
-<a name="create3e"/>
+<a name="create3e"></a>
 
 <b>Créer une facture OSS</b></br>
 Vous pouvez gérer facilement la facturation de vos ventes intracommunautaires B2C soumises à la TVA de destination ou "TVA OSS" grâce à la fonction OSS du logiciel. En savoir plus ici : https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS</br>
@@ -1045,7 +1045,7 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
         }"
 ```
 
-<a name="create4"/>
+<a name="create4"></a>
 
 <b>Créer un document similaire</b></br>
 
@@ -1111,7 +1111,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
     }'
 ```   
 
-<a name="create5"/>
+<a name="create5"></a>
 
 <b>Créer une facture d'acompte</b></br></br>
 <b>Facture d'acompte en tant que pourcentage du montant total d'un devis</b></br>
@@ -1150,7 +1150,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
     }'
 ```
 
-<a name="create6"/>
+<a name="create6"></a>
 
 <b>Créer une facture de solde</b></br>
 Une fois le(s) acomptes créé(s), vous pouvez facturer le solde facilement en créant la facture de solde qui reprendra le détail du devis en y déduisant les acomptes déjà facturés.
@@ -1169,7 +1169,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
     }'
 ```
 
-<a name="credit"/>
+<a name="credit"></a>
 
 <b>Créer une facture d'avoir (partielle)</b>
 
@@ -1209,7 +1209,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 <b>Remarque</b>: Si vous souhaitez afficher sur la facture d'avoir le numéro de la facture de référence (qui apparaît sous la forme de la mention "Avoir sur Facture N°xxxx"), il est conseillé d'utiliser le paramètre ```invoice_id``` (en y indiquant le n° ID de la facture de référence) qui créera le lien fonctionnel entre la facture et la facture d'avoir. Sinon, vous pouvez alternativement utiliser le paramètre ```from_invoice_id``` (en indiquant également le n° ID de la facture), ou ```correction``` (en indiquant le contenu que vous souhaitez afficher) - mais dans ces deux cas aucun lien fonctionnel n'est créé. 
 
-<a name="credittotal"/>
+<a name="credittotal"></a>
 
 <b>Créer une facture d'avoir (totale)</b>
 
@@ -1278,10 +1278,10 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
         }"
 ```
 
-<a name="edit"/>
+<a name="edit"></a>
 <b>Modification et Suppression</b></br>
 
-<a name="update"/>
+<a name="update"></a>
 <b>Modifier une facture</b>
 
 ```shell
@@ -1297,7 +1297,7 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 	}'
 ```
 
-<a name="update2"/>
+<a name="update2"></a>
 <b>Modifier un produit listé sur une facture</b></br>
 
 Il faut spécifier l'ID du produit. 
@@ -1315,7 +1315,7 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
     }'
 ```
     
-<a name="update3"/>
+<a name="update3"></a>
 <b>Supprimer un produit listé sur une facture</b></br> 
 
 Pour supprimer un article sur la facture, entrez l'ID du produit avec le paramètre "_destroy" égal à 1. 
@@ -1333,7 +1333,7 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
 	 }'
 ```   
 
-<a name="update3"/>
+<a name="update3"></a>
 <b>Ajouter un produit sur une facture</b>
 
 Notez que le produit ajouté sera listé en dernier sur le document de facturation. 
@@ -1351,7 +1351,7 @@ curl https://votrecompte.vosfactures.fr/invoices/111.json \
     }'
  ```
 
-<a name="status"/>
+<a name="status"></a>
 <b>Changer l'état d'une facture</b>
 
 ```shell
@@ -1362,7 +1362,7 @@ curl "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/change_status.json?
 En terme de suivi comptable, vous avez la possibilité d'afficher la colonne "Exporté" sur la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export - cet état "exporté" étant mis à jour automatiquement par le système après un export. Vous pouvez forcer cet état en envoyant le paramètre :</br> "accounting_status" : "exported"
 </br>P.S: Depuis l'aperçu du document, dans l'encadré "suivi du document" il y a aura la trace d'une activité "Modification" avec la date et l'heure.  
 
-<a name="file"/>
+<a name="file"></a>
 <b>Ajouter une pièce jointe à une facture</b>
 
 1. Téléchargement des données nécessaires à l'envoi de la pièce jointe :
@@ -1402,14 +1402,14 @@ curl https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json \
     }'
 
 
-<a name="deleteinvoice"/>
+<a name="deleteinvoice"></a>
 <b>Supprimer une facture</b>
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json?api_token=API_TOKEN"
 ```
 
-<a name="cancelinvoice"/>
+<a name="cancelinvoice"></a>
 <b>Annuler une facture</b>
 
 ```shell
@@ -1426,17 +1426,17 @@ curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
 
 Remarque : Pour visualiser la raison de l'annulation indiquée sur un document annulé, incluez le paramètre `additional_fields[invoice]=cancel_reason`à votre url de requête. Exemple : https://moncompte.vosfactures.fr/invoices/ID.json?api_token=API_TOKEN&additional_fields[invoice]=cancel_reason
  
-<a name="recurrences"/>
+<a name="recurrences"></a>
 <b>Récurrences</b></br>
 
-<a name="downloadrecurring"/>
+<a name="downloadrecurring"></a>
 <b>Télécharger la liste des récurrences</b>
 
 ```shell
 curl https://votrecompte.vosfactures.fr/recurrings.json?api_token=API_TOKEN
 ```
 
-<a name="createrecurring"/>
+<a name="createrecurring"></a>
 <b>Créer une nouvelle récurrence</b>
 
 Dans l'exemple ci-dessous, la récurrence est basée sur un document existant identifié par son ID ("invoice_id"), débute le 01/01/2016 ("start_date"), est mensuelle ("every"), est créée avec un état non payé ("create_as_paid"), à 11H30 ("time_in_timezone") même si c'est un week-end ("issue_working_day_only"), et n'a pas de date de fin ("end_date"). Les factures récurrentes générées sont envoyées automatiquement au client ("buyer_email") par email ("send_email") et une notification vous est envoyée ("email_notification_enabled"). Les paramètres  "only_year_month" (correspondant à l'option "Afficher uniquement le mois et l'année dans le champ "Date additionnelle") et "end_of_month_sell_date" (correspondant à l'option "Générer avec une date additionnelle égale au dernier jour du mois") ne peuvent pas avoir la même valeur "true" en même temps. 
@@ -1523,7 +1523,7 @@ curl https://votrecompte.vosfactures.fr/recurrings.json \
 "comment": "" - Commentaires (privés) de la récurrence
 ```
 
-<a name="updaterecurring"/>
+<a name="updaterecurring"></a>
 <b>Mettre à jour une récurrence existante</b> (ex: changement de la date de la prochaine facture)
 
 ```shell
@@ -1539,10 +1539,10 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
     }'
 ```
 
-<a name="reminders"/>
+<a name="reminders"></a>
 <b>Relances</b></br>
 
-<a name="downloadreminders"/>
+<a name="downloadreminders"></a>
 <b>Télécharger la liste les relances d'une facture donnée</b></br>
 Vous pouvez obtenir pour une facture donnée (via son ID) le détail des relances ayant été effectuées, en passant la requête suivante :
 
@@ -1577,11 +1577,11 @@ Vous obtenez alors :</br>
   ]
 ```
 
-<a name="department"/>
+<a name="department"></a>
 
 ## Département vendeur
 
-<a name="departadd"/>
+<a name="departadd"></a>
 <b>Créer un département</b>
 
 Vous pouvez créer votre département (fiche entreprise) soit lors de la création d'un document (voir plus bas), soit directement : 
@@ -1598,7 +1598,7 @@ curl https://votrecompte.vosfactures.fr/departments.json  
 	}'  
 ```
 
-<a name="departupdate"/>
+<a name="departupdate"></a>
 <b>Modifier un département</b>
 
 Vous pouvez modifier un département par son ID :
@@ -1617,28 +1617,28 @@ curl https://votrecompte.vosfactures.fr/departments/100.json
         }}' 
 ```
 
-<a name="departlist"/>
+<a name="departlist"></a>
 <b>Télécharger la liste des départements</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/departments.json?api_token=API_TOKEN"
 ```
 
-<a name="departID"/>
+<a name="departID"></a>
 <b>Obtenir un département selon ID</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
 ```
 
-<a name="departdelete"/>
+<a name="departdelete"></a>
 <b>Supprimer un département selon ID</b>
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/departments/100.json?api_token=API_TOKEN"
 ```
 
-<a name="departlogo"/>
+<a name="departlogo"></a>
 <b>Ajouter un logo à un département</b>
 
 ```shell
@@ -1647,7 +1647,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
     -F 'department[logo]=@/file_path/logo.png'
 ```
 
-<a name="departnote"/>
+<a name="departnote"></a>
 <b>Remarque : Champs</b>
 </br>Voici les champs que vous pouvez utiliser: 
 
@@ -1686,11 +1686,11 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "warehouse_id" : null - ID des entrepôts en cas d'option "Restriction des entrepôts" activée
 ```
 
-<a name="clients"/>
+<a name="clients"></a>
 
 ## Contacts
 
-<a name="noteclient"/>
+<a name="noteclient"></a>
 <b>Champs fiche contact</b>
 
 ```shell
@@ -1766,7 +1766,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
 ```
 
-<a name="client"/>
+<a name="client"></a>
 <b>Télécharger la liste des contacts (par page)</b>
 
 ```shell
@@ -1779,61 +1779,61 @@ Remarque : si les contacts ont des tags, ceux-ci seront visibles dans la répons
 curl "https://votrecompte.vosfactures.fr.com/clients.json?with_tags=false&api_token=API_TOKEN&page=1"
 ```
 
-<a name="client2"/>
+<a name="client2"></a>
 <b>Télécharger les derniers contacts modifiés</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?order=updated_at&api_token=API_TOKEN&page=1"
 ```
 
-<a name="clientID"/>
+<a name="clientID"></a>
 <b>Obtenir un contact selon son ID</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
 ```
 
-<a name="externalclientID"/>
+<a name="externalclientID"></a>
 <b>Obtenir un contact selon son "Réf/code client"</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?external_id=100&api_token=API_TOKEN"
 ```
 
-<a name="clienttax"/>
+<a name="clienttax"></a>
 <b>Obtenir un contact selon son N° d'identification fiscale</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?tax_no=100&api_token=API_TOKEN"
 ```
 
-<a name="clientname"/>
+<a name="clientname"></a>
 <b>Obtenir un contact selon son nom</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?name=NOM&api_token=API_TOKEN"
 ```
 
-<a name="clientshortname"/>
+<a name="clientshortname"></a>
 <b>Obtenir un contact selon son nom d'usage</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?shortcut=NOM_USAGE&api_token=API_TOKEN"
 ```
 
-<a name="clientemail"/>
+<a name="clientemail"></a>
 <b>Obtenir un contact selon son adresse email</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=API_TOKEN"
 ```
 
-<a name="noteclient1"/>
+<a name="noteclient1"></a>
 <b>Remarque:</b><br>
 La variable `panel_url` est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'Espace Facturation du contact.
 <br><br>
 
-<a name="addclient"/>
+<a name="addclient"></a>
 <b>Créer un contact</b>
 </br>Seul le paramètre `name` est obligatoire.</br>
 
@@ -1883,7 +1883,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 	    }}'
 ```
 
-<a name="updateclient"/>
+<a name="updateclient"></a>
 <b>Modifier un contact</b>
 
 Vous pouvez modifier un contact par son ID :
@@ -1908,7 +1908,7 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 			"street" : "street2",
 	    }}'
 ```
-<a name="deleteclient"/>
+<a name="deleteclient"></a>
 <b>Supprimer un contact</b>
 
 ```shell
@@ -1916,12 +1916,12 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 ```
 
 
-<a name="products"/>
+<a name="products"></a>
 
 ## Produits
 
 
-<a name="productlist"/>
+<a name="productlist"></a>
 <b>Télécharger la Liste des produits (par page)</b>
 
 
@@ -1929,28 +1929,28 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 curl "https://votrecompte.vosfactures.fr/products.json?api_token=API_TOKEN&page=1"
 ```
 
-<a name="warehouse"/>
+<a name="warehouse"></a>
 <b>Télécharger la liste des produits et quantités pour un entrepôt en particulier (par page)</b>
 
 ```shell
 curl "https://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID&page=1"
 ```
 
-<a name="productID"/>
+<a name="productID"></a>
 <b>Obtenir un produit selon son ID</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 
-<a name="warehouseID"/>
+<a name="warehouseID"></a>
 <b>Obtenir un produit et sa quantité selon son ID pour un entrepôt en particulier</b>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN&warehouse_id=WAREHOUSE_ID"
 ```
 
-<a name="productadd"/>
+<a name="productadd"></a>
 <b>Créer un produit</b>
 
 
@@ -1967,7 +1967,7 @@ curl https://votrecompte.vosfactures.fr/products.json \
 	    }}'
 ```
 
-<a name="productaddlot"/>
+<a name="productaddlot"></a>
 <b>Créer un produit lot</b></br>
 Pour créer un produit en tant que lot, vous devez spécifier dans le paramètre `package_products_details` l'ID et la quantité respective de chaque produit le composant, en numérotant à partir de 0 (0, 1, 2, 3 ...).  
 
@@ -1999,7 +1999,7 @@ curl https://votrecompte.vosfactures.fr/products.json \
         }}'
 ```
 
-<a name="productupdate"/>
+<a name="productupdate"></a>
 <b>Modifier un produit</b>
 
 Vous pouvez modifier un produit par son ID : 
@@ -2039,7 +2039,7 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 <b>Mise à jour du Prix HT</b>: Le prix HT d'un produit est calculé par le système sur la base du prix TTC et du taux de taxe - il ne peut donc pas être directement mis à jour par API.
 
 
-<a name="noteproduct"/>
+<a name="noteproduct"></a>
 <b>Remarques</b></br>
 <b>Champs fiche produit</b>
 
@@ -2096,7 +2096,7 @@ curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token
 
 ## Multi-Tarifs
 
-<a name="tarifs1">
+<a name="tarifs1></a>
 <b>Télécharger la liste des Tarifs</b>
 
 ```shell
@@ -2139,7 +2139,7 @@ où 100 est l'ID du Tarif, et 1 et 2 sont les ID de deux produits. Vous obtiendr
 }
 ```
 
-<a name="tarifs2">
+<a name="tarifs2"></a>
 <b>Créer un Tarif</b>
 
 ```shell
@@ -2168,7 +2168,7 @@ curl https://votrecompte.vosfactures.fr/price_lists.json
                 }}'
 ```
 
-<a name="tarifs3">
+<a name="tarifs3"></a>
 <b>Modifier un Tarif</b>
 
 Vous pouvez modifier un Tarif par son ID :
@@ -2195,14 +2195,14 @@ curl https://votrecompte.vosfactures.fr/price_lists/100.json
                 }}'
 ```	
 
-<a name="tarifs4">
+<a name="tarifs4"></a>
 <b>Supprimer un Tarif</b>
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/price_lists/100.json?api_token=API_TOKEN"
 ```
 
-<a name="tarifs5">
+<a name="tarifs5"></a>
 <b>Facturer avec un Tarif</b>
 	
 ```shell
@@ -2250,25 +2250,25 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
                 }}'
 ```
 	
-<a name="categorie"/>
+<a name="categorie"></a>
 	 
 ## Catégories
 
-<a name="categorielist"/>
+<a name="categorielist"></a>
 <b>Télécharger la liste des catégories</b>
 
 ```shell
 curl " https://votrecompte.vosfactures.fr/categories.json?api_token=API_TOKEN "
 ```
 
-<a name="categorieID"/>
+<a name="categorieID"></a>
 <b>Obtenir une catégorie selon son ID</b>
 
 ```shell
 curl " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
-<a name="categorienew"/>
+<a name="categorienew"></a>
 <b>Créer une catégorie </b>
 
 ```shell
@@ -2283,7 +2283,7 @@ curl https://votrecompte.vosfactures.fr/categories.json
 				}}'
 ```
 
-<a name="categorieupdate"/>
+<a name="categorieupdate"></a>
 <b> Modifier une catégorie </b>
 	
 Vous pouvez modifier une catégorie par son ID :
@@ -2300,21 +2300,21 @@ curl https://votrecompte.vosfactures.fr/categories/100.json
 					"description": "description nouvelle"
 				}}'
 ```
-<a name="categoriedelete"/>
+<a name="categoriedelete"></a>
 <b>Supprimer la catégorie avec l'ID donné </b>
 
 ```shell
 curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
-<a name="stock"/>
+<a name="stock"></a>
 <b>Gestion de Stock</b></br>
 
-<a name="warehouse_documents"/>
+<a name="warehouse_documents"></a>
 
 ## Documents de stock 
 
-<a name="wd1"/>
+<a name="wd1"></a>
 <b>Télécharger les documents de stock</b>
  
 ```shell 
@@ -2322,7 +2322,7 @@ curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_
 ``` 
 Vous pouvez utiliser en général les mêmes paramètres que ceux décrits pour les documents de facturation. 
 
-<a name="wd1bis"/>
+<a name="wd1bis"></a>
 <b>Télécharger les documents de stock d'une période donnée</b>
 
 ```shell 
@@ -2330,14 +2330,14 @@ curl "https://votrecompte.vosfactures.fr/warehouse_documents.json?api_token=API_
 ``` 
 Pour la recherche pour une période entre deux dates, vous pouvez rechercher les documents de stock par date de création (`issue_date`) ou date de vente (`transaction_date`) en utilisant le paramètre `search_date_type`. 
  
-<a name="wd2"/> 
+<a name="wd2"></a>
 <b>Obtenir un document de stock par son ID </b>
  
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouse_documents/555.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="wd3"/> 
+<a name="wd3"></a>
 <b>Créer un bon d'entrée (BE)</b> 
  
 ```shell 
@@ -2360,7 +2360,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 	}}' 
 ``` 
  
-<a name="wd4"/> 
+<a name="wd4"></a>
 <b>Créer un bon de livraison (BL)</b>
  
 ```shell 
@@ -2382,7 +2382,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 	]	
 	}}' 
 ``` 
-<a name="#wd4t"/>
+<a name="#wd4t"></a>
 <b>Créer un bon de transfert (BT)</b>
 
 ```shell 
@@ -2404,7 +2404,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
                 }}'
 ```
  
-<a name="wd5"/>
+<a name="wd5"></a>
 <b>Créer un bon d'entrée (BE) pour un contact, département, ou produit existant </b>
  
 ```shell 
@@ -2427,7 +2427,7 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents.json
 	}}' 
 ``` 
  
-<a name="wd6"/>  
+<a name="wd6"></a>
 <b>Modifier un document de stock</b>
 
 Vous pouvez modifier un document de stock par son ID :
@@ -2443,31 +2443,31 @@ curl https://votrecompte.vosfactures.fr/warehouse_documents/555.json
 	}}' 
 ``` 
  
-<a name="wd7"/>  
+<a name="wd7"></a>
 <b>Supprimer un document de stock</b> 
  
 ```shell 
 curl -X DELETE "https://votrecompte.vosfactures.fr/warehouse_documents/100.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="warehouse"/>  
+<a name="warehouse"></a>
 <b>Entrepôts</b>
 
-<a name="warehouselist"/>
+<a name="warehouselist"></a>
 <b>Liste des entrepôts</b>
 
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="warehouseID"/>
+<a name="warehouseID"></a>
 <b>Téléchargement de l'entrepôt sélectionné par son ID</b>
 
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="warehousenew"/>
+<a name="warehousenew"></a>
 <b>Créer un entrepôt</b>
 
 ```shell 
@@ -2483,7 +2483,7 @@ curl https://votrecompte.vosfactures.fr/warehouses.json
 				}}'
 ``` 
 
-<a name="warehouseupdate"/>
+<a name="warehouseupdate"></a>
 <b>Modifier un entrepôt</b>
 
 Vous pouvez modifier un entrepôt par son ID :
@@ -2502,25 +2502,25 @@ curl https://votrecompte.vosfactures.fr/warehouses/100.json
 				}}'
 ``` 
 	
-<a name="warehousedelete"/>
+<a name="warehousedelete"></a>
 <b>Supprimer un entrepôt sélectionné par ID</b>
 
 ```shell 
 curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="warehouseaction"/> 
+<a name="warehouseaction"></a>
 
 ## Opération des stocks
 	
-<a name="warehouseactionlist"/>	
+<a name="warehouseactionlist"></a>
 	
 ## Télécharger la liste des opérations
 	
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouse_actions.json?api_token=API_TOKEN"
 ```
-<a name="warehouseactionpara"/>
+<a name="warehouseactionpara"></a>
 
 ## Paramètres additionnels de téléchargement
 	
@@ -2540,13 +2540,13 @@ Le paramètre `to_warehouse_document=` ciblent les opérations d'entrée dans un
 
 Le paramètre `warehouse_document_id=` (ID du document de stock) ciblent les opérations liées à un document de stock en particulier. 
 	
-<a name="paiements"/>
+<a name="paiements"></a>
 
 ## Paiements
 
 Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet "Paiements" de votre compte VosFactures, qu'il s'agisse d'un paiement manuel, ou d'un paiement en ligne (réalisé depuis une facture via la fonction "Paiement en ligne", ou depuis le wigdet de paiement de la fonction "Paiements E-commerce").
 
-<a name="paiementschamps"/>
+<a name="paiementschamps"></a>
 
 ### Champs disponibles
 
@@ -2599,7 +2599,7 @@ En cas de widget de paiement (Fonction "Paiements E-commerce"):
 "promocode" - Code promotionnel
 ```
 
-<a name="paiementslist"/>
+<a name="paiementslist"></a>
 <b>Télécharger la liste des Paiements</b>
 
 Vous pouvez utiliser les mêmes paramètres de filtre que ceux disponibles pour une recherche manuelle depuis l'onglet Paiements.</br>
@@ -2613,7 +2613,7 @@ JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payments.json?api_token=API_TOKEN"
 ```
-<a name="paiementsinvoices"/>
+<a name="paiementsinvoices"></a>
 <b>Télécharger la liste des Paiements avec les factures liées</b>
 
 XML
@@ -2625,7 +2625,7 @@ JSON
 ```shell
 curl "https://votrecompte.vosfactures.fr/banking/payments.json?include=invoices&api_token=API_TOKEN"
 ```
-<a name="paiementsinvoice"/>
+<a name="paiementsinvoice"></a>
 <b>Télécharger la liste des Paiements d'une facture donnée</b>
 
 Vous pouvez télécharger une facture (via son ID) avec les paiements qui y sont rattachés. 
@@ -2640,7 +2640,7 @@ JSON
 curl "https://votrecompte.vosfactures.fr/invoices/100.json?additional_fields[invoice]=connected_payments&api_token=API_TOKEN"
 ```
 
-<a name="paiementsid"/>
+<a name="paiementsid"></a>
 <b>Obtenir un paiement selon son ID</b>
 
 XML
@@ -2653,7 +2653,7 @@ JSON
 curl "https://votrecompte.vosfactures.fr/banking/payment/100.json?api_token=API_TOKEN"
 ```    
 
-<a name="paiementsadd"/>
+<a name="paiementsadd"></a>
 <b>Ajouter un nouveau paiement</b>
 
 Minimal JSON
@@ -2719,7 +2719,7 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json
 		}
 	     }'
 ```
-<a name="paiementsadd2"/>
+<a name="paiementsadd2"></a>
 <b>Ajouter un nouveau paiement lié à plusieurs factures</b>
 
 ```shell
@@ -2738,7 +2738,7 @@ curl https://votrecompte.vosfactures.fr/banking/payments.json \
 ```
 Attention : l'ordre dans lequel vous spécifiez l'ID des factures dans le paramètre `invoice_ids` est important, car le montant du paiement sera appliqué dans cet ordre. Dans notre exemple, si le montant à payer de la facture ID 555 est de 100 euros, et celui de la facture ID 666 est de 150 euros, le paiement de 200 euros s'applique d'abord à la facture 555 (payée en totalité) et ensuite à la facture 666 (payée en partie).
 
-<a name="updatepayment"/>
+<a name="updatepayment"></a>
 <b>Modifier un paiement</b>
 
 Vous pouvez modifier un paiement par son ID :
@@ -2756,18 +2756,18 @@ curl https://votrecompte.vosfactures.fr/banking/payments/100.json
 				}}'
 ``` 
 
-<a name="deletepayment"/>
+<a name="deletepayment"></a>
 <b>Supprimer un paiement</b>
 
 ```shell 
 curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="accountsystem"/>
+<a name="accountsystem"></a>
 <b>Gestion des Comptes(s) à partir d'application tierce</b></br></br>
 C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).</br></br>
 
-<a name="accountsystem1"/>
+<a name="accountsystem1"></a>
 <b>Créer un nouveau compte</b></br>
 </br>Pour créer un compte depuis votre application intégrée, vous avez besoin d'envoyer :</br> 
    - le code API de votre compte</br>
@@ -2831,13 +2831,13 @@ Autres champs disponibles lors de la création d'un nouveau compte (utile pour l
 	}
 ```
 
-<a name="accountsystem2"/>
+<a name="accountsystem2"></a>
 </br><b>Télécharger les informations du compte</b></br>
 
 ```shell
 curl "https://votrecompte.vosfactures.fr/account.json?api_token=API_TOKEN&integration_token="
 ```
-<a name="accountsystem3"/>
+<a name="accountsystem3"></a>
 
 </br><b>Supprimer un compte</b><br/></br>
 Après l'envoi de la requête ci-dessous, la procédure de suppression du compte par API est la même qu'une suppression manuelle : un e-mail de confirmation est envoyé. En savoir plus : https://aide.vosfactures.fr/20342070-Supprimer-son-compte-VosFactures. 
@@ -2861,7 +2861,7 @@ Exemple de réponse :
 ```
 	
 	
-<a name="usersystem"/>
+<a name="usersystem"></a>
 
 </br><b>Création d'utilisateur</b></br>
 	
@@ -2894,7 +2894,7 @@ Content-Type: application/json
 }	
 ```
 
-<a name="connect"/>
+<a name="connect"></a>
 
 ## Connexion via API
 
@@ -2925,7 +2925,7 @@ Voici la réponse retournée, qui inclut notamment le `prefixe`, l' `url` et le 
 ```
 Notez que le code API (```api_token```) n'est retourné que si l'utilisateur indiqué a préalablement généré le code API (l'utilisateur peut l'ajouter depuis Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API). 
 
-<a name="webhooks"/>
+<a name="webhooks"></a>
 
 ## Webhooks
 
@@ -2987,7 +2987,7 @@ curl -X PUT --location "https://votrecompte.vosfactures.fr/webhooks/1.json" \
 curl -X DELETE "https://votrecompte.vosfactures.fr/webhooks/1.json?api_token=API_TOKEN" 
 ``` 
 
-<a name="exemples"/>
+<a name="exemples"></a>
 
 ## Exemples 
 
