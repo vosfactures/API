@@ -614,7 +614,7 @@ vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour
 
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
-<a name="issue"/>
+<a name="issue"></a>
 <b>Création</b></br>
 
 <a name="create"></a>
@@ -2298,7 +2298,7 @@ curl https://votrecompte.vosfactures.fr/categories/100.json
 curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
 ```
 
-<a name="stock"/>
+<a name="stock"></a>
 <b>Gestion de Stock</b></br>
 
 <a name="warehouse_documents"></a>
