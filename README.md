@@ -24,6 +24,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 		+ [Télécharger les documents liés à un document donné](#download_id)
 		+ [Télécharger les documents créés à partir d'un document donné](#download_from)
 		+ [Télécharger sous format PDF](#downloadpdf)
+    		+ [Télécharger sous format PDF avec codes-barres](#downloadpdfean)
   		+ [Télécharger les pièces jointes d'une facture dans un fichier ZIP](#filezip)
 		+ [Remarques : Paiement en ligne. Marge d'un document](#notedoc)
 		+ [Envoyer une facture par email](#send)
@@ -542,6 +543,14 @@ Autres options PDF:
 * print_option=copy - Copie 
 * print_option=original_and_copy - Original et copie
 * print_option=duplicate - Duplicata
+
+<a name="downloadpdfean"/>
+<b>Télécharger sous format PDF avec codes-barres</b><br> 
+Si vous utilisez les codes EAN pour vos produits, vous pouvez générer vos documents de facturation en y faisant apparaître les codes-barres correspondants. Par API, envoyez le paramètre additionnel `print_ean_codes` avec l'ID du document concerné. 
+
+```shell
+curl -X GET --location "https://votrecompte.vosfactures.fr/invoices/100.pdf?api_token=API_TOKEN&print_ean_codes=true"
+```
 
 <a name="filezip"/>
 <b>Télécharger les pièces jointes d'une facture dans un fichier ZIP</b>
