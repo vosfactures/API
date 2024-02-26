@@ -594,7 +594,7 @@ curl -X POST https://votrecompte.vosfactures.fr/invoices/100/send_by_email.json?
 curl -X POST -u 'username:password' https://votrecompte.vosfactures.fr/invoices/100/send_by_email.xml
 ```
 
-<a name="view_url"/>
+<a name="view_url"></a>
 
 <b>Lien vers l'aperçu de la facture et le téléchargement en PDF</b>
 
