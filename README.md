@@ -1586,13 +1586,13 @@ Vous pouvez obtenir la liste de toutes les relances effectuées par type et par 
 curl -X GET --location "https://votrecompte.vosfactures.fr/reports/reminders_report.json?date_from=2024-02-16&date_to=2024-02-16&api_token=API_TOKEN"
 ```
 
-Vous pouvez appliquer comme paramètres additionnels le type de relance (`overdue` = relances simples email et pdf, `formal_letter` = relances recommandée, `recovery_procedure` = mises en recouvrement) et le département concerné.</br> 
+Vous pouvez appliquer comme paramètres additionnels le type de relance (`overdue` = relances simples email et pdf, `formal_letter` = relances recommandées, `recovery_procedure` = mises en recouvrement) et le département concerné.</br> 
 
 Vous obtenez alors par date :</br> 
-- le type de relance effectuée (`send_overdue` = relances manuelles par email, `auto_send_overdue`= relances automatiques par email, `print_overdue`= relances simples PDF, `formal_letter` = relances recommandée PDF, `recovery_procedure` = mises en recouvrement) </br>
+- le type de relance effectuée (`send_overdue` = relance manuelle par email, `auto_send_overdue`= relance automatique par email, `print_overdue`= relance simple PDF, `formal_letter` = relance recommandée PDF, `recovery_procedure` = mise en recouvrement) </br>
 - l'utilisateur (nom et ID) à l'origine de la relance</br>
 - le document relancé (N° et ID)</br>
-- le client relancé (nom et ID)</br>
+- le client relancé (nom et ID).</br>
 
 
 <a name="department"></a>
