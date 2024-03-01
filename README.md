@@ -1577,6 +1577,7 @@ Vous obtenez alors :</br>
     }
   ]
 ```
+
 <a name="downloadreminders2"></a>
 <b>Télécharger la liste des relances pour une période donnée</b></br>
 Vous pouvez obtenir la liste de toutes les relances effectuées par type et par date de relance pour une période choisie de 7 jours maximum (pour une période plus longue, faites-le depuis l'interface), en passant la requête suivante :
@@ -1585,7 +1586,7 @@ Vous pouvez obtenir la liste de toutes les relances effectuées par type et par 
 curl -X GET --location "https://votrecompte.vosfactures.fr/reports/reminders_report.json?date_from=2024-02-16&date_to=2024-02-16&api_token=API_TOKEN"
 ```
 
-Vous pouvez appliquer comme paramètres additionnels le type de relance (`overdue` = relances simples email et pdf, `formal_letter` = relances recommandée, `recovery_procedure` = mises en recouvrement) et le département concerné. 
+Vous pouvez appliquer comme paramètres additionnels le type de relance (`overdue` = relances simples email et pdf, `formal_letter` = relances recommandée, `recovery_procedure` = mises en recouvrement) et le département concerné.</br> 
 
 Vous obtenez alors par date :</br> 
 - le type de relance effectuée (`send_overdue` = relances manuelles par email, `auto_send_overdue`= relances automatiques par email, `print_overdue`= relances simples PDF, `formal_letter` = relances recommandée PDF, `recovery_procedure` = mises en recouvrement) </br>
