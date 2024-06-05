@@ -147,7 +147,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 
 <a name="token"></a>
 
-## Code API
+# Code API
 
 Le code API (`API_TOKEN`) de votre compte VosFactures est affiché dans les paramètres de votre compte: 
 "Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API". 
@@ -156,8 +156,9 @@ Le code API est du type "qCedKxkTgQhGJpiI2SU".</br>
 
 <a name="invoices"></a>
 
-## Documents de facturation : Actions et Champs
+# Documents de facturation : Actions et Champs
 
+## Actions
 
 * `GET /invoices/1.json` télécharge le document 
 * `POST /invoices.json` ajoute un nouveau document
@@ -181,7 +182,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
         }}'
 ```
  
-<b>Champs d'un document de facturation</b>
+## Champs des documents de facturation
 
 ```shell
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
@@ -386,7 +387,7 @@ Champ: `discount_kind` - Type de réduction
 
 <a name="list_params"></a>
 
-## Paramètres additionnels des téléchargements (filtres)
+# Paramètres additionnels des téléchargements (filtres)
 
 Des paramètres additionnels peuvent être transmis aux appels, ex: `page=`, `period=` etc... En effet vous pouvez utiliser les mêmes filtres que ceux du module de recherche proposé par le logiciel pour affiner les listes des documents/contacts/produits/paiements.</br>
 
@@ -441,10 +442,10 @@ Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemp
 
 <a name="examples"></a>
 
-## Documents de Facturation - Appels API
+# Documents de Facturation - Appels API
 
 <a name="load"></a>
-# Téléchargement et Envoi
+## Téléchargement et Envoi
 
 <a name="download"></a>
 <b>Télécharger la liste des factures du mois en cours</b>
@@ -625,7 +626,7 @@ vers le pdf : `https://votrecompte.vosfactures.fr/invoice/{{token}}.pdf` ou pour
 Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessible à l'url suivant: `https://votrecompte.vosfactures.fr/invoice/HBO3Npx2OzSW79RQL7XV2.pdf`
 
 <a name="issue"></a>
-<b>Création</b></br>
+## Création
 
 <a name="create"></a>
 
@@ -1280,7 +1281,7 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
 ```
 
 <a name="edit"></a>
-<b>Modification et Suppression</b></br>
+## Modification et Suppression
 
 <a name="update"></a>
 <b>Modifier une facture</b>
@@ -1428,7 +1429,7 @@ curl https://votrecompte.vosfactures.fr/invoices/cancel.json \
 Remarque : Pour visualiser la raison de l'annulation indiquée sur un document annulé, incluez le paramètre `additional_fields[invoice]=cancel_reason`à votre url de requête. Exemple : https://moncompte.vosfactures.fr/invoices/ID.json?api_token=API_TOKEN&additional_fields[invoice]=cancel_reason
  
 <a name="recurrences"></a>
-<b>Récurrences</b></br>
+## Récurrences
 
 <a name="downloadrecurring"></a>
 <b>Télécharger la liste des récurrences</b>
@@ -1541,7 +1542,7 @@ curl https://votrecompte.vosfactures.fr/recurrings/111.json \
 ```
 
 <a name="reminders"></a>
-<b>Relances</b></br>
+## Relances
 
 <a name="downloadreminders"></a>
 <b>Télécharger la liste les relances d'une facture donnée</b></br>
@@ -1597,7 +1598,7 @@ Vous obtenez alors par date :</br>
 
 <a name="department"></a>
 
-## Département vendeur
+# Département vendeur
 
 <a name="departadd"></a>
 <b>Créer un département</b>
@@ -1705,8 +1706,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 ```
 
 <a name="clients"></a>
-
-## Contacts
+# Contacts
 
 <a name="noteclient"></a>
 <b>Champs fiche contact</b>
@@ -1935,9 +1935,7 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 
 
 <a name="products"></a>
-
-## Produits
-
+# Produits
 
 <a name="productlist"></a>
 <b>Télécharger la Liste des produits (par page)</b>
@@ -2112,7 +2110,7 @@ size_unit":"" - unité longueur ("m" ou "cm")
 curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token=API_TOKEN&page=1"
 ```
 
-## Multi-Tarifs
+# Multi-Tarifs
 
 <a name="tarifs1></a>
 <b>Télécharger la liste des Tarifs</b>
@@ -2268,9 +2266,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
                 }}'
 ```
 	
-<a name="categorie"></a>
-	 
-## Catégories
+<a name="categorie"></a>	 
+# Catégories
 
 <a name="categorielist"></a>
 <b>Télécharger la liste des catégories</b>
@@ -2326,10 +2323,9 @@ curl -X DELETE " https://votrecompte.vosfactures.fr/categories/100.json?api_toke
 ```
 
 <a name="stock"></a>
-<b>Gestion de Stock</b></br>
+# Gestion de Stock
 
 <a name="warehouse_documents"></a>
-
 ## Documents de stock 
 
 <a name="wd1"></a>
@@ -2469,7 +2465,7 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/warehouse_documents/100.json?
 ``` 
 
 <a name="warehouse"></a>
-<b>Entrepôts</b>
+## Entrepôts
 
 <a name="warehouselist"></a>
 <b>Liste des entrepôts</b>
@@ -2533,14 +2529,14 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/warehouses/100.json?api_token
 	
 <a name="warehouseactionlist"></a>
 	
-## Télécharger la liste des opérations
+<b>Télécharger la liste des opérations</b>
 	
 ```shell 
 curl "https://votrecompte.vosfactures.fr/warehouse_actions.json?api_token=API_TOKEN"
 ```
 <a name="warehouseactionpara"></a>
 
-## Paramètres additionnels de téléchargement
+<b>Paramètres additionnels de téléchargement</b></br>
 	
 Des paramètres supplémentaires peuvent être passés aux appels API. En effet vous pouvez utiliser les mêmes filtres que ceux proposés par le logiciel dans le moteur de recherche, par exemple `page=`, `per_page=` etc.
 	
@@ -2559,14 +2555,13 @@ Le paramètre `to_warehouse_document=` ciblent les opérations d'entrée dans un
 Le paramètre `warehouse_document_id=` (ID du document de stock) ciblent les opérations liées à un document de stock en particulier. 
 	
 <a name="paiements"></a>
-
-## Paiements
+# Paiements
 
 Vous pouvez via l'API ajouter un paiement que vous retrouverez dans votre onglet "Paiements" de votre compte VosFactures, qu'il s'agisse d'un paiement manuel, ou d'un paiement en ligne (réalisé depuis une facture via la fonction "Paiement en ligne", ou depuis le wigdet de paiement de la fonction "Paiements E-commerce").
 
 <a name="paiementschamps"></a>
 
-### Champs disponibles
+<b>Champs disponibles</b></br>
 
 Coordonnées de l'acheteur apparaissant dans les champs "grisés" du paiement (et non sur la facture) :
 ```shell
@@ -2782,7 +2777,8 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/banking/payments/100.json?api
 ``` 
 
 <a name="accountsystem"></a>
-<b>Gestion des Comptes(s) à partir d'application tierce</b></br></br>
+## Gestion des Comptes(s) à partir d'application tierce
+
 C'est une option utile si, en tant qu'utilisateur de VosFactures, vous avez une application tierce et souhaitez offrir à vos clients/utilisateurs de votre application une solution de facturation. Il est en effet possible via l'API de créer et configurer des comptes de facturation sur VosFactures à partir d'une application tierce (exemple: site e-commerce, système de réservation, etc...).<br/>Ainsi directement depuis votre portail, votre client/utilisateur peut créer un compte avec un seul bouton et commencer immédiatement à émettre des factures (il n'a pas besoin de créer son compte depuis le site vosfactures.fr).</br></br>
 
 <a name="accountsystem1"></a>
@@ -2914,7 +2910,7 @@ Content-Type: application/json
 
 <a name="connect"></a>
 
-## Connexion via API
+<b>Connexion via API</b></br>
 
 La requête suivante (qui nécessite le mot de passe) renvoie le code API du compte et les informations sur le compte VosFactures :
 ```shell
@@ -2944,8 +2940,7 @@ Voici la réponse retournée, qui inclut notamment le `prefixe`, l' `url` et le 
 Notez que le code API (```api_token```) n'est retourné que si l'utilisateur indiqué a préalablement généré le code API (l'utilisateur peut l'ajouter depuis Paramètres -> Paramètres du compte -> Intégration -> Code d'autorisation API). 
 
 <a name="webhooks"></a>
-
-## Webhooks
+# Webhooks
 
 Vous pouvez gérer vos webhooks soit depuis l'interface du logiciel (Paramètres > Paramètres du compte > Intégrations), soit directement par API.</br>
 Les différents types de webhooks disponibles sont : </br>
@@ -3006,13 +3001,11 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/webhooks/1.json?api_token=API
 ``` 
 
 <a name="exemples"></a>
+# Exemples 
 
-## Exemples 
+CURL : https://github.com/vosfactures/API/blob/master/example.curl
 
+PHP : https://github.com/vosfactures/API/blob/master/example1.php
 
-CURL: https://github.com/vosfactures/API/blob/master/example.curl
-
-PHP: https://github.com/vosfactures/API/blob/master/example1.php
-
-Ruby: https://github.com/vosfactures/API/blob/master/example1.rb
+Ruby : https://github.com/vosfactures/API/blob/master/example1.rb
 
