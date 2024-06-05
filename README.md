@@ -12,7 +12,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Code API](#token)
 + [Documents de facturation - Actions et Champs](#invoices)
 + [Paramètres additionnels disponibles pour les téléchargements](#list_params)
-+ [Factures (et autres documents) - exemples d'appels API](#examples)
++ [Documents de facturation - Appels API](#examples)
 	+ [Téléchargement et Envoi](#load)
 		+ [Télécharger la liste de factures du mois en cours](#download)
 		+ [Télécharger la liste de factures d'une période donnée](#downloadmore)
@@ -441,10 +441,10 @@ Pour un tri déscendant, il suffit d'ajouter le suffixe <b>.desc</b> - par exemp
 
 <a name="examples"></a>
 
-## Factures (et autres documents de facturation) - exemples d'appels API
+## Documents de Facturation - Appels API
 
 <a name="load"></a>
-<b>Téléchargement et Envoi</b></br>
+# Téléchargement et Envoi
 
 <a name="download"></a>
 <b>Télécharger la liste des factures du mois en cours</b>
