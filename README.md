@@ -1554,7 +1554,7 @@ curl "https://votrecompte.vosfactures.fr/invoices/100.json?additional_fields[inv
 Vous obtenez alors :</br> 
 - le nombre total de relances, </br>
 - la date et le type de la dernière relance</br>
-- le nombre et les dates d'envoi pour chaque type de relance (`overdue` = relances par email, `formal_letter` = relances recommandée, `recovery_procedure` = mise en recouvrement). </br>
+- le nombre et les dates d'envoi pour chaque type de relance (`send_overdue` = relance par email, `print_overdue` = relance simple, `formal_letter` = relance recommandée, `recovery_procedure` = mise en recouvrement).</br>
 
 ```shell
 ...
