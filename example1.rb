@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 
-#voir le GEM : https://github.com/kkempin/fakturownia (fakturownia étant la version polonaise de vosfactures)
 require 'net/https'
 require 'uri'
 require 'json'
