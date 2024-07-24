@@ -230,7 +230,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_note" : "", description additionnelle du contact
 "delivery_address" : "" - contenu du champ "Adresse supplémentaire" du contact
 "use_delivery_address": "true" ou "false" - afficher ou non le champ "Adresse supplémentaire" du contact sur le document
-"buyer_email" : "" - email du contact
+"buyer_email" : "" - email(s) du contact
+"email_for_reminders": "" - email(s) de relance du contact
 "buyer_phone" : "" - numéro de tel du contact
 "buyer_mobile_phone" : "" - numéro de portable du contact
 "additional_info" : "0" - afficher (1) ou non (0) la colonne aditionnelle sur le document de facturation (dont l'intitulé est à définir dans Paramètres du compte > Options par défaut)
