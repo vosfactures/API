@@ -251,7 +251,6 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "oid" : "10021" - numéro de commande (ex: numéro généré par une application externe)
 "oid_unique": si la valeur est "yes", alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
-"description" : "" - Informations spécifiques 
 "paid_date" : "" - Date du paiement ("Paiement reçu le")
 "currency" : "EUR" - devise
 "lang" : "fr" - langue du document
@@ -261,7 +260,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "title" : "" - Objet (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"title":"contenu de l'objet"} lors de la création d'un document de facturation). 
 "description":"" - Informations spécifiques
 "conditional_notes" : "" - Mentions spécifiques (ajoutées automatiquement selon les critères définis dans les Paramètres du compte (https://aide.vosfactures.fr/109954556-Ventes-en-ligne-Mentions-sp-cifiques) 
-"description_long" : "" - Texte additionnel (imprimé sur la page suivante) 
+"description_long" : "" - Texte additionnel (imprimé sur la page suivante)
+"prevent_default_description_long" : true - ne pas faire apparaître le texte additionnel
 "internal_note" : "" - Notes privées  
 "invoice_template_id" : "1" - format d'impression
 "from_invoice_id" : "" - ID du document à partir duquel le document a été généré (utile par ex quand une facture est générée depuis un devis)
