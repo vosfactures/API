@@ -1312,7 +1312,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
         }
     }'
-
+```
 
 <a name="edit"></a>
 ## Modification et Suppression
