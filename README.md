@@ -1283,7 +1283,7 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
 ```
 
 <a name="expense"></a>
-<b>Créer une facture d'achat (dépense)</b></br>
+<b>Créer une facture d'achat (dépense)</b></br></br>
 La création de dépenses est similaire à celle des documents de vente. Toutefois : 
 - Pensez à attribuer la valeur `0` au paramètre `income`. 
 - les champs acheteur et vendeur sont inversés sur les dépenses : les paramètres `seller_` correspondent à la section "Acheteur" (votre département vendeur) et les paramètres  `buyer_` à la section "Vendeur" (le contact fournisseur).
@@ -1316,6 +1316,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <a name="edit"></a>
 ## Modification et Suppression
+
 
 <a name="update"></a>
 <b>Modifier une facture</b>
