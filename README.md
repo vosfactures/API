@@ -44,6 +44,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 		+ [Créer une facture d'avoir (partielle)](#credit)
 		+ [Créer une facture d'avoir (totale)](#credittotal)
 		+ [Créer une facture à compléter](#completed)
+  	  	+ [Créer une facture d'achat (dépense)](#expense)
   	+ [Modification et Suppression](#edit)
 		+ [Modifier une facture](#update)
 		+ [Modifier un produit listé sur une facture](#update2)
@@ -1280,6 +1281,36 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
           }
         }"
 ```
+
+<a name="expense"></a>
+<b>Créer une facture d'achat (dépense)</b></br>
+La création de dépenses est similaire à celle des documents de vente. Toutefois : 
+- Pensez à attribuer la valeur "0" au paramètre "income". 
+- les champs acheteur et vendeur sont inversés sur les dépenses : les paramètres "seller_" correspondent à la section "Acheteur" (département vendeur) et les paramètres  "buyer_" à la section "Vendeur" (contact fournisseur).  
+
+```shell
+curl https://votrecompte.vosfactures.fr/invoices.json \ 
+    -H 'Accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "api_token": "API_TOKEN",
+        "invoice": {
+            "kind":"vat",
+            "income": "0",
+            "sell_date": "2013-01-16",
+            "issue_date": "2013-01-16",
+            "payment_to": "2013-01-23",
+            "seller_name": "Société Chose",
+            "seller_tax_no": "FR5252445767",
+            "buyer_name": "Fournisseur XYZ",
+            "buyer_email": "xyz@testemail.com",
+            "buyer_tax_no": "BE453627823",
+            "positions":[
+                {"name":"Produit A1", "tax":20, "total_price_gross":10.23, "quantity":1},
+            ]
+
+        }
+    }'
 
 <a name="edit"></a>
 ## Modification et Suppression
