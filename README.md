@@ -1068,7 +1068,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
     }'
 ```
 
-<b>Remarque</b>: vous pouvez spécifier lors de la requête "copy_invoice_from" les paramètres `payment_to_kind =` ou `payment_to =`, si vous souhaitez créer un document simlilaire avec une date limite de règlement différente de celle du document copié. 
+<b>Remarque</b>: vous pouvez spécifier lors de la requête "copy_invoice_from" les paramètres `payment_to_kind` ou `payment_to`, si vous souhaitez créer un document simlilaire avec une date limite de règlement différente de celle du document copié. 
 
 <b>Exemple : Créer la facture depuis un devis</b></br>
 
@@ -1285,8 +1285,8 @@ curl -X POST --location "https://votrecompte.vosfactures.fr/invoices.json" \
 <a name="expense"></a>
 <b>Créer une facture d'achat (dépense)</b></br>
 La création de dépenses est similaire à celle des documents de vente. Toutefois : 
-- Pensez à attribuer la valeur "0" au paramètre "income". 
-- les champs acheteur et vendeur sont inversés sur les dépenses : les paramètres "seller_" correspondent à la section "Acheteur" (département vendeur) et les paramètres  "buyer_" à la section "Vendeur" (contact fournisseur).  
+- Pensez à attribuer la valeur `0` au paramètre `income`. 
+- les champs acheteur et vendeur sont inversés sur les dépenses : les paramètres `seller_` correspondent à la section "Acheteur" (votre département vendeur) et les paramètres  `buyer_` à la section "Vendeur" (le contact fournisseur).  
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \ 
