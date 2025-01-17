@@ -699,7 +699,7 @@ Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que v
 <b>Produits existants</b></br>
 Pour facturer un produit existant, vous devez envoyez l'ID du produit (```product_id```) avec la quantité facturée</br>
 Si certains attributs du produit à facturer diffèrent de la fiche produit (ex: prix, description...), vous pouvez les spécifiez également (cela ne modfiera pas la fiche produit). 
-SAUF pour les comptes comptables (`accounting_id1` et `accounting_id2`) : vous pouvez renseigner ou modifier les comptes comptables d'un produit existant directement lors de la facturation. 
+SAUF pour les comptes comptables (`accounting_id1` et `accounting_id2`) : vous pouvez renseigner ou modifier les comptes comptables d'un produit existant directement lors de la facturation.</br>
 Si vous souhaitez modifier le nom du produit existant sur le document créé, vous pouvez le faire directement en ajoutant le paramètre ```update_product_name``` : 
 
 ```shell
