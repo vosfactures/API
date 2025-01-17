@@ -635,6 +635,8 @@ Par exemple, pour un token égal à `HBO3Npx2OzSW79RQL7XV2`, le PDF sera accessi
 
 <b>Créer un nouveau document (ex : facture)</b>
 
+Ci-dessous un exemple d'appel API pour la création d'une facture de vente avec un nouveau département vendeur, un nouveau client, et deux nouveaux produits. 
+
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
   	-H 'Accept: application/json' \
@@ -692,9 +694,12 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 ```
 
 <b>Nouveaux produits</b></br>
-Vous pouvez créer un document de facturation en renseignant un nouveau produit (avec au minimum les nom, quantité et prix unitaire TTC), comme dans les exemples précédents. Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que vous ayez opté pour l'option contraire - voir https://aide.vosfactures.fr/271837-D-sactiver-l-ajout-automatique-des-nouveaux-Produits-Services), avec les attributs indiqués (nom, taux de taxe, prix unitaire, code ean ...).</br>
+Vous pouvez créer un document de facturation en renseignant un nouveau produit (avec au minimum les nom, quantité et prix unitaire TTC), comme dans l'exemple précédent.</br>
+Tout nouveau produit sera ajouté par défaut à votre catalogue (à moins que vous ayez opté pour l'option contraire - voir https://aide.vosfactures.fr/271837-D-sactiver-l-ajout-automatique-des-nouveaux-Produits-Services), avec les attributs indiqués (nom, taux de taxe, prix unitaire, code ean, comptes comptables ...).</br>
 <b>Produits existants</b></br>
-Pour facturer un produit existant, vous devez envoyez l'ID du produit (```product_id```) avec la quantité facturée. 
+Pour facturer un produit existant, vous devez envoyez l'ID du produit (```product_id```) avec la quantité facturée</br>
+Si certains attributs du produit à facturer diffèrent de la fiche produit (ex: prix, description...), vous pouvez les spécifiez également (cela ne modfiera pas la fiche produit). 
+SAUF pour les comptes comptables (`accounting_id1` et `accounting_id2`) : vous pouvez renseigner ou modifier les comptes comptables d'un produit existant directement lors de la facturation. 
 Si vous souhaitez modifier le nom du produit existant sur le document créé, vous pouvez le faire directement en ajoutant le paramètre ```update_product_name``` : 
 
 ```shell
