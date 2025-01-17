@@ -1965,6 +1965,8 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 <a name="deleteclient"></a>
 <b>Supprimer un contact</b>
 
+Vous pouvez supprimer définitivement un contact par son ID :
+
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_token=API_TOKEN"
 ```
@@ -1972,8 +1974,8 @@ curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_to
 <a name="mergeclient"></a>
 <b>Fusionner des contacts</b>
 
-Il arrive parfois de créer par erreur des doublons de contacts : vous pouvez alors les fusionner en indiquant les ID des contacts à fusionner - l'ID appelé dans l'url est le contact qui sera conservé. Les documents de facturation éventuels liés aux autres contacts listés lui seront ainsi attribués, et les autres contacts seront supprimés.
-Ainsi dans l'exemple ci-dessus, les contacts 1, 2, et 3 seront fusionnés : le contact 1 sera conservé, et les contacts 2 et 3 seront supprimés.
+Il arrive parfois de créer par erreur des doublons de contacts : vous pouvez alors les fusionner en indiquant les ID des contacts à fusionner - l'ID appelé dans l'url est le contact qui sera conservé. Les documents de facturation éventuels liés aux autres contacts listés lui seront ainsi attribués, et les autres contacts seront supprimés.</br>
+Ainsi dans l'exemple d'appel ci-dessous, les contacts 1, 2, et 3 seront fusionnés : le contact 1 sera conservé, et les contacts 2 et 3 seront supprimés.
 
 ```shell
 curl -X POST --location "https://votrecompte.vosfactures.fr/clients/ID_contact1/merge.json" \
