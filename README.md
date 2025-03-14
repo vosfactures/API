@@ -504,7 +504,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
-<b>Remarque : paramètres additionnels</b>	 
+<b>Remarque : paramètres additionnels</b> </br> 
 Vous pouvez aussi obtenir l'IBAN et le BIC du contact d'une facture donnée en ajoutant les paramètres additionnels correspondants : 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=client_bank_account,buyer_swift
