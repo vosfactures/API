@@ -504,8 +504,12 @@ curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
-<b>Remarque :</b>	 
-En cas de facture d'avoir, vous pouvez télécharger les deux champs supplémentaires "Contenu à corriger" et "Contenu corrigé" :
+<b>Remarque : paramètres additionnels</b>	 
+Vous pouvez aussi obtenir l'IBAN et le BIC du contact d'une facture donnée en ajoutant les paramètres additionnels correspondants : 
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=client_bank_account,buyer_swift
+```
+En cas de facture d'avoir, vous pouvez obtenir également les deux champs "Contenu à corriger" et "Contenu corrigé" en envoyant les paramètres additionnels correspondants :
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=corrected_content_before,corrected_content_after
 ```
