@@ -2168,9 +2168,10 @@ size_unit":"" - unité longueur ("m" ou "cm")
 "accounting_id2" : "" - Compte comptable (charges) 
 "accounting_tax_code" : "" -  Compte comptable TVA (vente)
 "accounting_tax_code_exp" : "" - Compte comptable TVA (achat)
-"is_delivery":true - si le produit représente des frais de livraison
 "accounting_activity_code" : "" - Code Activité
 "accounting_sheet_code" : "" - Code Journal
+"is_delivery":true - si le produit représente des frais de livraison
+
 ```
 
 <b>Filtres</b>
