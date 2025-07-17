@@ -259,6 +259,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "exchange_currency" : "USD" - convertir en (la conversion en une autre devise du montant total et du montant de la taxe selon taux de change du jour)
 "exchange_kind" : "" - Source du taux de change utilisé en cas de conversion ("ecb" pour la Banque Centrale Européenne, "nbp" pour la Banque Nationale de Pologne, "cbr" pour la Banque Centrale de Russie, "nbu" pour la Banque Nationale d'Ukraine, "nbg" pour la Banque Nationale de Géorgie, "nbt" Banque Nationale Tchèque, "own" pour un taux propre)
 "exchange_currency_rate" : "" - Taux de change personnalisé (à utiliser uniquement si le paramètre "exchange_kind" est égal à "own")
+"exchange_note" : "" - Note sur le taux de change appliqué et le montant de tva converti. Dans le cas de taux de change personnalisé, vous devez fournir votre propre note. 
 "title" : "" - Objet (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"title":"contenu de l'objet"} lors de la création d'un document de facturation). 
 "description":"" - Informations spécifiques
 "conditional_notes" : "" - Mentions spécifiques (ajoutées automatiquement selon les critères définis dans les Paramètres du compte (https://aide.vosfactures.fr/109954556-Ventes-en-ligne-Mentions-sp-cifiques) 
