@@ -2032,11 +2032,11 @@ curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 Télécharger plusieurs produits : 
 ```shell
-curl "https://votrecompte.vosfactures.fr/products.json?ids=100,200,300?api_token=API_TOKEN"
+curl "https://votrecompte.vosfactures.fr/products.json?ids=100,200,300&api_token=API_TOKEN"
 ```
 ou 
 ```shell
-curl "https://votrecompte.vosfactures.fr/products.json?ids[]=100&ids[]=200&ids[]=300?api_token=API_TOKEN"
+curl "https://votrecompte.vosfactures.fr/products.json?ids[]=100&ids[]=200&ids[]=300&api_token=API_TOKEN"
 ```
 
 <a name="warehouseID"></a>
@@ -2366,11 +2366,11 @@ curl " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKE
 ```
 Obtenir plusieurs catégories : 
 ```shell
-curl " https://votrecompte.vosfactures.fr/categories.json?ids=100,200,300?api_token=API_TOKEN "
+curl " https://votrecompte.vosfactures.fr/categories.json?ids=100,200,300&api_token=API_TOKEN "
 ```
 ou 
 ```shell
-curl " https://votrecompte.vosfactures.fr/categories.json?ids[]=100&ids[]=200&ids[]=300?api_token=API_TOKEN "
+curl " https://votrecompte.vosfactures.fr/categories.json?ids[]=100&ids[]=200&ids[]=300&api_token=API_TOKEN "
 ```
 
 <a name="categorienew"></a>
