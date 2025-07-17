@@ -667,11 +667,14 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 </br><b>Remarques importantes</b></br></br>
 <b>Coordonnées vendeur</b></br>
-Si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre ```department_id```(et non ```seller_name```).</br>
+En cas de multidépartements, et si votre département (fiche entreprise) a déjà été créé, envoyez le paramètre ```department_id```(et non ```seller_name```) pour sélectionner le département vendeur.</br>
 <b>Documents Tests</b></br>
 Si vous faites des essais, pensez à utiliser le paramètre ```test``` (dont la valeur peut être "true" ou "false") afin de créer des documents de facturation qui seront distingués en tant que documents "test" (au niveau du numéro et de la présentation).</br> 
 <b>Contact : nouveau ou existant </b></br>
-Lors de la création d'un nouveau document, le système effectue une reconnaissance automatique du contact envoyé en se basant sur le nom (```buyer_name``` et pour le client particulier ```buyer_first_name``` et ```buyer_last_name```), l'adresse email (```buyer_email```) et/ou le n° fiscal (```buyer_tax_no```): si aucun contact ne correspond, le système crée un nouveau contact. Si un contact correspond, le système le sélectionne. Ainsi :</br>- il est recommandé d'envoyer l'ID (``client_id``) d'un client existant plutôt que son nom seul, sachant que des particuliers peuvent avoir le même nom.</br>- le système affiche sur la facture les coordonnées du contact existant telles qu'indiquées dans la fiche du contact. Si vous envoyez d'autres coordonnées (ex: adresse), ajouter le paramètre `"buyer_override": true` pour afficher et mettre à jour les nouvelles coordonnées du contact existant. Exemple : 
+Lors de la création d'un nouveau document, le système effectue une reconnaissance automatique du contact envoyé en se basant sur le nom (```buyer_name``` et pour le client particulier ```buyer_first_name``` et ```buyer_last_name```), l'adresse email (```buyer_email```) et/ou le n° fiscal (```buyer_tax_no```).  Il est donc recommandé d'envoyer plûtot l'ID (``client_id``) d'un client existant plutôt que son nom seul, sachant que des particuliers peuvent avoir le même nom.</br>
+Selon les données du contact envoyées : 
+- si aucun contact existant ne correspond -> le système crée un nouveau contact. </br>
+- si un contact existant correspond -> le système le sélectionne et affiche sur la facture les coordonnées du contact existant telles qu'indiquées dans la fiche du contact. Si vous envoyez d'autres coordonnées (ex: adresse), ajouter le paramètre `"buyer_override": true` pour afficher et mettre à jour les nouvelles coordonnées du contact existant. Exemple : 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
 	-H 'Accept: application/json' \ 
