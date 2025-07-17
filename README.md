@@ -425,6 +425,8 @@ Le paramètre `kind =` permet de rechercher un seul type de document (exemple :
 
 Le paramètre `kinds =` permet de rechercher plusieurs types de documents (exemple : `&kinds[]=vat&kinds[]=estimate`).</br>
 
+Le paramètre `accounting_status=exported` permet de recherche uniquement les documents ayant fait l'objet d'un export comptable.</br>
+
 Le paramètre `order =` permet de choisir comment les factures appelées seront triées. Voici les valeurs possibles pour un tri ascendant : 
 
 ```shell
@@ -2022,10 +2024,19 @@ curl "https://votrecompte.ivosfactures.fr/products.json?api_token=API_TOKEN&ware
 ```
 
 <a name="productID"></a>
-<b>Obtenir un produit selon son ID</b>
+<b>Obtenir un ou plusieurs produits selon leur ID</b>
 
+Télécharger un produit : 
 ```shell
 curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
+```
+Télécharger plusieurs produits : 
+```shell
+curl "https://votrecompte.vosfactures.fr/products.json?ids=100, 200, 300?api_token=API_TOKEN"
+```
+ou 
+```shell
+curl "https://votrecompte.vosfactures.fr/products.json?ids[]=100&ids[]=200&ids[]=300?api_token=API_TOKEN"
 ```
 
 <a name="warehouseID"></a>
