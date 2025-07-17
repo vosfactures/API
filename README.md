@@ -87,7 +87,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 + [Produits](#products)
 	+ [Télécharger les produits](#productlist)
 	+ [Télécharger les produits et quantités par entrepôt](#warehouse)
-	+ [Obtenir un produit par son ID](#productID)
+	+ [Obtenir un ou plusieurs produits par leur ID](#productID)
 	+ [Obtenir un produit et quantité par son ID par entrepôt](#warehouseID)
 	+ [Créer un produit](#productadd)
 	+ [Créer un produit lot](#productaddlot)
@@ -101,7 +101,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Facturer avec un Tarif](#tarifs5)
 + [Catégories](#categorie)
 	+ [Télécharger la liste des catégories](#categorielist)
-	+ [Obtenir une catégorie selon son ID](#categorieID)
+	+ [Obtenir une ou plusieurs catégories selon leur ID](#categorieID)
 	+ [Créer une catégorie](#categorienew)
 	+ [Modifier une catégorie](#categorieupdate)
 	+ [Supprimer une catégorie avec l'ID donné](#categoriedelete)
@@ -2032,7 +2032,7 @@ curl "https://votrecompte.vosfactures.fr/products/100.json?api_token=API_TOKEN"
 ```
 Télécharger plusieurs produits : 
 ```shell
-curl "https://votrecompte.vosfactures.fr/products.json?ids=100, 200, 300?api_token=API_TOKEN"
+curl "https://votrecompte.vosfactures.fr/products.json?ids=100,200,300?api_token=API_TOKEN"
 ```
 ou 
 ```shell
@@ -2358,10 +2358,19 @@ curl " https://votrecompte.vosfactures.fr/categories.json?api_token=API_TOKEN "
 ```
 
 <a name="categorieID"></a>
-<b>Obtenir une catégorie selon son ID</b>
+<b>Obtenir une ou plusieurs catégories selon leur ID</b>
 
+Obtenir une catégorie : 
 ```shell
 curl " https://votrecompte.vosfactures.fr/categories/100.json?api_token=API_TOKEN "
+```
+Obtenir plusieurs catégories : 
+```shell
+curl " https://votrecompte.vosfactures.fr/categories.json?ids=100,200,300?api_token=API_TOKEN "
+```
+ou 
+```shell
+curl " https://votrecompte.vosfactures.fr/categories.json?ids[]=100&ids[]=200&ids[]=300?api_token=API_TOKEN "
 ```
 
 <a name="categorienew"></a>
