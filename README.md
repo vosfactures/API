@@ -677,8 +677,8 @@ Lors de la création d'un nouveau document, le système effectue une reconnaissa
 Ainsi :</br> 
 - si aucun contact existant ne correspond -> le système crée un nouveau contact. </br>
 - si un contact existant correspond -> le système le sélectionne et affiche sur la facture les coordonnées de la fiche du contact.</br>
-<b>Mise à jour dun contact existant</b></br>
-Lors de la création d"un nouveau document, si vous envoyez l'ID d'un contact et spécifiez des coordonnées différentes de celles de la fiche contact, ajoutez le paramètre `"buyer_override": true` pour facturer avec et mettre à jour la fiche du contact. Exemple : 
+<b>Mise à jour d'un contact existant</b></br>
+Lors de la création d"un nouveau document, si vous envoyez l'ID d'un contact avec des coordonnées différentes de celles de la fiche contact, ajoutez le paramètre `"buyer_override": true` pour facturer et mettre à jour la fiche du contact. Sans ce paramètre, les coordonnées envoyées ne sont pas prises en compte mais remplacées par celle de la fiche du contact. Exemple : 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
 	-H 'Accept: application/json' \ 
