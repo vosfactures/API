@@ -518,7 +518,7 @@ curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&ad
 ```
 
 <a name="downloadnr"></a>
-<b>Télécharger une facture par son numéro</b>
+<b>Télécharger une facture par son numéro</b></br> 
 Vous obtiendrez dans la réponse les informations relatives à la facture, y compris son n° ID.
 
 ```shell
