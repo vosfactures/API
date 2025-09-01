@@ -425,7 +425,7 @@ Le paramètre `kind =` permet de rechercher un seul type de document (exemple :
 
 Le paramètre `kinds =` permet de rechercher plusieurs types de documents (exemple : `&kinds[]=vat&kinds[]=estimate`).</br>
 
-Le paramètre `accounting_status=exported` permet de recherche uniquement les documents ayant fait l'objet d'un export comptable.</br>
+Le paramètre `accounting_status =` permet de rechercher les documents ayant déjà fait l'objet (`accounting_status=exported`) ou non (`accounting_status=`) d'un export comptable.</br>
 
 Le paramètre `order =` permet de choisir comment les factures appelées seront triées. Voici les valeurs possibles pour un tri ascendant : 
 
