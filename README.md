@@ -1414,7 +1414,20 @@ curl "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID/change_status.json?
 ```
 
 <b>Remarque : Documents "Exportés"</b> </br>
-En terme de suivi comptable, vous avez la possibilité d'afficher la colonne "Exporté" sur la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export - cet état "exporté" étant mis à jour automatiquement par le système après un export. Vous pouvez forcer cet état en envoyant le paramètre :</br> "accounting_status" : "exported"
+En terme de suivi comptable, vous avez la possibilité d'afficher la colonne "Exporté" sur la liste des documents, vous permettant ainsi de visualiser rapidement les documents ayant fait l'objet d'un export - cet état "exporté" étant mis à jour automatiquement par le système après un export.</br>
+Vous pouvez forcer cet état en envoyant le paramètre :</br> "accounting_status" : "exported". En cas de restrictions activées (ex: aucune modification permise après impression ou envoi), il faut ajouter dans la requête le paramètre "locked_by_export": true. 
+```shell
+   curl -X PUT --location "https://votrecompte.vosfactures.fr/invoices/INVOICE_ID.json" \
+    -H "Content-Type: application/json" \
+    -d '{
+          "api_token": "API_TOKEN",
+          "invoice": {
+            "locked_by_export": true,
+            "accounting_status": "exported"
+          }
+        }'
+```
+
 </br>P.S: Depuis l'aperçu du document, dans l'encadré "suivi du document" il y a aura la trace d'une activité "Modification" avec la date et l'heure.  
 
 <a name="file"></a>
