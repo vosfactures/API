@@ -338,6 +338,7 @@ Champ: `lang`
 	"cz" - Tchèque
 	"hr" - Croate
 	"pl" - Polonais
+	"pt" - Portugais
 	"hu" - Hongrois
     	"sk" - Slovaque
     	"sl" - Slovène
