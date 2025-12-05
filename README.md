@@ -328,28 +328,44 @@ Champ: `test` - Document Test
 
 Champ: `lang`
 ```shell
-	"en" - Anglais
-	"de" - Allemand
-	"fr" - Français
-	"el" - Grec
-	"es" - Espagnol
-	"it" - Italien
-	"nl" - Hollandais
+	"ar" - Arabe
+	"bg" - Bulgare
+	"ca" - Catalan
+	"cn" - Chinois
 	"cz" - Tchèque
-	"hr" - Croate
-	"pl" - Polonais
-	"hu" - Hongrois
-    	"sk" - Slovaque
-    	"sl" - Slovène
+	"da" - Dannois
+	"de" - Allemand
+	"el" - Grec
+	"en" - Anglais
+	"en-GB" - Anglais (UK)
+	"es" - Espagnol
 	"et" - Estonien
-    	"ru" - Russe
-    	"cn" - Chinois
-    	"ar" - Arabe
-    	"tr" - Turc
-    	"fa" - Persan
+	"fi" - Finlandais
+	"fr" - Français
+	"hr" - Croate (beta)
+	"hr2" - Bosnien
+	"hu" - Hongrois
+	"is" - Islandais
+	"it" - Italien
+	"ko" - Coréen
+	"lt" - Lituanien
+	"lv" - Letton
+	"mn" - Mongole
+	"nb" - Norvégien
+	"nl" - Néerlandais
+	"pl" - Polonais
+	"pt" - Portugais
+	"ro" - Roumain
+	"ru" - Russe
+	"sk" - Slovaque (beta)
+	"sl" - Slovène
+	"sq" - Albanais
+	"sv" - Suédois
+	"tr" - Turc
+	"uk" - Ukrainien
     	
-    	Vous pouvez créer des documents en bilingue en combinant deux langues séparées par un slash, par exemple:
-     "en / fr" - en anglais et en français
+	Vous pouvez créer des documents en bilingue en combinant deux langues séparées par un slash, par exemple:
+	"en / fr" - en anglais et en français
 ```
 
 
