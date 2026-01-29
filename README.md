@@ -693,7 +693,7 @@ Si vous faites des essais, pensez à utiliser le paramètre ```test``` (dont la 
 <b>Contact : nouveau ou existant</b></br>
 Lors de la création d'un nouveau document, le système effectue une reconnaissance automatique du contact envoyé en se basant sur le nom (```buyer_name``` et pour le client particulier ```buyer_first_name``` et ```buyer_last_name```), l'adresse email (```buyer_email```) et/ou le n° fiscal (```buyer_tax_no```).  Il est donc recommandé d'envoyer plûtot l'ID (``client_id``) d'un client existant plutôt que son nom seul, sachant que des particuliers peuvent avoir le même nom.</br>
 Ainsi :</br> 
-- si aucun contact existant ne correspond -> le système crée un nouveau contact. </br>
+- si aucun contact existant ne correspond -> le système crée un nouveau contact. Précisez la nature du client (professionnel ou particulier) avec le paramètre ```company:true``` ou ```company:false```</br>
 - si un contact existant correspond -> le système le sélectionne et affiche sur la facture les coordonnées de la fiche du contact.</br>
 <b>Mise à jour d'un contact existant</b></br>
 Lors de la création d"un nouveau document, si vous envoyez l'ID d'un contact avec des coordonnées différentes de celles de la fiche contact, ajoutez le paramètre `"buyer_override": true` pour facturer et mettre à jour la fiche du contact. Sans ce paramètre, les coordonnées envoyées ne sont pas prises en compte mais remplacées par celle de la fiche du contact. Exemple : 
@@ -1961,7 +1961,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 ```
 <b>Nature : Professionnel ou particulier</b></br> 
 
-La nature du contact créé est par défaut un professionel. Pour créer un contact particulier, vous devez envoyer également le paramètre ```company``` avec la valeur "false" et le paramètre ```last_name``` (nom de famille du contact).
+La nature du contact doit être précisée avec le paramètre ```company``` (valeur "false" pour un particulier, et "tru"e pour un professionel). </br>Notez que si aucun paramètre nature, ni aucun numéro fiscal ne sont envoyés, le système créée alors un contact particulier.  
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients.json \ 
