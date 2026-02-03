@@ -236,7 +236,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
     "delivery_address_street_additional": "rue2"  - ligne 2 de la rue de livraison
     "delivery_address_city": "Nice" - ville de livraison
     "delivery_address_post_code": "06200" - code postal de livraison
-    "delivery_address_country": "FR",
+    "delivery_address_country": "FR" - pays de livraison
 "use_delivery_address": true ou false - afficher ou non le champ unique "Adresse supplémentaire" du contact sur le document. Nous vous conseillons d'utiliser plutôt les champs ci-dessus de "multiple_delivery_addresses". 
 "delivery_address" : "" - contenu du champ unique "Adresse supplémentaire" du contact. 
 "buyer_email" : "" - email(s) du contact
@@ -1815,8 +1815,15 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "city": "" - Ville
 "street": "" - N° et nom de rue
 "country": "FR" - pays (code ISO 3166)
-"use_delivery_address":"" - Pour indiquer une adresse additionnelle ("1")
-"delivery_address":"" - adresse additionnelle
+"multiple_delivery_addresses": "true" - créer une adresse de livraison. Un contact peut avoir plusieurs adresses de livraison
+"delivery_address_title": "titre" - nom interne de l'adresse de livraison
+"delivery_address_street": "rue" - ligne 1 de la rue de livraison
+"delivery_address_street_additional": "rue2"  - ligne 2 de la rue de livraison
+"delivery_address_city": "Nice" - ville de livraison
+"delivery_address_post_code": "06200" - code postal de livraison
+"delivery_address_country": "FR" - pays de livraison
+"use_delivery_address":"" - Pour créer une adresse additionnelle sous forme de champ unique ("1")
+"delivery_address":"" - adresse additionnelle en tant que champs unique (intitulé à personnnaliser dans les paramètres du compte). 
 "tax_no_kind": "" - type du n° d'identification fiscale
 "tax_no": "" - n° d'identification fiscale
 "external_id":"" - Réf/code client
