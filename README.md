@@ -1763,12 +1763,15 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 
 ```shell
 
-"name" : "Entreprise ABC" - Nom du département vendeur 
+"name" : "Entreprise ABC" - Nom (commercial) du département vendeur 
 "shortcut" : "ABC" - Nom d'usage du département (interne)
+"use_legal_name":"0" - afficher ("1") ou non ("0") la dénomination  sociale (si différente du nom commercial). A envoyer en tant que "additional_fields"
+"legal_name":"" - Dénomination sociale. A envoyer en tant que "additional_fields"
 "kind":"SARL" - Forme juridique
 "main":true - Département principal (true) ou non (false) (en cas de multidépartements)
-"tax_no_kind":"" - Titre du type de n° d'immatriculation (ex: "TVA", "Siren" ...) - par défaut TVA
-"tax_no" :"" - N° d'immatriculation - par défaut TVA
+"tax_no_kind":"" - Titre du type de n° d'immatriculation - par défaut : SIREN, SIRET, N° entreprise, Numéro TVA. Il est possible d'en créer d'autres. 
+"tax_no" :"" - N° d'immatriculation. 
+"tva_number" : "" - N° de TVA (en plus du champ "tax-no"). A envoyer en tant que "additional_fields"
 "post_code" : "75022" - Code Postal
 "city" : "Paris" - Ville 
 "street" : "32 Rue du commerce" - N° et nom de rue
@@ -1783,13 +1786,20 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "bank_account" : "" - IBAN (ou n° de compte bancaire)
 "bank_swift" :"" - BIC
 "bank_account_currency" : "EUR" - devise du compte bancaire
-"bank_accountancy_account" : "" - compte comptable banque (de la fonction "Plan Comptable": https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables)
+"footer_content" : "" - Contenu du bas de page. Il convient d'envoyer également les paramètres "footer_kind": "own" et "own_footer":true
+"bank_accountancy_account" : "" - compte comptable banque (de la fonction "Plan Comptable": https://aide.vosfactures.fr/3069258-Exports-comptables-journaux-comptes-comptables). A envoyer en tant que "additional_fields"
+"au_member":"1" - Membre d’un assujetti unique (AU). A envoyer en tant que "additional_fields", ainsi que les champs de l'AU ci-dessous. 
+"au_name":"" - Nom de l'AU
+"au_siren":"" - SIREN de l'AU
+"au_tva":"" - Numéro de TVA de l'AU
+"au_address": "" - Adresse postale de l'AU (champ unique)
 "invoice_lang" : "fr" - Langue des documents par défaut (pour bilingue indiquez par ex "fr/de")
 "invoice_description" : "" - Contenu par défaut du champ 'Informations spécifiques' des documents
-"default_tax":"20" - Taux de taxe par défaut (pour un taux de taxe inactif indiquez "disabled")
+"invoice_description_long" : "" - Contenu par défaut du champ 'Texte de dernière page' par défaut (ex : CGV)' des documents. A envoyer en tant que "additional_fields"
+"default_tax":"20" - Taux de taxe par défaut (pour un taux de taxe inactif indiquez "disabled"). A envoyer en tant que "additional_fields"
+"force_tax_rate":"1" - pour appliquer ("1") ou non ("0") le taux de taxe du département à la facturation des produits existants. A envoyer en tant que "additional_fields"
 "invoice_template_id" : 2400 - ID du format par défaut (en cas de multidépartements)
-"cash_init_state" : ""150.0" - Total initial des espèces détenues
-"footer_content" : "" - Contenu du bas de page personnalisé. Il convient d'envoyer également le paramètre "footer_kind": "own".
+"cash_init_state" : ""150.0" - Total initial des espèces détenues (ne pas indiquer de devise)
 "use_pattern" : false - Numérotation indépendante des documents de ce département (en cas de multi-départements). Si true, indiquez les champs correspondants (ex: "invoice_pattern":"Fyyyy.mm.nr" pour les factures, "pattern_estimate":"FA-yymm-nr-m" pour les devis etc ...)
 "own_email_settings" : false - Paramétrage indépendant du système d'envoi des emails (en cas de multi-départements). Si true, indiquez les champs correspondants ("email_from":"","email_cc":"","email_subject":"","email_template":null,"email_template_kind":"default","email_pdf":true,"own_overdue_email_settings":false,"overdue_email_subject":"","overdue_email_template":null,"overdue_email_template_kind":"default","overdue_email_pdf":true)
 "restrict_warehouses" : false - Option "Restriction des entrepôts" activée (true) ou désactivée (false)
