@@ -1985,7 +1985,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 ```
 <b>Nature : Professionnel ou particulier</b></br> 
 
-La nature du contact doit être précisée avec le paramètre ```company``` (valeur "false" pour un particulier, et "tru"e pour un professionel). </br>Notez que si aucun paramètre nature, ni aucun numéro fiscal ne sont envoyés, le système créée alors un contact particulier.  
+La nature du contact doit être précisée avec le paramètre ```company``` (valeur "false" pour un particulier, et "true" pour un professionel). </br>Notez que si aucun paramètre nature, ni aucun numéro fiscal ne sont envoyés, le système créée alors un contact particulier.  
 
 ```shell
 curl https://votrecompte.vosfactures.fr/clients.json \ 
@@ -1995,7 +1995,7 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 		"client": {
 			"name" : "Client1",
 			"last_name": "Nom de famille",
-        		"company": false
+        	"company": false,
 			"bank" : "banque1",
 			"bank_account" : "IBAN1",
 			"city" : "Nice",
