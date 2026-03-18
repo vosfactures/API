@@ -195,7 +195,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "place" : "Paris" - lieu de création
 "sell_date" : "2013-01-16" - date additionnelle (ex: date de vente) : date complète ou juste mois et année:YYYY-MM. Pour ne pas faire apparaître cette date, indiquez "off" (ou décochez l'option "Afficher la Date additionnelle" depuis vos paramètres du compte).
 "test" : "true" ou "false" - document test ou non (en savoir plus ici: https://aide.vosfactures.fr/15399051-Cr-er-un-Document-ou-Paiement-Test) 
-"category_id" : "" - ID ou Nom de la catégorie : le système va d'abord regarder si la valeur renseignée correspond à un n° ID d'une catégorie existante, et ensuite à un Nom d'une catégorie existante. Si aucune valeur ne correspond, le système va créer une  nouvelle catégorie. 
+"category_id" : "" - ID ou Nom de la catégorie : le système va d'abord regarder si la valeur renseignée correspond à un n° ID d'une catégorie existante, et ensuite à un Nom d'une catégorie existante. Si aucune valeur ne correspond, le système va créer une  nouvelle catégorie.
+"transaction_type": "" - Type de transaction (pour la facturation électronique en France) :  "goods" pour ventes de biens, "services" pour prestations de service, "goods_and_services" pour une transaction mixte. 
 "department_id" : "1" - ID du département vendeur (depuis Paramètres > Compagnies/Départments, cliquer sur le nom de la compagnie/département pour visualiser l'ID dans l'url affiché). Le système affichera alors automatiquement les coordonnées du département vendeur (nom, adresse...) sur le document (les autres champs "seller_" ne sont plus nécessaires). 
 "seller_name" : "Ma Société" - Nom du département vendeur. Si ce champ n'est pas renseigné, le département principal est sélectionné par défaut. Préférez plutôt "department_id". Si vous utilisez toutefois "seller_name", le système tentera d'identifier le département portant ce nom, sinon il créera un nouveau département. 
 "seller_tax_no" : "FR5252445767" - numéro d'identification fiscale du vendeur (ex: n° TVA)
@@ -280,6 +281,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"product_id" : "1" - ID du produit
    		"name" : "Produit A" - nom du produit 
 		"description" : "" - description du produit
+        "use_eco_tax" - pour indiquer le montant unitaire d'une éco-taxe (éco-contribution) 
+        "eco_tax_net" -  montant unitaire HT de l'éco-taxe inclus dans le prix de vente du produit
    		"code" : "" - Référence du produit
    		"additional_info" : "" - contenu de la colonne additionnelle
    		"discount_percent" : "" - % de la réduction
@@ -291,10 +294,13 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
    		"total_price_net" : "59,00" - total HT (calculé automatiquement si non indiqué)
    		"total_price_gross" : "72,57" - total TTC
-                "kind":"text_separator" - pour insérer une ligne de texte (voir exemple plus bas)
+         "kind":"text_separator" - pour insérer une ligne de texte (voir exemple plus bas)
 		"kind":"subtotal" - pour insérer un sous-total (voir exemple plus bas)
 "hide_tax" : "1" - Montant TTC uniquement (ne pas afficher de montant HT ni de taxe) (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"hide_tax":"1"} lors de la création d'un document de facturation)
 "tax_split": "" - résumé des différents taux de taxe : paramètres renvoyés lors du téléchargement d'une facture
+"use_price_cee" - pour saisir un montant d'une Prime CEE (qui sera déduit du prix à payer)
+"prime_cee_value" : "" - pour y indiquer le montant de la prime CEE sur les factures
+"prime_cee_value_before" : "" - à utiliser sur les avoirs
 "calculating_strategy" : 
 {
   "position": "default" ou "keep_gross" - Comment se calcule le total de chaque ligne 
@@ -2205,6 +2211,8 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 "price_net": "" - prix unitaire ht de vente
 "tax":"20": "" - taux de taxe (vente)
 "price_tax":"" - montant de taxe (vente)
+"use_eco_tax" - pour indiquer le montant unitaire d'une éco-taxe (éco-contribution) 
+"eco_tax_net" -  montant unitaire HT de l'éco-taxe inclus dans le prix de vente du produit
 "purchase_price_gross": "" - prix unitaire ttc d'achat
 "purchase_price_net": "" - prix unitaire ht d'achat
 "purchase_tax":"" - taux de taxe (achat)
