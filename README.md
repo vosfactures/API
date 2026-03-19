@@ -539,8 +539,8 @@ curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
-<b>Remarque : paramètres additionnels</b> </br> 
-Vous pouvez aussi obtenir l'IBAN et le BIC du contact d'une facture donnée en ajoutant les paramètres additionnels correspondants : 
+</br><b>Remarque : paramètres additionnels</b> </br> 
+Vous pouvez aussi obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,'buyer_swift' (BIC)'buyer_sepa_mandate_no'(N° mandat SEPA). Exemple: 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=client_bank_account,buyer_swift
 ```
@@ -1852,7 +1852,8 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "email_for_reminders": "" - Email(s) de relance
 "www": "" - site internet
 "bank": "" - Nom de la banque
-"bank_account": "" - IBAN
+"bank_account": "" - Numéro IBAN (ou N° de compte bancaire)
+"swift" : "" - Code BIC
 "tag_list": ["tag1", "tag2"] - tags associés au contact
 "category_id":"" - ID de la catégorie du contact
 "price_list_id":"" - ID du Tarif éventuel applicable au contact
@@ -1911,7 +1912,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 curl "https://votrecompte.vosfactures.fr.com/clients.json?api_token=API_TOKEN&page=1"
 ```
 
-Remarque : si les contacts ont des tags, ceux-ci seront visibles dans la réponse API par défaut. Si vous ne souhaitez obtenir les tags, envoyez le paramètre `with_tags=false` : 
+Remarque : si les contacts ont des tags, ceux-ci seront visibles dans la réponse API par défaut. Si vous ne souhaitez pas obtenir les tags, envoyez le paramètre `with_tags=false` : 
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients.json?with_tags=false&api_token=API_TOKEN&page=1"
@@ -1929,6 +1930,11 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?order=updated_at&api_t
 
 ```shell
 curl "https://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN"
+```
+
+Remarque : Vous pouvez obtenir les coordonnées bancaires (IBAN et BIC) d'un contact en envoyant les paramètres additionnels client suivants : 
+```shell
+curl "https://votrecompte.vosfactures.fr.com/clients/100.json?api_token=API_TOKEN&additional_fields[client]=bank_account,swift"
 ```
 
 <a name="externalclientID"></a>
