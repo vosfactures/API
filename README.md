@@ -1691,8 +1691,23 @@ Vous obtenez alors par date :</br>
 - le type de relance effectuée (`send_overdue` = relance manuelle par email, `auto_send_overdue`= relance automatique par email, `print_overdue`= relance simple PDF, `formal_letter` = relance recommandée PDF, `recovery_procedure` = mise en recouvrement) </br>
 - l'utilisateur (nom et ID) à l'origine de la relance</br>
 - le document relancé (N° et ID)</br>
-- le client relancé (nom et ID).</br>
+- le client relancé (nom et ID)</br>
+- l'état du document relancé.</br>
 
+```shell
+Exemple de réponse : 
+{
+“kind”: “print_overdue”,
+“created_at”: “2023-10-27T12:05:51.000+02:00”,
+“user_name”: “user@email.fr”,
+“user_id”: 4873,
+“document_number”: “FAC17”,
+“document_id”: 197605778,
+“buyer_name”: “Client ABC”,
+“client_id”: 881573,
+“document_status”: “issued”
+}
+```
 
 <a name="department"></a>
 
