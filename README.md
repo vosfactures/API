@@ -81,6 +81,7 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un contact selon son adresse email](#clientemail)
 	+ [Remarque](#noteclient1)
 	+ [Créer un contact](#addclient)
+   	+ [Créer une adresse de livraison](#adddelivery)
 	+ [Modifier un contact](#updateclient)
 	+ [Supprimer un contact](#deleteclient)
 	+ [Fusionner des contacts](#mergeclient)
@@ -1831,7 +1832,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "city": "" - Ville
 "street": "" - N° et nom de rue
 "country": "FR" - pays (code ISO 3166)
-"multiple_delivery_addresses": "true" - créer une adresse de livraison. Un contact peut avoir plusieurs adresses de livraison
+"multiple_delivery_addresses": "true" - créer une adresse de livraison. Un contact peut avoir plusieurs adresses de livraison, à ajouter après la création du contact
 "delivery_address_title": "titre" - nom interne de l'adresse de livraison
 "delivery_address_street": "rue" - ligne 1 de la rue de livraison
 "delivery_address_street_additional": "rue2"  - ligne 2 de la rue de livraison
@@ -1840,7 +1841,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "delivery_address_country": "FR" - pays de livraison
 "use_delivery_address":"" - Pour créer une adresse additionnelle sous forme de champ unique ("1")
 "delivery_address":"" - adresse additionnelle en tant que champs unique (intitulé à personnnaliser dans les paramètres du compte). 
-"tax_no_kind": "" - type du n° d'identification fiscale
+"tax_no_kind": "" - type du n° d'identification fiscale : "SIREN" | "SIRET" | "N° entreprise" ou autre intitulé ajouté dans les paramètres du compte
 "tax_no": "" - n° d'identification fiscale
 "external_id":"" - Réf/code client
 "note":"" -  description additionnelle
@@ -1896,6 +1897,11 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "chorus_identifier":"" -
 "chorus_service_code":"" - Code Service Débiteur
 "urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
+-> Option Peppol :
+"peppol_id": " - Identifiant Peppol
+-> Facturation électronique :
+"private_id_kind":"" - type d'adressage supplémentaire : "0009" (SIRET) | "0024" (Code Routage) | "0188" (GLN)
+"private_id": "" - valeur de l'adressage  
 ```
 
 <a name="client"></a>
@@ -2014,6 +2020,32 @@ curl https://votrecompte.vosfactures.fr/clients.json \
 			
 	    }}'
 ```
+<a name="adddelivery"></a>
+<b>Créer une adresse de livraison pour un contact</b>
+</br>Un contact peut avoir une ou plusieurs adresses de livraison, que vous pouvez renseigner uniquement après avoir créé le contact. </br>
+Les paramètres suivants sont obligatoires : `name` (titre interne de l'adresse), `kind` (= "delivery"), `addressable_type` (= "Client"), `addressable_id` (id du contact). </br>
+Le paramètre `primary` sert à choisir l'adresse de livraison principale en cas d'adresses multiples.</br>
+
+```shell
+curl https://votrecompte.vosfactures.fr/addresses.json \ 
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+     "api_token": "API_TOKEN",
+"address": {    
+"name": "Titre de l'adresse",
+"kind": "delivery",
+"addressable_type": "Client",
+"addressable_id": <ID du client>,
+"street": "Rue ligne 1",
+"street_additional": "Rue ligne 2",
+"city": "Ville",
+"post_code": "12345",
+"country": "FR",
+"primary": "true"
+}}' 
+```
+
 
 <a name="updateclient"></a>
 <b>Modifier un contact</b>
