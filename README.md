@@ -285,7 +285,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
         "use_eco_tax" - pour indiquer le montant unitaire d'une éco-taxe (éco-contribution) 
         "eco_tax_net" -  montant unitaire HT de l'éco-taxe inclus dans le prix de vente du produit
    		"code" : "" - Référence du produit
-   		"additional_info" : "" - contenu de la colonne additionnelle
+   		"additional_info" : "" - contenu de la colonne additionnelle (si déjà renseigné dans un produit existant, le contenu est automatiquement repris)
    		"discount_percent" : "" - % de la réduction
    		"discount" : "" - montant ttc de la réduction
    		"quantity" : "1" - quantité 
@@ -540,11 +540,18 @@ curl https://votrecompte.vosfactures.fr/invoices.json?include_positions=true&api
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 </br><b>Remarque : paramètres additionnels</b> </br> 
-Vous pouvez aussi obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,'buyer_swift' (BIC)'buyer_sepa_mandate_no'(N° mandat SEPA). Exemple: 
+Vous pouvez ajouter dans votre requête des paramètres additionels afin d'obtenir plus d'informations avec le téléchargement d'une facture.</br>
+1) Vous pouvez obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,'buyer_swift' (BIC)'buyer_sepa_mandate_no'(N° mandat SEPA). Exemples </br> : 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=client_bank_account,buyer_swift
 ```
-En cas de facture d'avoir, vous pouvez obtenir également les deux champs "Contenu à corriger" et "Contenu corrigé" en envoyant les paramètres additionnels correspondants :
+
+2)Vous pouvez obtenir le contenu du champ Mentions Spécifiques en ajoutant le paramètre additionnel `conditional_notes`
+```shell
+curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=conditional_notes
+```
+
+3) En cas de facture d'avoir, vous pouvez obtenir également les deux champs "Contenu à corriger" et "Contenu corrigé" en envoyant les paramètres additionnels correspondants :
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=corrected_content_before,corrected_content_after
 ```
