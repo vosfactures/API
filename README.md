@@ -1824,6 +1824,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "first_name":"" - prénom
 "last_name":"" - Nom de famille
 "company": - nature du contact : professionnel (valeur true par défaut) ou un particulier (valeur false)
+"public_entity" : false - s'il s'agit d'une entité publique (valeur true) ou non (valeur false par défaut)
 "shortcut": "" - nom d'usage
 "title":"" - Civilité
 "last_name": "" - nom de famille 
