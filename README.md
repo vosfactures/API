@@ -551,12 +551,12 @@ curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 </br><b>Remarque : paramètres additionnels</b> </br> 
 Vous pouvez ajouter dans votre requête des paramètres additionels afin d'obtenir plus d'informations avec le téléchargement d'une facture.</br>
-1) Vous pouvez obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,'buyer_swift' (BIC)'buyer_sepa_mandate_no'(N° mandat SEPA). Exemples </br>: 
+1) Vous pouvez obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,`buyer_swift` (BIC), `buyer_sepa_mandate_no` (N° mandat SEPA). Exemples </br>: 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=client_bank_account,buyer_swift
 ```
 
-2)Vous pouvez obtenir le contenu du champ Mentions Spécifiques en ajoutant le paramètre additionnel `conditional_notes`
+2)Vous pouvez obtenir le contenu du champ "Mentions Spécifiques" en ajoutant le paramètre additionnel `conditional_notes`
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=conditional_notes
 ```
