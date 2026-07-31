@@ -1875,8 +1875,9 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "delivery_address_country": "FR" - pays de livraison
 "use_delivery_address":"" - Pour créer une adresse additionnelle sous forme de champ unique ("1")
 "delivery_address":"" - adresse additionnelle en tant que champs unique (intitulé à personnnaliser dans les paramètres du compte). 
-"tax_no_kind": "" - type du n° d'identification fiscale : "SIREN" | "SIRET" | "N° entreprise" ou autre intitulé ajouté dans les paramètres du compte
+"tax_no_kind": "" - type du n° d'identification fiscale : "SIREN", "SIRET", "N° entreprise", "RIDET", "TAHITI",  ou autre intitulé ajouté dans les paramètres du compte
 "tax_no": "" - n° d'identification fiscale
+"tva_number" "" - N° de TVA (en plus de "tax_no")
 "external_id":"" - Réf/code client
 "note":"" -  description additionnelle
 "phone":"" - Téléphone
@@ -1893,8 +1894,8 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "price_list_id":"" - ID du Tarif éventuel applicable au contact
 "kind":"" - Type de contact : acheteur ("buyer"), vendeur ("seller") ou les deux ("both")
 "payment_to_kind":"" -  Date limite de règlement par défaut
-"discount":"10.0" - Pourcentrage de réduction par défaut
-"default_tax":"0" - Pourcentrage de taxe par défaut
+"discount":"10.0" - Pourcentage de réduction par défaut
+"default_tax":"0" - Pourcentage de taxe par défaut
 "default_payment_type": "" -  Mode de règlement par défaut
 "disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
 "department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
