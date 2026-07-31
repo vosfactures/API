@@ -1926,15 +1926,11 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "insee_country":"" - Code Insee Pays de l’adresse
 "insee_community":"" - Code Insee Ville de l’adresse
 "street_kind":"" - Code Insee Type de voie
-"chorus_identifier_type":"1" -
-"chorus_identifier":"" -
-"chorus_service_code":"" - Code Service Débiteur
 "urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
--> Option Peppol :
-"peppol_id": " - Identifiant Peppol
 -> Facturation électronique :
-"private_id_kind":"" - type d'adressage supplémentaire : "0009" (SIRET) | "0024" (Code Routage) | "0188" (GLN)
-"private_id": "" - valeur de l'adressage  
+"peppol_id": " - Identifiant Peppol (adresse électronique)
+"private_id_kind":"" - Adresse électronique supplémentaire : "0009" (SIRET) | "0188" (GLN)
+"private_id": "" - valeur de l'adresse électronique supplémentaire  
 ```
 
 <a name="client"></a>
