@@ -228,8 +228,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_last_name" : "Nom" du contact
 "buyer_company": "1" - si le contact est un professionnel, "0" si c'est un particulier
 "buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
-"buyer_tax_no" : "FR45362780010" - numéro d'identification fiscale du contact (ex: n° TVA)
-"buyer_tax_no_kind" : "", - intitulé du numéro d'identification du contact : si non renseigné, il s'agit de "Numéro TVA", sinon il faut spécifier l'intitulé préalablement listé dans vos paramètres du compte, comme par exemple "SIREN" ou "CIF" (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
+"buyer_tax_no_kind" : "", - Titre du type de n° d'immatriculation : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", RIDET, TAHITI. Si non renseigné, il s'agit de "Numéro TVA". Il est possible d'en créer d'autres. (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
+"buyer_tax_no" : "" - numéro d'identification fiscale du contact
+"buyer_tva_number": "" - N° de TVA (pour les contacts français et belges). 
 "disable_tax_no_validation" : ""
 "use_oss" (précédemment "use_moss"): "" - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
 "identify_oss" : "true" - document automatiquement identifié par le logiciel comme une vente "OSS" si les conditions s'appliquent. 
@@ -1798,7 +1799,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 
 <a name="departnote"></a>
 <b>Remarque : Champs</b>
-</br>Voici les champs que vous pouvez utiliser: 
+</br>Voici les champs que vous pouvez utiliser : 
 
 ```shell
 
@@ -1808,9 +1809,9 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "legal_name":"" - Dénomination sociale. A envoyer en tant que "additional_fields"
 "kind":"SARL" - Forme juridique
 "main":true - Département principal (true) ou non (false) (en cas de multidépartements)
-"tax_no_kind":"" - Titre du type de n° d'immatriculation - par défaut : SIREN, SIRET, N° entreprise, Numéro TVA. Il est possible d'en créer d'autres. 
+"tax_no_kind":"" - Titre du type de n° d'immatriculation : SIREN, SIRET, N° entreprise, Numéro TVA. Il est possible d'en créer d'autres. 
 "tax_no" :"" - N° d'immatriculation. 
-"tva_number" : "" - N° de TVA (en plus du champ "tax-no"). A envoyer en tant que "additional_fields"
+"tva_number" : "" - N° de TVA (en plus du champ "tax-no").
 "post_code" : "75022" - Code Postal
 "city" : "Paris" - Ville 
 "street" : "32 Rue du commerce" - N° et nom de rue
