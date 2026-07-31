@@ -1896,7 +1896,6 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "default_tax":"0" - Pourcentrage de taxe par défaut
 "default_payment_type": "" -  Mode de règlement par défaut
 "disable_auto_reminders": - Envoyer (par défaut `false`) ou ne pas envoyer (`true`) de relances automatiques 
-"default_payment_type": "" -  Mode de règlement par défaut
 "department_id":"" - Nom du département lié dans le cadre de l'option "Visibilité des Contacts restreinte"
 "person":"" - Personne à contacter
 "use_mass_payment":true - Paiements de masse
