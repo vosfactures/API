@@ -1875,7 +1875,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "delivery_address_country": "FR" - pays de livraison
 "use_delivery_address":"" - Pour créer une adresse additionnelle sous forme de champ unique ("1")
 "delivery_address":"" - adresse additionnelle en tant que champs unique (intitulé à personnnaliser dans les paramètres du compte). 
-"tax_no_kind": "" - type du n° d'identification fiscale : "SIREN", "SIRET", "N° entreprise", "RIDET", "TAHITI",  ou autre intitulé ajouté dans les paramètres du compte
+"tax_no_kind": "" - type du n° d'identification fiscale : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", "RIDET", "TAHITI",  ou autre intitulé ajouté dans les paramètres du compte. Si non spécifié, il s'agit de "Numéro TVA"
 "tax_no": "" - n° d'identification fiscale
 "tva_number" "" - N° de TVA (en plus de "tax_no")
 "external_id":"" - Réf/code client
