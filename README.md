@@ -267,7 +267,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "advanced_payment_discount": "" - Escompte en % (attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"advanced_payment_discount":"10"} lors de la création d'un document de facturation)
 "status" : "Créé" - état du document 
 "paid" : "0,00" - montant payé
-"paid_from" et "paid_to" - "Payé à partir du" et "Payé jusqu'au" : paramètres renvoyés lors du téléchargement d'une facture  
+"paid_from" et "paid_to" - Période de facturation (renvoyée lors du téléchargement d'une facture) - attention les deux dates doivent être renseignées.   
 "oid" : "10021" - numéro de commande (ex: numéro généré par une application externe)
 "oid_unique": si la valeur est "yes", alors il ne sera pas permis au système de créer 2 factures avec le même OID (cela peut être utile en cas de synchronisation avec une boutique en ligne)
 "warehouse_id" : "1090" - numéro d'identification de l'entrepôt
