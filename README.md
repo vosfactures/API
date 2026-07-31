@@ -324,7 +324,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 
 <a name="fieldsvalue"></a>
 
-###Valeurs des Champs
+### Valeurs des Champs
 
 Champ : `kind`- Type du document
 ```shell
