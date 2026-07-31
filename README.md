@@ -228,9 +228,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_last_name" : "Nom" du contact
 "buyer_company": "1" - si le contact est un professionnel, "0" si c'est un particulier
 "buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
-"buyer_tax_no_kind" : "", - Titre du type de n° d'immatriculation : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", RIDET, TAHITI. Si non renseigné, il s'agit de "Numéro TVA". Il est possible d'en créer d'autres. (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
+"buyer_tax_no_kind" : "", - Titre du type de n° d'immatriculation : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", "RIDET", "TAHITI". Si non renseigné, il s'agit de "Numéro TVA". Il est possible d'en créer d'autres. (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "buyer_tax_no" : "" - numéro d'identification fiscale du contact
-"buyer_tva_number": "" - N° de TVA (pour les contacts français et belges). 
+"buyer_tva_number": "" - N° de TVA (en plus du "buyer_tax_no") 
 "disable_tax_no_validation" : ""
 "use_oss" (précédemment "use_moss"): "" - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
 "identify_oss" : "true" - document automatiquement identifié par le logiciel comme une vente "OSS" si les conditions s'appliquent. 
