@@ -11,6 +11,10 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 ## Menu
 + [Code API](#token)
 + [Documents de facturation - Actions et Champs](#invoices)
+	+ [Actions](#actions)
+   	+ [Champs de facturation](#fields)
+   		+ [Liste des champs](#fieldslist)
+   	 	+ [Valeurs des champs](#fieldsvalue)
 + [Paramètres additionnels disponibles pour les téléchargements](#list_params)
 + [Documents de facturation - Appels API](#examples)
 	+ [Téléchargement et Envoi](#load)
@@ -161,6 +165,7 @@ Le code API est du type "qCedKxkTgQhGJpiI2SU".</br>
 
 # Documents de facturation : Actions et Champs
 
+<a name="actions"></a>
 ## Actions
 
 * `GET /invoices/1.json` télécharge le document 
@@ -184,9 +189,12 @@ curl https://votrecompte.vosfactures.fr/invoices.json
             ]
         }}'
 ```
- 
+
+<a name="fields"></a> 
 ## Champs des documents de facturation
 
+<a name="fieldslist"></a>
+### Liste des champs principaux 
 ```shell
 "number" : "13/2012" - numéro du document (généré automatiquement si non indiqué)
 "kind" : "vat" - type du document : "vat" pour facture, "correction" pour avoir, "receipt" pour reçu, "advance" pour facture d'acompte, "final" pour facture de solde, "invoice_other" pour autre type de document comptable, "estimate" pour devis, "proforma" pour facture proforma, "client_order" pour bon de commande client, "maintenance_request" pour bon d'intervention, "payment_receipt" pour reçu de paiment, "kw" pour versements en espèces, "kp" pour reçus en espèces.
@@ -312,11 +320,13 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "corrected_content_before": "" - contenu à corriger (champ disponible lors de la création de facture d'avoir)
 "corrected_content_after": "" - contenu corrigé (champ disponible lors de la création de facture d'avoir)
 ```
-<b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > Paramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position",  "sum" et "invoice_form_price_kind". 
+<b>Remarque: Le paramètre "calculating_strategy"</b> correspond aux options de méthode de calcul, paramétrables par défaut depuis Paramètres > Paramètres du compte > Options par défaut > Section Montants, et également depuis le formulaire de création de chaque document de facturation. Si vous souhaitez utiliser le paramètre "calculating_strategy", il faut obligatoirement envoyer les 3 valeurs: "position", "sum" et "invoice_form_price_kind". 
 
-<b>Valeurs des Champs</b>
+<a name="fieldsvalue"></a>
 
-Champ: `kind`- Type du document
+###Valeurs des Champs
+
+Champ : `kind`- Type du document
 ```shell
 	"vat" - facture 
 	"advance" - facture d'acompte
@@ -333,14 +343,14 @@ Champ: `kind`- Type du document
 	"kw" - bon de sortie de caisse	
 ```
 
-Champ: `test` - Document Test 
+Champ : `test` - Document Test 
 ```shell
 	"true" - document test 
 	"false" - document non test
 
 ```
 
-Champ: `lang`
+Champ : `lang`
 ```shell
 	"en" - Anglais
 	"ar" - Arabe
@@ -385,13 +395,13 @@ Champ: `lang`
 ```
 
 
-Champ: `income`- facture de vente ou d'achat
+Champ : `income`- facture de vente ou d'achat
 ```shell
 	"1" - revenu (vente)
 	"0" - dépense (achat)
 ```
 
-Champ: `payment_type`- Mode de règlement
+Champ : `payment_type`- Mode de règlement
 ```shell
 	"transfer" - virement bancaire
 	"card" - carte bancaire
@@ -403,7 +413,7 @@ Champ: `payment_type`- Mode de règlement
 	"any_other_text_entry" - autre
 ```
 
-Champ: `status`- Etat
+Champ : `status`- Etat
 ```shell
 	"issued" - Créé
 	"sent" - Envoyé
@@ -413,7 +423,7 @@ Champ: `status`- Etat
 	"accepted" - Accepté
 ```
 
-Champ: `discount_kind` - Type de réduction
+Champ : `discount_kind` - Type de réduction
 ```shell
 	"percent_unit" - % calculé sur le prix unitaire ht
 	"percent_unit_gross" - % sur le prix unitaire ttc
@@ -463,7 +473,7 @@ Le paramètre `order =` permet de choisir comment les factures appelées seront 
 
 ```shell
 `number` - par numéro de facture
-`updated_at` - par date de dernière modificationi
+`updated_at` - par date de dernière modification
 `price_net` - par total HT
 `price_gross` - par total TTC
 `price_tax` - par total de Taxe
@@ -541,7 +551,7 @@ curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN
 ```
 </br><b>Remarque : paramètres additionnels</b> </br> 
 Vous pouvez ajouter dans votre requête des paramètres additionels afin d'obtenir plus d'informations avec le téléchargement d'une facture.</br>
-1) Vous pouvez obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,'buyer_swift' (BIC)'buyer_sepa_mandate_no'(N° mandat SEPA). Exemples </br> : 
+1) Vous pouvez obtenir les données bancaires du contact d'une facture donnée en ajoutant les paramètres additionnels de facture suivants : `client_bank_account` (IBAN) ,'buyer_swift' (BIC)'buyer_sepa_mandate_no'(N° mandat SEPA). Exemples </br>: 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices/100.json?api_token=API_TOKEN&additional_fields[invoice]=client_bank_account,buyer_swift
 ```
