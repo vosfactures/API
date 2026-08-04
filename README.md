@@ -927,7 +927,14 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
 
 <b>Créer une nouvelle facture avec sous-total</b>
 
-Dans l'exemple ci-dessous, la facture est créée avec un sous-total des produits A et B.  
+Plusieurs types de sous-total sont disponibles :</br>
+- sous-total simple : { “kind”: “subtotal”, “name”: “Sous-total”, “save_to_database”: 0 } </br>
+- sous-total avec quantité : { “kind”: “subtotal_with_quantity”, “name”: “Sous-total” } </br>
+- sous-total avec poids exprimé en gramme : { “kind”: “subtotal_with_weight”, “name”: “Sous-total”, “quantity_unit”: “g” } </br>
+- sous-total avec poids exprimé en kg : { “kind”: “subtotal_with_weight”, “name”: “Sous-total”, “quantity_unit”: “kg” } </br>
+</br>
+
+-> Exemple de création de facture avec un sous-total (simple) des produits A et B.  
 
 ```shell
 curl https://votrecompte.vosfactures.fr/invoices.json \
@@ -946,7 +953,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json \
                     "positions":[
                         {"name":"Product A", "tax":23, "total_price_gross":30.94, "quantity":3},
                         {"name":"Product B", "tax":23, "total_price_gross":17.23, "quantity":1},
-                        {"name":"Subtotal", "tax":"disabled", "total_price_gross":0, "quantity":0, "kind":"subtotal"},
+                        {"name":"Subtotal", "tax":"disabled", "total_price_gross":0, "quantity":0, "kind":"subtotal", “name”: “Sous-total”, “save_to_database”: 0 },
                         {"name":"Product C", "tax":0, "total_price_gross":50, "quantity":2}
                     ]
                 }}'
