@@ -411,10 +411,10 @@ Champ : `payment_type`- Mode de règlement
 	"paypal" - PayPal
 	"lcr" - LCR Lettre de Change Relevé
 	"off" - aucun (ne pas afficher)
-	"any_other_text_entry" - autre
+	"other_text" - autre
 ```
 
-Champ : `status`- Etat
+Champ : `status`- Etat (pour tous documents de facturation - vente et achat)
 ```shell
 	"issued" - Créé
 	"sent" - Envoyé
@@ -422,6 +422,21 @@ Champ : `status`- Etat
 	"partial" - Payé en partie
 	"rejected" - Refusé
 	"accepted" - Accepté
+```
+
+Champ : `status`- Statuts pour les dépenses électroniques (à venir)</br>
+Dans le cadre de la facturation électronique française, voici les états attribuables aux dépenses reçues/envoyées : 
+
+```shell
+	"issued" - Créé
+	"in_hand" - Prise en charge
+	"part_approved" - Approuvée partiellement
+	"approved" - Approuvée
+	"dispute" - En litige
+	"suspended" - Suspendue
+	"refused" - Refusée
+	"partial" - Payée (partiellement)
+	"paid" - Payée (en totalité)	
 ```
 
 Champ : `discount_kind` - Type de réduction
