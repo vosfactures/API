@@ -233,7 +233,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no_kind" : "", - Titre du type de n° d'immatriculation : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", "RIDET", "TAHITI". Si non renseigné, il s'agit de "Numéro TVA". Il est possible d'en créer d'autres. (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "buyer_tax_no" : "" - numéro d'identification fiscale du contact
-"buyer_tva_number": "" - N° de TVA (en plus du "buyer_tax_no") 
+"buyer_tva_number": "" - N° de TVA français ou belge (en plus du "buyer_tax_no") 
 "disable_tax_no_validation" : ""
 "use_oss" (précédemment "use_moss"): "" - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
 "identify_oss" : "true" - document automatiquement identifié par le logiciel comme une vente "OSS" si les conditions s'appliquent. 
@@ -301,7 +301,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
    		"discount_percent" : "" - % de la réduction
    		"discount" : "" - montant ttc de la réduction
    		"quantity" : "1" - quantité 
-   		"quantity_unit" : "kg" - unité 
+   		"quantity_unit" : "kg" - unité (en cas de facturation électronique française : ["MTK", "NAR", "SET", "AMP", "CMT", "MMT", "MTR", "GRM", "KGM", "TNE", "A90", "KWT", "MAW", "ANN", "DAY", "HUR", "MIN", "MON", "QAN", "SAN", "SEC", "WEE", "LTR", "MLT", "MTQ"] )
    		"price_net" : "59,00", - prix unitaire HT (calculé automatiquement si non indiqué)
    		"tax" : "23" - % de taxe (les valeurs "disabled" ou "np" rendent la taxe inactive)
    		"price_gross" : "72,57" - prix unitaire TTC (calculé automatiquement si non indiqué)
@@ -1836,7 +1836,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "main":true - Département principal (true) ou non (false) (en cas de multidépartements)
 "tax_no_kind":"" - Titre du type de n° d'immatriculation : SIREN, SIRET, N° entreprise, Numéro TVA. Il est possible d'en créer d'autres. 
 "tax_no" :"" - N° d'immatriculation. 
-"tva_number" : "" - N° de TVA (en plus du champ "tax-no").
+"tva_number" : "" - N° de TVA française ou belge (en plus du champ "tax-no").
 "post_code" : "75022" - Code Postal
 "city" : "Paris" - Ville 
 "street" : "32 Rue du commerce" - N° et nom de rue
@@ -1902,7 +1902,7 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "delivery_address":"" - adresse additionnelle en tant que champs unique (intitulé à personnnaliser dans les paramètres du compte). 
 "tax_no_kind": "" - type du n° d'identification fiscale : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", "RIDET", "TAHITI",  ou autre intitulé ajouté dans les paramètres du compte. Si non spécifié, il s'agit de "Numéro TVA"
 "tax_no": "" - n° d'identification fiscale
-"tva_number" "" - N° de TVA (en plus de "tax_no")
+"tva_number" "" - N° de TVA français ou belge (en plus de "tax_no")
 "external_id":"" - Réf/code client
 "note":"" -  description additionnelle
 "phone":"" - Téléphone
@@ -2330,7 +2330,7 @@ curl https://votrecompte.vosfactures.fr/products/REFABC.json
 "name":"" - nom du produit 
 "description":"" - description du produit
 "code":""- référence du produit
-"quantity_unit":"" - unité
+"quantity_unit":"" - unité (en cas de facturation électronique française : ["MTK", "NAR", "SET", "AMP", "CMT", "MMT", "MTR", "GRM", "KGM", "TNE", "A90", "KWT", "MAW", "ANN", "DAY", "HUR", "MIN", "MON", "QAN", "SAN", "SEC", "WEE", "LTR", "MLT", "MTQ"] )
 "price_gross": "" - prix unitaire ttc de vente
 "price_net": "" - prix unitaire ht de vente
 "tax":"20": "" - taux de taxe (vente)
