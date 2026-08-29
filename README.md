@@ -83,11 +83,14 @@ Grâce à l'API de VosFactures, vous pouvez créer automatiquement des factures 
 	+ [Obtenir un contact selon son nom](#clientname)
 	+ [Obtenir un contact selon son nom d'usage](#clientshortname)
 	+ [Obtenir un contact selon son adresse email](#clientemail)
+	+ [Obtenir la liste des adresses de livraison d'un contact](#clientdeliverylist)
 	+ [Remarque](#noteclient1)
 	+ [Créer un contact](#addclient)
    	+ [Créer une adresse de livraison](#adddelivery)
 	+ [Modifier un contact](#updateclient)
+    + [Modifier l'adresse de livraison d'un contact](#editclientdelivery)
 	+ [Supprimer un contact](#deleteclient)
+    + [Supprimer l'adresse de livraison d'un contact](#deleteclientdelivery)
 	+ [Fusionner des contacts](#mergeclient)
 + [Produits](#products)
 	+ [Télécharger les produits](#productlist)
@@ -2024,6 +2027,13 @@ curl "https://votrecompte.vosfactures.fr.com/clients.json?shortcut=NOM_USAGE&api
 curl "https://votrecompte.vosfactures.fr.com/clients.json?email=EMAIL&api_token=API_TOKEN"
 ```
 
+<a name="clientdeliverylist"></a>
+<b>Obtenir la liste des adresses de livraison d'un contact</b>
+
+```shell
+curl -X GET --location "https://votrecompte.vosfactures.fr/addresses.json?addressable_type=Client&addressable_id=CLIENT_ID&kind=delivery"
+```
+
 <a name="noteclient1"></a>
 <b>Remarque:</b><br>
 La variable `panel_url` est retournée lors de l'appel API d'un contact. Cette variable correspond au lien url de l'Espace Facturation du contact.
@@ -2130,6 +2140,24 @@ curl https://votrecompte.vosfactures.fr/clients/111.json \
 			"street" : "street2",
 	    }}'
 ```
+<a name="editclientdelivery"></a>
+<b>Modifier l'adresse de livraison d'un contact</b>
+```shell
+curl -X PATCH --location "https://votrecompte.vosfactures.fr/addresses/ADDRESS_ID.json" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d '{
+          "address": {
+            "street": "23 Rue de la Fleur",
+            "street_additional": "Bat A",
+            "city": "Nice",
+            "post_code": "06200",
+            "country": "FR",
+            "name": "Nom de l'adresse"
+          }
+        }'
+```
+
 <a name="deleteclient"></a>
 <b>Supprimer un contact</b>
 
@@ -2137,6 +2165,12 @@ Vous pouvez supprimer définitivement un contact par son ID :
 
 ```shell
 curl -X DELETE "https://votrecompte.vosfactures.fr/clients/CLIENT_ID.json?api_token=API_TOKEN"
+```
+<a name="deleteclientdelivery"></a>
+<b>Supprimer l'adresse de livraison d'un contact</b>
+
+```shell
+curl -X DELETE --location "https://votrecompte.vosfactures.fr/addresses/ADDRESS_ID.json"
 ```
 
 <a name="mergeclient"></a>
