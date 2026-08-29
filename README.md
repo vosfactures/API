@@ -1953,8 +1953,8 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
 -> Facturation électronique :
 "peppol_id": " - Identifiant Peppol (adresse électronique)
-"private_id_kind":"" - Adresse électronique supplémentaire : "0009" (SIRET) | "0188" (GLN)
-"private_id": "" - valeur de l'adresse électronique supplémentaire  
+"private_id_kind":"" - Identifiant électronique supplémentaire : "0009" (SIRET) | "0188" (GLN)
+"private_id": "" - valeur de l'identifiant électronique supplémentaire  
 ```
 
 <a name="client"></a>
