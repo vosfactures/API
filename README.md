@@ -441,6 +441,10 @@ Dans le cadre de la facturation électronique française, voici les états attri
 	"partial" - Payée (partiellement)
 	"paid" - Payée (en totalité)	
 ```
+Certains statuts doivent être envoyés avec un ou des motifs (`reasons`) identifiés par un code ou en cas de motif libre par la valeur "AUTRE" dont le texte doit être indiqué (`reasons_note`). Par exemple :
+```shell
+{ “status”: “part_approved”, “reasons”: “AUTRE,QTE_ERR”, “reason_note”: “autre raison” }
+```
 
 Champ : `discount_kind` - Type de réduction
 ```shell
