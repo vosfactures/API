@@ -2348,7 +2348,7 @@ curl "https://votrecompte.vosfactures.fr/products.json?filter=disabled&api_token
 
 # Multi-Tarifs
 
-<a name="tarifs1></a>
+<a name="tarifs1"></a>
 <b>Télécharger la liste des Tarifs</b>
 
 ```shell
