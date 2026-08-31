@@ -225,6 +225,7 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "seller_fax" : "" - numéro de fax du vendeur
 "seller_phone" : "" - numéro de tel du vendeur
 "seller_person" : "" - Nom du vendeur (figurant en bas de page des documents)
+"peppol_sender_address" : "" - Identifiant Peppol français de l'expéditeur (adresse électronique)
 "client_id" : "-1" - ID du contact (si la valeur est -1 alors le contact sera créé et ajouté à la liste des contacts)
 "buyer_name" : "Client Untel" - nom du contact (acheteur en cas de vente ou fournisseur en cas d'achat)
 "buyer_first_name" : "Prénom" du contact
@@ -233,7 +234,9 @@ curl https://votrecompte.vosfactures.fr/invoices.json
 "buyer_title" : Civilité du contact. Attention, en json vous devez envoyer ce paramètre comme ceci:  "additional_fields": {"buyer_title"":"Mme"} lors de la création d'un document de facturation. 
 "buyer_tax_no_kind" : "", - Titre du type de n° d'immatriculation : "SIREN", "SIRET", "N° entreprise", "Numéro TVA", "RIDET", "TAHITI". Si non renseigné, il s'agit de "Numéro TVA". Il est possible d'en créer d'autres. (en savoir plus ici: https://aide.vosfactures.fr/19032497-Num-ro-d-identification-fiscale-des-contacts)
 "buyer_tax_no" : "" - numéro d'identification fiscale du contact
-"buyer_tva_number": "" - N° de TVA français ou belge (en plus du "buyer_tax_no") 
+"buyer_tva_number": "" - N° de TVA français ou belge (en plus du "buyer_tax_no")
+"peppol_receiver_address" : "" - Identifiant Peppol français du destinataire (adresse électronique)
+"peppol_id": "" - Identifiant Peppol Belge (adresse électronique)
 "disable_tax_no_validation" : ""
 "use_oss" (précédemment "use_moss"): "" - document à identifier comme une vente "OSS" (true) ou non (false) car les conditions s'appliquent (= vente B2C avec la TVA du pays d'un acheteur européen non assujetti). En savoir plus ici: https://aide.vosfactures.fr/96973539-E-Commerce-TVA-OSS
 "identify_oss" : "true" - document automatiquement identifié par le logiciel comme une vente "OSS" si les conditions s'appliquent. 
@@ -1960,8 +1963,6 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
 -> Facturation électronique :
 "peppol_id": "" - Identifiant Peppol Belge (adresse électronique)
-"peppol_receiver_address" : "" - Identifiant Peppol français du destinataire (adresse électronique)
-"peppol_sender_address" : "" - Identifiant Peppol français de l'expéditeur (adresse électronique)
 "private_id_kind":"" - Identifiant électronique supplémentaire : "0009" (SIRET) | "0188" (GLN)
 "private_id": "" - valeur de l'identifiant électronique supplémentaire  
 ```
