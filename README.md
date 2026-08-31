@@ -1959,7 +1959,9 @@ curl -X PUT  https://votrecompte.vosfactures.fr/departments/100.json \
 "street_kind":"" - Code Insee Type de voie
 "urssaf_id":"" - Code ID Urssaf (en cas d'inscription)
 -> Facturation électronique :
-"peppol_id": " - Identifiant Peppol (adresse électronique)
+"peppol_id": "" - Identifiant Peppol Belge (adresse électronique)
+"peppol_receiver_address" : "" - Identifiant Peppol français du destinataire (adresse électronique)
+"peppol_sender_address" : "" - Identifiant Peppol français de l'expéditeur (adresse électronique)
 "private_id_kind":"" - Identifiant électronique supplémentaire : "0009" (SIRET) | "0188" (GLN)
 "private_id": "" - valeur de l'identifiant électronique supplémentaire  
 ```
